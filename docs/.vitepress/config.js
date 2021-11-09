@@ -8,6 +8,7 @@ module.exports = {
 
   themeConfig: {
     algolia: {
+      appId: 'ZQTA4IMIN7',
       apiKey: '677d812bc3c1840d449554a4df6f33b7',
       indexName: 'docs99'
     },
