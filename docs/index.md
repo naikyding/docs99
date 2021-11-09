@@ -3,7 +3,7 @@ home: true
 heroImage: /images/document.svg
 # 使標題不再存在
 # heroText: null
-
+search: true
 tagline:
 actionText: 快速開始 →
 actionLink: /Index/
