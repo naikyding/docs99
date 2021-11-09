@@ -25,6 +25,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/陣列處理'
     },
     {
+      text: '閉包',
+      link: '/Javascript/閉包'
+    },
+    {
       text: 'BOM',
       link: '/Javascript/BOM'
     }
