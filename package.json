@@ -1,0 +1,16 @@
+{
+  "name": "docs99",
+  "version": "1.0.0",
+  "description": "about all docs",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "author": "Naiky",
+  "license": "ISC",
+  "devDependencies": {
+    "vitepress": "^0.20.1"
+  }
+}
