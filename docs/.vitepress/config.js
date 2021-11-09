@@ -8,18 +8,11 @@ module.exports = {
 
   themeConfig: {
     algolia: {
-      apiKey: '39a116604cd8fcbfdc45958794461096',
+      apiKey: 'efb740f22d9b7ab3ffcdb9c1bdf00772',
       indexName: 'docs99'
     },
 
     logo: 'https://vuejs.org/images/logo.png',
-
-    nav: [
-      { text: '首页', link: '/Index/' },
-      { text: '分类', link: '/Javascript/' },
-      { text: '分类', link: '/Javascript/' },
-      { text: '分类', link: '/Javascript/' },
-    ],
 
     sidebar:[
       getIndexSidebar(),
