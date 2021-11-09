@@ -8,7 +8,7 @@ module.exports = {
 
   themeConfig: {
     algolia: {
-      apiKey: 'efb740f22d9b7ab3ffcdb9c1bdf00772',
+      apiKey: '677d812bc3c1840d449554a4df6f33b7',
       indexName: 'docs99'
     },
 
@@ -19,9 +19,5 @@ module.exports = {
       getJavascriptSidebar()
     ]
   },
-
-  plugins: [
-    ['@vuepress/plugin-search'],
-  ],
 }
 
