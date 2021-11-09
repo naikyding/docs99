@@ -14,6 +14,7 @@ export const getIndexSidebar = () => ({
 
 export const getJavascriptSidebar = () => ({
   text: 'Javascript',
+  collapsable: 'auto',
   children: [
     {
       text: '索引',

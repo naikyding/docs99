@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /img/document.svg
+heroImage: /images/document.svg
 # 使標題不再存在
 # heroText: null
 
