@@ -19,9 +19,7 @@ tags:
 - 頁面無限滾動
 - 實作 Lazy loading (懶加載)
 
-## API
-
-**語法**
+## 語法
 
 ```jsx
 const IntersectionObserver = new IntersectionObserver(callback[, option])
