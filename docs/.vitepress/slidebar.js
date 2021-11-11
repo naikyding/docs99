@@ -38,3 +38,17 @@ export const getJavascriptSidebar = () => ({
     }
   ]
 })
+
+export const getVueSidebar = () => ({
+  text: 'Vue',
+  children: [
+    {
+      text: '索引',
+      link: '/Vue/'
+    },
+    {
+      text: '[Vue3]深入了解 ref 實現原理',
+      link: '/Vue/vue3-ref'
+    },
+  ]
+})

@@ -1,4 +1,4 @@
-import { getIndexSidebar, getJavascriptSidebar } from './slidebar'
+import { getIndexSidebar, getJavascriptSidebar, getVueSidebar } from './slidebar'
 
 module.exports = {
   base: '/',
@@ -17,7 +17,8 @@ module.exports = {
 
     sidebar:[
       getIndexSidebar(),
-      getJavascriptSidebar()
+      getJavascriptSidebar(),
+      getVueSidebar()
     ]
   },
 }
