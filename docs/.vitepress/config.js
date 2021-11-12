@@ -3,7 +3,7 @@ import { getIndexSidebar, getJavascriptSidebar, getVueSidebar } from './slidebar
 module.exports = {
   base: '/',
   title: 'Docs99',
-  description: '開發相關的認知與學習，期望學習長長99',
+  description: '開發學習．長長99',
 
   themeConfig: {
     lastUpdated: true,
@@ -16,7 +16,7 @@ module.exports = {
 
     logo: 'https://vuejs.org/images/logo.png',
 
-    sidebar:[
+    sidebar: [
       getIndexSidebar(),
       getJavascriptSidebar(),
       getVueSidebar()
