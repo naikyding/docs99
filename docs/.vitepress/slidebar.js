@@ -52,3 +52,13 @@ export const getVueSidebar = () => ({
     },
   ]
 })
+
+export const getBrowserSidebar = () => ({
+  text: 'Browser',
+  children: [
+    {
+      text: '索引',
+      link: '/Browser/'
+    }
+  ]
+})
