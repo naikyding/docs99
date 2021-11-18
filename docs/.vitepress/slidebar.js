@@ -59,6 +59,6 @@ export const getBrowserSidebar = () => ({
     {
       text: '索引',
       link: '/Browser/'
-    }
+    },
   ]
 })
