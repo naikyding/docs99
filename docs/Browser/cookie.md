@@ -1,7 +1,7 @@
 # Cookie
 [HTTP]:http.md
 [HTTPS]:https.md
-[互動式網路應用]:(https://zh.wikipedia.org/wiki/%E4%BA%A4%E4%BA%92%E5%BC%8FWeb%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F)
+[互動式網路應用]:(https://zh.wikipedia.org/wiki/Cookie)
 
 由於 [HTTP] 本身是無狀態的，`服務端` 根本不知道使用者上次做了什麼事，這嚴重影響到 [互動式網路應用] 的實現。
 常見的例子，就是使用者在購物網站，買了 `產品a` 、`產品b` ，但在結帳時，因為 **無狀態** 而 `服務端` 根本不知道使用者買什麼東西。
