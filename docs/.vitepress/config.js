@@ -14,7 +14,7 @@ module.exports = {
       indexName: 'docs99'
     },
 
-    logo: '/public/images/document.svg',
+    logo: '/document.svg',
 
     sidebar: [
       getIndexSidebar(),
