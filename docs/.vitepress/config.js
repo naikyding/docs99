@@ -4,6 +4,9 @@ module.exports = {
   base: '/',
   title: 'Docs99',
   description: '開發學習．長長99',
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/document.svg' }]
+  ],
 
   themeConfig: {
     lastUpdated: true,
