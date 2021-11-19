@@ -60,5 +60,9 @@ export const getBrowserSidebar = () => ({
       text: 'Cookie',
       link: '/Browser/cookie'
     },
+    {
+      text: 'TCP',
+      link: '/Browser/tcp'
+    },
   ]
 })
