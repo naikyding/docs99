@@ -14,12 +14,12 @@ module.exports = {
       indexName: 'docs99'
     },
 
-    logo: 'https://vuejs.org/images/logo.png',
+    logo: '/public/images/document.svg',
 
     sidebar: [
       getIndexSidebar(),
-      getJavascriptSidebar(),
-      getVueSidebar(),
+      // getJavascriptSidebar(),
+      // getVueSidebar(),
       getBrowserSidebar()
     ]
   },

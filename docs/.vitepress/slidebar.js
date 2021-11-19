@@ -1,14 +1,10 @@
 export const getIndexSidebar = () => ({
-  text: 'Index',
+  text: '前言',
   children: [
-    {
-      text: 'index',
-      link: '/Index/'
-    },
-    {
-      text: 'about',
-      link: '/Index/about'
-    }
+    // {
+    //   text: '關於我',
+    //   link: '/Index/about'
+    // }
   ]
 })
 
@@ -57,8 +53,12 @@ export const getBrowserSidebar = () => ({
   text: 'Browser',
   children: [
     {
-      text: '索引',
-      link: '/Browser/'
+      text: 'HTTP 是什麼?',
+      link: '/Browser/http'
+    },
+    {
+      text: 'Cookie',
+      link: '/Browser/cookie'
     },
   ]
 })
