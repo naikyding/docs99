@@ -53,7 +53,7 @@ export const getBrowserSidebar = () => ({
   text: 'Browser',
   children: [
     {
-      text: 'HTTP 是什麼?',
+      text: 'HTTP',
       link: '/Browser/http'
     },
     {
@@ -63,6 +63,14 @@ export const getBrowserSidebar = () => ({
     {
       text: 'TCP',
       link: '/Browser/tcp'
+    },
+    {
+      text: 'XHR',
+      link: '/Browser/xhr'
+    },
+    {
+      text: 'AJAX',
+      link: '/Browser/ajax'
     },
   ]
 })
