@@ -1,10 +1,3 @@
----
-date: 2021-11-10
-title: 目標是否進入畫面的判斷 api 
-tags:
-- javascript
-- browser api
----
 # IntersectionObserver (IE 不支援)
 
 :::tip 一句話說明
