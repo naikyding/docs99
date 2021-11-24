@@ -18,7 +18,7 @@ export const getJavascriptSidebar = () => ({
     },
     {
       text: 'Closure 閉包',
-      link: '/Javascript/閉包'
+      link: '/Javascript/closure'
     },
     {
       text: 'IO 目標是否進入畫面 API',
