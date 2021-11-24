@@ -11,10 +11,11 @@
 - [XHR (XMLHttpRequest) 與 `服務端` 資料交換的物件方法](/Browser/xhr)
 - [AJAX (非同步 Javascript 與 XML 技術)](/Browser/ajax)
 
-## Vue
-
 ## Javascript
+- [BOM 瀏覽器物件模型](/JavaScript/BOM)
+- [Closure 閉包](/JavaScript/閉包)
 
+## Vue
 ## CSS
 
 ## HTML

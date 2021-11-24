@@ -1,7 +1,6 @@
 # BOM
 
-
-:::tip 簡單說明 BOM
+:::tip 簡單說
 - **ECMAScript 標準裡的「全域物件」 (Global Object)**
 - **JavaScript 用來與瀏覽器溝通的窗口**
 :::

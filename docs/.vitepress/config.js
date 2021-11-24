@@ -23,7 +23,8 @@ module.exports = {
       getIndexSidebar(),
       // getJavascriptSidebar(),
       // getVueSidebar(),
-      getBrowserSidebar()
+      getBrowserSidebar(),
+      getJavascriptSidebar()
     ]
   },
 }
