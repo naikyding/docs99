@@ -13,10 +13,6 @@ export const getJavascriptSidebar = () => ({
   collapsable: 'auto',
   children: [
     {
-      text: 'BOM',
-      link: '/Javascript/BOM'
-    },
-    {
       text: 'Closure 閉包',
       link: '/Javascript/閉包'
     },

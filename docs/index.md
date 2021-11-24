@@ -12,8 +12,7 @@
 - [AJAX (非同步 Javascript 與 XML 技術)](/Browser/ajax)
 
 ## Javascript
-- [BOM 瀏覽器物件模型](/JavaScript/BOM)
-- [Closure 閉包](/JavaScript/閉包)
+
 
 ## Vue
 ## CSS
