@@ -14,6 +14,7 @@
 ## Javascript
 - [BOM 瀏覽器物件模型](/Javascript/bom) 
 - [Closure 閉包](/Javascript/closure) 
+- [Promise](/Javascript/promise) 
 
 ## Vue
 ## CSS
