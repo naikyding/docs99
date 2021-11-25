@@ -21,6 +21,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/closure'
     },
     {
+      text: 'Promise',
+      link: '/Javascript/promise'
+    },
+    {
       text: 'IO 目標是否進入畫面 API',
       link: '/Javascript/intersectionObserver'
     },
