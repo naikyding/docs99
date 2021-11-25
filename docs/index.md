@@ -15,6 +15,7 @@
 - [BOM 瀏覽器物件模型](/Javascript/bom) 
 - [Closure 閉包](/Javascript/closure) 
 - [Promise](/Javascript/promise) 
+- [Event Loop 事件循環](/Javascript/eventLoop) 
 
 ## Vue
 ## CSS
