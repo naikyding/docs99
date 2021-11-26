@@ -7,8 +7,9 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/document.svg' }]
   ],
-
+  
   themeConfig: {
+    repo: 'https://github.com/naikyding/docs99',
     lastUpdated: true,
 
     algolia: {
