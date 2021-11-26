@@ -17,6 +17,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/bom'
     },
     {
+      text: 'Event Loop',
+      link: '/Javascript/eventLoop'
+    },
+    {
       text: 'Closure 閉包',
       link: '/Javascript/closure'
     },
