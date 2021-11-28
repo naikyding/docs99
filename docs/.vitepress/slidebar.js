@@ -17,8 +17,8 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/bom'
     },
     {
-      text: 'Time 觀念與處理',
-      link: '/Javascript/time'
+      text: 'Date 觀念與處理',
+      link: '/Javascript/date'
     },
     {
       text: 'Event Loop',
