@@ -16,6 +16,7 @@
 - [Closure 閉包](/Javascript/closure) 
 - [Promise](/Javascript/promise) 
 - [Event Loop 事件循環](/Javascript/eventLoop) 
+- [時間觀念與處理](/Javascript/time) 
 
 ## Vue
 ## CSS
