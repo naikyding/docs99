@@ -25,6 +25,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/closure'
     },
     {
+      text: 'Constructor 建構函式',
+      link: '/Javascript/constructor'
+    },
+    {
       text: 'Promise',
       link: '/Javascript/promise'
     },

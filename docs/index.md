@@ -5,6 +5,7 @@
 基於 <img width="30" src="https://camo.githubusercontent.com/61e102d7c605ff91efedb9d7e47c1c4a07cef59d3e1da202fd74f4772122ca4e/68747470733a2f2f766974656a732e6465762f6c6f676f2e737667"> `vitepress` 搭建的文檔專案，後續每日整理 `notion` 上所有的速記。同時，也是自我理解的再次檢視。
 
 ## Browser
+
 - [HTTP 超文本傳輸協定](/Browser/http)
 - [Cookie](/Browser/cookie)
 - [TCP 傳輸控制協定](/Browser/tcp)
@@ -12,12 +13,15 @@
 - [AJAX (非同步 Javascript 與 XML 技術)](/Browser/ajax)
 
 ## Javascript
-- [BOM 瀏覽器物件模型](/Javascript/bom) 
-- [Closure 閉包](/Javascript/closure) 
-- [Promise](/Javascript/promise) 
-- [Event Loop 事件循環](/Javascript/eventLoop) 
+
+- [BOM 瀏覽器物件模型](/Javascript/bom)
+- [Event Loop 事件循環](/Javascript/eventLoop)
+- [Closure 閉包](/Javascript/closure)
+- [Constructor 建構函式](/Javascript/constructor)
+- [Promise](/Javascript/promise)
 
 ## Vue
+
 ## CSS
 
 ## HTML
