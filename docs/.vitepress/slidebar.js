@@ -13,8 +13,12 @@ export const getJavascriptSidebar = () => ({
   collapsable: 'auto',
   children: [
     {
-      text: 'BOM',
+      text: 'BOM 瀏覽器物件模型',
       link: '/Javascript/bom'
+    },
+    {
+      text: 'DOM 文件物件模型',
+      link: '/Javascript/dom'
     },
     {
       text: 'Date 觀念與處理',

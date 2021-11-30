@@ -15,6 +15,7 @@
 ## Javascript
 
 - [BOM 瀏覽器物件模型](/Javascript/bom)
+- [DOM 文件物件模型](/Javascript/dom)
 - [Event Loop 事件循環](/Javascript/eventLoop)
 - [Date 時間觀念與處理](/Javascript/date)
 - [Closure 閉包](/Javascript/closure)
