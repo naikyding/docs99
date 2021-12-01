@@ -33,6 +33,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/closure'
     },
     {
+      text: '封裝「鏈式」函式庫',
+      link: '/Javascript/chain'
+    },
+    {
       text: 'Constructor 建構函式',
       link: '/Javascript/constructor'
     },
