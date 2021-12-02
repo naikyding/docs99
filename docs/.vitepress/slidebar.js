@@ -33,6 +33,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/closure'
     },
     {
+      text: 'Prototype chain 原型鏈與繼承',
+      link: '/Javascript/prototype'
+    },
+    {
       text: '封裝「鏈式」函式庫',
       link: '/Javascript/chain'
     },
