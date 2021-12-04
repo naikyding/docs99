@@ -67,6 +67,123 @@ obj1.__proto__.test === obj1.__proto__.test // true
 當你定義了一個共享的 **原型** 方法，方法不會重覆的被創建，也就可以避免不必要的記憶體耗能。
 :::
 
+## 原型操作
+透過 **原型繼承** ，可以存取本身不存在的屬性。
+
+![](/Javascript/img/prototype-info.png)
+
+:::warning 注意
+如果本身 `屬性` 名稱與 **原型繼承** 的`屬性`相沖的話(名稱相同)，就會被自身的屬性覆蓋。
+:::
+
+### 為對象指定原型 
+:::info 語法
+**Object.setPrototypeOf( `obj` , `prototype`)**
+- `obj` 對象
+- `prototype` 給**對象**的新原型 (一個對象 或 `null`)
+:::
+
+```js
+const rockman = {rock: true}
+const cutman = {cut: true}
+
+console.log(rockman.cut) // undefind
+
+Object.setPrototypeOf(rockman, cutman)
+
+console.log(rockman.cut) // true 此時，繼承了 cutman 的屬性
+```
+![](/Javascript/img/object-setPrototypeOf.png)
+
+**繼承兩個原型**
+
+`Object.setPrototypeOf` 只能針對一個 `對象` 來繼承一個 `原型`，但可以透過兩次的繼承，來擁有想要的原型。
+
+```js
+const rockman = {rock: true} 
+
+const cutman = {cut: true}
+
+const powerman = {power: true}
+
+Object.setPrototypeOf(rockman, cutman) // rockman 繼承 cutman 屬性
+Object.setPrototypeOf(cutman, powerman) // cutman 繼承 powerman 屬性
+
+console.log('cut' in rockman) // true
+console.log('power' in rockman) // true
+```
+
+:::tip 判斷屬性方式
+除了直接存取之外 (`.`)，也可以透過 [`in`](/Javascript/object#in) 來判斷是否擁有這個`屬性`。
+:::
+
+
+### 依原型創建對象
+:::info 語法
+**Object.create(`prototype`[, `propertiesObject`])**
+- `prototype` 原型
+- `propertiesObject` 要繼承原型的對象 (option)
+:::
+
+```js
+let prototype = {id: 1}
+let obj = Object.create(prototype)
+
+console.log(obj)
+```
+這時，`obj` 為一個空的 `物件`，而也擁有了 **原型** 屬性。
+![](/Javascript/img/object-create.png)
+
+**依原型建建對象，同時指定對象**
+```js
+let prototype = { nft: true }
+let newObj = {
+  name: {
+    value: 'naiky'
+  }
+}
+
+const openSea = Object.create(prototype, newObj)
+console.log(openSea)
+```
+這時 `對象` 不為空了，也繼承了原型。
+![](/Javascript/img/object-create-1.png)
+
+:::warning 注意
+指定 `propertiesObject` 時，如果想要的物件內容是 `{name: 'naiky'}`，你要這樣寫：
+```js {3}
+{
+  name: {
+    value: 'naiky'
+  }
+}
+```
+:::
+
+### 工廠模式的應用
+```js
+// 先建立原型
+const prototype = {
+    talk() {
+        console.log(this.name)
+    }
+}
+
+// 建立工廠模式
+const personFactory = (name) => {
+    return Object.create(prototype, {
+        name: {
+            value: name
+        }
+    })
+}
+
+const niki = personFactory('niki')
+niki // {name: 'niki'}
+
+// 執行原型繼承的函式
+niki.talk() // niki
+```
 
 ## Reference
 
