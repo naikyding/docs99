@@ -56,6 +56,10 @@ export const getJavascriptSidebar = () => ({
       text: 'Constructor 建構函式',
       link: '/Javascript/constructor'
     },
+    {
+      text: 'Class 類',
+      link: '/Javascript/class'
+    },
   ]
 })
 
