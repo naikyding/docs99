@@ -18,11 +18,11 @@
 - [DOM 文件物件模型](/Javascript/dom)
 - [Event Loop 事件循環](/Javascript/eventLoop)
 - [Date 時間觀念與處理](/Javascript/date)
+- [Promise 非同步處理](/Javascript/promise)
 - [Closure 閉包](/Javascript/closure)
-- [Prototype chain 原型鏈與繼承](/Javascript/prototype)
 - [封裝「鏈式」函式庫](/Javascript/chain)
+- [Prototype chain 原型鏈與繼承](/Javascript/prototype)
 - [Constructor 建構函式](/Javascript/constructor)
-- [Promise](/Javascript/promise)
 
 ## Vue
 

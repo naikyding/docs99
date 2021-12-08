@@ -33,19 +33,11 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/closure'
     },
     {
-      text: 'Prototype chain 原型鏈與繼承',
-      link: '/Javascript/prototype'
-    },
-    {
       text: '封裝「鏈式」函式庫',
       link: '/Javascript/chain'
     },
     {
-      text: 'Constructor 建構函式',
-      link: '/Javascript/constructor'
-    },
-    {
-      text: 'Promise',
+      text: 'Promise 非同步處理',
       link: '/Javascript/promise'
     },
     {
@@ -55,6 +47,14 @@ export const getJavascriptSidebar = () => ({
     {
       text: '陣列處理',
       link: '/Javascript/陣列處理'
+    },
+    {
+      text: 'Prototype chain 原型鏈與繼承',
+      link: '/Javascript/prototype'
+    },
+    {
+      text: 'Constructor 建構函式',
+      link: '/Javascript/constructor'
     },
   ]
 })
