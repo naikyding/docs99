@@ -97,9 +97,11 @@ const niki = new Child("NIKI");
 
 **子層** 會繼承 **父層** 的 `屬性資料`，**父層** 的 `_parentName` 會變成 **子層** 的 `屬性資料`，當 **子層實例** 傳入 `參數` 時，就會設置成 `_parentName`；**子層實例** 除了有本身的 **原型** 也繼承了來自 **父層 原型**。
 ![](/Javascript/img/class-extends.png)
-:::warning 注意
-`Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor`
-這個設置方式
+:::danger 注意
+當 **子層** 有設置 `constructor` 時，就必須要使用 [super](#建立子類別-extends) 不然就會報錯：
+
+Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+
 :::
 
 ## 呼叫父類別 (super)
