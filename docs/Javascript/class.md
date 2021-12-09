@@ -70,9 +70,37 @@ class Person {
 
 ## 建立子類別 (extends)
 
-```js
+建立 `class` 時，加上 `extends` 關鍵字，可以用來繼承 **父層 `class`** 的 **原型方法**，同時也會將 **父層 屬性資料**，變成 **子層 屬性資料** (寫入)。
 
+> class `子層` extends `父層` { ... }
+
+```js {10}
+class Parent {
+  constructor(name) {
+    this._parentName = name;
+  }
+  sayParentName() {
+    console.log(this._parentName);
+  }
+}
+
+class Child extends Parent {
+  sayChildName() {
+    console.log("Child");
+  }
+}
+
+const niki = new Child("NIKI");
 ```
+
+**說明**
+
+**子層** 會繼承 **父層** 的 `屬性資料`，**父層** 的 `_parentName` 會變成 **子層** 的 `屬性資料`，當 **子層實例** 傳入 `參數` 時，就會設置成 `_parentName`；**子層實例** 除了有本身的 **原型** 也繼承了來自 **父層 原型**。
+![](/Javascript/img/class-extends.png)
+:::warning 注意
+`Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor`
+這個設置方式
+:::
 
 ## 呼叫父類別 (super)
 
