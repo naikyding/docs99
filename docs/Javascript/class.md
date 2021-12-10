@@ -17,6 +17,11 @@ class Person {
     this.name = name;
     this.age = age;
   }
+
+  //  定義 prototype 原型方法
+  sayHello() {
+    console.log(`Hello my name is ${this.name}`);
+  }
 }
 ```
 
@@ -97,14 +102,74 @@ const niki = new Child("NIKI");
 
 **子層** 會繼承 **父層** 的 `屬性資料`，**父層** 的 `_parentName` 會變成 **子層** 的 `屬性資料`，當 **子層實例** 傳入 `參數` 時，就會設置成 `_parentName`；**子層實例** 除了有本身的 **原型** 也繼承了來自 **父層 原型**。
 ![](/Javascript/img/class-extends.png)
-:::danger 注意
-當 **子層** 有設置 `constructor` 時，就必須要使用 [super](#建立子類別-extends) 不然就會報錯：
+
+:::danger Error
+當 **子層** 有設置 `constructor` 時，就必須要使用 [super](/Javascript/class.html#呼叫父類別-super) 不然就會報錯：
 
 Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
 
 :::
 
 ## 呼叫父類別 (super)
+
+在繼承 **父層 `class`** 情況下的 **子層 `class`**，在可在物件內使用 `super` 來操作 **父層 `class`**。
+
+```js {17,26}
+// 父層
+class Parent {
+  // 父層 屬性資料
+  constructor(name) {
+    this._parentName = name;
+  }
+  // 父層 原型方法
+  sayParentName() {
+    console.log(this._parentName);
+  }
+}
+
+// 子層 (繼承父層)
+class Child extends Parent {
+  // 子層屬性資料
+  constructor(parentName, childName) {
+    super(parentName); // 父層 屬性資料 賦值 (帶入父層參數)
+    this._childName = childName;
+  }
+  // 子層 原型方法
+  sayChildName() {
+    console.log(this._childName);
+  }
+  sayParentName() {
+    console.log(`child sayParentName fun`);
+    super.sayParentName(); // 操作父層 原型方法
+  }
+}
+```
+
+```js
+const niki = new Child("Naiky", "NIKI");
+niki.sayParentName();
+
+// child sayParentName fun
+// Naiky
+```
+
+### 說明
+
+從 **子層 `constructor`** 的 `super` 帶的參數，會直接送到 **父層 `constructor`**，再回頭寫入 **子層 `constructor`**。
+
+而 **子層 `prototype`** 函式內的 `super.sayParentName()`，就是直接操作 **父層 `prototype`** 的 `sayParentName` 函式。
+
+![](/Javascript/img/class-extends-super.png)
+
+:::tip 簡單說
+`super` 代表 **父層 `class`** 物件。
+:::
+
+:::warning 注意
+
+- 當 **子層 `constructor`** 的屬性名稱與 **父層 `constructor`** 屬性名稱 **相同** 時，會以 **子層** 為主 (覆蓋)。
+- 當 **子層 `prototype`** 與 **父層 `prototype`** **同名** 時，會先執行本身 **子層 `prototype`**。([若無，向上層尋找](/Javascript/prototype.html#prototype-原型觀念))
+  :::
 
 ## Reference
 
