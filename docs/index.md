@@ -23,6 +23,7 @@
 - [封裝「鏈式」函式庫](/Javascript/chain)
 - [Prototype chain 原型鏈與繼承](/Javascript/prototype)
 - [Constructor 建構函式](/Javascript/constructor)
+- [Factory Function 工廠函式](/Javascript/factoryFunction)
 - [Class 類](/Javascript/class.md)
 
 ## Vue

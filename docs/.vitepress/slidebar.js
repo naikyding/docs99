@@ -57,6 +57,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/constructor'
     },
     {
+      text: 'Factory Function 工廠函式',
+      link: '/Javascript/factoryFunction'
+    },
+    {
       text: 'Class 類',
       link: '/Javascript/class'
     },
