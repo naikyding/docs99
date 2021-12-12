@@ -40,43 +40,43 @@ const creatUser = { ... }
 // ES6 arrow funciton
 const statusFactory = (status, name) => ({
   getStatus() {
-    return status;
+    return status
   },
   setStatus(newStatus) {
-    status = newStatus;
-    return status;
+    status = newStatus
+    return status
   },
   getName() {
-    return name;
+    return name
   },
-});
+})
 
 function statusFactory(status, name) {
   return {
     getStatus() {
-      return status;
+      return status
     },
     setStatus(newStatus) {
-      status = newStatus;
-      return status;
+      status = newStatus
+      return status
     },
     getName() {
-      return name;
+      return name
     },
-  };
+  }
 }
 ```
 
 `status`、`name` 參數，都會被記憶在 `niki` 這個變數環境內，如同 [Closure 閉包](/Javascript/closure) 有自已的 **環境變數** ，若沒有對外開放，是無法存取的。
 
 ```js
-const niki = statusFactory(true, "niki");
+const niki = statusFactory(true, 'niki')
 
-niki.getStatus(); // true
-niki.getName(); // 'niki'
+niki.getStatus() // true
+niki.getName() // 'niki'
 
-niki.setStatus(false); // false
-niki.getStatus(); // false
+niki.setStatus(false) // false
+niki.getStatus() // false
 ```
 
 可以發現 `status` 這個私有的環境變數，是會被保持記憶且可以被存取的。
@@ -88,21 +88,21 @@ niki.getStatus(); // false
 ```js
 const bank = (name, balance) => ({
   get() {
-    return balance;
+    return balance
   },
   withdrawal(amount) {
-    return (balance = balance - amount);
+    return (balance = balance - amount)
   },
   deposit(amount) {
-    return (balance = balance + amount);
+    return (balance = balance + amount)
   },
-});
+})
 
-const a = bank("a", 10000);
+const a = bank('a', 10000)
 
-a.get(); // 10000
-a.withdrawal(100); // 9900
-a.deposit(400); // 10300
+a.get() // 10000
+a.withdrawal(100) // 9900
+a.deposit(400) // 10300
 ```
 
 ## Reference
