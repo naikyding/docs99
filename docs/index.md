@@ -25,6 +25,7 @@
 - [Constructor 建構函式](/Javascript/constructor)
 - [Factory Function 工廠函式](/Javascript/factoryFunction)
 - [Class 類](/Javascript/class.md)
+- [Hoisting 提升](/Javascript/hoisting)
 
 ## Vue
 

@@ -64,6 +64,10 @@ export const getJavascriptSidebar = () => ({
       text: 'Class 類',
       link: '/Javascript/class'
     },
+    {
+      text: 'Hoisting 提升',
+      link: '/Javascript/hoisting'
+    },
   ]
 })
 
