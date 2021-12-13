@@ -96,7 +96,7 @@ function a() {}
 
 ## let 與 const
 
-`let`、`const` 是存在區塊的 **區塊變數**，它們一樣會在區塊內 `hoisting 提升` 置頂，只是在宣告之前，都會讓其 **封閉作用** ，存在 **時間死區 (Temporal Dead Zone)**。在宣告之前就操作，就會出現 **ReferenceError**。
+`let`、`const` 是存在區域的 **區域變數**，它們一樣會在區域內 `hoisting 提升` 置頂，只是在宣告之前，都會讓其 **封閉作用** ，存在 **時間死區 (Temporal Dead Zone)**。在宣告之前就操作，就會出現 **ReferenceError**。
 
 ```js
 console.log(aa)
