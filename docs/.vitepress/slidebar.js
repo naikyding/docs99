@@ -61,6 +61,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/factoryFunction'
     },
     {
+      text: 'Constructor VS Factory Function',
+      link: '/Javascript/constructorVSfactory'
+    },
+    {
       text: 'Class 類',
       link: '/Javascript/class'
     },

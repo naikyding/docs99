@@ -14,11 +14,11 @@
 
 ```js
 function Person(name, age) {
-  this.name = name;
-  this.age = age;
+  this.name = name
+  this.age = age
   this.sayHello = function () {
-    console.log(`Hello my name is ${this.name}`);
-  };
+    console.log(`Hello my name is ${this.name}`)
+  }
 }
 ```
 
@@ -27,11 +27,11 @@ function Person(name, age) {
 
 ```js
 function createObject(name, age) {
-  let obj = {};
-  obj.name = name;
-  obj.age = age;
+  let obj = {}
+  obj.name = name
+  obj.age = age
 
-  return obj;
+  return obj
 }
 ```
 
@@ -44,18 +44,26 @@ function createObject(name, age) {
 其它方法：[1. 為對象指定原型](/Javascript/prototype#為對象指定原型)、[2. 依原型創建對象](/Javascript/prototype#依原型創建對象)
 
 ```js
-const niki = new Person("niki", 6);
-const naiky = new Person("naiky", 34);
+const niki = new Person('niki', 6)
+const naiky = new Person('naiky', 34)
 
-console.log(niki.sayHello()); // Hello my name is niki
-console.log(naiky.sayHello()); // Hello my name is naiky
+console.log(niki.sayHello()) // Hello my name is niki
+console.log(naiky.sayHello()) // Hello my name is naiky
 ```
+
+:::tip new 創建 instance 目的
+
+- 將 `this` 綁定在這個 `instance 實例`
+- 將 `instance 實例` 的原型，綁定 [constructor 建構函式] `prototype`
+- `instance 實例` 默認 **return** `this`
+
+:::
 
 :::warning 注意
 `sayHello` 是來自 **建構函式** 設置的方法，每次建立 **實例** 都會重覆創建。
 
 ```js
-console.log(naiky.sayHello === niki.sayHello); // false
+console.log(naiky.sayHello === niki.sayHello) // false
 ```
 
 :::
@@ -67,23 +75,23 @@ console.log(naiky.sayHello === niki.sayHello); // false
 ```js
 // 只設置資料屬性
 function Person(name, age) {
-  this.name = name;
-  this.age = age;
+  this.name = name
+  this.age = age
 }
 // 設置共享方法 (原型繼承)
 Person.prototype.sayHello = function () {
-  console.log(`Hello my name is ${this.name}`);
-};
+  console.log(`Hello my name is ${this.name}`)
+}
 ```
 
 這時，就算 **實例** 沒有 `sayHello` 還是可以操作這個方法。
 
 ```js
-const niki = new Person("niki", 6);
-const naiky = new Person("naiky", 34);
+const niki = new Person('niki', 6)
+const naiky = new Person('naiky', 34)
 
-console.log(niki.sayHello()); // Hello my name is niki
-console.log(naiky.sayHello()); // Hello my name is naiky
+console.log(niki.sayHello()) // Hello my name is niki
+console.log(naiky.sayHello()) // Hello my name is naiky
 ```
 
 因為這個 `sayHello` 在 **原型** `[[prototype]]` 裡被繼承。
@@ -91,7 +99,7 @@ console.log(naiky.sayHello()); // Hello my name is naiky
 ![](/Javascript/img/instance-prototype.png)
 
 ```js
-console.log(naiky.sayHello === niki.sayHello); // true
+console.log(naiky.sayHello === niki.sayHello) // true
 ```
 
 :::warning 注意
@@ -103,9 +111,9 @@ console.log(naiky.sayHello === niki.sayHello); // true
 這個方法可以用來判斷，到底是自已擁有屬性，或屬性來自於 **原型** 的繼承；`sayHello` 就是在上一層的 **原型** 所擁有的方法。
 
 ```js
-niki.hasOwnProperty("sayHello"); // false
+niki.hasOwnProperty('sayHello') // false
 
-niki.__proto__.hasOwnProperty("sayHello"); // true
+niki.__proto__.hasOwnProperty('sayHello') // true
 ```
 
 :::tip
@@ -120,9 +128,9 @@ niki.__proto__.hasOwnProperty("sayHello"); // true
 - 是否為 `Object` 的實例?
 
 ```js
-console.log(niki instanceof Person); // true
-console.log(niki instanceof Object); // true
-console.log(niki instanceof Array); // false
+console.log(niki instanceof Person) // true
+console.log(niki instanceof Object) // true
+console.log(niki instanceof Array) // false
 ```
 
 ## Reference
