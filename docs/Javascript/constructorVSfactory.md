@@ -62,7 +62,7 @@ niki.sayHello === naiky.sayHello // false
 - **[class 類] (建構函式)**
   - 可以透過 **原型** 共享方法
   - 資料是外露的
-    ![](/JavaScript/img/constructorVSfactory.png)
+    ![](/Javascript/img/constructor-vs-factory.png)
 - **[factory function 工廠函式]**
   - 內容會重復創建 **佔用記憶體** (可以被解決)
   - 內部不需要指定 `this` 操作。
@@ -76,7 +76,7 @@ niki.sayHello === naiky.sayHello // false
         return age
       }
       ```
-      ![](/JavaScript/img/constructorVSfactory-2.png)
+      ![](/Javascript/img/constructor-vs-factory-2.png)
 
 ## 建構函式創建
 
