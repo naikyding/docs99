@@ -92,7 +92,7 @@ CSRF (Cross-site request forgery) 跨站偽造請求，**駭客** 利用使用�
 
 常見與後端溝通的 `json` ，也是有機會被攻擊，主要是透過 **字元** 組合達到指定的 `json` 樣式。
 
-```html {4,}
+```html {4}
 <form
   action="https://small-min.blog.com/delete"
   method="post"
@@ -101,6 +101,15 @@ CSRF (Cross-site request forgery) 跨站偽造請求，**駭客** 利用使用�
   <input name='{"id":3, "ignore_me":"' value='test"}' type="hidden" />
   <input type="submit" value="delete!" />
 </form>
+```
+
+會產生這樣的 **請求** body
+
+```js
+{
+  "id": 3,
+  "ignore_me": "=test"
+}
 ```
 
 ## 防禦方式
