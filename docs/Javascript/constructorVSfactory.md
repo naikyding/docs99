@@ -25,7 +25,7 @@ const niki = new Person('niki', 6)
 const naiky = new Person('naiky', 34)
 ```
 
-可以在`class` 建立 **原型方法** `sayHello` 都是指向同一個函式，所以不會重覆的 **記憶體**；
+可以在`class` 建立 **原型方法** `sayHello` 都是指向同一個函式，所以不會佔重覆的 **記憶體**；
 之後方法修改，也只要改這個 **原型方法** 就可以了。
 
 ```js
@@ -51,7 +51,7 @@ const niki = person('niki', 6)
 const naiky = person('naiky', 36)
 ```
 
-工廠函式會整個物件 **復製** 一份，所以 **函式** 屬性，也會重復佔用不同的 **記憶體**。
+工廠函式會整個物件 **復製** 一份，所以功能相同的 **函式** 屬性，也會重復佔用不同的 **記憶體**。
 
 ```js
 niki.sayHello === naiky.sayHello // false
@@ -61,14 +61,16 @@ niki.sayHello === naiky.sayHello // false
 
 - **[class 類] (建構函式)**
   - 可以透過 **原型** 共享方法
+  - 透過 `this` 操作 `instance` 實例
   - 資料是外露的
     ![](/Javascript/img/constructor-vs-factory.png)
 - **[factory function 工廠函式]**
-  - 內容會重復創建 **佔用記憶體** (可以被解決)
+  - **屬性** 會重覆創建 **佔用記憶體** (可以被解決)
   - 內部不需要指定 `this` 操作。
-  - 資料保有隱私，亦可以操作。
-    - 如果 `name` `age` 沒有 **return**，外界是不會知道資料的。
+  - **屬性資料** 保有隱私，同時可以操作。
+    - 如果 `name` `age` 函式沒有開放對外 `return` 資料，外界是不會知道資料的。
       ```js
+      // remove
       name() {
         return name
       },
@@ -80,9 +82,9 @@ niki.sayHello === naiky.sayHello // false
 
 ## 建構函式創建
 
-下面使用了三種方式，以 `建構函式` 的模型實現 **原型與繼承**，他們都可以達到一樣的功能；都是將 **方法** 共享。關於 [Factory function 工廠函式] 的定義可以看此。
+下面使用了三種方式，以 `建構函式` 的模型實現 **原型與繼承**，他們都可以達到一樣的功能；都是將 **方法** 共享。[Factory function 工廠函式 定義](/Javascript/factoryFunction) 。
 
-### class(建構函式)
+### class 類 ([constructor 建構函式])
 
 ```js
 // constructor
@@ -129,7 +131,7 @@ const person3 = (name, age) =>
 
 ### 比較
 
-- **[class 類] (建構函式)**
+- **[class 類] ([constructor 建構函式])**
 
   - **優點**
 
