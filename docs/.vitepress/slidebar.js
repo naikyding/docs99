@@ -114,3 +114,13 @@ export const getBrowserSidebar = () => ({
     },
   ]
 })
+
+export const getSecuritySidebar = () => ({
+  text: 'Security',
+  children: [
+    {
+      text: 'CSRF 跨站偽造請求',
+      link: '/security/csrf'
+    },
+  ]
+})
