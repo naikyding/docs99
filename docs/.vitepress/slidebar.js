@@ -72,6 +72,10 @@ export const getJavascriptSidebar = () => ({
       text: 'Hoisting 提升',
       link: '/Javascript/hoisting'
     },
+    {
+      text: 'Shallow VS Deep Copy 深拷貝與淺拷貝',
+      link: '/Javascript/shallow-deep-copy'
+    },
   ]
 })
 
