@@ -73,6 +73,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/hoisting'
     },
     {
+      text: 'By Value && By Reference 傳值傳址',
+      link: '/Javascript/by-value-by-reference'
+    },
+    {
       text: 'Shallow VS Deep Copy 深拷貝與淺拷貝',
       link: '/Javascript/shallow-deep-copy'
     },

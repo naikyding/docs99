@@ -27,6 +27,7 @@
 - [Constructor VS Factory Function](/Javascript/constructorVSfactory)
 - [Class 類](/Javascript/class.md)
 - [Hoisting 提升](/Javascript/hoisting)
+- [By Value && By Reference 傳值傳址](/Javascript/by-value-by-reference)
 - [Shallow Copy Deep Copy 深拷貝與淺拷貝](/Javascript/shallow-deep-copy)
 
 ## Security
