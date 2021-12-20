@@ -13,7 +13,45 @@
 
 ## 傳值
 
+**基本型別** (`string`、`number`、`boolean`、`null`、`undefined`) 都是將 「值」 直接賦予給直定的 **對象**。
+
+```js
+let nikiHasMoney = 10
+let naikyHasMoney = nikiHasMoney
+
+console.log(nikiHasMoney) // 10
+console.log(naikyHasMoney) // 10
+
+nikiHasMoney = 99
+console.log(nikiHasMoney) // 99
+console.log(naikyHasMoney) // 10
+```
+
+`nikiHasMoney` 將 `10` 傳給 `naikyHasMoney`，兩個人同時擁有 `10`，但，是各別的 `10`，沒有連動關係。
+
 ## 傳址
+
+**物件基別** (`object`、`array`...)，是將 **記憶體** 的位置，傳給指定的對象，而他們擁有的都是同一份資源。
+
+```js
+let user = { id: 1, name: 'naiky' }
+let user2 = user
+
+console.log(user) // { id: 1, name: 'naiky' }
+console.log(user2) // { id: 1, name: 'naiky' }
+
+user.id = 9
+console.log(user) // { id: 9, name: 'naiky' }
+console.log(user2) // { id: 9, name: 'naiky' }
+```
+
+`user` 是將內容的 **位置** 傳給 `user2`，而兩個變數內容都是同一份東西，也會受到修改連動的影響。
+
+```js
+user === user2 // true
+```
+
+> 也完全等於對方
 
 ## Reference
 
