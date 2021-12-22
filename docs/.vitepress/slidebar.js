@@ -80,6 +80,10 @@ export const getJavascriptSidebar = () => ({
       text: 'Shallow VS Deep Copy 深拷貝與淺拷貝',
       link: '/Javascript/shallow-deep-copy'
     },
+    {
+      text: 'Cookie 操作',
+      link: '/Javascript/cookie'
+    },
   ]
 })
 
