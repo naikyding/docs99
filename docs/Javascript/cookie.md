@@ -64,7 +64,7 @@ document.cookie = 'name=niki'
 
 ## Reference
 
-- [什麼是 cookie](/browser/cookie)
+- [什麼是 cookie](/Browser/cookie.md)
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
 - [JavaScript Cookie
   ](https://www.fooish.com/javascript/cookie.html)
