@@ -84,6 +84,10 @@ export const getJavascriptSidebar = () => ({
       text: 'Cookie 操作',
       link: '/Javascript/cookie'
     },
+    {
+      text: '解構賦值',
+      link: '/Javascript/destructuring-assignment'
+    },
   ]
 })
 
