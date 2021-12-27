@@ -68,6 +68,15 @@ console.log(c) // 3
 const { id, name } = { id: 1, name: 'naiky' }
 console.log(id, name) // 1 'naiky'
 ```
+> 物件需要使用，**索引`key`** 來解構。
+
+**重新指定變數名稱 `:` **
+
+```js
+let obj = {id: 1, name: 'naiky'}
+const {id: idT2, name: nameT2} = obj
+console.log(idT2, nameT2) // 1 'naiky'
+```
 
 ## Reference
 
