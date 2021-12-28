@@ -33,6 +33,7 @@
 - [解構賦值](/Javascript/destructuring-assignment)
 - [Side Effect 副作用](/Javascript/side-effects)
 - [Pure Function 純粹函式](/Javascript/pure-function)
+- [Functional Programming 函式程式設計](/Javascript/functional-programming)
 
 ## Security
 

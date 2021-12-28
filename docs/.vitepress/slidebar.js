@@ -96,6 +96,10 @@ export const getJavascriptSidebar = () => ({
       text: 'Pure Function 純粹函式',
       link: '/Javascript/pure-function'
     },
+    {
+      text: 'Functional Programming 函式程式設計',
+      link: '/Javascript/functional-programming'
+    },
   ]
 })
 
