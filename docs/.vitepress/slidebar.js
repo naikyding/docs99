@@ -88,6 +88,14 @@ export const getJavascriptSidebar = () => ({
       text: '解構賦值',
       link: '/Javascript/destructuring-assignment'
     },
+    {
+      text: 'Side Effect 副作用',
+      link: '/Javascript/side-effects'
+    },
+    {
+      text: 'Pure Function 純粹函式',
+      link: '/Javascript/pure-function'
+    },
   ]
 })
 

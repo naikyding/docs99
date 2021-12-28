@@ -1,0 +1,1 @@
+# Pure Function 純粹函式

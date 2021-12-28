@@ -31,6 +31,8 @@
 - [Shallow Copy Deep Copy 深拷貝與淺拷貝](/Javascript/shallow-deep-copy)
 - [Cookie 操作](/Javascript/cookie)
 - [解構賦值](/Javascript/destructuring-assignment)
+- [Side Effect 副作用](/Javascript/side-effects)
+- [Pure Function 純粹函式](/Javascript/pure-function)
 
 ## Security
 
