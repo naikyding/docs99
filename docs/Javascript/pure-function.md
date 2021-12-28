@@ -14,7 +14,7 @@ function plus(height, width) {
 ## 判斷是否純粹 Pure
 > 核心: 相同的輸入，永遠相同輸出
 
-`javascript` 中陣列方法 `slice` 、 `splice` 是很經典的代表方法，
+`javascript` 中陣列方法 `slice` 、 `splice` 是很經典的代表方法。`slice` 是不會影響到原有的來源陣列，而  `splice` 每次操作，都會調整到來源的陣列。
 
 ```js
 let ary = [1, 2, 3, 4, 5, 6, 7]
