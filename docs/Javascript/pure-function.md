@@ -61,6 +61,10 @@ console.log(resData) // [1, 2, 3, 4, 5, 6, 7, 9]
 console.log(data)    // [1, 2, 3, 4, 5, 6, 7]
 ```
 
+:::tip 純粹函式工具
+[其它純粹方法改寫](https://gist.github.com/bendc/9b05735dfa6966859025)
+:::
+
 ## 純粹的好處
 - 有利重構
 - 方便測試
