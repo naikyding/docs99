@@ -7,7 +7,7 @@ function plus(height, width) {
 }
 ```
 :::tip 簡單說
-在 **函式** 中相同的 `輸入` ，永遠得到相同的 `輸出`，且不會產生 **[副作用 `Side Effect`](/JavaScript/side-effects)**。
+在 **函式** 中相同的 `輸入` ，永遠得到相同的 `輸出`，且不會產生 [副作用 Side Effects](/Javascript/side-effects.md)。
 > **輸入** 指的是函式的 **參數**，而 **輸出** 就是 **回傳值**。
 :::
 
