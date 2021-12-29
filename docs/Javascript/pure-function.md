@@ -1,13 +1,13 @@
 # Pure Function 純粹函式
 
-純粹函式 (`Pure Function`) 是 [Functional Programming 函式程式設計](/JavaScript/functional-programming) 中的核心元素，**純粹函式** 可以讓你的 **功能** 更容易抽離、替換和方便測試，這是因為它不會受到外部環境影響，也不影響外部環境。
+純粹函式 (`Pure Function`) 是 [Functional Programming 函式程式設計](/Javascript/functional-programming) 中的核心元素，**純粹函式** 可以讓你的 **功能** 更容易抽離、替換和方便測試，這是因為它不會受到外部環境影響，也不影響外部環境。
 ```js
 function plus(height, width) {
   return height + width
 }
 ```
 :::tip 簡單說
-在 **函式** 中相同的 `輸入` ，永遠得到相同的 `輸出`，且不會產生 [副作用 Side Effects](/Javascript/side-effects.md)。
+在 **函式** 中相同的 `輸入` ，永遠得到相同的 `輸出`，且不會產生 [副作用 Side Effects](/Javascript/side-effects)。
 > **輸入** 指的是函式的 **參數**，而 **輸出** 就是 **回傳值**。
 :::
 
