@@ -8,7 +8,7 @@
 
 - **函式** 為一級公民，可以被當成 **參數** 被傳入，也可以被指定給其它變數。
 - **函式** 中，只能使用 **宣告式 (Expression)** ，不使用 **命令式 (instructions)**。 [🔗](https://www.notion.so/Declarative-vs-Imperative-1d36095623484227a50cf2776328bb95)
-- 必須是 [**純綷函式 (Pure Function)**](/Javascript//pure-function) ，不能有 [副作用(Side Effect)](/Javascript/side-effects)。
+- 必須是 [**純綷函式 (Pure Function)**](/Javascript/pure-function) ，不能有 [副作用(Side Effect)](/Javascript/side-effects)。
 - 不可以改變 `input` 參數的資料與狀態。
 - 可以任意組合，另成為新的 `funciton`
 
