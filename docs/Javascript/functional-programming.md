@@ -8,11 +8,17 @@
 
 ## 核心條件
 
-- **函式** 為一級公民，可以被當成 **參數** 被傳入，也可以被指定給其它變數。
-- **函式** 中，只能使用 **宣告式 (Expression)** ，不使用 **命令式 (instructions)**。 [🔗](https://www.notion.so/Declarative-vs-Imperative-1d36095623484227a50cf2776328bb95)
-- 必須是 [**純綷函式 (Pure Function)**](/Javascript/pure-function) ，不能有 [副作用(Side Effect)](/Javascript/side-effects)。
-- 不可以改變 `input` 參數的資料與狀態。
-- 可以任意組合，另成為新的 `funciton`
+- **函式是一級公民**
+
+  **函式** 可以作為 **變數** 被當 **參數** 傳入，也可以被指定給其它變數。
+
+- **函式** 只能使用 **宣告式 (Expression)** ，非 **命令式 (instructions)**。
+
+  [🔗](https://www.notion.so/Declarative-vs-Imperative-1d36095623484227a50cf2776328bb95)
+
+- **函式** 必須是 [**純綷函式 (Pure Function)**](/Javascript/pure-function) ，不能有 [副作用(Side Effect)](/Javascript/side-effects)。
+
+- **函式** 可以任意組合，另成為新的
 
 ## 常見工具
 
@@ -25,3 +31,4 @@
 - [Functional Programming 函式程式設計](https://mgleon08.github.io/blog/2019/07/26/functional-programming/)
 - [[Javascript] Functional Programming 一文到底全紀錄](https://medium.com/%E4%B8%80%E5%80%8B%E5%B0%8F%E5%B0%8F%E5%B7%A5%E7%A8%8B%E5%B8%AB%E7%9A%84%E9%9A%A8%E6%89%8B%E7%AD%86%E8%A8%98/javascript-functional-programming-%E4%B8%80%E6%96%87%E5%88%B0%E5%BA%95%E5%85%A8%E7%B4%80%E9%8C%84-95ff19d9892)
 - [寶哥 - 前端工程研究：理解函式編程核心概念與如何進行 JavaScript 函式編程](https://blog.miniasp.com/post/2016/12/10/Functional-Programming-in-JavaScript)
+- [JS 原力覺醒 Day19 - 一級函式與高階函式](https://ithelp.ithome.com.tw/articles/10224519)
