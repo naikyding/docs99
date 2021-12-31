@@ -1,8 +1,10 @@
 # Functional Programming 函式程式設計
 
-**函式程式設計 `FP`** 是一種程式設計的方法，常聽到的 **件件導向程式設計 `OOP`**，也是另一種程式設計方式，都是用來解決不同需求。而 `FP` 近年來也是前端非常熱門的設計主流(比如 `React JS` 框架就由此而生)。
-
 ![](/Javascript/img/functional-programming.png)
+
+**函式程式設計 `FP`** 是一種程式設計方法，意指 **函式** 為主的開發方式。常聽到的 **件件導向程式設計 `OOP`**，也是另一種程式設計方式，都是用來解決不同需求。而 `FP` 近年來也是前端非常熱門的設計主流(比如 `React JS` 框架就由此而生)。
+
+> FP 則要求我們 「Everything think as function.」 以 Function 為中心的思考方式、以 Function 為最小單位的程式風格。
 
 ## 核心條件
 
