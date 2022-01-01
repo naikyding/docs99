@@ -24,6 +24,8 @@
 
 ## 為什麼使用?
 
+使用 FP 可以讓程式碼看起來更簡潔，且對功能的描述更精準、所以也就更好進行測試，對開發來說有不少好處，但是如果你對 FP 以及相關的概念還沒有很熟悉，FP 的程式碼也可能讓你需要更多時間來閱讀。
+
 ## Reference
 
 - [JS 原力覺醒 Day18 - Functional Programming](https://ithelp.ithome.com.tw/articles/10224130)
