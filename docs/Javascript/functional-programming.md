@@ -82,3 +82,5 @@
 - [寶哥 - 前端工程研究：理解函式編程核心概念與如何進行 JavaScript 函式編程](https://blog.miniasp.com/post/2016/12/10/Functional-Programming-in-JavaScript)
 - [JS 原力覺醒 Day19 - 一級函式與高階函式](https://ithelp.ithome.com.tw/articles/10224519)
 - [An introduction to functional programming in JavaScript](https://opensource.com/article/17/6/functional-javascript)
+- [Vue 中的 FP | Functional programming in Vue
+](https://sambitsahoo.com/blog/functional-programming-in-vue.html)
