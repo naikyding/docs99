@@ -59,16 +59,20 @@
   ```
 :::
 
-[🔗](https://www.notion.so/Declarative-vs-Imperative-1d36095623484227a50cf2776328bb95)
+### 4. 函式中避免使用 `for` 迴圈 操作
+當你使用 `for` 廻圈時，你就會在函式內，寫下了 **指令式**函式，那就違背了 核心 [第 3 點](#_3-使用-宣告式函式-expression)
 
-- **函式** 可以任意組合，另成為新的
-
-## 常見工具
-
-## 為什麼使用?
+可以取代的操作方法：
+- `.map`
+- `.filter`
+- `.reduce`
+## 好處
 
 使用 FP 可以讓程式碼看起來更簡潔，且對功能的描述更精準、所以也就更好進行測試，對開發來說有不少好處，但是如果你對 FP 以及相關的概念還沒有很熟悉，FP 的程式碼也可能讓你需要更多時間來閱讀。
-
+- 減少相互依賴
+- 方便測試
+- 程式看起來簡潔
+- 函式之間，可以任意組成新的函式
 ## Reference
 
 - [JS 原力覺醒 Day18 - Functional Programming](https://ithelp.ithome.com.tw/articles/10224130)
@@ -77,3 +81,4 @@
 - [[Javascript] Functional Programming 一文到底全紀錄](https://medium.com/%E4%B8%80%E5%80%8B%E5%B0%8F%E5%B0%8F%E5%B7%A5%E7%A8%8B%E5%B8%AB%E7%9A%84%E9%9A%A8%E6%89%8B%E7%AD%86%E8%A8%98/javascript-functional-programming-%E4%B8%80%E6%96%87%E5%88%B0%E5%BA%95%E5%85%A8%E7%B4%80%E9%8C%84-95ff19d9892)
 - [寶哥 - 前端工程研究：理解函式編程核心概念與如何進行 JavaScript 函式編程](https://blog.miniasp.com/post/2016/12/10/Functional-Programming-in-JavaScript)
 - [JS 原力覺醒 Day19 - 一級函式與高階函式](https://ithelp.ithome.com.tw/articles/10224519)
+- [An introduction to functional programming in JavaScript](https://opensource.com/article/17/6/functional-javascript)
