@@ -28,7 +28,7 @@ const change = (newStatus) => status = newStatus
 ```
 **無副作用**
 ```js
-
+const add = (x, y) => x + y
 ```
 ## Reference
 - [Day 12: ES6篇: Side Effects(副作用)與Pure Functions(純粹函式)](https://ithelp.ithome.com.tw/articles/10185780)
