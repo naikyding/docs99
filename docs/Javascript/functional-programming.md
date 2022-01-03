@@ -63,7 +63,7 @@
 當你使用 `for` 廻圈時，你就會在函式內，寫下了 **指令式**函式，那就違背了 核心 [第 3 點](#_3-使用-宣告式函式-expression)
 
 可以取代的操作方法：
-- `.map`
+- [`.map`](/JavaScript/array-methods#map)
 - `.filter`
 - `.reduce`
 ## 好處

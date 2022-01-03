@@ -129,6 +129,7 @@ console.log(plus2) // [3, 4, 5, 6, 7]
 const ary = [1, 2, 3, 4, 5]
 const resAry = ary.map(value => value > 3) 
 
+
 console.log(resAry) // [false, false, false, true, true]
 ```
 

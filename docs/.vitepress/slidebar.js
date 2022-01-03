@@ -46,7 +46,7 @@ export const getJavascriptSidebar = () => ({
     },
     {
       text: '陣列處理',
-      link: '/Javascript/陣列處理'
+      link: '/Javascript/array-methods'
     },
     {
       text: 'Prototype chain 原型鏈與繼承',
