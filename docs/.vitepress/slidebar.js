@@ -100,6 +100,10 @@ export const getJavascriptSidebar = () => ({
       text: 'Functional Programming 函式程式設計',
       link: '/Javascript/functional-programming'
     },
+    {
+      text: 'SOLID 設計原則',
+      link: '/Javascript/solid'
+    }
   ]
 })
 

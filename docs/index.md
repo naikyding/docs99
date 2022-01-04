@@ -22,9 +22,6 @@
 - [Closure 閉包](/Javascript/closure)
 - [封裝「鏈式」函式庫](/Javascript/chain)
 - [Prototype chain 原型鏈與繼承](/Javascript/prototype)
-- [Constructor 建構函式](/Javascript/constructor)
-- [Factory Function 工廠函式](/Javascript/factoryFunction)
-- [Constructor VS Factory Function](/Javascript/constructorVSfactory)
 - [Class 類](/Javascript/class.md)
 - [Hoisting 提升](/Javascript/hoisting)
 - [By Value && By Reference 傳值傳址](/Javascript/by-value-by-reference)
@@ -32,8 +29,13 @@
 - [Cookie 操作](/Javascript/cookie)
 - [解構賦值](/Javascript/destructuring-assignment)
 - [Side Effect 副作用](/Javascript/side-effects)
+### 程式設計
+- [Constructor 建構函式](/Javascript/constructor)
+- [Factory Function 工廠函式](/Javascript/factoryFunction)
+- [Constructor VS Factory Function](/Javascript/constructorVSfactory)
 - [Pure Function 純粹函式](/Javascript/pure-function)
 - [Functional Programming 函式程式設計](/Javascript/functional-programming)
+- [SOLID 設計原則](/Javascript/solid)
 
 ## Security
 
