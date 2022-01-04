@@ -10,15 +10,15 @@
 |[DIP](#dip)|	[依賴反轉原則](#dip) | 	認為一個方法應該遵從「依賴於抽象而不是一個實例」 [5] 的概念。依賴注入是該原則的一種實現方式。|
 
 
-## SRP
+## SRP 單一功能原則
 
-## OCP
+## OCP 開閉原則
 
-## LSP
+## LSP 里氏替換原則
 
-## ISP
+## ISP 介面隔離原則
 
-## DIP
+## DIP 依賴反轉原則
 ## Reference
 - [《無瑕的程式碼》- SOLID 設計原則](https://medium.com/jason-read/%E7%84%A1%E6%9A%87%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC-solid-%E8%A8%AD%E8%A8%88%E5%8E%9F%E5%89%87-c57489d4dcc4)
 - [程式如何正確撰寫 ? | 物件導向程式設計 - SOLID 設計原則 : SRP、OCP、LSP、ISP、DIP](https://devs.tw/post/439)
