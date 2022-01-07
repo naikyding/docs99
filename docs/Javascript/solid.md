@@ -10,7 +10,7 @@
 | [OCP](#ocp) | [開閉原則](#ocp)     | 軟體應該對**擴充開放**，對於**修改封閉**                                                          |
 | [LSP](#lsp) | [里氏替換原則](#lsp) | **子型態**必須遵從父型態的行為進行設計                                                            |
 | [ISP](#isp) | [介面隔離原則](#isp) | 提供不同的接口介面，給不同的需求使用；不使用單一介面，提供綜合功能。                              |
-| [DIP](#dip) | [依賴反轉原則](#dip) | 一個 **方法入口** 應該依賴 **抽象介面** 去操作 **底層的方法**，而不直接依賴在 **底層的方法** 上。 |
+| [DIP](#dip) | [依賴反轉原則](#dip) | 避免 **高層模組** 與 **低層功能** 直接耦合關係，需透過 **抽象介面** 來橋接。 |
 
 ## SRP 單一功能原則
 
@@ -22,22 +22,97 @@
 
 ## DIP 依賴反轉原則
 
-`高層功能` -> `抽象介面` -> `底層方法`
+`高層模組` -> `抽象介面` -> `底層方法`
 
-**頂層功能** 不直接依賴 **底層** 實際的操作方法，是透過 **抽象** 介面來操作 **底層方法** 。這樣 **底層** 方法替換也不影響到 **頂層功能**。
+**高層模組** 不直接操作 **底層方法**，是透過 **抽象** 介面來操作 **底層方法** 。這樣 **底層方法** 替換、修改也不影響到 **頂層模組**。
 
-```js
-function successFunction() { ... }
-function failFunction() { ... }
+### 直接依賴低層方法
 
-async function getData(data) {
-  const {status} = await getDataFetch(data)
-  if(status === '1') return successFunction()
-  failFunction()
+**高層模組** `(Example/Example2)` 的 `downloadFromData` 方法，是一個實際執行 `fetch` 取資料的 **底層方法**。
+當 `downloadFromData` 修改時，所有依賴的 **高層模組** 都要同時修改內部的 `downloadFromData` 方法，這樣對後續維護是一個惡夢。
+
+```js {9-11,21-23}
+const apiUrl = ''
+
+class Example {
+  constructor() {
+    ...
+  }
+
+  downloadFromData() {
+    fetch(apiUrl).then((res) => {
+      console.log('取得資料!')
+    })
+  }
+}
+
+class Example2 {
+  constructor() {
+    ...
+  }
+
+  downloadFromData() {
+    fetch(apiUrl).then((res) => {
+      console.log('取得資料!')
+    })
+  }
 }
 ```
 
-> 成功執行 `successFunction` 失敗執行 `failFunction`，這都是一個抽象，實際執行的方法，在它的函式內。而頂層只要知道 成功 / 失敗 會做什麼就好!
+### 透過抽象依賴低層
+將 `downloadFromData` 內部的底層方法抽離出來在 `utils.js`， 再依 **高層模組** 的使用方法各別引入。
+
+:::tip 提示
+在 `Javascript` 中，沒有 `interface`，但可以使用 `module` 導出 `class` 或 `function` 來實現這個方式。
+:::
+**utils.js**
+```js
+const apiUrl = ''
+
+export const fetchApi = (apiUrl) => {
+  return fetch(apiUrl).then(res => res.json())
+}
+```
+
+```js {1,9-11,21-23}
+import { fetchApi } from '../utils.js'
+
+class Example {
+  constructor() {
+    ...
+  }
+
+  downloadFromData() {
+    fetchApi().then(res => {
+      console.log(res)
+    })
+  }
+}
+
+class Example2 {
+  constructor() {
+    ...
+  }
+
+  downloadFromData() {
+    fetchApi().then(res => {
+      console.log(res)
+    })
+  }
+}
+```
+
+**修改底層方法** `utils.js`
+
+就算修改底層方法，將 `fetch` 改變為 `axios`，所有引入的 **高層模組** 都不用修改，也不會壞掉，而 `downloadFromData` 不過就是一個介面而已。
+
+```js
+const apiUrl = ''
+
+export const doGet = (apiUrl) => {
+  return axios.get(apiUrl);
+};
+```
 
 ## Reference
 
@@ -50,3 +125,7 @@ async function getData(data) {
 - [知乎 SOLID 原则实践篇](https://zhuanlan.zhihu.com/p/380550887)
 - [什麼是介面隔離原則
   ](https://tso1158687.github.io/blog/2021/01/11/2020ithomed19/)
+- [SOLID 依賴反轉原則 Dependency Inversion Principle (DIP)](https://medium.com/@f40507777/%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87-dependency-inversion-principle-dip-bc0ba2e3a388)
+- [Dependency Inversion Principle Explained - SOLID Design Principles
+](https://www.youtube.com/watch?v=9oHY5TllWaU)
+- [以請求方法修改為例 Decoupling code in JavaScript with the Dependency Inversion Principle](https://javascript.plainenglish.io/decoupling-code-in-javascript-with-the-dependency-inversion-principle-6d23342b4aaa)
