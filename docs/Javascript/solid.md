@@ -104,7 +104,7 @@ class Example2 {
 
 **修改底層方法** `utils.js`
 
-就算修改底層方法，將 `fetch` 改變為 `axios`，所有引入的 **高層模組** 都不用修改，也不會壞掉，而 `downloadFromData` 不過就是一個介面而已。
+就算修改底層方法，將 `fetch` 改變為 `axios`，所有引入的 **高層模組** 都不用修改，也不會壞掉，而 `downloadFromData` 不過就是一個 **抽象介面** 而已。
 
 ```js
 const apiUrl = ''
