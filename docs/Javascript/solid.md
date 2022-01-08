@@ -4,15 +4,50 @@
 
 ## 核心原則
 
-| 字首縮寫    | 名稱                 | 概念                                                                                              |
-| ----------- | -------------------- | ------------------------------------------------------------------------------------------------- |
-| [SRP](#srp) | [單一功能原則](#srp) | 物件應該僅有 **單一功能**                                                                         |
-| [OCP](#ocp) | [開閉原則](#ocp)     | 軟體應該對**擴充開放**，對於**修改封閉**                                                          |
-| [LSP](#lsp) | [里氏替換原則](#lsp) | **子型態**必須遵從父型態的行為進行設計                                                            |
-| [ISP](#isp) | [介面隔離原則](#isp) | 提供不同的接口介面，給不同的需求使用；不使用單一介面，提供綜合功能。                              |
+| 字首縮寫    | 名稱                 | 概念                                                                         |
+| ----------- | -------------------- | ---------------------------------------------------------------------------- |
+| [SRP](#srp) | [單一功能原則](#srp) | 一個功能物件，應該僅有 **單一功能**                                          |
+| [OCP](#ocp) | [開閉原則](#ocp)     | 軟體應該對**擴充開放**，對於**修改封閉**                                     |
+| [LSP](#lsp) | [里氏替換原則](#lsp) | **子型態**必須遵從父型態的行為進行設計                                       |
+| [ISP](#isp) | [介面隔離原則](#isp) | 提供不同的接口介面，給不同的需求使用；不使用單一介面，提供綜合功能。         |
 | [DIP](#dip) | [依賴反轉原則](#dip) | 避免 **高層模組** 與 **低層功能** 直接耦合關係，需透過 **抽象介面** 來橋接。 |
 
 ## SRP 單一功能原則
+
+一個功能只做一件事，減少功能的複雜度，避免修改功能時互相影響。
+
+### 多重功能
+
+實作一個發送 `email` 的功能，當客戶 **存在** 就會打發送 `email` 的 `api` 且發送完還要後續處理顯示 (成功/失敗)，所有功能寫在同一個函式。
+
+```js
+function sendEmailToActiveClients(clients) {
+  clients.forEach((client) => {
+    if (client.isActive) axios.post('send-email-api-url', data)
+  })
+}
+```
+
+> 會發現任何一個判斷或功能修改，都要進來這個函式內，且會互相影響。
+
+### 單一功能
+
+可以了解，需求：
+
+- 判斷客戶是否存在
+- 發送 email
+- email api
+
+```js
+const sendEmailApi = (clientData) =>
+  request.post('send-email-api-url', clientData)
+
+const getActiveClients = (clients) => clients.filter((client) => client.active)
+
+const sendEmail = (activeClients) => {
+  activeClients.forEach((activeClient) => sendEmailApi(activeClient.emailData))
+}
+```
 
 ## OCP 開閉原則
 
@@ -60,17 +95,19 @@ class Example2 {
 ```
 
 ### 透過抽象依賴低層
+
 將 `downloadFromData` 內部的底層方法抽離出來在 `utils.js`， 再依 **高層模組** 的使用方法各別引入。
 
 :::tip 提示
 在 `Javascript` 中，沒有 `interface`，但可以使用 `module` 導出 `class` 或 `function` 來實現這個方式。
 :::
 **utils.js**
+
 ```js
 const apiUrl = ''
 
 export const fetchApi = (apiUrl) => {
-  return fetch(apiUrl).then(res => res.json())
+  return fetch(apiUrl).then((res) => res.json())
 }
 ```
 
@@ -109,9 +146,7 @@ class Example2 {
 ```js
 const apiUrl = ''
 
-export const doGet = (apiUrl) => {
-  return axios.get(apiUrl);
-};
+export const doGet = (apiUrl) => axios.get(apiUrl)
 ```
 
 ## Reference
@@ -127,5 +162,6 @@ export const doGet = (apiUrl) => {
   ](https://tso1158687.github.io/blog/2021/01/11/2020ithomed19/)
 - [SOLID 依賴反轉原則 Dependency Inversion Principle (DIP)](https://medium.com/@f40507777/%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87-dependency-inversion-principle-dip-bc0ba2e3a388)
 - [Dependency Inversion Principle Explained - SOLID Design Principles
-](https://www.youtube.com/watch?v=9oHY5TllWaU)
+  ](https://www.youtube.com/watch?v=9oHY5TllWaU)
 - [以請求方法修改為例 Decoupling code in JavaScript with the Dependency Inversion Principle](https://javascript.plainenglish.io/decoupling-code-in-javascript-with-the-dependency-inversion-principle-6d23342b4aaa)
+- [Day16-SOLID 原則-單一職責原則(Single Responsibility Principle)](https://tso1158687.github.io/blog/2021/01/11/2020ithomed16/)
