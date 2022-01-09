@@ -32,7 +32,7 @@ function sendEmailToActiveClients(clients) {
 
 ### 單一功能
 
-可以了解，需求：
+可以針對各別的需求，另外拆分功能，這樣以後在維護、修改上，都會比較方便。
 
 - 判斷客戶是否存在
 - 發送 email
