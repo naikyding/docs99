@@ -51,6 +51,45 @@ const sendEmail = (activeClients) => {
 
 ## OCP 開閉原則
 
+可以任意擴充功能在實體上，但不修改原本功能。
+
+> 實體對 **擴充功能** 保持開放，對 **修改功能** 保持封閉。
+
+假設我們的功能是這樣，取得資料再做後續處理。
+
+```js
+async function getUserData(newDataType) {
+  const { data } = await getUserDataAPI()
+  setUserList = data.list
+}
+```
+
+如果需要新增判斷，就需要改到原本的代碼，如果之後更多判斷，每次都要一直修改下去....
+
+```js
+async function getUserData(newDataType) {
+  const { status, data } = await getUserDataAPI()
+  if (status) return (setUserList = data.list)
+  console.log('取得資料失敗')
+}
+```
+
+把要執行的事件，抽離出來獨立一個 `todo` 物件，`function` 依類型來執行 `todo` 屬性的事件，之後如果有新增的類型，只需要增加對應的事件在 `todo` 就可以了，不會修改到 `getUserData` 功能。
+
+```js
+const todo = {
+  type1: (data) => console.log(data),
+  type2: (data) => console.log(data),
+  type3: (data) => console.log(data),
+  ...
+}
+
+async function getUserData(newDataType) {
+  const { type, data } = await getUserDataAPI()
+  todo[type](data)
+}
+```
+
 ## LSP 里氏替換原則
 
 ## ISP 介面隔離原則
