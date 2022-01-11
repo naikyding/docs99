@@ -91,6 +91,9 @@ async function getUserData(newDataType) {
 ```
 
 ## LSP 里氏替換原則
+> 任何 **類別** 應該都要可以替換它的 **父類別**，而不會產生問題。
+
+換句話說，如果 `Dog` 與 `Cat` 繼承了 `Animal` (父類別)，那 `Animal` 的所有功能， `Cat` 、 `Dog` 應該都要能夠正常運作。
 
 ## ISP 介面隔離原則
 
@@ -204,3 +207,4 @@ export const doGet = (apiUrl) => axios.get(apiUrl)
   ](https://www.youtube.com/watch?v=9oHY5TllWaU)
 - [以請求方法修改為例 Decoupling code in JavaScript with the Dependency Inversion Principle](https://javascript.plainenglish.io/decoupling-code-in-javascript-with-the-dependency-inversion-principle-6d23342b4aaa)
 - [Day16-SOLID 原則-單一職責原則(Single Responsibility Principle)](https://tso1158687.github.io/blog/2021/01/11/2020ithomed16/)
+- [里氏替換原則 SOLID principle #3: Liskov Substitution (JavaScript)](https://duncan-mcardle.medium.com/solid-principle-3-liskov-substitution-javascript-fdb6af8ee1ea)
