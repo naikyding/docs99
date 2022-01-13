@@ -92,9 +92,7 @@ async function getUserData(newDataType) {
 
 ## LSP 里氏替換原則
 
-> 任何 **類別** 應該都要可以替換它的 **父類別**，而不會產生問題。
-
-換句話說，如果 `Dog` 與 `Cat` 繼承了 `Animal` (父類別)，那 `Animal` 的所有功能， `Cat` 、 `Dog` 應該都要能夠正常運作。
+如果 `Dog` 與 `Cat` 繼承了 `Animal` (父類別)，那 `Animal` 的所有功能， `Cat` 、 `Dog` 應該都要能夠正常運作。
 
 ## ISP 介面隔離原則
 
