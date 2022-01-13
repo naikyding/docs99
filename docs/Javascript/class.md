@@ -166,7 +166,7 @@ niki.sayParentName();
 :::
 
 :::warning 注意
-
+- **子類** 的 `super()`，在放在 `this` 使用之前。
 - 當 **子層 `constructor`** 的屬性名稱與 **父層 `constructor`** 屬性名稱 **相同** 時，會以 **子層** 為主 (覆蓋)。
 - 當 **子層 `prototype`** 與 **父層 `prototype`** **同名** 時，會先執行本身 **子層 `prototype`**。([若無，向上層尋找](/Javascript/prototype.html#prototype-原型觀念))
   :::
