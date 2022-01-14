@@ -92,8 +92,26 @@ async function getUserData(newDataType) {
 
 ## LSP 里氏替換原則
 
-如果 `Dog` 與 `Cat` 繼承了 `Animal` (父類別)，那 `Animal` 的所有功能， `Cat` 、 `Dog` 應該都要能夠正常運作。
+如果 `Dog` 與 `Cat` 繼承了 `Animal` (父類別)，那 `Animal` 的所有功能， `Cat` 、 `Dog` 應該都要能夠**不發生錯誤**。
 
+### 經典錯誤案例
+**父類** 為「矩形」實例，而 **子類** 為「正方形」實例，當 **正方形** 調動 **矩形** `Rectangle` 方法時，就產生了錯誤。
+
+```js
+class Rectangle {
+  constructor(width, height) {
+    this.width = width
+    this.height = height
+  }
+  setHeight(newHeight) {
+    this.height = newHeight
+  }
+  getArea() {
+    return this.height * this.width
+  }
+}
+
+```
 ## ISP 介面隔離原則
 
 ## DIP 依賴反轉原則
