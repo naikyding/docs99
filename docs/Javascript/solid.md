@@ -95,7 +95,8 @@ async function getUserData(newDataType) {
 如果 `Dog` 與 `Cat` 繼承了 `Animal` (父類別)，那 `Animal` 的所有功能， `Cat` 、 `Dog` 應該都要能夠**不發生錯誤**。
 
 ### 經典錯誤案例
-**父類** 為「矩形」實例，而 **子類** 為「正方形」實例，當 **正方形** 調動 **矩形** `Rectangle` 方法時，就產生了錯誤。
+
+**父類** 為「矩形」實例，而 **子類** 為「正方形」實例，當 **正方形** 調動 **矩形** `setHeight` 方法時，就產生了錯誤。
 
 ```js
 class Rectangle {
@@ -111,7 +112,25 @@ class Rectangle {
   }
 }
 
+class Square extends Rectangle {
+  setHeight(newHeight) {
+    this.height = newHeight
+    this.width = newHeight
+  }
+}
 ```
+
+```js
+const a = new Rectangle(100, 50)
+console.log(a.width, a.height) // 100 50 ✅
+
+const b = new Square(30, 30)
+console.log(b.width, b.height) // 30 30 ✅
+
+b.setHeight(50)
+console.log(b.width, b.height) // 30 50 ❌
+```
+
 ## ISP 介面隔離原則
 
 ## DIP 依賴反轉原則
