@@ -96,7 +96,7 @@ async function getUserData(newDataType) {
 
 ### 經典錯誤案例
 
-**父類** 為「矩形」實例，而 **子類** 為「正方形」實例，當 **正方形** 調動 **矩形** `setHeight` 方法時，就產生了錯誤。
+**父類** 為「矩形」實例，繼承的 **子類** 為「正方形」實例。
 
 ```js
 class Rectangle {
@@ -119,6 +119,8 @@ class Square extends Rectangle {
   }
 }
 ```
+
+當 **正方形** 調動 **矩形** (父類) `setHeight` 方法時，就產生了錯誤，**正方形** 的長、寬比已經不是正方形的規則。
 
 ```js
 const a = new Rectangle(100, 50)
