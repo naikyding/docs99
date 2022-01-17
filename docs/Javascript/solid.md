@@ -137,7 +137,7 @@ console.log(b.width, b.height) // 30 50 ❌
 實際上 `Rectangle` 與 `Square` 都應該繼承自另外的 `Shape` Class。
 
 ## ISP 介面隔離原則
-不同的`介面`，有不同的服務，不讓一個 `介面`  **包山包海**、裡面有用不到的功能；這樣可以降低維護一個巨大 `介面` 的成本，因為每個功能都被拆分為小的部分，只需要針對該部分維護、修改就可以。
+不同的`介面`，有不同的服務，不讓一個 `介面`  **包山包海**、裡面有用不到的功能；這樣可以降低維護一個巨大 `介面` 的成本，因為每個功能都被拆分為小的部分，只需要針對該部分維護、修改就可以。 **降低依賴 `大模組` !!**
 
 ## DIP 依賴反轉原則
 
@@ -253,3 +253,4 @@ export const doGet = (apiUrl) => axios.get(apiUrl)
 - [SOLID principle #3: Liskov Substitution (JavaScript)](https://duncan-mcardle.medium.com/solid-principle-3-liskov-substitution-javascript-fdb6af8ee1ea)
 - [SOLID 里氏替換原則 Liskov Substitution Principle (LSP)](https://medium.com/@f40507777/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87-liskov-substitution-principle-adc1650ada53)
 - [【Day 24】用 SOLID 方式開發 React (1)](https://ithelp.ithome.com.tw/articles/10252738?sc=rss.iron)
+- [SOLID principle #4: Interface Segregation (JavaScript)](https://duncan-mcardle.medium.com/solid-principle-4-interface-segregation-javascript-cb2508422c5d)
