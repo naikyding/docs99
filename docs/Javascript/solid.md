@@ -120,7 +120,7 @@ class Square extends Rectangle {
 }
 ```
 
-當 **正方形** 調動 **矩形** (父類) `setHeight` 方法時，就產生了錯誤，**正方形** 的長、寬比已經不是正方形的規則。
+當 **正方形** 調動 **矩形** (父類) `setHeight` 方法時，就產生了錯誤，**正方形** 的長、寬比已經不是正方形的規則，成為 **無效** 的正方形。
 
 ```js
 const a = new Rectangle(100, 50)
@@ -132,6 +132,9 @@ console.log(b.width, b.height) // 30 30 ✅
 b.setHeight(50)
 console.log(b.width, b.height) // 30 50 ❌
 ```
+
+這可以在 `Rectangle` 使用 **多形態** 設置 `if` 來處理正方形的問題或其它方式，但真正的問題為 `Square` 不是 `Rectangle` 好的 **子類**。
+實際上 `Rectangle` 與 `Square` 都應該繼承自另外的 `Shape` Class。
 
 ## ISP 介面隔離原則
 
@@ -248,3 +251,4 @@ export const doGet = (apiUrl) => axios.get(apiUrl)
 - [LSP - The Liskov Substitution Principle](https://blog.oliverjumpertz.dev/lsp-the-liskov-substitution-principle)
 - [SOLID principle #3: Liskov Substitution (JavaScript)](https://duncan-mcardle.medium.com/solid-principle-3-liskov-substitution-javascript-fdb6af8ee1ea)
 - [SOLID 里氏替換原則 Liskov Substitution Principle (LSP)](https://medium.com/@f40507777/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87-liskov-substitution-principle-adc1650ada53)
+- [【Day 24】用 SOLID 方式開發 React (1)](https://ithelp.ithome.com.tw/articles/10252738?sc=rss.iron)
