@@ -137,6 +137,8 @@ console.log(b.width, b.height) // 30 50 ❌
 實際上 `Rectangle` 與 `Square` 都應該繼承自另外的 `Shape` Class。
 
 ## ISP 介面隔離原則
+不同的`接口`，有不同的介面服務，不讓一個接口 **包山包海**，不讓 `接口` 裡面有用不到的功能。
+
 
 ## DIP 依賴反轉原則
 
