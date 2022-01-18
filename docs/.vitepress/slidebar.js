@@ -103,6 +103,10 @@ export const getJavascriptSidebar = () => ({
     {
       text: 'SOLID 設計原則',
       link: '/Javascript/solid'
+    },
+    {
+      text: 'Virtual DOM',
+      link: '/Javascript/virtual-dom'
     }
   ]
 })
