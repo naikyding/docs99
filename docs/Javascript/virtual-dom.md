@@ -2,7 +2,7 @@
 
 ## 什麼是 DOM?
 
-代表 [**文件物件模型**](/JavaScript/dom) ，是瀏覽器接口的 API，用於更改瀏覽器顯示的內容。
+代表 [**文件物件模型**](/Javascript/dom) ，是瀏覽器接口的 API，用於更改瀏覽器顯示的內容。
 
 ![DD1-1.jpg](/Javascript/img/virtual-dom-1.jpg)
 
