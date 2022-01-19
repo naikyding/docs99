@@ -16,6 +16,7 @@
 
 - [BOM 瀏覽器物件模型](/Javascript/bom)
 - [DOM 文件物件模型](/Javascript/dom)
+- [Virtual DOM](/Javascript/virtual-dom)
 - [Event Loop 事件循環](/Javascript/eventLoop)
 - [Date 時間觀念與處理](/Javascript/date)
 - [Promise 非同步處理](/Javascript/promise)
@@ -29,8 +30,9 @@
 - [Cookie 操作](/Javascript/cookie)
 - [解構賦值](/Javascript/destructuring-assignment)
 - [Side Effect 副作用](/Javascript/side-effects)
-- [Virtual DOM](/Javascript/virtual-dom)
+
 ### 程式設計
+
 - [Constructor 建構函式](/Javascript/constructor)
 - [Factory Function 工廠函式](/Javascript/factoryFunction)
 - [Constructor VS Factory Function](/Javascript/constructorVSfactory)
