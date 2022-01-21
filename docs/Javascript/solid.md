@@ -154,7 +154,13 @@ console.log(b.width, b.height) // 30 50 ❌
 - 將客戶端的依賴轉移到小的接口，這樣客戶端不會直接依整在大的模組。
 
 ```js
+export const deposit = () => { ... }
+export const withdrawal = () => { ... }
+export const transfer = () => { ... }
+```
 
+```js
+import { deposit } from './bankModule'
 ```
 
 ## DIP 依賴反轉原則
