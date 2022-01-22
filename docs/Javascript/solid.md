@@ -154,12 +154,12 @@ console.log(b.width, b.height) // 30 50 ❌
 ![](/Javascript/img/solid-isp-1.jpg)
 
 
-### 好處
-
+**範例**
 - 把大模組拆分為更小的接口
 - 將客戶端的依賴轉移到小的接口，這樣客戶端不會直接依整在大的模組。
 
 ```js
+// bankModule.js
 export const deposit = () => { ... }
 export const withdrawal = () => { ... }
 export const transfer = () => { ... }
