@@ -30,6 +30,7 @@
 - [Cookie 操作](/Javascript/cookie)
 - [解構賦值](/Javascript/destructuring-assignment)
 - [Side Effect 副作用](/Javascript/side-effects)
+- [誰是 this ?](/Javascript/this)
 
 ### 程式設計
 
