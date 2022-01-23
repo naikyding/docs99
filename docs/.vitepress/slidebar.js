@@ -107,6 +107,10 @@ export const getJavascriptSidebar = () => ({
     {
       text: 'Virtual DOM',
       link: '/Javascript/virtual-dom'
+    },
+    {
+      text: '誰是 this ?',
+      link: '/Javascript/this'
     }
   ]
 })
