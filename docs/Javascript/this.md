@@ -1,9 +1,10 @@
 # 誰是 this ?
 
 :::tip 簡單說
-誰調用 (宣告) 了，包含 `this` 的函式，誰是就 `this` !
+- 誰調用 (宣告) 了，包含 `this` 的函式，誰是就 `this` !
 
-`this` 值，由 **呼叫** 的函式來決定。
+- `this` 值，由 **呼叫** 的函式來決定。
+- `this` 代表目前執行的環境。
 :::
 
 ```js
@@ -45,17 +46,25 @@ sayThis() // global
 
 **物件呼叫**
 
-物件內的 `this` 會指向 物件 **本身**
+物件內 **函式** 的 `this` 會指向 物件 **本身**，下面的例子 `this` 就是分別為呼叫函式的物件 `person1` 與 `person2`。
 
-```js {6}
-function add() {
-  return this.a + this.b
+```js {1-3,7,12}
+function getGender() {
+  return this.gender
 }
 
-let obj = { a: 3, b: 5}
-obj.add = add // 物件 呼叫 add 函式 (this === obj)
+let person1 = {
+  gender: 'male',
+  getGender: getGender
+}
 
-obj.add() // 8
+let person2 = {
+  gender: 'female',
+  getGender: getGender
+}
+
+person1.getGender() // male (this === person1)
+person2.getGender() // female (this === person2)
 ```
 
 
@@ -63,4 +72,6 @@ obj.add() // 8
 ## Reference
 - [鐵人賽：JavaScript 的 this 到底是誰？
 ](https://wcc723.github.io/javascript/2017/12/12/javascript-this/)
+- [What's THIS in JavaScript ?](https://kuro.tw/posts/2017/10/12/What-is-THIS-in-JavaScript-%E4%B8%8A/)
 - [[WIKI]: this](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/this)
+- [淺談 JavaScript 頭號難題 this：絕對不完整，但保證好懂](https://blog.techbridge.cc/2019/02/23/javascript-this/)
