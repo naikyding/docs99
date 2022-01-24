@@ -92,10 +92,8 @@ person.sayName() // in
 sayName() // out 
 ```
 
-:::danger 注意
-承上
-
-一般操作 `person.sayName()` 就會視 `person` 為 `this`；但如果將 `person.sayName` 賦與給 **全域變數** `a`，再經由 **全域變數** 來呼叫 **函式** ，那函式的呼叫環境，就是 「全域物件 `window`」。
+:::danger 間接呼叫
+承上，一般操作 `person.sayName()` 就會視 `person` 為 `this`；但如果將 `person.sayName` 賦與給 **全域變數** `a`，再經由 **全域變數** 來呼叫 **函式** ，那函式的呼叫環境，就是 「全域物件 `window`」。
 ```js {3}
 person.sayName() // in 
 
@@ -105,6 +103,7 @@ a() // out
 :::
 
 ## 常見誤區
+函式內的函式 `this` 為 `window`
 
 ```js {5-8}
 const person = {
