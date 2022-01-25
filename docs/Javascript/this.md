@@ -242,6 +242,23 @@ person.sayName()
 person.apply(undefined, [34, 4000]) // undefined 34 4000
 person.apply({name: 'niki'}, [34, 4000]) // {name: 'niki'} 34 4000
 ```
+
+### bind
+與 `call` 操作方式 87 分像，只是 `bind` 會回傳一個綁定好 `this` 的 **函式**，待後續執行。
+
+**語法:**
+#### fun.bind(`thisArg[, arg1[, arg2[, ...]]]`)
+- `thisArg` 要綁定的 `this`
+- `arg1` ... 要傳入的參數
+
+```js
+const bindPersonThisFun = person.bind(undefined, 34, 4000) 
+bindPersonThisFun() // undefined 34 4000
+
+const bindPersonThisFun2 = person.bind({name: 'nike'}, 34, 4000) 
+bindPersonThisFun2() // {name: 'nike'} 34 4000
+```
+
 ## Reference
 - [鐵人賽：JavaScript 的 this 到底是誰？
 ](https://wcc723.github.io/javascript/2017/12/12/javascript-this/)
