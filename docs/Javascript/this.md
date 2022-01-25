@@ -231,9 +231,16 @@ person.sayName()
 ```
 
 ### apply
+這個操作與 `call` 其本上是全部相同，只差別在 `參數` 要使用 **陣列** 來傳入。
+
+**語法:**
+#### fun.apply(`thisArg, [argsArray]`)
+- `thisArg` 操作 `fun` 函式時，要傳入的 `this`
+- `argsArray` 其它參數，使用 **陣列** 傳入
 
 ```js
-
+person.apply(undefined, [34, 4000]) // undefined 34 4000
+person.apply({name: 'niki'}, [34, 4000]) // {name: 'niki'} 34 4000
 ```
 ## Reference
 - [鐵人賽：JavaScript 的 this 到底是誰？
