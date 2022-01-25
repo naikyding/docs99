@@ -183,6 +183,58 @@ const person = {
 person.sayName() // out
 ```
 
+## 指定 this
+在 **嚴格模式** 下，`this` 若指向 **全域物件** 則為 `undefined`。
+
+```js
+'use strict'
+function person(age, count) {
+  console.log(this, age, count)
+}
+
+person(34, 4000) // undefined 34 4000
+```
+### call
+
+語法:
+#### fun.call(`thisArg[, arg1[, arg2[, ...]]]`)
+- `thisArg` 操作 `fun` 函式時，指定的 `this` 
+- `arg1` … 其它參數
+
+
+```js
+person.call(undefined, 34, 3000) // undefined 34 3000
+person.call({name: 'nike'}, 34, 3000) // {name: 'nike'} 34 3000
+```
+
+**範例** 
+
+一般來說 `sayName2` 函式執行的 `this` 會是 **window 全域物件**，但可以使用 `call` 來指定 `this`
+
+```js {7-10}
+const person = {
+  name: 'nike',
+  age: 34,
+  sayName: function() {
+    console.log(this.name)
+
+    let sayName2 = function() {
+      console.log(this)
+    }
+    sayName2() // window
+    sayName2.call(this) // 把 person 傳入當 this
+  }
+}
+
+person.sayName() 
+// nike  window  {name: 'nike', age: 34, sayName: ƒ}
+```
+
+### apply
+
+```js
+
+```
 ## Reference
 - [鐵人賽：JavaScript 的 this 到底是誰？
 ](https://wcc723.github.io/javascript/2017/12/12/javascript-this/)
