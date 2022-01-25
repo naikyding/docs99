@@ -16,20 +16,6 @@ console.log(this === window) // true
 var a = 123 // this.a = 123 一樣意思
 console.log(window.a) // 123
 ```
-
-**嚴格模式**
-
-在 **嚴格模式** 的情況下，會禁止 `this` 為 **全域物件**，這時 `this` 若為 **全域物件** 就會顯示 `undefined`
-
-```js
-'use strict'
-function sayName() {
-  console.log(this)
-}
-
-sayName() // undefined
-```
-
 ## 函式環境
 誰呼叫 `函式` ，誰就是 `this` !
 
@@ -49,6 +35,19 @@ sayThis() // window
 
 // node
 sayThis() // global
+```
+
+**嚴格模式**
+
+在 **嚴格模式** 的情況下，會禁止 `this` 為 **全域物件**，這時 `this` 若為 **全域物件** 就會顯示 `undefined`
+
+```js
+'use strict'
+function sayThis() {
+  console.log(this)
+}
+
+sayThis() // undefined
 ```
 
 ## 物件環境
