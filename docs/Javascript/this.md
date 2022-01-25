@@ -17,7 +17,7 @@ var a = 123 // this.a = 123 一樣意思
 console.log(window.a) // 123
 ```
 ## 函式環境
-誰呼叫 `函式` ，誰就是 `this` !
+呼叫 **函式** 的環境，就是 `this` !
 
 ```js
 function sayThis() {
