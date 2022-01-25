@@ -195,6 +195,7 @@ function person(age, count) {
 person(34, 4000) // undefined 34 4000
 ```
 ### call
+定義函式執行時的 `this` 值，同時傳入 `參數`。 [MDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
 
 語法:
 #### fun.call(`thisArg[, arg1[, arg2[, ...]]]`)
@@ -231,7 +232,7 @@ person.sayName()
 ```
 
 ### apply
-這個操作與 `call` 其本上是全部相同，只差別在 `參數` 要使用 **陣列** 來傳入。
+這個操作與 `call` 其本上是全部相同，只差別在 `參數` 要使用 **陣列** 來傳入。 [MDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 
 **語法:**
 #### fun.apply(`thisArg, [argsArray]`)
@@ -243,8 +244,8 @@ person.apply(undefined, [34, 4000]) // undefined 34 4000
 person.apply({name: 'niki'}, [34, 4000]) // {name: 'niki'} 34 4000
 ```
 
-### bind
-與 `call` 操作方式 87 分像，只是 `bind` 會回傳一個綁定好 `this` 的 **函式**，待後續執行。
+### bind 
+與 `call` 操作方式 87 分像，只是 `bind` 會回傳一個綁定好 `this` 的 **函式**，待後續執行。 [MDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 
 **語法:**
 #### fun.bind(`thisArg[, arg1[, arg2[, ...]]]`)
