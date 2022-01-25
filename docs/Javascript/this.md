@@ -17,6 +17,19 @@ var a = 123 // this.a = 123 一樣意思
 console.log(window.a) // 123
 ```
 
+**嚴格模式**
+
+在 **嚴格模式** 的情況下，會禁止 `this` 為 **全域物件**，這時 `this` 若為 **全域物件** 就會顯示 `undefined`
+
+```js
+'use strict'
+function sayName() {
+  console.log(this)
+}
+
+sayName() // undefined
+```
+
 ## 函式環境
 誰呼叫 `函式` ，誰就是 `this` !
 
@@ -173,7 +186,7 @@ person.sayName() // out
 ## Reference
 - [鐵人賽：JavaScript 的 this 到底是誰？
 ](https://wcc723.github.io/javascript/2017/12/12/javascript-this/)
-- [What's THIS in JavaScript ?](https://kuro.tw/posts/2017/10/12/What-is-THIS-in-JavaScript-%E4%B8%8A/)
+- [Kuro What's THIS in JavaScript ?](https://kuro.tw/posts/2017/10/12/What-is-THIS-in-JavaScript-%E4%B8%8A/)
 - [[WIKI]: this](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/this)
 - [淺談 JavaScript 頭號難題 this：絕對不完整，但保證好懂](https://blog.techbridge.cc/2019/02/23/javascript-this/)
 - [[教學] JavaScript this 用法整理
