@@ -126,7 +126,7 @@ a() // out
 ```
 :::
 
-## 常見誤區
+## 脫離物件的 this
 `fun1` 函式中的 `this` 就是指向 `person` 就如之前的理解，
 但 `fun2` 的 `this` 為 `window`，就與認知不同了。
 
@@ -152,6 +152,24 @@ person.fun1() // true false
 :::danger 
 當 **函式 (含 `this`)** 脫離 **物件** 時， `this` 就是 **全域物件**
 :::
+
+## 箭頭函式的 this
+箭頭函式不擁有 `this` 特性，會指向 **全域物件**。
+
+
+```js
+var name = 'out'
+
+const person = {
+  name: 'in',
+  sayName: () => {
+    console.log(this.name)
+  }
+}
+
+person.sayName() // out
+```
+
 ## Reference
 - [鐵人賽：JavaScript 的 this 到底是誰？
 ](https://wcc723.github.io/javascript/2017/12/12/javascript-this/)
