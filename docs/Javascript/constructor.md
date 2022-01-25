@@ -34,9 +34,12 @@ function createObject(name, age) {
   return obj
 }
 ```
-
 :::
 
+
+:::warning 注意
+不能使用 **箭頭函式** `arrow function` 建立 **建構函式**。
+:::
 ## 創建物件實例 (instance)
 
 是以 `new` 告知瀏覽器，要建立新的物件實例且帶入`參數`，這樣你就可以無限快速的重覆產生更多 **標準內容** 、 **標準功能** 的物件。
