@@ -111,6 +111,10 @@ export const getJavascriptSidebar = () => ({
     {
       text: '誰是 this ?',
       link: '/Javascript/this'
+    },
+    {
+      text: 'Script 同步與非同步載入',
+      link: '/Javascript/script-attribute'
     }
   ]
 })
