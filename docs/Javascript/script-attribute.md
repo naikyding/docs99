@@ -67,7 +67,27 @@
 ```
 
 ### 使用方法
-- 設置 `integrity` 屬性
+- **設置 `integrity` 屬性** : 
+
+  遇到 `<script>
+  integrity="加密演算-base64"`，以 `sha256` 加密為範本。
+  
+  ```javascript
+  integrity="sha256-2mQWTKbO3ljlTwwAlKs8Ooj/VVMdGTc2FhrEq9GFy0A="
+  ```
+  - [SRI 產生器]
+  - 本機資源生成
+    ```bash
+    openssl dgst -sha256 -binary [YOUR FILE NAME.js] | openssl base64 -A
+    ```
+    編碼生成:
+    ```bash
+    47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+    ```
+
+:::warning 注意
+當啟用了 SRI 策略，瀏覽器就會對資源做 CROS  檢查，需要在屬性加上 `crossorigin`。 
+:::
 ## Reference:
 [SRI 產生器]:https://www.srihash.org/
 [DOMContentLoaded]:https://developer.mozilla.org/zh-TW/docs/Web/API/Window/DOMContentLoaded_event
