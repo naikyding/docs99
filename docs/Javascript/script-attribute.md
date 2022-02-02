@@ -19,15 +19,33 @@
 ```html
 <script src="..." defer>
 ```
+### 流程
+- 解析 DOM
+- 非同步請求腳本 (遇到 `script`)
+- 解析 DOM 完成 ([DOMContentLoaded] 之前)
+- 執行腳本
 
+:::danger 注意
+`defer` 屬性雖然是 **布林值** ，但在 `IE9` 中使用 `defer="false"`，`defer` 還是會生效哦!
+:::
 
 ## async 非同步
+`script` 中加上 `async` 屬性，瀏覽器不停止解析 DOM 的情況，先 **非同步** 請求資源，當腳本下載完成，就會
+**停止解析 DOM** 執行載入的腳本，後再接續解析。
 ```html
 <script src="..." async>
 ```
-
+### 流程
+- 解析 DOM
+- 非同步請求腳本 (遇到 `script`)
+- 取得腳本
+- 停止解析 DOM
+- 執行腳本
+- 恢復解析 DOM
 ## Reference:
 [DOMContentLoaded]:https://developer.mozilla.org/zh-TW/docs/Web/API/Window/DOMContentLoaded_event
 - [02. [HTML] script tag 加上 async & defer 的功能及差異？](https://ithelp.ithome.com.tw/articles/10216858)
 - [\<script> 中defer跟async是什麼?](https://realdennis.medium.com/html-script-%E4%B8%ADdefer%E8%B7%9Fasync%E6%98%AF%E4%BB%80%E9%BA%BC-1166ee88d18)
 - [MDN](https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/script)
+- [使用SRI保護你的網站免受第三方CDN惡意攻擊
+](https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/24506/)
