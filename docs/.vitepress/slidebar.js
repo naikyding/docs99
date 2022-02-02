@@ -113,7 +113,7 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/this'
     },
     {
-      text: 'Script 同步與非同步載入',
+      text: 'Script 非同步資源載入與安全驗証',
       link: '/Javascript/script-attribute'
     }
   ]

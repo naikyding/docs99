@@ -1,4 +1,4 @@
-# defer 與 async 非同步執行
+# \<script> 非同步資源載入與安全驗証
 
 ![](/Javascript/img/asyncdefer.svg)
 
@@ -17,7 +17,7 @@
 在 `script` 加上 `defer` 屬性，是告訴瀏覽器就算下載完腳本，也持續解析、渲染畫面，不被要載入的 `script` 所影響；實際執行是在 [DOMContentLoaded] 之前，一樣是由上至下的順序執行腳本。
 
 ```html
-<script src="..." defer>
+<script src="..." defer />
 ```
 ### 流程
 - 解析 DOM
@@ -33,7 +33,7 @@
 `script` 中加上 `async` 屬性，瀏覽器不停止解析 DOM 的情況，先 **非同步** 請求資源，當腳本下載完成，就會
 **停止解析 DOM** 執行載入的腳本，後再接續解析。
 ```html
-<script src="..." async>
+<script src="..." async />
 ```
 ### 流程
 - 解析 DOM
@@ -42,8 +42,36 @@
 - 停止解析 DOM
 - 執行腳本
 - 恢復解析 DOM
+
+## Integrity 資源驗証 (SRI)
+當你的 `<script>` 使用外部載入、或第三方資源載入，就很難確保來源是否有受到 **篡改**，
+如果受到惡意的篡改，當執行了載入的腳本就可能發生 **資安** 事件。
+
+而 `integrity` 屬性，就可以用來確保載入的資源是否受到篡改；瀏覽器會比對下載的來源 `integrity` 值，是否與請求 `integrity` 相同，若不符就不會執行下載；
+這個行為也稱 **子資源完整性** [Subresource Integrity (SRI)]。
+
+```html {4,11}
+<!-- 這是 jQuery 提供的 CDN -->
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"
+></script>
+
+<!-- Bootstrap CDN -->
+<script 
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+  crossorigin="anonymous"
+></script>
+```
+
+### 使用方法
+- 設置 `integrity` 屬性
 ## Reference:
+[SRI 產生器]:https://www.srihash.org/
 [DOMContentLoaded]:https://developer.mozilla.org/zh-TW/docs/Web/API/Window/DOMContentLoaded_event
+[Subresource Integrity (SRI)]:https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity
 - [02. [HTML] script tag 加上 async & defer 的功能及差異？](https://ithelp.ithome.com.tw/articles/10216858)
 - [\<script> 中defer跟async是什麼?](https://realdennis.medium.com/html-script-%E4%B8%ADdefer%E8%B7%9Fasync%E6%98%AF%E4%BB%80%E9%BA%BC-1166ee88d18)
 - [MDN](https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/script)
