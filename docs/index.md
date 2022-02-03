@@ -35,7 +35,7 @@
 - [解構賦值](/Javascript/destructuring-assignment)
 - [Side Effect 副作用](/Javascript/side-effects)
 - [誰是 this ?](/Javascript/this)
-- [Script 非同步資源載入與安全驗証](/Javascript/script-attribute)
+- [\<script> 非同步資源載入與安全驗証](/Javascript/script-attribute)
 
 ### 程式設計
 
