@@ -86,7 +86,7 @@
     ```
 
 :::warning 注意
-當啟用了 SRI 策略，瀏覽器就會對資源做 CROS  檢查，需要在屬性加上 `crossorigin`。 
+當啟用了 SRI 策略，瀏覽器就會對資源做 CROS  檢查，需要在屬性加上 `crossorigin="anonymous"`。 
 :::
 ## Reference:
 [SRI 產生器]:https://www.srihash.org/
@@ -97,3 +97,4 @@
 - [MDN](https://developer.mozilla.org/zh-TW/docs/Web/HTML/Element/script)
 - [使用SRI保護你的網站免受第三方CDN惡意攻擊
 ](https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/24506/)
+- [CORS settings attributes](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/crossorigin)
