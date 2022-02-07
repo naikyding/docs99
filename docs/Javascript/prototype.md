@@ -160,6 +160,19 @@ console.log(openSea)
 ```
 :::
 
+### 既有對象新增原型
+- 為 **字串** 類型，新增原型方法
+  ```js {4-6}
+  let str = 'HelloWorld'
+
+  // 為類型新增原型方法 prototype
+  String.prototype.spacify = function() {
+    return this.split('').join(' ')
+  }
+
+  str.spacify() //  H e l l o W o r l d'
+  ```
+
 ### 工廠模式的應用
 ```js
 // 先建立原型
