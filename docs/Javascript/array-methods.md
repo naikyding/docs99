@@ -107,6 +107,17 @@ ary = [2,1,5,3,7,4,7]
 ary.sort() // [1, 2, 3, 4, 5, 7, 7]
 ```
 
+### 進階操作
+> arr.sort(`[compareFunction]`)
+- `compareFunction` 比較函式
+  - `return 負值` 向前調整位置
+  - `return 正值` 向後調整位置
+  - `return 0` 維持原位
+
+**Reference**
+- [[JavaScript] 從 Array 的 sort 方法，聊到各瀏覽器的實作，沒想到 Chrome 和FireFox 的排序如此不同](https://realdennis.medium.com/javascript-%E5%BE%9Earray%E7%9A%84sort%E6%96%B9%E6%B3%95-%E8%81%8A%E5%88%B0%E5%90%84%E5%AE%B6%E7%80%8F%E8%A6%BD%E5%99%A8%E7%9A%84%E5%AF%A6%E4%BD%9C%E7%AE%97%E6%B3%95-c23a335b1b80)
+- [MDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+- [15 Javascript codes you will always need](https://medium.com/@mertcanarguc/15-javascript-codes-you-will-always-need-e8569903dd1)
 ## join
 
 將陣列中所有的元素，組合成一個字串(包含 `,`)，且回傳這個組合好的字串。
