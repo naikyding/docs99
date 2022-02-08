@@ -108,11 +108,42 @@ ary.sort() // [1, 2, 3, 4, 5, 7, 7]
 ```
 
 ### 進階操作
+**由小到大排序**
+```js
+[4, 6, 2, 3, 1].sort((a, b) => a - b )
+```
+
+**由大到小排序**
+```js
+[4, 6, 2, 3, 1].sort((a, b) => b - a )
+```
+
+**說明**
+
+`compareFunction` 函式會有兩個參數 `(a, b)`，有點像 **廻圈** 每次進入函式都會向後取 **2位** 索引值 (反向)，直到陣列盡頭。
+
+(一般來說，會取 `ary.length - 1` 次)
+```js
+[4, 6, 2, 3, 1].sort((a, b) => {
+  console.log(`a = ${a} / b = ${b}`)
+})
+
+// a = 6 / b = 4
+// a = 2 / b = 6
+// a = 3 / b = 2
+// a = 1 / b = 3
+```
+
 > arr.sort(`[compareFunction]`)
 - `compareFunction` 比較函式
   - `return 負值` 向前調整位置
   - `return 正值` 向後調整位置
   - `return 0` 維持原位
+
+:::warning 提醒
+如果 `compareFunction` 有回傳值，每次取 **2 位索引值** 時，都會再動態排序，不一定會依原本的位置。
+:::
+
 
 **Reference**
 - [[JavaScript] 從 Array 的 sort 方法，聊到各瀏覽器的實作，沒想到 Chrome 和FireFox 的排序如此不同](https://realdennis.medium.com/javascript-%E5%BE%9Earray%E7%9A%84sort%E6%96%B9%E6%B3%95-%E8%81%8A%E5%88%B0%E5%90%84%E5%AE%B6%E7%80%8F%E8%A6%BD%E5%99%A8%E7%9A%84%E5%AF%A6%E4%BD%9C%E7%AE%97%E6%B3%95-c23a335b1b80)
