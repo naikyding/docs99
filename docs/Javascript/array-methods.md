@@ -142,6 +142,8 @@ ary.sort() // [1, 2, 3, 4, 5, 7, 7]
 
 :::warning 提醒
 如果 `compareFunction` 有回傳值，每次取 **2 位索引值** 時，都會再動態排序，不一定會依原本的位置。
+**原生的演算法還加入了「二分搜尋法 Binary Search」的實作來優化排序速度**
+`.sort` 不穩定之迷 [TOMMY 騎 bug (影)](https://www.youtube.com/watch?v=ql4CpdIYLfo&t=826s)
 :::
 
 
