@@ -8,6 +8,36 @@ export const getIndexSidebar = () => ({
   ]
 })
 
+export const getBrowserSidebar = () => ({
+  text: 'Browser',
+  children: [
+    {
+      text: 'HTTP',
+      link: '/Browser/http'
+    },
+    {
+      text: 'Cookie',
+      link: '/Browser/cookie'
+    },
+    {
+      text: 'TCP',
+      link: '/Browser/tcp'
+    },
+    {
+      text: 'XHR',
+      link: '/Browser/xhr'
+    },
+    {
+      text: 'AJAX',
+      link: '/Browser/ajax'
+    },
+    {
+      text: '瀏覽器輸入網址後發生的事',
+      link: '/Browser/enter-url-in-browser'
+    }
+  ]
+})
+
 export const getJavascriptSidebar = () => ({
   text: 'Javascript',
   collapsable: 'auto',
@@ -129,32 +159,6 @@ export const getVueSidebar = () => ({
     {
       text: '[Vue3]深入了解 ref 實現原理',
       link: '/Vue/vue3-ref'
-    },
-  ]
-})
-
-export const getBrowserSidebar = () => ({
-  text: 'Browser',
-  children: [
-    {
-      text: 'HTTP',
-      link: '/Browser/http'
-    },
-    {
-      text: 'Cookie',
-      link: '/Browser/cookie'
-    },
-    {
-      text: 'TCP',
-      link: '/Browser/tcp'
-    },
-    {
-      text: 'XHR',
-      link: '/Browser/xhr'
-    },
-    {
-      text: 'AJAX',
-      link: '/Browser/ajax'
     },
   ]
 })

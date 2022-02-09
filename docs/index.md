@@ -15,6 +15,7 @@
 - [TCP 傳輸控制協定](/Browser/tcp)
 - [XHR (XMLHttpRequest) 與 `服務端` 資料交換的物件方法](/Browser/xhr)
 - [AJAX (非同步 Javascript 與 XML 技術)](/Browser/ajax)
+- [瀏覽器輸入網址後發生的事](/Browser/enter-url-in-browser)
 
 ## Javascript
 
