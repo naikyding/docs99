@@ -10,13 +10,34 @@
 
 ## 瀏覽器輸入網址且**送出**
 
-## DNS 解析
-- 檢查瀏覽器 **緩存** 中的 **DNS** 紀錄，看是否有 `https://example.com` 的 `IP` 位址。
-- 
+## DNS
+
+### 緩存查找
+1. **檢查 `瀏覽器` 緩存 的 DNS 紀錄**
+
+    瀏覽器會為之前訪問過的網站做 DNS 的紀錄，可以藉此查看是否有 `https://example.com` 的 `IP` 位址。
+
+2. **檢查 `作業系統` 緩存 的 DNS 紀錄**
+
+    除了 `瀏覽器` 會有緩存 的 DNS 紀錄，`作業系統` 也會維護 DNS 紀錄。
+
+3. **檢查 `路由器` 緩存 DNS 紀錄**
+
+    以上兩項在電腦上的檢查都找不到紀錄，瀏覽器就會與路由器通信來查找路由器上的緩存紀錄。
+
+4. **檢查 [ISP (網路連線服務公司)]  緩存**
+
+    以上所有方式都無法找到，瀏覽器就會轉向查找  [ISP (網路連線服務公司)]  的緩存紀錄。
+
+
+:::tip
+那麼多緩存的位置，是為了優化 網路流量、數據傳輸速度
+:::
 
 
 ## Reference
 [DNS 是什麼? @aws]:https://aws.amazon.com/tw/route53/what-is-dns/
+[ISP (網路連線服務公司)]:https://www.ithome.com.tw/news/5086
 - [DNS 是什麼? @aws]
 - [What happens when you type a URL in the browser and press enter?](https://medium.com/@maneesha.wijesinghe1/what-happens-when-you-type-an-url-in-the-browser-and-press-enter-bb0aa2449c1a)
 - [在瀏覽器輸入網址並送出後，到底發生了什麼事？](https://cythilya.github.io/2018/11/26/what-happens-when-you-type-an-url-in-the-browser-and-press-enter/)
