@@ -145,6 +145,10 @@ export const getJavascriptSidebar = () => ({
     {
       text: '\<script> 非同步資源載入與安全驗証',
       link: '/Javascript/script-attribute'
+    },
+    {
+      text: 'Math 數學函式',
+      link: '/Javascript/math'
     }
   ]
 })

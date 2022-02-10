@@ -37,6 +37,7 @@
 - [Side Effect 副作用](/Javascript/side-effects)
 - [誰是 this ?](/Javascript/this)
 - [\<script> 非同步資源載入與安全驗証](/Javascript/script-attribute)
+- [Math 數學函式](/Javascript/math)
 
 ### 程式設計
 
