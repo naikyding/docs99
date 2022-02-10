@@ -1,6 +1,6 @@
 # Math 數學函式
 
-## Math.pow() 求**次方(幂)值**
+## Math.pow() 求**次方([幂])值**
 `Math.pow()` 函式會回傳 `base` 的 `exponent`  次方值。
 
 ### 語法:
@@ -21,5 +21,6 @@ Math.pow(2, 3) // 8 (2 的 3 次方，回傳 8)
 ```
 
 ## Reference
+[幂]:https://www.newton.com.tw/wiki/%E5%86%AA
 - [求幂 (**) MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Exponentiation)
 - [Math.pow() MDN](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Math/pow)
