@@ -1,18 +1,18 @@
 # 瀏覽器輸入網址後發生的事
 
-這是一個很有延伸性的議題，依網路技術深度差異，都可能有不同的回答方式與延伸面向，也或許沒有一個很標準的回答方式，
-也是提問者可以看到表述能力的部分!
+這是一個很有延伸性的議題，依網路技術深度差異，都可能有不同的回答方式與延伸面向，也或許沒有一個很標準的答案，
+是顯示表述能力的部分!
 
 ![](/Browser/img/enter-url-in-browser.jpeg)
 > 圖片出處: [@manekinekko](https://twitter.com/manekinekko/status/1281704000572858375?fbclid=IwAR0jy77-mx6tVOYZmY-FckoLaJsI0afUPlWL8Yt4J7OrHx_9K20V8Ck5hWo)
 
 
 
-## 瀏覽器輸入網址且**送出**
+## 1. 瀏覽器輸入網址且**送出**
 
-## DNS
+## 2. DNS
 
-### 緩存查找
+### a. 緩存紀錄查找
 1. **檢查 `瀏覽器` 緩存 的 DNS 紀錄**
 
     瀏覽器會為之前訪問過的網站做 DNS 的紀錄，可以藉此查看是否有 `https://example.com` 的 `IP` 位址。
@@ -33,6 +33,29 @@
 :::tip
 那麼多緩存的位置，是為了優化 網路流量、數據傳輸速度
 :::
+
+### b. ISP DNS 啟動查找 Domain 的 IP
+如果無法從 [**緩存查找**](#a-緩存查找) 取得紀錄，ISP 的 DNS 服務器就會啟動 DNS 查詢托管這個 domain 的 IP 位址。
+DNS 服務器，主要是去搜索 `internet` 上多個 DNS 服務器，直到找到網站正確的 IP 位址或響應無法找到。
+
+![](/Browser/img/url-level.png)
+> [圖片出處](https://webhostinggeeks.com/guides/dns/)
+
+![](/Browser/img/root-domain.png)
+> [圖片出處](https://www.quora.com/What-is-the-root-of-your-domain)
+
+**網址解析** 
+
+大部分網站網址除了「根網域」之外，有三個等級 「頂級」、「二級」、「三級」。
+
+**服務器查找**
+
+會依序重定向到 **下一級** 服務器查找，找到時會將匹配的 IP 址傳送給 DNS 紀錄及發送到瀏覽器；反之，會收到失敗的錯誤。
+
+- 「根網域」服務器查找 `.` / `example.com`
+- 「頂級」服務器查找 `.com`
+- 「二級」服務器查找 `example`
+- 「三級」服務器查找 `www`
 
 
 ## Reference
