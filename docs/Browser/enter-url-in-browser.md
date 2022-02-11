@@ -50,6 +50,8 @@ DNS 服務器，主要是去搜索 `internet` 上多個 DNS 服務器，直到�
 
 **服務器查找**
 
+![](/Browser/img/dns-search-domain.jpg)
+
 會依序重定向到 **下一級** 服務器查找，找到時會將匹配的 IP 址傳送給 DNS 紀錄及發送到瀏覽器；反之，會收到失敗的錯誤。
 
 - 「根網域」服務器查找 `.` / `example.com`
@@ -57,8 +59,13 @@ DNS 服務器，主要是去搜索 `internet` 上多個 DNS 服務器，直到�
 - 「二級」服務器查找 `example`
 - 「三級」服務器查找 `www`
 
+## 3. 瀏覽器與服務器 [TCP] 連線
+當瀏覽器取得 IP 位址，就可以與匹配的 IP 服務器進行資料交換。資料傳輸前更重要的就是連立 [TCP] 連線，就是所謂的[「三次握手」](/Browser/enter-url-in-browser#連線建立-三次握手)。
+
+
 
 ## Reference
+[TCP]:/Browser/tcp
 [DNS 是什麼? @aws]:https://aws.amazon.com/tw/route53/what-is-dns/
 [ISP (網路連線服務公司)]:https://www.ithome.com.tw/news/5086
 - [DNS 是什麼? @aws]
