@@ -61,19 +61,46 @@ DNS 服務器，主要是去搜索 `internet` 上多個 DNS 服務器，直到�
 
 ## 3. 瀏覽器與服務器 [TCP] 連線
 當瀏覽器取得 IP 位址，就可以與匹配的 IP 服務器進行資料交換。資料傳輸前更重要的就是連立 [TCP] 連線，就是所謂的[「三次握手」](/Browser/enter-url-in-browser#連線建立-三次握手)。
-
+### 三次握手 (連立連線)
 1. `客戶端` 透過 internet 發送 `SYN 數據包` 給 `服務端` 請求連線。
 2. 若 `服務端` 有開啟 `埠號` 且接受請求連線，`服務端`將會確認 `客戶端` 的 `SYN 數據包` 後，發送 `SYN / ACK 數據包` 給 `客戶端` 做連線確認。
 3. `客戶端` 發送 `ACK 數據包` 給 `服務端` ，確認無誤後就開始建立連線。
-
 
 :::tip
 這個動作的目的，在確認雙方的 `接收`、`發送` 能力是否正常，為之後的連線做準備。
 :::
 
+## 4. HTTP 請求
+當 [TCP] 連線已建立，就可以開始交換數據資料，當 `客戶端` 請求資料時，也會同步帶上瀏覽器上的 [Cookie] 資料。
+
+```bash
+GET https://api.juejin.cn/user_api/v1/user/get?aid=2608&uuid=6914148287638308365&not_self=0
+```
+
+## 5. 服務器 處理與響應
+
+`服務器` 接收到 `客戶端` 請求資料，會檢查它的 `header` `cookie` `body`，再依需求
+，處理後響應回傳。若是在前後端分離的情況下，主流是回傳 `json` 格式資料。
+
+### 回應響應
+會依 [HTTP] 協定的方法，在響應資料上加上應該有的狀態 `status` 與資料屬性，當響應有錯誤時，也可以從瀏覽器的請求上查看錯誤問題。
+
+## 6. 瀏覽器解析、渲染畫面
+
+1. 解析 `HTML` 產生 `DOM tree`
+2. 解析 `CSS` 產生 `CSSOM tree`
+3. 渲染畫面 (會等到 `CSSOM tree` 完成，才會執行) 
+
+:::tip
+`js` 就是依擺放的位置與屬性，來看執行的時間。[\<script> 非同步資源載入]
+:::
+
 
 ## Reference
+[\<script> 非同步資源載入]:/Javascript/script-attribute
 [TCP]:/Browser/tcp
+[HTTP]:/Browser/http
+[Cookie]:/Browser/cookie
 [DNS 是什麼? @aws]:https://aws.amazon.com/tw/route53/what-is-dns/
 [ISP (網路連線服務公司)]:https://www.ithome.com.tw/news/5086
 - [DNS 是什麼? @aws]
@@ -81,3 +108,4 @@ DNS 服務器，主要是去搜索 `internet` 上多個 DNS 服務器，直到�
 - [在瀏覽器輸入網址並送出後，到底發生了什麼事？](https://cythilya.github.io/2018/11/26/what-happens-when-you-type-an-url-in-the-browser-and-press-enter/)
 - [前端面試考古：瀏覽器輸入URL後到底發生什麼事呢？](https://viboloveyou12.medium.com/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%A9%A6%E8%80%83%E5%8F%A4-%E7%80%8F%E8%A6%BD%E5%99%A8%E8%BC%B8%E5%85%A5url%E5%BE%8C%E5%88%B0%E5%BA%95%E7%99%BC%E7%94%9F%E4%BB%80%E9%BA%BC%E4%BA%8B%E5%91%A2-ddc186da4043)
 - [Will 保哥的技術交流中心_討論](https://www.facebook.com/will.fans/posts/5477204855641947)
+- [六角 [熱門面試題] 從輸入網址列到渲染畫面，過程經歷了什麼事？](https://w3c.hexschool.com/blog/8d691e4f?fbclid=IwAR00yCEcVl82xTyZ9H35wIBQ9Z7xqzefTz1-1aeYyygCraCp87r6LbxgMHg)
