@@ -119,3 +119,4 @@ UDP 和 TCP 都會將資料分隔成更小的單元進行傳輸。這些小單�
 - [HTTP 狀態碼](https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Status)
 - [使用 Laravel 打造 RESTful API系列 第 8 篇](https://ithelp.ithome.com.tw/articles/10217459)
 - [TCP 和 UDP 是什麼：簡單的說明](https://nordvpn.com/zh-tw/blog/tcp-udp-bijiao/)
+- [连八股文都不懂还指望在前端混下去么](https://juejin.cn/post/7016593221815910408)
