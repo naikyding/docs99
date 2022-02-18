@@ -254,6 +254,67 @@ const bindPersonThisFun2 = person.bind({name: 'nike'}, 34, 4000)
 bindPersonThisFun2() // {name: 'nike'} 34 4000
 ```
 
+### 何時會使用到綁定?
+**1. 物件屬性方法內再宣告，有 this 函式**
+
+此時宣告的函式內 `this` 為 **全域物件** 就不再是這個物件，可以使用 **綁定 this** 來解決這個問題。
+```js {5-8}
+const person = {
+  name: 'nike',
+  fun1: function() {
+    console.log(this === person) // this 指向 person
+    let fun2 = function() {
+      console.log(this === person) //  this 指向 window
+    }
+    fun2()
+  }
+}
+```
+
+**2. 建構函式的方法函式內再宣告，有 this 函式**
+
+函式內再宣告，有 `this` 的函式，這個 `this` 會指向 **全域變數**。
+
+```js {10-14}
+class Person {
+  constructor(name) {
+    this.name = name
+  }
+
+  sayName() {
+    console.log(this.name)
+  }
+
+  sayNameAgin() {
+    setTimeout(function() {
+      console.log(this.name)
+    }, 1000)
+  }
+}
+
+const niki = new Person('NIKI')
+niki.sayName() // NIKI
+niki.sayNameAgin() // undefined
+```
+
+**解決方法：**
+- 使用 **箭頭函式**
+  ```js
+   setTimeout(() => {
+      console.log(this.name)
+    }, 1000)
+  ```
+- 使用 綁定 `this` 方法
+  ```js
+  setTimeout(function() {
+    console.log(this.name)
+  }.bind(this), 1000)
+  ```
+
+**參考:**
+- [脫離物件的函式 this](#脫離物件的-this)
+- [[JavaScript] 函數原型最實用的 3 個方法 — call、apply、bind](https://realdennis.medium.com/javascript-%E8%81%8A%E8%81%8Acall-apply-bind%E7%9A%84%E5%B7%AE%E7%95%B0%E8%88%87%E7%9B%B8%E4%BC%BC%E4%B9%8B%E8%99%95-2f82a4b4dd66)
+- [高階前端進階，為什麼要使用call、apply、bind？](https://www.gushiciku.cn/pl/ggTq/zh-tw)
 ## Reference
 - [鐵人賽：JavaScript 的 this 到底是誰？
 ](https://wcc723.github.io/javascript/2017/12/12/javascript-this/)
