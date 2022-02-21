@@ -149,7 +149,11 @@ export const getJavascriptSidebar = () => ({
     {
       text: 'Math 數學函式',
       link: '/Javascript/math'
-    }
+    },
+    {
+      text: 'Variable 變數',
+      link: '/Javascript/variable'
+    },
   ]
 })
 

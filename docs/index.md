@@ -38,6 +38,7 @@
 - [誰是 this ?](/Javascript/this)
 - [\<script> 非同步資源載入與安全驗証](/Javascript/script-attribute)
 - [Math 數學函式](/Javascript/math)
+- [Variable 變數](/Javascript/variable)
 
 ### 程式設計
 
