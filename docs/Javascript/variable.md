@@ -80,7 +80,7 @@ console.log(a) // 111
 
 **作用域為「當下區塊」以及「子區塊」**
 
-```js
+```js {4}
 function test() {
   let a = 123
   function test2() {
@@ -95,7 +95,9 @@ test()  // 456
 
 **`let` 變數認定以「區塊」為主 (`{}`)**
 
-```js
+若變數重覆宣告，會以當前區塊為認定。
+
+```js {4}
 function test() {
   let a = 123
   function test2() {
@@ -118,8 +120,17 @@ test()  // ?? 123
 - ❌ 重覆宣告
 - ❌ 更改值
 
-```js
+```js {2,4}
+function test() {
+    const a = 123
+    function test2() {
+      a = 456
+    }
+    test2()
+    console.log(a) // ❌ Uncaught TypeError: Assignment to constant variable.
+}
 
+test()
 ```
 :::tip 提示
 建議在區塊 `{}` 內使用。
