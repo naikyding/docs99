@@ -178,5 +178,9 @@ export const getSecuritySidebar = () => ({
       text: 'CSRF 跨站偽造請求',
       link: '/security/csrf'
     },
+    {
+      text: 'CORS 與 同源政策',
+      link: '/security/cors'
+    },
   ]
 })

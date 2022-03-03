@@ -53,6 +53,7 @@
 ## Security
 
 - [CSRF 跨站偽造請求](/security/csrf)
+- [CORS 與 同源政策](/security/cors)
 
 <!-- ## Vue
 
