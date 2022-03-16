@@ -12,12 +12,16 @@
 ## Timestamp 時間戳
 
 從 UTC+0 時區的 1970 年 1 月 1 號 0 時 0 分 0 秒開始，總共過了多少 毫秒。
+- `new Date().getTime()`
+- `Date.now()`
 
 ```js
 new Date().getTime() 
 // 1619577479460 timestamp
 
-Date.now() // 1638083670874
+Date.now() // 1638083670874 timestamp
+
+console.log(new Date().getTime() === Date.now()) // true
 ```
 :::tip
 - `timestamp` 本身是沒有時區觀念。 (`UTC+0`) 
