@@ -11,3 +11,4 @@
 
 - [为什么会有 OPTIONS 请求](https://cloud.tencent.com/developer/article/1046663)
 - [MDN 預檢](https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS#%E9%A0%90%E6%AA%A2%E8%AB%8B%E6%B1%82)
+- [Http Method(Http 方法)介紹 和 跨來源資源共用（CORS）](https://hackmd.io/@Not/rJoRFJa3S#%E5%85%88%E5%B0%8E%E8%AB%8B%E6%B1%82-Preflighted-requests)
