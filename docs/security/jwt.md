@@ -13,8 +13,8 @@ JWT (JSON WEB TOKEN) 基於 [RFC 7519](https://tools.ietf.org/html/rfc7519) 規�
 
 ## 技術
 ![](/security/img/jwt-json.png)
-JWT 是由 . 將字串分割為三個部分 `xxxxx.yyyyy.zzzzz` :
-- **Header 聲明**
+JWT 是由 `.` 將字串分割為三個部分 `xxxxx.yyyyy.zzzzz` :
+- **Header 聲明** `json`
 
   - JWT 解密的演算法
   - 簽章類型
@@ -25,7 +25,7 @@ JWT 是由 . 將字串分割為三個部分 `xxxxx.yyyyy.zzzzz` :
     }
     ```
 
-- **Payload 傳遞資料**
+- **Payload 傳遞資料** `json`
 
   ```json
   {
@@ -58,13 +58,21 @@ JWT 是由 . 將字串分割為三個部分 `xxxxx.yyyyy.zzzzz` :
   Authorization: <Bearer> <JWT TOKEN>
   ```
 
-- `服務端` 驗證 `header` 標頭寫 JWT
+- `服務端` 驗證 `header` 標頭 JWT
   - 成功: 返回「請求資源」
   - 失敗: 通知「驗證失敗」
 
-## 為什麼要加 Bearer ?
-
+:::tip 為什麼要加 Bearer ?
 HTTP 認證標頭「Authorization」的寫法，必須要在 token 前加上 type，基於 [RCF6750](https://datatracker.ietf.org/doc/html/rfc6750) 規範，而JWT 是搭配 `Bearer` 型態。
+:::
+
+## 好處
+- **無狀態** JWT 不在 `服務端` 儲存數據。
+- **廣展性佳** 當 `服務端` 分布式部署情況下，不需要像 `session` 方式，做多機數據共享。
+
+## 壞處
+- **安全性** 不可放敏感資料在 JWT Token。
+- **一次性** 當 payload 資料修改，就必須重簽章 JWT Token。
 
 ## Reference
 
@@ -77,3 +85,5 @@ HTTP 認證標頭「Authorization」的寫法，必須要在 token 前加上 typ
 - [JWT.IO - JSON Web Tokens Introduction](https://jwt.io/introduction)
 
 - [Bearer 說明](https://ithelp.ithome.com.tw/articles/10197166#:~:text=Error%20%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF-,JWT%20%E5%92%8C%20Bearer%20Token%20%E7%9A%84%E9%97%9C%E4%BF%82,%E5%B0%B1%E4%B8%8D%E5%A4%9A%E8%B4%85%E8%BF%B0%EF%BC%8C%E6%9C%AC%E7%AF%87%E5%8F%AA%E6%9C%83%E8%AA%AA%E6%98%8E%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E8%B7%9F%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85%E3%80%82,-Authentication%20schemes%EF%BC%9A)
+
+- [Day 19 - 二周目 - 帳密認証與JWT (JSON Web Token)傳遞](https://ithelp.ithome.com.tw/articles/10203292)

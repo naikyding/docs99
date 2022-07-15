@@ -54,6 +54,7 @@
 
 - [CSRF 跨站偽造請求](/security/csrf)
 - [CORS 與 同源政策](/security/cors)
+- [JWT 身份驗證機制](/security/jwt)
 
 <!-- ## Vue
 
