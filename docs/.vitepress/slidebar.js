@@ -182,5 +182,9 @@ export const getSecuritySidebar = () => ({
       text: 'CORS 與 同源政策',
       link: '/security/cors'
     },
+    {
+      text: 'JWT 身份驗證機制',
+      link: '/security/jwt'
+    },
   ]
 })
