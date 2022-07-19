@@ -1,0 +1,62 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.234.0/containers/javascript-node
+{
+	"name": "Node.js",
+	"image": "node:16.15.0",
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"editor.tabSize": 2,
+		"files.autoSave": "onWindowChange", // 切換視窗自動存檔
+		"editor.formatOnSave": true, // 存檔時自動 format
+		"vetur.validation.template": false, // 關閉 vetur 驗證
+		// "editor.defaultFormatter": "esbenp.prettier-vscode" // 預設 format 使用 prettier
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true,
+			"source.fixAll.stylelint": true
+		},
+		"css.validate": false,
+		"less.validate": false,
+		"scss.validate": false,
+		"stylelint.validate": [
+			"css",
+			"scss",
+			"vue"
+		],
+		"emmet.includeLanguages": {
+			"postcss": "scss"
+		}
+	},
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		// format
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+		// vue tool
+		"vue.volar",
+		"sdras.vue-vscode-snippets",
+		// css
+		"bradlc.vscode-tailwindcss",
+		// 效率工具
+		"tabnine.tabnine-vscode",
+		"christian-kohler.path-intellisense",
+		// 樣式
+		"pkief.material-icon-theme",
+		"oderwat.indent-rainbow",
+		"formulahendry.auto-rename-tag",
+		"formulahendry.auto-close-tag",
+		"naumovs.color-highlight",
+		// git
+		"eamodio.gitlens",
+		// 註解函式
+		"lllllllqw.jsdoc",
+		"pflannery.vscode-versionlens",
+		"usernamehw.errorlen",
+		"streetsidesoftware.code-spell-checker"
+	],
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "yarn install",
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "node"
+}
