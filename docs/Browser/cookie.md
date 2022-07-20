@@ -41,7 +41,7 @@ test_id=1111111; domain=google.com; path=/
 
 假設 **cookie** 的屬性為 `Path=/` `Domain=google.com`，則在 `drive.google.com`、`mail.google.com` 都可以 `http` 取得 **cookie** 資料。
 
-- **XSS 攻擊**
+- **[XSS 跨站腳本攻擊](/security/xss)**
 - **[CSRF 偽造請求功](/security/csrf)**
 
 ## Reference
