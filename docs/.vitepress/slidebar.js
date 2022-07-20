@@ -175,6 +175,10 @@ export const getSecuritySidebar = () => ({
   text: 'Security',
   children: [
     {
+      text: 'XSS 跨站腳本攻擊',
+      link: '/security/xss'
+    },
+    {
       text: 'CSRF 跨站偽造請求',
       link: '/security/csrf'
     },
