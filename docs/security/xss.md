@@ -59,3 +59,4 @@ XSS (Cross-site scripting) 主要是在輸入框，透過規避字元規則讓�
 
 - [透過XSS取得localstorage和cookie上的資料](https://blog.yyisyou.tw/3da8aedb/?fbclid=IwAR3BfsDOtgWYnJAHbZp7qkSbyTybGQte29hy9jZeqrfRn1iKQJZKps7svyA)
 - [零基礎資安系列（二）-認識 XSS（Cross-Site Scripting）](https://tech-blog.cymetrics.io/posts/jo/zerobased-cross-site-scripting/)
+- [線上遊戲 XSS game: Level 1](https://xss-game.appspot.com/level1)
