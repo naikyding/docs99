@@ -34,6 +34,10 @@ export const getBrowserSidebar = () => ({
     {
       text: '瀏覽器輸入網址後發生的事',
       link: '/Browser/enter-url-in-browser'
+    },
+    {
+      text: 'Blockchain 區塊鏈',
+      link: '/Browser/blockchain'
     }
   ]
 })

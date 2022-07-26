@@ -8,7 +8,7 @@
 📨 若有錯誤，歡迎來信 📬
 </a>
 
-## Browser
+## Browser / Internet
 
 - [HTTP 超文本傳輸協定](/Browser/http)
 - [Cookie](/Browser/cookie)
@@ -16,7 +16,7 @@
 - [XHR (XMLHttpRequest) 與 `服務端` 資料交換的物件方法](/Browser/xhr)
 - [AJAX (非同步 Javascript 與 XML 技術)](/Browser/ajax)
 - [瀏覽器輸入網址後發生的事](/Browser/enter-url-in-browser)
-- [Web 3.0](/Browser/web3)
+- [Blockchain 區塊鏈](/Browser/blockchain)
 
 ## Javascript
 
