@@ -9,7 +9,7 @@ export const getIndexSidebar = () => ({
 })
 
 export const getBrowserSidebar = () => ({
-  text: 'Browser',
+  text: 'Browser / Internet',
   children: [
     {
       text: 'HTTP',
