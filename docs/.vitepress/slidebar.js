@@ -38,6 +38,10 @@ export const getBrowserSidebar = () => ({
     {
       text: 'Blockchain 區塊鏈',
       link: '/Browser/blockchain'
+    },
+    {
+      text: 'Web 3.0',
+      link: '/Browser/web3'
     }
   ]
 })

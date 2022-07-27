@@ -17,6 +17,7 @@
 - [AJAX (非同步 Javascript 與 XML 技術)](/Browser/ajax)
 - [瀏覽器輸入網址後發生的事](/Browser/enter-url-in-browser)
 - [Blockchain 區塊鏈](/Browser/blockchain)
+- [Web 3.0](/Browser/web3)
 
 ## Javascript
 
