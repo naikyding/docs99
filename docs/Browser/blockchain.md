@@ -16,7 +16,7 @@
 
 - **Data 資料**
 - **Hash 密碼** (獨一無二)
-- **PoW (Hash of previous block)** (前一個區塊密碼)
+- **Hash of previous block** (前一個區塊密碼)
 
 ### 鏈結方式
 區塊與區塊藉由與 hash 的相符而鏈結，自已的 hash 與 前一個區塊的 hash 配對相連。
