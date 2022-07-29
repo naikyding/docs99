@@ -8,11 +8,11 @@
 ## 說明
 「區塊鏈」是一種依照時間序，將數據資料區塊相聯的「鏈式結構」，並以「密碼學」來保證它的不可篡改與偽造的分散式資料庫。
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3a6b043c-dcf4-4c6b-9852-7f1140b0bf4c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220726%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220726T071800Z&X-Amz-Expires=86400&X-Amz-Signature=813185a46b879c97a676bc1bc1f091bdaf92e9f05f341d4289de176533cdde16&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+![](/Browser/img/blockchain-1.png)
 
 ### 區塊結構
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e7776703-ff52-4844-ab00-f437f2fc1839/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220726%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220726T071943Z&X-Amz-Expires=86400&X-Amz-Signature=e12df52c07df34cbaa9926cce67cfe0e751f6db4edc5442f7602606fd90194e6&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+![](/Browser/img/blockchain-2.png)
 
 - **Data 資料**
 - **Hash 密碼** (獨一無二)
@@ -20,11 +20,13 @@
 
 ### 鏈結方式
 區塊與區塊藉由與 hash 的相符而鏈結，自已的 hash 與 前一個區塊的 hash 配對相連。
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/70d6a73e-13b5-4b2d-bd1d-5cd39ddac452/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220726%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220726T072256Z&X-Amz-Expires=86400&X-Amz-Signature=883c80a937091915b9c50462900de4b360156e69777adc8538b71c37d1e01dff&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+
+![](/Browser/img/blockchain-3.png)
+
 
 ### 區塊資料被修改
 若有一個區塊資料被修改，該區塊的 hash 也會改變，而後面的區塊就無法成功鏈結 ! 導致後面的區塊資料都無效。
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/84d46dfb-f60b-4bb1-927a-f967011ae1fb/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220726%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220726T072434Z&X-Amz-Expires=86400&X-Amz-Signature=ea3dff0bcd7e808e87a41de1b08148d11b55f37a4eee4de4cfe1599feee12972&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+![](/Browser/img/blockchain-5.png)
 
 ## 安全性
 - **Hash 區塊密碼**
@@ -40,7 +42,8 @@
 - **去中心化資料庫網路鏈**
 
     「區塊鏈」沒有任何中心機制，使用「點對點網路」任何人都可以加入 ，當加入後就可以獲得鏈上的資料的副本，所有人都是不同的「節點」，每個人手上都有「副本」藉此來互相驗證區塊的資料是否合法。
-    ![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/461ac2a7-37be-45ca-a9a4-63fdec20dde3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220726%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220726T072634Z&X-Amz-Expires=86400&X-Amz-Signature=778e03d2d0c72b36b577835a4714ac6e1727857b67444164736a01efb541506e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+    
+    ![](/Browser/img/blockchain-6.png)
     
 ## 何謂礦工?
 
