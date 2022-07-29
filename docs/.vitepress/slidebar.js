@@ -42,6 +42,10 @@ export const getBrowserSidebar = () => ({
     {
       text: 'Web 3.0',
       link: '/Browser/web3'
+    },
+    {
+      text: 'Smart Contract 智能合約',
+      link: '/Browser/smart-contract'
     }
   ]
 })
