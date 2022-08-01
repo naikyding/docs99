@@ -1,7 +1,7 @@
 # Web 3.0
 
 :::tip 簡單說
-**「Web 3.0」是一種以「去中心化」[區塊鏈](/Browser/blockchain) 技術為基底的網路應用。**
+**「Web 3.0」是一種以「去中心化」[區塊鏈](/Web3/blockchain) 技術為基底的網路應用。**
 :::
 
 ## 說明
@@ -10,7 +10,7 @@
 
 ### 發展史
 
-![](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/537cd9f3-fadc-4892-a417-17bf99e9a252/62779f33219c8_62779f331f49b_62779f331f472_T-FY_%E5%89%AF%E6%9C%AC.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220727%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220727T035246Z&X-Amz-Expires=86400&X-Amz-Signature=6939d09c263eff8b94c5dc04eabee627ff46d1be3b86a6138c2f5073a4b214b7&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%2262779f33219c8_62779f331f49b_62779f331f472_T-FY_%25E5%2589%25AF%25E6%259C%25AC.png%22&x-id=GetObject)
+![](/Web3/img/web3.png)
 
 | Web | 代表 | 特色 | 缺點 |
 | --- | --- | --- | --- |

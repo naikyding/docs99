@@ -1,4 +1,4 @@
-import { getIndexSidebar, getJavascriptSidebar, getVueSidebar, getBrowserSidebar, getSecuritySidebar } from './slidebar'
+import { getIndexSidebar, getJavascriptSidebar, getVueSidebar, getBrowserSidebar, getSecuritySidebar, getWeb3sidebar } from './slidebar'
 
 module.exports = {
   base: '/',
@@ -24,9 +24,9 @@ module.exports = {
 
     sidebar: [
       getIndexSidebar(),
-      // getJavascriptSidebar(),
       // getVueSidebar(),
       getBrowserSidebar(),
+      getWeb3sidebar(),
       getJavascriptSidebar(),
       getSecuritySidebar()
     ]

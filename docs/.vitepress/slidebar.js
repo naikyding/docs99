@@ -34,18 +34,25 @@ export const getBrowserSidebar = () => ({
     {
       text: '瀏覽器輸入網址後發生的事',
       link: '/Browser/enter-url-in-browser'
+    }
+  ]
+})
+
+export const getWeb3sidebar = () => ({
+  text: 'Web3',
+  collapsable: 'auto',
+  children: [
+    {
+      text: 'Web 3.0',
+      link: '/Web3/web3'
     },
     {
       text: 'Blockchain 區塊鏈',
-      link: '/Browser/blockchain'
-    },
-    {
-      text: 'Web 3.0',
-      link: '/Browser/web3'
+      link: '/Web3/blockchain'
     },
     {
       text: 'Smart Contract 智能合約',
-      link: '/Browser/smart-contract'
+      link: '/Web3/smart-contract'
     }
   ]
 })

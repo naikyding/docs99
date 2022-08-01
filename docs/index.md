@@ -8,19 +8,20 @@
 📨 若有錯誤，歡迎來信 📬
 </a>
 
-## Browser / Internet
-
+## Browser
 - [HTTP 超文本傳輸協定](/Browser/http)
 - [Cookie](/Browser/cookie)
 - [TCP 傳輸控制協定](/Browser/tcp)
 - [XHR (XMLHttpRequest) 與 `服務端` 資料交換的物件方法](/Browser/xhr)
 - [AJAX (非同步 Javascript 與 XML 技術)](/Browser/ajax)
 - [瀏覽器輸入網址後發生的事](/Browser/enter-url-in-browser)
-- [Blockchain 區塊鏈](/Browser/blockchain)
-- [Web 3.0](/Browser/web3)
-- [Smart Contract 智能合約](/Browser/smart-contract)
-## Javascript
 
+## Web 3.0
+- [Web 3.0](/Web3/web3)
+- [Blockchain 區塊鏈](/Web3/blockchain)
+- [Smart Contract 智能合約](/Web3/smart-contract)
+
+## Javascript
 - [BOM 瀏覽器物件模型](/Javascript/bom)
 - [DOM 文件物件模型](/Javascript/dom)
 - [Virtual DOM](/Javascript/virtual-dom)

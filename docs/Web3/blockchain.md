@@ -8,11 +8,11 @@
 ## 說明
 「區塊鏈」是一種依照時間序，將數據資料區塊相聯的「鏈式結構」，並以「密碼學」來保證它的不可篡改與偽造的分散式資料庫。
 
-![](/Browser/img/blockchain-1.png)
+![](/Web3/img/blockchain-1.png)
 
 ### 區塊結構
 
-![](/Browser/img/blockchain-2.png)
+![](/Web3/img/blockchain-2.png)
 
 - **Data 資料**
 - **Hash 密碼** (獨一無二)
@@ -21,12 +21,12 @@
 ### 鏈結方式
 區塊與區塊藉由與 hash 的相符而鏈結，自已的 hash 與 前一個區塊的 hash 配對相連。
 
-![](/Browser/img/blockchain-3.png)
+![](/Web3/img/blockchain-3.png)
 
 
 ### 區塊資料被修改
 若有一個區塊資料被修改，該區塊的 hash 也會改變，而後面的區塊就無法成功鏈結 ! 導致後面的區塊資料都無效。
-![](/Browser/img/blockchain-5.png)
+![](/Web3/img/blockchain-5.png)
 
 ## 安全性
 - **Hash 區塊密碼**
@@ -43,7 +43,7 @@
 
     「區塊鏈」沒有任何中心機制，使用「點對點網路」任何人都可以加入 ，當加入後就可以獲得鏈上的資料的副本，所有人都是不同的「節點」，每個人手上都有「副本」藉此來互相驗證區塊的資料是否合法。
     
-    ![](/Browser/img/blockchain-6.png)
+    ![](/Web3/img/blockchain-6.png)
     
 ## 何謂礦工?
 
