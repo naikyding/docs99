@@ -36,7 +36,9 @@ home: true
 
 ## Work Experience
 
-<h3 style="display: inline-block;">🟢 Frontend,</h3> **** CO., LTD. 2020/07 ~ 至今 (2年1個月)
+<div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
+
+<h3 style="display: inline-block; margin-top: 0;">🟢 Frontend,</h3> **** CO., LTD. 2020/07 ~ 至今 (2年1個月)
 
 > 遊戲平台開發與維護。前端開發、專案規劃、後端 api 討論與調整及前端部署配置，專案風格制定。獨立作業，成功為公司節省一員人力配置。
 
@@ -56,9 +58,12 @@ home: true
 - gitflow 工作流
 - APP Webview 功能串接處理
 
-<hr>
+</div>
 
-<h3 style="display: inline-block;">Frontend,</h3> GSiT CO., LTD. 2019/04 ~ 2019/08 (公司解散)
+
+<div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
+
+<h3 style="display: inline-block; margin-top: 0;">Frontend,</h3> GSiT CO., LTD. 2019/04 ~ 2019/08 (公司解散)
 
 > 前端規劃與開發、Event / Landing page，發展符合公司目標、品牌策略的 UI 設計與頁面開發。
 
@@ -66,9 +71,11 @@ home: true
 - UI 規劃 / 數位設計
 - 行銷數據分析與企畫
 
-<hr>
+</div>
 
-<h3 style="display: inline-block;">Frontend,</h3>VisualGoal Technology 2018 ~ 2019
+<div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
+
+<h3 style="display: inline-block; margin-top: 0;">Frontend,</h3>VisualGoal Technology 2018 ~ 2019
 
 > 符合公司目標、品牌策略的 UI 設計與前端開發。
 
@@ -76,9 +83,10 @@ home: true
 - Wordpress 開發與購物車
 - 2018AMPA 台北國際汽車配件展，統籌、企劃與數位設計
 
-<hr>
+</div>
 
-<h3 style="display: inline-block;">Frontend / Marketing,</h3> China Airlines (Yestrip) 2015 - 2018
+<div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
+<h3 style="display: inline-block; margin-top: 0;">Frontend / Marketing,</h3> China Airlines (Yestrip) 2015 - 2018
 
 > 符合公司形象之前端開發、UI 設計，華航專案前端規劃與製作，集團活動專案洽談需求與規劃，依時間線專案規劃與開發交付。
 
@@ -87,6 +95,7 @@ home: true
 - 華航行銷案對接及活動頁面開發
 - 「五月天聯名演唱會」、「華航精緻旅遊」、「日本鹿兒島觀光局」…. 專案規劃與開發。
 
+</div>
 
 ## Licence
 - **[Google Analytics (分析) 認證](https://drive.google.com/file/d/1HYSJJCEjh2wQM65w4NeCgF3mJFGodGCm/view)**
