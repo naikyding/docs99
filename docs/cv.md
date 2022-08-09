@@ -4,7 +4,7 @@ sidebar: auto
 
 # CV 2022
 
-## Info
+## INFO
 :::info Naiky Ding
 <div class="avatar" style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin-top: 1rem;">
   <img src="https://www.cakeresume.com/cdn-cgi/image/fit=scale-down,format=auto,w=828/https://images.cakeresume.com/XD2zB/naikyding/a8bc480b-a153-4b60-a270-2b92d7d5262e.png">
@@ -41,7 +41,79 @@ sidebar: auto
 
 :::
 
-## Skills
+## PROJECTS
+
+### [移動端]遊戲平台
+<img style="margin-top: 1rem;" src="https://images.cakeresume.com/XD2zB/naikyding/7a9ea601-4e66-4d71-8f0b-e423268ecef0.png" alt="遊戲平台">
+
+獨立開發前端專案。專案規劃、後端 api 討論與調整及前端部署配置，專案風格制定, 可依站台配置動態顯示與資料處理。
+
+特色: 
+- 依站台主題設置，動態換色 (亮/暗/色系組合/漸層組合) 
+- 主頁依站台客製化顯示樣式 - 單一專案共用不同站台 
+- 依需求動態取得遊戲 
+- 多樣化金流類型 - 動態客戶服務導向 
+- 動態個人資料驗証方式 
+- 多國語系 
+
+專案技術: 
+- Vue js - Vuetify Design Framework 
+- eslint / stylelint 專案格式控管 
+- gitflow 工作流 (feat br / PR) 
+- i18n 多國語系，導入 excel doc 統一管理 
+- Drone CI 自動部署 / 管理 
+- 文件編寫 : wiki / release / jsdoc
+
+### MetaWall
+
+<a href="https://meta-wall.vercel.app" target="_blank">
+  <img style="margin-top: 1rem;" src="https://i.imgur.com/0r2NF4b.png" alt="社群平台">
+</a>
+
+🌐 https://meta-wall.vercel.app
+
+使用 Vue3 + NodeJS + MongoDB 開發常見的社群平台
+
+全端開發:
+- 前端 Vue3 + Pinia
+- 後端 Node JS
+- 資料庫 MongoDB
+
+特色:
+- Imgur 圖床串接
+- JWT 登入機制
+- Google、Facebook 第三方登入
+- Restful API 串接
+- MongoDB for database
+
+### Online Store
+<a href="https://bit.ly/nikedinVue" targe="_blank">
+  <img style="margin-top: 1rem;" src="https://images.cakeresume.com/XD2zB/naikyding/9970ea3f-60d4-43dd-be3d-4251762e4bf4.png" alt="電商網站">
+</a>
+
+🌐 https://bit.ly/nikedinVue
+
+獨立開發電商網站，包含版面設計、前端處理、後端 api 製作、資料庫建置。
+Vue CLI 為專案架構製作、Vuex 管理共同資料(購物車資料...等)、Vue Router 控制頁面路由名稱，後台 統一整合由 `admin/api.js` 操作後端 API 動作，再經由 SweetAlert 互動顯示操作狀態。 
+
+全端開發:
+- 前端 VueJS
+- 後端 PHP
+- 資料庫 MySQL
+
+特色: 
+前端由 AXIOS 後端 API 互動； 後端使用 PHP PDO 技術連線 MySQL 操作 SQL CRUD 亦針對 SQL injection防護。
+
+## SKILLS
+<!-- |Web Dev|Desgin / Image processing|
+|-|-|
+|**Javascript**|**PS** 影像處理|
+|**Vue JS** Vue CLI、Vuex、Vue-Router | **Ai** 數位設計|
+|**Vuetify** / **Tailwind**| **Lr** 影像處理|
+|**Pinia**| **Pr** 影片編輯|
+|**Node JS** Express|**Final Cut Pro** 影片編輯|
+|**MongoDB** Mongoose| **Shapr3D** 工業設計 | -->
+
 ### Web Dev
 - **Javascript**
 - **Vue JS** Vue CLI、Vuex、Vue-Router
@@ -58,7 +130,7 @@ sidebar: auto
 - **Final Cut Pro** 影片編輯
 - **Shapr3D** 工業設計 
 
-## Experience
+## WORK EXPERIENCE
 
 ### 🟢 **** CO., LTD.
 <div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
@@ -125,7 +197,7 @@ sidebar: auto
 
 </div>
 
-## Licence
+## LICENCE
 - **[Google Analytics (分析) 認證](https://drive.google.com/file/d/1HYSJJCEjh2wQM65w4NeCgF3mJFGodGCm/view)**
 - **Adobe Photoshop ACA 國際認證**
 - **[網頁設計 技術士](https://drive.google.com/file/d/11TVbRxj034wyF-V9pnEpTbmMkYVU37dE/view?usp=sharing)**
