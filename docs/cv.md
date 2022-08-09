@@ -4,7 +4,7 @@ sidebar: auto
 
 # CV 2022
 
-## INFO
+## Info
 :::info Naiky Ding
 <div class="avatar" style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin-top: 1rem;">
   <img src="https://www.cakeresume.com/cdn-cgi/image/fit=scale-down,format=auto,w=828/https://images.cakeresume.com/XD2zB/naikyding/a8bc480b-a153-4b60-a270-2b92d7d5262e.png">
@@ -58,11 +58,11 @@ sidebar: auto
 - **Final Cut Pro** 影片編輯
 - **Shapr3D** 工業設計 
 
-## Work Experience
+## Experience
 
+### 🟢 **** CO., LTD.
 <div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
-
-<h3 style="display: inline-block; margin-top: 0;">🟢 Frontend,</h3> **** CO., LTD. 2020/07 ~ 至今 (2年1個月)
+<h3 style="display: inline-block; margin-top: 0;">Frontend</h3> 2020/07 ~ 至今 (2年1個月)
 
 > 遊戲平台開發與維護。前端開發、專案規劃、後端 api 討論與調整及前端部署配置，專案風格制定。獨立作業，成功為公司節省一員人力配置。
 
@@ -84,10 +84,10 @@ sidebar: auto
 
 </div>
 
-
+### ⚪ GSiT CO., LTD.
 <div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
 
-<h3 style="display: inline-block; margin-top: 0;">Frontend,</h3> GSiT CO., LTD. 2019/04 ~ 2019/08 (公司解散)
+<h3 style="display: inline-block; margin-top: 0;">Frontend</h3> 2019/04 ~ 2019/08 (公司解散)
 
 > 前端規劃與開發、Event / Landing page，發展符合公司目標、品牌策略的 UI 設計與頁面開發。
 
@@ -97,9 +97,11 @@ sidebar: auto
 
 </div>
 
+### ⚪ VisualGoal Technology
+
 <div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
 
-<h3 style="display: inline-block; margin-top: 0;">Frontend,</h3>VisualGoal Technology 2018 ~ 2019
+<h3 style="display: inline-block; margin-top: 0;">Frontend</h3> 2018 ~ 2019
 
 > 符合公司目標、品牌策略的 UI 設計與前端開發。
 
@@ -109,8 +111,10 @@ sidebar: auto
 
 </div>
 
+### ⚪ China Airlines (Yestrip)
+
 <div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
-<h3 style="display: inline-block; margin-top: 0;">Frontend / Marketing,</h3> China Airlines (Yestrip) 2015 - 2018
+<h3 style="display: inline-block; margin-top: 0;">Frontend / Marketing</h3> 2015 - 2018
 
 > 符合公司形象之前端開發、UI 設計，華航專案前端規劃與製作，集團活動專案洽談需求與規劃，依時間線專案規劃與開發交付。
 
@@ -127,6 +131,6 @@ sidebar: auto
 - **[網頁設計 技術士](https://drive.google.com/file/d/11TVbRxj034wyF-V9pnEpTbmMkYVU37dE/view?usp=sharing)**
 - **[廣告設計 技術士](https://drive.google.com/file/d/1faXBjKJPUWmzP6TFU9UMQocDkHJeYElS/view?usp=sharing)**
 - **[電腦軟體應用 技術士](https://drive.google.com/file/d/1__G1bjl8WMQEVGF_IyEx4APB4C2DPoIo/view?usp=sharing)**
-- **2012『台北城市之美』全國大專院校攝影寫作比賽: 第一名 及 最佳攝影獎**
+- **2012「台北城市之美」全國大專院校攝影寫作比賽: 第一名、最佳攝影獎**
 - **2010「創意實務專題競賽」創意影像製作組: 佳作**
-- **[2022 中華賽車會 - 賽道攝影師執照](https://www.ctmsa.org.tw/article/3210#:~:text=P22070,%E4%B8%81%E4%BF%A1%E5%AE%8F)**
+- **[2022 「中華賽車會」賽道攝影師執照](https://www.ctmsa.org.tw/article/3210#:~:text=P22070,%E4%B8%81%E4%BF%A1%E5%AE%8F)**
