@@ -65,7 +65,6 @@ sidebar: auto
 - 文件編寫 : wiki / release / jsdoc
 
 ### MetaWall
-
 <a href="https://meta-wall.vercel.app" target="_blank">
   <img style="margin-top: 1rem;" src="https://i.imgur.com/0r2NF4b.png" alt="社群平台">
 </a>
@@ -102,7 +101,7 @@ Vue CLI 為專案架構製作、Vuex 管理共同資料(購物車資料...等)�
 - 資料庫 MySQL
 
 特色: 
-前端由 AXIOS 後端 API 互動； 後端使用 PHP PDO 技術連線 MySQL 操作 SQL CRUD 亦針對 SQL injection防護。
+前端由 AXIOS 後端 API 互動； 後端使用 PHP PDO 技術連線 MySQL 操作 SQL CRUD 亦針對 SQL injection 防護。
 
 ## SKILLS
 <!-- |Web Dev|Desgin / Image processing|
