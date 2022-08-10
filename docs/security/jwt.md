@@ -8,6 +8,8 @@
   <summary>流程圖解</summary>
 
   ![](/security/img/jwt-flow.jpg)
+  [出處](https://twitter.com/guidesjava/status/1556482072356671488?fbclid=IwAR1vNwhv3iID9F-XyPXWILby_M0m-6SnMG032SXypqKXSlp709LM8skIZT4)
+
 
 </details>
 
