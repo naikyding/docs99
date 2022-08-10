@@ -4,6 +4,16 @@
 「JWT」就是 `用戶端` 請求資源的通行證。
 :::
 
+<details>
+  <summary>流程圖解</summary>
+
+  ![](/security/img/jwt-flow.jpg)
+
+</details>
+
+
+
+
 ## 說明
 JWT (JSON WEB TOKEN) 基於 [RFC 7519](https://tools.ietf.org/html/rfc7519) 規範，定義了一種 `json object` 透過加密技術產生的「簽章」， `服務端` 與 `客戶端` 藉由這個「簽章」身份驗證與取得信任。
 
