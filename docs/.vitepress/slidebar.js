@@ -9,7 +9,7 @@ export const getIndexSidebar = () => ({
 })
 
 export const getBrowserSidebar = () => ({
-  text: 'Browser / Internet',
+  text: 'Browser',
   children: [
     {
       text: 'HTTP',
@@ -34,6 +34,10 @@ export const getBrowserSidebar = () => ({
     {
       text: '瀏覽器輸入網址後發生的事',
       link: '/Browser/enter-url-in-browser'
+    },
+    {
+      text: 'Restful API 路由語義化設計風格',
+      link: '/Browser/restful-api'
     }
   ]
 })
