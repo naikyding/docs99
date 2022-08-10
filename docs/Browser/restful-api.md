@@ -30,8 +30,8 @@
 指的是請求的 `url` 接口，相同的資源 `url` 必須是固定的。
 
 ```bash
-https://www.example.com/post
-https://www.example.com/post/:id
+https://www.example.com/posts
+https://www.example.com/posts/:id
 ```
 
 ## 特性
@@ -44,8 +44,8 @@ https://www.example.com/post/:id
     DELETE  /api/post/delete
     
     ✅
-    GET     /api/post/:id
-    DELETE  /api/post/:id
+    GET     /api/posts/:id
+    DELETE  /api/posts/:id
     ```
     
 - 可以由 `url` 來知道資料的階層
