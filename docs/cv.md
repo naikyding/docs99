@@ -42,9 +42,14 @@ sidebar: auto
 :::
 
 ## PROJECTS
-
 ### [移動端]遊戲平台
 <img style="margin-top: 1rem;" src="https://images.cakeresume.com/XD2zB/naikyding/7a9ea601-4e66-4d71-8f0b-e423268ecef0.png" alt="遊戲平台">
+
+<div style="display: flex; justify-content: center;">
+  <img width="33%" height="auto" src="https://imgur.com/uB9AH3f.gif">
+  <img width="33%" height="auto" style="margin: 1rem" src="https://imgur.com/iU4Ywad.gif">
+  <img width="33%" height="auto" src="https://imgur.com/JClZfmc.gif">
+</div>
 
 獨立開發前端專案。專案規劃、後端 api 討論與調整及前端部署配置，專案風格制定, 可依站台配置動態顯示與資料處理。
 
