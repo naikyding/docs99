@@ -16,6 +16,7 @@
 - [AJAX (非同步 Javascript 與 XML 技術)](/Browser/ajax)
 - [瀏覽器輸入網址後發生的事](/Browser/enter-url-in-browser)
 - [Restful API 路由語義化設計風格](/Browser/restful-api)
+- [CDN 內容分發網路](/Browser/cdn)
 
 ## Web 3.0
 - [Web 3.0](/Web3/web3)

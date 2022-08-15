@@ -38,6 +38,10 @@ export const getBrowserSidebar = () => ({
     {
       text: 'Restful API 路由語義化設計風格',
       link: '/Browser/restful-api'
+    },
+    {
+      text: 'CDN 內容分發網路',
+      link: '/Browser/cdn'
     }
   ]
 })

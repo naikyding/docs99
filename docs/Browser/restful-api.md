@@ -34,19 +34,24 @@ https://www.example.com/posts
 https://www.example.com/posts/:id
 ```
 
+:::warning 建議
+- 若有兩個字組合，建議使用 `-` 連結。
+- 大多是使用「複數」命名 `posts`
+:::
+
 ## 特性
 
 - 唯一資源接口 `url`
     
-    ```bash
-    ❌
-    GET     /api/post/item
-    DELETE  /api/post/delete
-    
-    ✅
-    GET     /api/posts/:id
-    DELETE  /api/posts/:id
-    ```
+  ```bash
+  ❌
+  GET     /api/post/item
+  DELETE  /api/post/delete
+  
+  ✅
+  GET     /api/posts/:id
+  DELETE  /api/posts/:id
+  ```
     
 - 可以由 `url` 來知道資料的階層
 - 語意化請求動作 `methods`
@@ -54,6 +59,7 @@ https://www.example.com/posts/:id
 
 ## 缺點
 - 請求數量驚人
+
 
 ## Reference
 
