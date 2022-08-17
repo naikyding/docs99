@@ -17,6 +17,11 @@ CDN (Content Delivery Network) 內容分發網路。指的是一種使用網路�
 
 <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F0DWk2jP0o3UyRVR9hOuLUA%2FCDN-Flow%3Fnode-id%3D0%253A1" allowfullscreen></iframe>
 
+## 特點
+### 優點
+
+### 缺點
+
 ## Reference 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/m73oA0_ptxc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
