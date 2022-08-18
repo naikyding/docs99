@@ -46,7 +46,7 @@
 - [Variable 變數](/Javascript/variable)
 
 ## CSS
-- [元素置中的 5 個方法](/css/center)
+- [元素置中的 5 個方法](/css1/center)
 
 ### 程式設計
 
