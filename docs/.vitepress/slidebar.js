@@ -190,7 +190,7 @@ export const getCssSidebar = () => ({
   children: [
     {
       text: '元素置中的 5 個方法',
-      link: '/css1/center'
+      link: '/css/center'
     },
   ]
 })
