@@ -184,6 +184,17 @@ export const getJavascriptSidebar = () => ({
   ]
 })
 
+export const getCssSidebar = () => ({
+  text: 'CSS',
+  collapsable: 'auto',
+  children: [
+    {
+      text: '元素置中的 5 個方法',
+      link: '/css/center'
+    },
+  ]
+})
+
 export const getVueSidebar = () => ({
   text: 'Vue',
   children: [
