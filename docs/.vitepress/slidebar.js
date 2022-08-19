@@ -10,6 +10,8 @@ export const getIndexSidebar = () => ({
 
 export const getBrowserSidebar = () => ({
   text: 'Browser',
+  collapsible: true,
+  collapsed: true,
   items: [
     {
       text: 'HTTP',
@@ -48,7 +50,8 @@ export const getBrowserSidebar = () => ({
 
 export const getWeb3sidebar = () => ({
   text: 'Web3',
-  collapsable: 'auto',
+  collapsible: true,
+  collapsed: true,
   items: [
     {
       text: 'Web 3.0',
@@ -67,7 +70,8 @@ export const getWeb3sidebar = () => ({
 
 export const getJavascriptSidebar = () => ({
   text: 'Javascript',
-  collapsable: 'auto',
+  collapsible: true,
+  collapsed: true,
   items: [
     {
       text: 'BOM 瀏覽器物件模型',
@@ -186,7 +190,8 @@ export const getJavascriptSidebar = () => ({
 
 export const getCssSidebar = () => ({
   text: 'CSS',
-  collapsable: 'auto',
+  collapsible: true,
+  collapsed: true,
   items: [
     {
       text: '元素置中的 5 個方法',
@@ -197,6 +202,8 @@ export const getCssSidebar = () => ({
 
 export const getVueSidebar = () => ({
   text: 'Vue',
+  collapsible: true,
+  collapsed: true,
   items: [
     {
       text: '索引',
@@ -211,6 +218,8 @@ export const getVueSidebar = () => ({
 
 export const getSecuritySidebar = () => ({
   text: 'Security',
+  collapsible: true,
+  collapsed: true,
   items: [
     {
       text: 'XSS 跨站腳本攻擊',
