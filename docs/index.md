@@ -2,7 +2,7 @@
 
 [![Generic badge](https://img.shields.io/badge/since-2021/11/08-blue.svg)](https://shields.io/)
 
-基於 <img width="30" src="https://camo.githubusercontent.com/61e102d7c605ff91efedb9d7e47c1c4a07cef59d3e1da202fd74f4772122ca4e/68747470733a2f2f766974656a732e6465762f6c6f676f2e737667"> `vitepress` 搭建的文檔專案，後續每日整理 `notion` 上所有的速記。同時，也是自我理解的再次檢視。
+基於 <img style="display: inline-block" width="30" src="https://camo.githubusercontent.com/61e102d7c605ff91efedb9d7e47c1c4a07cef59d3e1da202fd74f4772122ca4e/68747470733a2f2f766974656a732e6465762f6c6f676f2e737667"> `vitepress` 搭建的文檔專案，後續每日整理 `notion` 上所有的速記。同時，也是自我理解的再次檢視。
 
 <a href="mailto:74ding@gmail.com">
 📨 若有錯誤，歡迎來信 📬
@@ -48,8 +48,7 @@
 ## CSS
 - [元素置中的 5 個方法](/css/center)
 
-### 程式設計
-
+## 程式設計
 - [Constructor 建構函式](/Javascript/constructor)
 - [Factory Function 工廠函式](/Javascript/factoryFunction)
 - [Constructor VS Factory Function](/Javascript/constructorVSfactory)
@@ -58,7 +57,6 @@
 - [SOLID 設計原則](/Javascript/solid)
 
 ## Security
-
 - [XSS 跨站腳本攻擊](/security/xss)
 - [CSRF 跨站偽造請求](/security/csrf)
 - [CORS 與 同源政策](/security/cors)

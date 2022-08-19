@@ -7,6 +7,7 @@
   height: 100px;
   border: 1px solid #1e1e1e;
   border-radius: 10px;
+  background: #444;
 }
 
 .child {
