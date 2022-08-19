@@ -206,12 +206,8 @@ export const getVueSidebar = () => ({
   collapsed: true,
   items: [
     {
-      text: '索引',
-      link: '/Vue/'
-    },
-    {
-      text: '[Vue3]深入了解 ref 實現原理',
-      link: '/Vue/vue3-ref'
+      text: '父子組件資料傳遞',
+      link: '/Vue/props-emit'
     },
   ]
 })

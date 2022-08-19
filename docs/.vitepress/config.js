@@ -1,18 +1,20 @@
 import { getIndexSidebar, getJavascriptSidebar, getVueSidebar, getBrowserSidebar, getSecuritySidebar, getWeb3sidebar, getCssSidebar } from './slidebar'
 
 module.exports = {
-  base: '/',
-  title: 'Docs99',
-  description: '開發學習．長長99',
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/document.svg' }]
   ],
+  base: '/',
+  title: 'Docs99',
+  description: '開發學習．長長99',
+  lastUpdated: true,
   
   themeConfig: {
-    repo: 'https://github.com/naikyding/docs99',
-    lastUpdated: true,
-    search: true,
-    searchMaxSuggestions: 10,
+    logo: '/document.svg',
+ 
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/naikyding' },
+    ],
 
     algolia: {
       appId: 'FAH6VE4565',
@@ -20,17 +22,14 @@ module.exports = {
       indexName: 'docs99'
     },
 
-    logo: '/document.svg',
-
     sidebar: [
       getIndexSidebar(),
-      // getVueSidebar(),
       getBrowserSidebar(),
       getWeb3sidebar(),
       getJavascriptSidebar(),
+      getVueSidebar(),
       getCssSidebar(),
       getSecuritySidebar()
     ]
   },
 }
-
