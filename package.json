@@ -12,6 +12,6 @@
   "license": "ISC",
   "devDependencies": {
     "@vuepress/plugin-search": "^2.0.0-beta.49",
-    "vitepress": "^0.20.1"
+    "vitepress": "^1.0.0-alpha.8"
   }
 }
