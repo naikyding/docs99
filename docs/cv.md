@@ -1,8 +1,14 @@
 ---
-sidebar: auto
+# sidebar: auto
 ---
 
 # CV 2022
+
+<style>
+  svg {
+    display: inline;
+  }
+</style>
 
 ## INFO
 :::info Naiky Ding
@@ -44,12 +50,6 @@ sidebar: auto
 ## PROJECTS
 ### [移動端]遊戲平台
 <img style="margin-top: 1rem;" src="https://images.cakeresume.com/XD2zB/naikyding/7a9ea601-4e66-4d71-8f0b-e423268ecef0.png" alt="遊戲平台">
-
-<div style="display: flex; justify-content: center;">
-  <img width="33%" height="auto" src="https://imgur.com/uB9AH3f.gif">
-  <img width="33%" height="auto" style="margin: 0 1rem;" src="https://imgur.com/iU4Ywad.gif">
-  <img width="33%" height="auto" src="https://i.imgur.com/MhsHxbE.gif">
-</div>
 
 獨立開發前端專案。專案規劃、後端 api 討論與調整及前端部署配置，專案風格制定, 可依站台配置動態顯示與資料處理。
 
@@ -136,11 +136,18 @@ Vue CLI 為專案架構製作、Vuex 管理共同資料(購物車資料...等)�
 
 ## WORK EXPERIENCE
 
-### 🟢 **** CO., LTD.
-<div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
+:::info 🟢 NOW
+
+### **** CO., LTD. 
 <h3 style="display: inline-block; margin-top: 0;">Frontend</h3> 2020/07 ~ 至今 (2年1個月)
 
 > 遊戲平台開發與維護。前端開發、專案規劃、後端 api 討論與調整及前端部署配置，專案風格制定。獨立作業，成功為公司節省一員人力配置。
+
+<div style="display: flex; justify-content: center;">
+  <img width="33%" height="auto" src="https://imgur.com/uB9AH3f.gif">
+  <img width="33%" height="auto" style="margin: 0 1rem;" src="https://imgur.com/iU4Ywad.gif">
+  <img width="33%" height="auto" src="https://i.imgur.com/MhsHxbE.gif">
+</div>
 
 平均數據：
 - 4+ commit/日
@@ -157,11 +164,10 @@ Vue CLI 為專案架構製作、Vuex 管理共同資料(購物車資料...等)�
 - i18n 多國語系 (簡/英/泰/越)，且導出由 google doc 統一管理，方便非開發者編輯與後續資料整合。
 - gitflow 工作流
 - APP Webview 功能串接處理
+:::
 
-</div>
-
-### ⚪ GSiT CO., LTD.
-<div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
+:::info ⚪
+### GSiT CO., LTD.
 
 <h3 style="display: inline-block; margin-top: 0;">Frontend</h3> 2019/04 ~ 2019/08 (公司解散)
 
@@ -170,36 +176,33 @@ Vue CLI 為專案架構製作、Vuex 管理共同資料(購物車資料...等)�
 - 前端開發
 - UI 規劃 / 數位設計
 - 行銷數據分析與企畫
+:::
 
-</div>
-
-### ⚪ VisualGoal Technology
-
-<div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
+:::info ⚪
+### VisualGoal Technology
 
 <h3 style="display: inline-block; margin-top: 0;">Frontend</h3> 2018 ~ 2019
 
 > 符合公司目標、品牌策略的 UI 設計與前端開發。
 
-- 前端開發 / UI 設計 
-- Wordpress 開發與購物車
+- 前端開發 / UI 設計
+- Wordpress
 - 2018AMPA 台北國際汽車配件展，統籌、企劃與數位設計
 
-</div>
+:::
 
-### ⚪ China Airlines (Yestrip)
-
-<div style="background: #FAFAFA; border-radius: 14px; padding: 1rem; margin-bottom: 2rem;">
+:::info ⚪
+### China Airlines (Yestrip)
 <h3 style="display: inline-block; margin-top: 0;">Frontend / Marketing</h3> 2015 - 2018
 
 > 符合公司形象之前端開發、UI 設計，華航專案前端規劃與製作，集團活動專案洽談需求與規劃，依時間線專案規劃與開發交付。
 
-- 前端開發 / UI 設計
+- 前端開發 / UI
 - 數位行銷規劃與執行 / 社群經營與線上活動企劃
 - 華航行銷案對接及活動頁面開發
 - 「五月天聯名演唱會」、「華航精緻旅遊」、「日本鹿兒島觀光局」…. 專案規劃與開發。
 
-</div>
+:::
 
 ## LICENCE
 - **[Google Analytics (分析) 認證](https://drive.google.com/file/d/1HYSJJCEjh2wQM65w4NeCgF3mJFGodGCm/view)**
