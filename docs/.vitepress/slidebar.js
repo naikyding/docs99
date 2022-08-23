@@ -206,7 +206,7 @@ export const getVueSidebar = () => ({
   collapsed: true,
   items: [
     {
-      text: '父子組件資料傳遞',
+      text: '父子組件資料傳遞 props、$emit',
       link: '/Vue/props-emit'
     },
   ]

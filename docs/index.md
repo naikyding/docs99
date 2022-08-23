@@ -46,6 +46,9 @@
 - [Math 數學函式](/Javascript/math)
 - [Variable 變數](/Javascript/variable)
 
+## Vue
+- [父子組件資料傳遞 props、$emit](/Vue/props-emit)
+
 ## CSS
 - [元素置中的 5 個方法](/css/center)
 

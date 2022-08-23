@@ -1,4 +1,4 @@
-# 父子組件資料傳遞
+# 父子組件資料傳遞 props、$emit
 ![](https://i.imgur.com/tMExXxt.png)
 
 ## props 傳子
