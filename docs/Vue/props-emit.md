@@ -225,7 +225,7 @@ export default {
 </script>
 ```
 **也可以直接寫在 `v-on` 上**:
-```vue
+```vue {3}
 // 父組件
 <template>
   <MyComponent @some-event="(newValue) => count = newValue" />
