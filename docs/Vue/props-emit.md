@@ -166,8 +166,8 @@ export default {
 export default {
   props: ['foo'],
   created() {
-      // ❌ warning, props are readonly!
-      this.foo = 'bar'
+    // ❌ warning, props are readonly!
+    this.foo = 'bar'
   }
 }
 <script>
@@ -236,6 +236,52 @@ export default {
 :::warning 注意
 監聽客製事件名稱，必須為 `kebab-case` (烤肉串)。
 :::
+
+## `v-model` 父子資料雙向綁定 [Vue2]
+### 1️⃣ 父組件
+
+父層在 **子組件** 綁上 `v-model` 屬性帶入資料。
+
+```html {2}
+<ChildComponent 
+  v-model="bindValue" 
+/>
+```
+
+```js
+export default {
+  data: () => ({
+    bindValue: '父層參數'
+  }),
+}
+```
+
+### 2️⃣ 子組件
+
+**子組件** 設置 `props` 與 `model` 來接收來自 **父組件** 的數據，`<input>` 屬性綁上 `value` 與輸入時執行變更的函式 `@input`
+
+```html{3-4}
+<input 
+  type="text"
+  :value="parentValue"
+  @input="$emit('update-parent-value', $event.target.value)"
+>
+```
+
+```js{3-6,9-10}
+export default {
+  props: {
+    parentValue: {               // 自定義參數名稱 (來自父層的 v-model 資料)
+      type: String,
+      required: true
+    }
+  },
+  model: {
+    prop: 'parentValue',         // props 自定義參數名稱
+    event: 'update-parent-value' // 父層監聽 子組件事件的函式名稱 ($emit 自定義)
+  }
+}
+```
 
 ## Reference
 - [VueJS Props](https://vuejs.org/guide/components/props.html#props)
