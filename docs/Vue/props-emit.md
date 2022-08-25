@@ -90,6 +90,7 @@ export default {
 };
 </script>
 ```
+
 :::details 詳細範例
 ```vue
 <script>
@@ -154,7 +155,7 @@ export default {
 <blog-post is-published></blog-post>
 ```
 :::
-## 單向資料流
+## ⛔ 單向資料流
 > 不可直接更改 **子組件** 數據資料。
 
 **子組件** 接收的數據都是來自 **父組件** 傳遞的，當 **父組件** 數據更改時 **子組件** 就會同步更新數據，**子組件** 不應該可以直接改動 **父組件** 數據狀態，這是為了避免資料流錯亂、難以被理解。
@@ -197,7 +198,7 @@ export default {
 ```
 
 :::warning 注意
-客製事件名稱可以自定義，但必須為 `camelCase` 駱峰。
+客製事件名稱可以自定義，建議為 `camelCase` 駱峰。
 :::
 
 ### 2️⃣ 父層監聽客製事件
@@ -235,6 +236,7 @@ export default {
 :::warning 注意
 監聽客製事件名稱，必須為 `kebab-case` (烤肉串)。
 :::
+
 ## Reference
 - [VueJS Props](https://vuejs.org/guide/components/props.html#props)
 - [VueJS Event](https://vuejs.org/guide/components/events.html)
