@@ -209,6 +209,10 @@ export const getVueSidebar = () => ({
       text: '父子組件資料傳遞 props、$emit',
       link: '/Vue/props-emit'
     },
+    {
+      text: '[前端] Google 登入按鈕',
+      link: '/Vue/google-signin-button'
+    },
   ]
 })
 
