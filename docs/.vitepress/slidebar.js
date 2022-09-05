@@ -44,6 +44,10 @@ export const getBrowserSidebar = () => ({
     {
       text: 'CDN 內容分發網路',
       link: '/Browser/cdn'
+    },
+    {
+      text: '申請 Google OAuth 2.0 憑證',
+      link: '/Browser/google-oauth-client-id'
     }
   ]
 })

@@ -18,7 +18,7 @@
 - [瀏覽器輸入網址後發生的事](/Browser/enter-url-in-browser)
 - [Restful API 路由語義化設計風格](/Browser/restful-api)
 - [CDN 內容分發網路](/Browser/cdn)
-
+- [申請 Google OAuth 2.0 憑證](/Browser/google-oauth-client-id)
 ## Web 3.0
 - [Web 3.0](/Web3/web3)
 - [Blockchain 區塊鏈](/Web3/blockchain)
