@@ -16,6 +16,7 @@ Google 第三方登入，通常有兩種作法:
 以下流程為「前端」依 `google` 提供 SDK 取得 `id_token` 的方式，再傳給「後端」的作法。
 
 ### 1️⃣ 申請 Google Oauth2 ClientID [🔗](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiC5N3gkfD5AhWdwYsBHZWPC7oQFnoECAcQAQ&url=https%3A%2F%2Fconsole.cloud.google.com%2F%3Fhl%3Dzh-TW&usg=AOvVaw0RuyBPGutNP0dN_EgZVQoy)
+[申請 Google OAuth 2.0 憑證](/Browser/google-oauth-client-id)
 
 ### 2️⃣ Google 帳戶登入指南 [🔗](https://developers.google.com/identity/gsi/web?hl=zh-tw)
 
