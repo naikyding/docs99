@@ -210,7 +210,7 @@ export const getVueSidebar = () => ({
       link: '/Vue/props-emit'
     },
     {
-      text: '[前端] Google 登入按鈕',
+      text: '[前端] 產生 Google 登入按鈕',
       link: '/Vue/google-signin-button'
     },
   ]

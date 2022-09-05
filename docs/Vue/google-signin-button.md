@@ -1,4 +1,4 @@
-# [前端] Google 登入按鈕
+# [前端] 產生 Google 登入按鈕
 
 ## 說明
 Google 第三方登入，通常有兩種作法: 
@@ -29,10 +29,10 @@ Google 第三方登入，通常有兩種作法:
 
 ### 4️⃣ 顯示 google 登入按鈕
 
-在設置好 `clientID` 、載入 `<script>` 後，就可以在選擇在 `html` 或 `javascript` 在頁面上顯示按鈕。
+在設置好 `clientID` 、載入 `<script>` 後，就可以在選擇在 `html` 或 `javascript` 在頁面上顯示按鈕。**建議選擇一種作法!**
 
 :::details Html 方法:
-若是使用 `redirectUrl`，只能使用這個方法。
+
 ```html
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 
@@ -53,6 +53,9 @@ Google 第三方登入，通常有兩種作法:
 	data-logo_alignment="left">
 </div>
 ```
+
+:::danger 注意
+若是使用 `redirectUrl`，只能使用這個方法。
 :::
 
 
@@ -76,7 +79,7 @@ export default {
       document.getElementById("googleSignInBtn"),
       { theme: "outline", size: "large" } // customization attributes
     );
-    // 顯示 google 登入對話框
+    // 顯示 google ONE TAP 登入對話框
     // window.google.accounts.id.prompt(); // also display the One Tap dialog
 	},
 
@@ -121,8 +124,8 @@ Javascript 方法，使用 `popup` 顯示，只能回傳 `callback` ；要轉址
 :::details Google SignIn Flow
   [Google Sign-In for server-side apps | Google Sign-In for Websites | Google Developers](https://developers.google.com/identity/sign-in/web/server-side-flow?hl=en)
 :::
-:::details (說明) Google One Tap 提示
-  ![]()
+:::details Google One Tap 提示框 (圖)
+  ![](/Vue/img/google-auth-one-tap.png)
 :::
 :::details 過期套件
   - [https://github.com/guruahn/vue-google-oauth2](https://github.com/guruahn/vue-google-oauth2)
