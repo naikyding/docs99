@@ -2,7 +2,7 @@
 
 ## 說明
 Google 的所有 API 都是使用 OAuth 2.0 來進行驗證與操作授權，想要操作 Google API 就必須要先申請授權的憑證。
-申請 Google OAuth 2.0 憑證後，之後與 Google API 互動，都是使用建立的 `clientID` 與 `密碼` 來驗証操作的權限。
+申請 Google OAuth 2.0 憑證後，之後與 Google API 互動，都是使用建立的 `clientID` 與 `clientSecret` 來驗証操作的權限。
 
 ## 流程
 ### 1️⃣ [Google API Console] 建立專案
@@ -43,16 +43,15 @@ Google 的所有 API 都是使用 OAuth 2.0 來進行驗證與操作授權，想
   - 已授權的 Javascript 來源: 操作這個 google api 的網址要設上去，不然無法操作。
   - 已授權的重新導向 URL: 若 google api 操作後會轉址，需要設置上去，不然無法成功導向。
   ![](/Browser/img/gcp-oauth-3.png)
-- 建立憑證完成 (密碼只會顯示一次，請先保存)
+- 建立憑證完成
   ![](/Browser/img/gcp-oauth-4.png)
 - 若要調整憑證設定
   ![](/Browser/img/gcp-oauth-5.png)
 
 :::
 
-
-
 ## Reference
 [Google API Console]:https://console.developers.google.com/
 - [使用 OAuth 2.0 存取 Google API](https://developers.google.com/identity/protocols/oauth2)
 - [Google API Console]
+- [[筆記] 認識 OAuth 2.0：一次了解各角色、各類型流程的差異](https://medium.com/%E9%BA%A5%E5%85%8B%E7%9A%84%E5%8D%8A%E8%B7%AF%E5%87%BA%E5%AE%B6%E7%AD%86%E8%A8%98/%E7%AD%86%E8%A8%98-%E8%AA%8D%E8%AD%98-oauth-2-0-%E4%B8%80%E6%AC%A1%E4%BA%86%E8%A7%A3%E5%90%84%E8%A7%92%E8%89%B2-%E5%90%84%E9%A1%9E%E5%9E%8B%E6%B5%81%E7%A8%8B%E7%9A%84%E5%B7%AE%E7%95%B0-c42da83a6015)
