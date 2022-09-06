@@ -122,6 +122,7 @@ Javascript 方法，使用 `popup` 顯示，只能回傳 `callback` ；要轉址
 - [使用 `html` 操作的說明](https://developers.google.com/identity/gsi/web/reference/html-reference)
 - [按鈕程式產生器](https://developers.google.com/identity/gsi/web/tools/configurator)
 - [Google 的第三方登入 (web 前端實作)](https://dwatow.github.io/2021/06-15-google-sign-in-oauth/)
+- [Google SignIn 個人化按鈕](https://developers.google.com/identity/gsi/web/guides/personalized-button)
 :::details Google SignIn Flow
   [Google Sign-In for server-side apps | Google Sign-In for Websites | Google Developers](https://developers.google.com/identity/sign-in/web/server-side-flow?hl=en)
 :::
