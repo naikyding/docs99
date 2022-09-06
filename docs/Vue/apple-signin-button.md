@@ -117,14 +117,14 @@
   // 若授權成功
   document.addEventListener('AppleIDSignInOnSuccess', (event) => {
     // Handle successful response.
-    console.log(event.detail.authorization.id_token);
-  });
+    console.log(event.detail.authorization.id_token)
+  })
 
   // 若授權失敗
   document.addEventListener('AppleIDSignInOnFailure', (event) => {
     // Handle error.
     console.log(event.detail.error);
-  });
+  })
   ```
 
   **響應 body**:
@@ -173,7 +173,6 @@
   ```json
   { "name": { "firstName": string, "lastName": string }, "email": string }
   ```
-
 :::
 
 ## DEMO
@@ -195,9 +194,9 @@ export default {
       scope: "name email",
       redirectURI: "[REDIRECT_URI]",
       usePopup: true,
-    });
+    })
   },
-};
+}
 </script>
 
 <template>
