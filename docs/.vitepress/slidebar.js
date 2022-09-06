@@ -217,6 +217,10 @@ export const getVueSidebar = () => ({
       text: '[前端] 產生 Google 登入按鈕',
       link: '/Vue/google-signin-button'
     },
+    {
+      text: '[前端] 產生 Apple 登入按鈕',
+      link: '/Vue/apple-signin-button'
+    },
   ]
 })
 
