@@ -211,6 +211,7 @@ export default {
 - [Apple SignIn Button CI 規範](https://developer.apple.com/design/human-interface-guidelines/technologies/sign-in-with-apple/buttons/)
 - [Apple SignIn Button 風格配置說明](https://developer.apple.com/documentation/sign_in_with_apple/displaying_sign_in_with_apple_buttons_on_the_web)
 - [Apple SignIn Button 顯示方法指南](https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_js/configuring_your_webpage_for_sign_in_with_apple)
+- [Apple SignIn Button 生成按鈕線上工具](https://appleid.apple.com/signinwithapple/button)
 - [Sign in with Apple 說明頁](https://developer.apple.com/sign-in-with-apple/) 
 - [web端接入apple Sign in流程](https://blog.xiaomo.info/2020/webAppleSignIn/)
 - [Sign with in Apple，网站配置 Apple 登录](https://doofox.cn/sign-with-in-apple.html)
