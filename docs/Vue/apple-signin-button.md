@@ -1,12 +1,17 @@
 # [前端] 產生 Apple 登入按鈕
 
+:::tip 操作必備:
+- 合法操作 API 的 `clientID`
+- 設置合法操作 API 網域 (不可為 IP、localhost)
+- 設置合法 `redirectUrl` (不可為 IP、localhost)
+:::
+
 ## 說明
 可以使用 Apple 提供的 SDK 函式庫方法，在前端生成登入按鈕，進而取得使用者的 `id_token` 交給後端來驗證處理。
 
 ## 流程
-### 1️⃣ 建立 apple 憑證
-
-取得 `clientID` 與 Apple API 授權操作。
+### 1️⃣ 建立 Apple 憑證
+取得 `clientID` 與 Apple API 授權操作。 ( [加入 Apple 開發者計劃](/Browser/register-apple-dev) )
 
 ### 2️⃣ 載入 apple 函式庫
 
