@@ -195,7 +195,7 @@
 export default {
   mounted() {
     window.AppleID.auth.init({
-      clientId: "com.gioco.apple.login",
+      clientId: "com.xxxx.xxxx.login",
       scope: "name email",
       redirectURI: "[REDIRECT_URI]",
       usePopup: true,
