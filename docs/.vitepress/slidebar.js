@@ -48,7 +48,11 @@ export const getBrowserSidebar = () => ({
     {
       text: '申請 Google OAuth 2.0 憑證',
       link: '/Browser/google-oauth-client-id'
-    }
+    },
+    {
+      text: '加入 Apple 開發者計劃',
+      link: '/Browser/register-apple-dev'
+    },
   ]
 })
 

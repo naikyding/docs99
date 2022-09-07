@@ -19,6 +19,7 @@
 - [Restful API 路由語義化設計風格](/Browser/restful-api)
 - [CDN 內容分發網路](/Browser/cdn)
 - [申請 Google OAuth 2.0 憑證](/Browser/google-oauth-client-id)
+- [加入 Apple 開發者計劃](/Browser/register-apple-dev)
 ## Web 3.0
 - [Web 3.0](/Web3/web3)
 - [Blockchain 區塊鏈](/Web3/blockchain)
@@ -50,6 +51,7 @@
 - [父子組件資料傳遞 props、$emit](/Vue/props-emit)
 - [[前端] 產生 Google 登入按鈕](/Vue/google-signin-button)
 - [[前端] 產生 Apple 登入按鈕](/Vue/apple-signin-button)
+
 ## CSS
 - [元素置中的 5 個方法](/css/center)
 
