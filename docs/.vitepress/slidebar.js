@@ -225,6 +225,10 @@ export const getVueSidebar = () => ({
       text: '[前端] 產生 Apple 登入按鈕',
       link: '/Vue/apple-signin-button'
     },
+    {
+      text: '客製化開發伺服器網域',
+      link: '/Vue/dev-server-custom-domain'
+    },
   ]
 })
 
