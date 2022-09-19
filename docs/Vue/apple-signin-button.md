@@ -222,3 +222,4 @@ export default {
 - [Sign with in Apple，网站配置 Apple 登录](https://doofox.cn/sign-with-in-apple.html)
 - [教你在 Node.js 项目中接入 Sign with Apple 第三方登录 - 掘金](https://juejin.cn/post/6844903976278704142)
 - [[Vue] Vue 串接 Apple 第三方登入 @Hazel](https://22mm-docusaurus.vercel.app/docs/Vue/oauth-apple)
+- [[iOS] 跟 Sign in with Apple 的愛恨情仇](https://blog.jks.coffee/sign-in-with-apple/)
