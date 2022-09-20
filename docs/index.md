@@ -46,6 +46,7 @@
 - [\<script> 非同步資源載入與安全驗証](/Javascript/script-attribute)
 - [Math 數學函式](/Javascript/math)
 - [Variable 變數](/Javascript/variable)
+- [Web APIs](/Javascript/web-apis)
 
 ## Vue
 - [父子組件資料傳遞 props、$emit](/Vue/props-emit)

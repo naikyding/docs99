@@ -193,6 +193,10 @@ export const getJavascriptSidebar = () => ({
       text: 'Variable 變數',
       link: '/Javascript/variable'
     },
+    {
+      text: 'Web APIs',
+      link: '/Javascript/web-apis'
+    },
   ]
 })
 
