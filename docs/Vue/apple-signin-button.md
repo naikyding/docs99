@@ -2,7 +2,7 @@
 
 :::tip 操作必備:
 - 合法操作 API 的 `clientID`
-- 設置合法操作 API 網域 (不可為 IP、localhost)
+- 設置合法操作 API 網域 (不可為 IP、localhost) [👉 客製化開發伺服器網域]
 - 設置合法 `redirectUrl` (不可為 IP、localhost)
 :::
 
@@ -13,7 +13,9 @@
 ### 1️⃣ 建立 Apple 憑證
 取得 `clientID` 與 Apple API 授權操作。 ( [加入 Apple 開發者計劃](/Browser/register-apple-dev) )
 
-### 2️⃣ 載入 apple 函式庫
+### 2️⃣ 配置開發環境 `domain`  [👉 客製化開發伺服器網域]
+合法操作 API 的網域不可為 IP、localhost
+### 3️⃣ 載入 apple 函式庫
 
 若為 vue 可以在 `public/index.html` 載入，或動態載入 `<script />`
 
@@ -21,7 +23,7 @@
 <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
 ```
 
-### 3️⃣ 顯示 apple 登入按鈕
+### 4️⃣ 顯示 apple 登入按鈕
 
 :::details Javascript 方法
   [操作指南](https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_js/configuring_your_webpage_for_sign_in_with_apple) 
@@ -111,7 +113,7 @@
   ✏️ `appleid-signin-redirect-uri` 必須是有 domain，不可以是 IP 位址或 `[localhost](http://localhost)`
 :::
 
-### 4️⃣ 響應處理
+### 5️⃣ 響應處理
 有兩種方式，再依設置的方式來處理響應資料，大多是 **監聽事件** 來獲取 `id_token`。
 
 
@@ -213,6 +215,7 @@ export default {
 :::
 
 ## Reference
+[👉 客製化開發伺服器網域]:/Vue/dev-server-custom-domain
 - [Apple SignIn Button CI 規範](https://developer.apple.com/design/human-interface-guidelines/technologies/sign-in-with-apple/buttons/)
 - [Apple SignIn Button 風格配置說明](https://developer.apple.com/documentation/sign_in_with_apple/displaying_sign_in_with_apple_buttons_on_the_web)
 - [Apple SignIn Button 顯示方法指南](https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_js/configuring_your_webpage_for_sign_in_with_apple)
