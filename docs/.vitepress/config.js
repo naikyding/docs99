@@ -11,7 +11,7 @@ module.exports = {
   
   themeConfig: {
     logo: '/document.svg',
- 
+
     socialLinks: [
       { icon: 'github', link: 'https://github.com/naikyding' },
     ],
