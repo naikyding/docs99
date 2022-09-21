@@ -68,7 +68,7 @@ Web Share API 的 `navigator.share()` 是一個 `promise` 方法，可以調用�
     data: () => ({
       shareData: {
         title: 'docs99 Web Share API 分享功能',
-        url: location.href,
+        url: window.location.href,
         text: '這是來自 docs99 的 navigator.share 功能的分享內文。'
       }
     }),
