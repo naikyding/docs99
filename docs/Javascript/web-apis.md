@@ -48,10 +48,6 @@ document.addEventListener('visibilitychange', () => {
 ```
 :::
 
-### Reference
-- [Page Visibility API 教程 @阮一峰](http://www.ruanyifeng.com/blog/2018/10/page_visibility_api.html)
-- [JavaScript APIs You Don’t Know About](https://www.smashingmagazine.com/2022/09/javascript-api-guide/#page-visibility-api)
-
 ## 分享功能 `navigator.share`
 Web Share API 的 `navigator.share()` 是一個 `promise` 方法，可以調用來分享網頁、連結、數據...。
 
@@ -176,7 +172,12 @@ async sharePage(shareData) {
 **這個方法必須是使用 UI 互動 (比如: 點擊) 來執行事件，不可以直接調用!**
 :::
 
-### Reference
-- [支援度](https://caniuse.com/web-share)
-- [navigator.share NDM](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
+## Reference
+- Page Visibility 
+  - [Page Visibility API 教程 @阮一峰](http://www.ruanyifeng.com/blog/2018/10/page_visibility_api.html)
+- navigator.share
+  - [navigator.share 支援度](https://caniuse.com/web-share)
+  - [navigator.share NDM](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
 
+- [那些被忽略但很好用的 Web API](https://ithelp.ithome.com.tw/users/20125431/ironman/4836)
+- [JavaScript APIs You Don’t Know About](https://www.smashingmagazine.com/2022/09/javascript-api-guide/#page-visibility-api)
