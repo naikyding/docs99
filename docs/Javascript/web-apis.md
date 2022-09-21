@@ -85,7 +85,7 @@ Web Share API 的 `navigator.share()` 是一個 `promise` 方法，可以調用�
         try {
           await navigator.share(shareData)
         } catch(errors) {
-          if(errors === 'Error: AbortError: Abort due to cancellation of share.') {
+          if(errors === 'AbortError: Abort due to cancellation of share.') {
             this.result = errors
             return false
           }
