@@ -83,9 +83,9 @@ Web Share API 的 `navigator.share()` 是一個 `promise` 方法，可以調用�
     methods: {
       async sharePage(shareData) {
         try {
-          await navigator.share(shareData)
+          await navigator.shar(shareData)
         } catch(errors) {
-          if(errors === 'AbortError: Abort due to cancellation of share.') {
+          if(errors.message === 'Abort due to cancellation of share.') {
             this.result = errors
             return false
           }
