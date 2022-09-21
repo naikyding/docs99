@@ -64,19 +64,18 @@ Web Share API 的 `navigator.share()` 是一個 `promise` 方法，可以調用�
 </button>
 
 <script>
-  const url = location.href
-
   export default {
     data: () => ({
-      shareData: {
-        title: 'docs99 Web Share API 分享功能',
-        url,
-        text: '這是來自 docs99 的 navigator.share 功能的分享內文。'
-      }
+      shareData: {}
     }),
 
     mounted() {
       document.querySelector('#share-button').addEventListener('click', () => this.sharePage(this.shareData))
+      this.shareData =  {
+        title: 'docs99 Web Share API 分享功能',
+        url: location.href,
+        text: '這是來自 docs99 的 navigator.share 功能的分享內文。'
+      }
     },
 
     methods: {
