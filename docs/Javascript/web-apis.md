@@ -172,7 +172,82 @@ async sharePage(shareData) {
 **這個方法必須是使用 UI 互動 (比如: 點擊) 來執行事件，不可以直接調用!**
 :::
 
-## 廣播頻道 
+## 廣播頻道 `BroadcastChannel`
+:::tip 簡單說
+  `BroadcastChannel` 就是一個共用的頻道，只要有訂閱，大家都可以在上面「接收資料」與「傳送資料」。
+:::
+
+<img style="background: white;" src="../Javascript/img/broadcastchannel.png">
+
+[圖片出處](https://developer.mozilla.org/zh-CN/docs/Web/API/Broadcast_Channel_API)
+
+同一個網域下，透過訂閱「相同」 的頻道，可以在不同的 `視窗`、 `頁籤` 、 `iframe` 與頻道雙向互動 「接收頻道資料」、「傳送資料」到頻道上。想要一次跟多個頁面溝通，可以使用這個方法。
+
+### 建立廣播
+以 `new BroadcastChannel` 來建立一個實例，方法內寫入建立頻道的名稱 (字串)；而這個實例就是與頻道互動的實體。
+
+```js
+const channel = new BroadcastChannel('custom_channel_name')
+```
+
+:::tip 
+建立一樣的頻道名稱實例，就可以在相同頻道互動。
+:::
+### 監聽廣播信息
+頻道實例以 `.onmessage` 方法，寫入當頻道有傳送信息時執行的事件 (除了自已傳送之外)。
+
+```js
+channel.onmessage = (e) => {
+  // 當 channel 傳送資料時執行
+  console.log(e.data)
+}
+```
+:::warning 注意
+若有停止監聽頻道，需要再重新監聽頻道
+:::
+
+### 關閉廣播監聽
+頻道實例以 `.close()` 方法，可以終止與頻道的互動，無法收到頻道傳送的資料，也無法對頻道傳送資料。
+
+```js
+channel.close()
+```
+
+:::warning 注意
+若執行 `.close()` 再對頻道傳資料，就會報錯!
+![](/Javascript/img/broadcastChannel-close.png)
+:::
+
+### Demo
+**頁面一**
+
+<iframe src="https://vd9b0k.csb.app/page1.html"
+     style="width:100%; height:170px; border:0; border-radius: 4px; overflow:hidden;"
+     title="hardcore-sammet-vd9b0k"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+   :::details code
+   :::
+
+  **頁面二**
+
+  <iframe src="https://vd9b0k.csb.app/page2.html"
+     style="width:100%; height:170px; border:0; border-radius: 4px; overflow:hidden;"
+     title="hardcore-sammet-vd9b0k"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+  **頁面三**
+
+   <iframe src="https://vd9b0k.csb.app/page3.html"
+     style="width:100%; height:170px; border:0; border-radius: 4px; overflow:hidden;"
+     title="hardcore-sammet-vd9b0k"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
 
 ## Reference
 - Page Visibility 

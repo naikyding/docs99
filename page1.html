@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Pae1</h1>
+  <button>來自 Page1 的廣播</button>
+  <p>廣播信息: <span id="result"></span></p>
+  <script>
+    const channel = new BroadcastChannel('custom_channel_name', 'www.google.com')
+
+    const buttonEl = document.querySelector('button').addEventListener('click', () => {
+      channel.postMessage('這是來自 Page1 的廣播')
+    })
+
+    channel.onmessage = (e) => {
+      console.log(e.data)
+      document.querySelector('#result').textContent = e.data
+    }
+  </script>
+</body>
+</html>
