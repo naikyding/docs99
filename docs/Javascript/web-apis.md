@@ -172,12 +172,16 @@ async sharePage(shareData) {
 **這個方法必須是使用 UI 互動 (比如: 點擊) 來執行事件，不可以直接調用!**
 :::
 
+## 廣播頻道 
+
 ## Reference
 - Page Visibility 
   - [Page Visibility API 教程 @阮一峰](http://www.ruanyifeng.com/blog/2018/10/page_visibility_api.html)
 - navigator.share
   - [navigator.share 支援度](https://caniuse.com/web-share)
   - [navigator.share NDM](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
-
+  - [[教學] Web Share API - Navigator.share() 介紹](https://shubo.io/web-share-api/)
+- 
+  - [Broadcast Channel API MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Broadcast_Channel_API)
 - [那些被忽略但很好用的 Web API](https://ithelp.ithome.com.tw/users/20125431/ironman/4836)
 - [JavaScript APIs You Don’t Know About](https://www.smashingmagazine.com/2022/09/javascript-api-guide/#page-visibility-api)
