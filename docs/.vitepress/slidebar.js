@@ -72,6 +72,10 @@ export const getWeb3sidebar = () => ({
     {
       text: 'Smart Contract 智能合約',
       link: '/Web3/smart-contract'
+    },
+    {
+      text: 'DApp 去中心化應用程式',
+      link: '/Web3/dapp'
     }
   ]
 })
