@@ -18,7 +18,7 @@ User —> DApp —> 智能合約 —> 區塊鏈
 
 ## Reference
 [Web3]: /Web3/web3
-[智能合約]: //Web3/smart-contract
+[智能合約]: /Web3/smart-contract
 [區塊鏈]: /Web3/blockchain
 - [DApp wiki](https://zh.wikipedia.org/zh-tw/%E5%88%86%E6%95%A3%E5%BC%8F%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F)
 - [開發 Dapp - 介紹 (Day01)](https://ithelp.ithome.com.tw/articles/10201870)
