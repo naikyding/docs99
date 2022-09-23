@@ -237,6 +237,10 @@ export const getVueSidebar = () => ({
       text: '客製化開發伺服器網域',
       link: '/Vue/dev-server-custom-domain'
     },
+    {
+      text: '本地端開發機 https',
+      link: '/Vue/dev-server-ssl'
+    },
   ]
 })
 
