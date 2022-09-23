@@ -219,35 +219,113 @@ channel.close()
 :::
 
 ### Demo
-**頁面一**
 
 <iframe src="https://vd9b0k.csb.app/page1.html"
      style="width:100%; height:170px; border:0; border-radius: 4px; overflow:hidden;"
      title="hardcore-sammet-vd9b0k"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+></iframe>
 
-   :::details code
-   :::
+  :::details code
+  **html**
+  ```html
+  <h1>Pae1</h1>
+  <button>來自 Page1 的廣播</button>
+  <p>廣播信息: <span id="result"></span></p>
+  ```
 
-  **頁面二**
+  **Javascript**
+  ```js
+  const channel = new BroadcastChannel('custom_channel_name')
 
-  <iframe src="https://vd9b0k.csb.app/page2.html"
+  const buttonEl = document.querySelector('button').addEventListener('click', () => {
+    channel.postMessage('這是來自 Page1 的廣播')
+  })
+
+  channel.onmessage = (e) => {
+    console.log(e.data)
+    document.querySelector('#result').textContent = e.data
+  }
+  ```
+  :::
+
+<iframe src="https://vd9b0k.csb.app/page2.html"
      style="width:100%; height:170px; border:0; border-radius: 4px; overflow:hidden;"
      title="hardcore-sammet-vd9b0k"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+></iframe>
 
-  **頁面三**
+  :::details code
+  **html**
+  ```html
+  <h1>Page2</h1>
+  <button id="channel-post-message">傳送 Page2 廣播</button>
+  <button id="close-channel">停止廣播</button>
+  <button id="connect-channel">接通廣播</button>
 
-   <iframe src="https://vd9b0k.csb.app/page3.html"
-     style="width:100%; height:170px; border:0; border-radius: 4px; overflow:hidden;"
-     title="hardcore-sammet-vd9b0k"
-     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-   ></iframe>
+  <p>廣播信息: <span id="result"></span></p>
+  ```
+
+  **Javascript**
+  ```js
+  let channel
+
+  const channelConnect = () => {
+    channel = new BroadcastChannel('custom_channel_name')
+    channel.onmessage = (e) => {
+      document.querySelector('#result').textContent = e.data
+      console.log(`由頻道收到的信息: ${e.data}`)
+    }
+  }
+
+  channelConnect()
+
+  document.querySelector('#channel-post-message').addEventListener('click', () => {
+    channel.postMessage('這是來自 Page2 的廣播')
+  })
+
+  document.querySelector('#close-channel').addEventListener('click', () => {
+    console.log('停止監聽廣播')
+    document.querySelector('#result').textContent = ''
+    channel.close()
+  })
+
+  document.querySelector('#connect-channel').addEventListener('click', () => {
+    channelConnect()
+    console.log('開始監聽廣播')
+  })
+  ```
+  :::
+
+<iframe src="https://vd9b0k.csb.app/page3.html"
+  style="width:100%; height:170px; border:0; border-radius: 4px; overflow:hidden;"
+  title="hardcore-sammet-vd9b0k"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+  :::details code
+  **html**
+  ```html
+  <h1>Page3</h1>
+  <button>傳送 Page3 廣播</button>
+  <p>廣播信息: <span id="result"></span></p>
+  ```
+
+  **Javascript**
+  ```js
+  const channel = new BroadcastChannel('custom_channel_name')
+  channel.onmessage = (e) => {
+    document.querySelector('#result').textContent = e.data
+    console.log(e.data)
+  }
+  const buttonEl = document.querySelector('button').addEventListener('click', () => {
+    channel.postMessage('這是來自 Page3 的廣播')
+  })
+  ```
+  :::
 
 ## Reference
 - Page Visibility 
