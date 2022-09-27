@@ -7,6 +7,17 @@
 
 <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FkDEGOTspgXouWckXwfgbIj%2FUntitled" allowfullscreen></iframe>
 
+:::details Demo
+開啟 `console`
+
+<iframe src="https://codesandbox.io/embed/vue-router-guards-lu-you-shou-wei-6xnvrs?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="Vue Router Guards 路由守衛"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+:::
+
 ## 全域
 主要是在 `router` 實體上設置，主掌著 `router` 「全域」 的控制權。
 
