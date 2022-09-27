@@ -241,6 +241,10 @@ export const getVueSidebar = () => ({
       text: '本地端開發機 https',
       link: '/Vue/dev-server-ssl'
     },
+    {
+      text: '[Router] 路由守衛 Navigation Guards',
+      link: '/Vue/navigation-guards'
+    },
   ]
 })
 

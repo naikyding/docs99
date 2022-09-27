@@ -55,6 +55,7 @@
 - [[前端] 產生 Apple 登入按鈕](/Vue/apple-signin-button)
 - [客製化開發伺服器網域](/Vue/dev-server-custom-domain)
 - [本地端開發機 https](/Vue/dev-server-ssl)
+- [[Router] 路由守衛 Navigation Guards](/Vue/navigation-guards)
 
 ## CSS
 - [元素置中的 5 個方法](/css/center)
