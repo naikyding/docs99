@@ -14,6 +14,7 @@ module.exports = {
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/naikyding' },
+      { icon: 'linkedin', link: 'https://www.linkedin.com/in/naikyding' },
     ],
 
     algolia: {
