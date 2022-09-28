@@ -74,4 +74,5 @@ router.beforeEach((to, from) => {
 ## Reference
 [路由守衛 Navigation Guards]: /Vue/navigation-guards
 - [Vue Router](https://router.vuejs.org/guide/advanced/meta.html)
+- [路由元信息](https://router.vuejs.org/zh/guide/advanced/meta.html)
 - [NIKEDIN](https://naikyding.github.io/book/vue/router-meta.html#%E4%BD%BF%E7%94%A8%E8%B7%AF%E7%94%B1%E4%BF%A1%E6%81%AF)
