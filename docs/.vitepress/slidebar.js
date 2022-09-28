@@ -245,6 +245,10 @@ export const getVueSidebar = () => ({
       text: '[Router] 路由守衛 Navigation Guards',
       link: '/Vue/navigation-guards'
     },
+    {
+      text: '[Router] 路由信息設置 Meta Fields',
+      link: '/Vue/router-meta'
+    },
   ]
 })
 
