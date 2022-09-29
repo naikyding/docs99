@@ -57,6 +57,7 @@
 - [本地端開發機 https](/Vue/dev-server-ssl)
 - [[Router] 路由守衛 Navigation Guards](/Vue/navigation-guards)
 - [[Router] 路由信息設置 Meta Fields](/Vue/router-meta)
+- [Slots 插槽](/Vue/slots)
 
 ## CSS
 - [元素置中的 5 個方法](/css/center)

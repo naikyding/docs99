@@ -249,6 +249,10 @@ export const getVueSidebar = () => ({
       text: '[Router] 路由信息設置 Meta Fields',
       link: '/Vue/router-meta'
     },
+    {
+      text: 'Slots 插槽',
+      link: '/Vue/slots'
+    },
   ]
 })
 
