@@ -19,7 +19,7 @@
 
 :::
 
-## 基本 slot 操作
+## 🟢 基本 slot 操作
 
 **1️⃣ 子組件 =>** 設置 `<slot />` 插槽
 ```html {4}
@@ -131,7 +131,7 @@ export default {
 </button>
 ```
 
-## 具名 slot 操作
+## 🟢 具名 slot 操作
 當「子組件」有多個 `slot` 插槽時，具名的插槽就會非常有用，它可以指定插入的位置。
 ![](/Vue/img/named-slots.png)
 [圖片出處](https://vuejs.org/guide/components/slots.html#named-slots)
@@ -218,7 +218,7 @@ export default {
 </div>
 ```
 
-## 動態具名 slot 插槽
+## 🟢 動態具名 slot 插槽
 - **template 方式** `v-slot:[動態參數]` (簡寫 `#[dynamicSlotName]`)
 - **任意標籤方式** `:slot="動態參數"`
 
@@ -257,7 +257,7 @@ export default {
 </SlotChirldren>
 ```
 
-## slot 資料向上傳遞 (Scoped Slots)
+## 🟢 slot 資料向上傳遞 (Scoped Slots)
 「**渲染內容**」只可以訪問到「父組件」的數據 ( [渲染作用域](#渲染作用域) )，但若需要取得「子組件」數據的話，可以這樣做:
 - 「子組件」設置動態參數傳遞屬性 `<slot :傳遞到父層參數名稱="子組件資料" />`
 - 「父組件」設置 `v-slot="父組件自定義參數名"` 來接收數據，「子組件」的 `傳遞到父層參數名稱` 會在 `父組件自定義參數名` 之下。
