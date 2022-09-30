@@ -373,5 +373,6 @@ export default {
 ```
 
 ## Reference
+- [Vue KURO](https://book.vue.tw/CH2/2-4-slots.html)
 - [Vue js](https://vuejs.org/guide/components/slots.html#slot-content-and-outlet)
 - [NIKEDIN](https://naikyding.github.io/book/vue/slot.html#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8)
