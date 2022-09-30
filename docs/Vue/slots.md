@@ -8,6 +8,17 @@
 
 在組件中設置的 `<slot />` 會提供了一個插槽，會為「父組件」將來傳送的「渲染內容」預留插入的位置。
 
+:::details Demo
+
+<iframe src="https://codesandbox.io/embed/docs99-enq41l?fontsize=14&hidenavigation=1&theme=dark"
+ style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+ title="Docs99"
+ allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+ sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+:::
+
 ## 基本 slot 操作
 
 **1️⃣ 子組件 =>** 設置 `<slot />` 插槽
@@ -290,8 +301,9 @@ export default {
 ```
 :::
 
-### 具名 slot 傳參方法
-避免「默認」與「具名」的參數資料衝突，建議不直接寫 `v-slot` 在子組件上，而是直接寫在「渲染內容」上。
+### 具名 slot 傳參方法 (使用 `template` 標籤)
+「父組件」使用 `template` 標籤，可以簡單明白的接收傳遞的傳數。
+為了避免「默認」與「具名」的參數資料衝突，建議不直接寫 `v-slot` 在子組件 `SlotScope`上，而是直接寫在插槽「渲染內容」上。
 
 **子組件**
 ```html {3-4}
@@ -306,15 +318,60 @@ export default {
 - 使用 `v-slot="{ 默認 slot 參數名稱 }"` 接「默認」 `slot` 傳送的資料。
 - 使用 `#具名插槽名稱="{ 具名 slot 參數名稱 }"` 接「具名」 `slot` 傳送的資料。
 
-```html {3-4}
+```html {4-5}
 <!-- es6 解構 -->
 <SlotScope>
-  <template v-slot="{ num, text }">{{ text + num }}</template>
+   <!-- 簡寫 v-slot="{ 默認 slot 參數名稱 }" -->
+  <template #default="{ num, text }">{{ text + num }}</template>
   <template #header="{ headerProps }">Header: {{ headerProps }}</template>
 </SlotScope>
+```
+
+### 具名 slot 傳參方法 (使用任意標籤)
+不使用 `template` 的情況下，在「渲染內容」可以使用 `slot-scope="{ 子層具名slot參數名稱 }"`，來接收「子組件」傳遞的參數資料。
+
+**子組件**
+```html {5}
+  <div style="border: 1px solid lightgreen; border-radius: 20px">
+    <h1>Slot Scope</h1>
+    <slot :num="123" text="slot" />
+    <slot name="header" headerProps="header 傳送的內容" />
+    <slot name="main" mainProps="main 傳送的內容" />
+  </div>
+```
+
+**父組件**
+```html {3}
+<SlotScope>
+  <template #default="{ num, text }">{{ text + num }}</template>
+  <h1 slot="main" slot-scope="{ mainProps }">{{ mainProps }}</h1>
+</SlotScope>
+```
+
+### 進階運用
+在「父組件」將請求數據的方法傳遞 `props` 給「子組件」，「子組件」請求且取得數據資料後，向上傳遞由「父組件」寫入「渲染內容」。
+
+**子組件**
+```html
+<ul>
+  <li v-for="item in items">
+    <slot name="item" v-bind="item"></slot>
+  </li>
+</ul>
+```
+
+**父組件**
+```html
+<FancyList :api-url="url" :per-page="10">
+  <template #item="{ body, username, likes }">
+    <div class="item">
+      <p>{{ body }}</p>
+      <p>by {{ username }} | {{ likes }} likes</p>
+    </div>
+  </template>
+</FancyList>
 ```
 
 ## Reference
 - [Vue js](https://vuejs.org/guide/components/slots.html#slot-content-and-outlet)
 - [NIKEDIN](https://naikyding.github.io/book/vue/slot.html#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8)
-- 
