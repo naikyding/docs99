@@ -57,6 +57,7 @@
 - [本地端開發機 https](/Vue/dev-server-ssl)
 - [[Router] 路由守衛 Navigation Guards](/Vue/navigation-guards)
 - [[Router] 路由信息設置 Meta Fields](/Vue/router-meta)
+- [[Router] 路由資料傳遞 Passing Props to Route Components](/Vue/router-props)
 - [Slots 插槽](/Vue/slots)
 
 ## CSS

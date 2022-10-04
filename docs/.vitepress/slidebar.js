@@ -250,6 +250,10 @@ export const getVueSidebar = () => ({
       link: '/Vue/router-meta'
     },
     {
+      text: '[Router] 路由資料傳遞 Passing Props to Route Components',
+      link: '/Vue/router-props'
+    },
+    {
       text: 'Slots 插槽',
       link: '/Vue/slots'
     },
