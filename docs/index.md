@@ -20,6 +20,7 @@
 - [CDN 內容分發網路](/Browser/cdn)
 - [申請 Google OAuth 2.0 憑證](/Browser/google-oauth-client-id)
 - [加入 Apple 開發者計劃](/Browser/register-apple-dev)
+- [Web Server VS Application Server](/Browser/web-application-server)
 ## Web 3.0
 - [Web 3.0](/Web3/web3)
 - [Blockchain 區塊鏈](/Web3/blockchain)

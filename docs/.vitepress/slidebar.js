@@ -53,6 +53,10 @@ export const getBrowserSidebar = () => ({
       text: '加入 Apple 開發者計劃',
       link: '/Browser/register-apple-dev'
     },
+    {
+      text: 'Web Server VS Application Server',
+      link: '/Browser/web-application-server'
+    },
   ]
 })
 
