@@ -54,7 +54,7 @@ export const getBrowserSidebar = () => ({
       link: '/Browser/register-apple-dev'
     },
     {
-      text: 'Web Server VS Application Server',
+      text: 'Web Server 與 Application Server',
       link: '/Browser/web-application-server'
     },
   ]
