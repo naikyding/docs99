@@ -5,6 +5,8 @@
 
 <img src="/Browser/img/web-server.svg" style="background: white; padding: 1rem">
 
+[圖片出處](https://developer.mozilla.org/zh-TW/docs/Learn/Common_questions/What_is_a_web_server)
+
 ### 代表
 - Apache
 - Nginx
