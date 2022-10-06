@@ -61,6 +61,10 @@ export const getBrowserSidebar = () => ({
       text: '正向代理與反向代理',
       link: '/Browser/proxy'
     },
+    {
+      text: 'Nginx 網頁伺服器',
+      link: '/Browser/nginx'
+    },
   ]
 })
 
