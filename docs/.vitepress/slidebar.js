@@ -57,6 +57,10 @@ export const getBrowserSidebar = () => ({
       text: 'Web Server 與 Application Server',
       link: '/Browser/web-application-server'
     },
+    {
+      text: '正向代理與反向代理',
+      link: '/Browser/proxy'
+    },
   ]
 })
 
