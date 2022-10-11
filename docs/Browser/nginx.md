@@ -336,28 +336,84 @@ events {}
 
 ## 路由設置 server > location
 在 `server` 底下，設置 `location { ... }`，來指向路由指定顯示的檔案。
-### 路由指向 `index.html` 
-當 url 為 `localhost:1111/about` 時，會指向  `/Users/1c00003/Desktop/nginx-demo/about` 的 `index.html`。
+### 路由設置
+當 url 為 `localhost:1111/about` 時，想要顯示  `/Users/1c00003/Desktop/nginx-demo/about` 的 `index.html`，可以這樣設置。
 
-```js {7-9}
+```js {8-11}
 http {
   include mime.types;
   server {
     listen 1111;
+    root /Users/1c00003/Desktop/nginx-demo;
 
     // 路由設置
     location /about {
+      // 根目錄位置
       root /Users/1c00003/Desktop/nginx-demo;
     }
   }
 }
 ```
 :::tip 
-會依照 `location` 設置的路由，自動加上 `/about` 在 `root` 結尾上，不需另加上 。
-:::
-### 別名路由指向
+會依照 `location` 設置的路由，自動加上 `/about` 在 `root` 設置上不需另加上。
 
-### 路由指向，客製化檔名
+默認檔案名都是 `index.html` 故不需要特別寫。
+:::
+### 別名路由設置
+假設 `/alias-page` 頁面，也想與 `/about` 顯示同一個頁面，可以使用 `alias` 設置檔案位置，需要加上目錄名稱 `/about`，系統不會自動加上。
+```js {11-14}
+http {
+  server {
+    listen 1111;
+    root /Users/1c00003/Desktop/nginx-demo;
+
+    // /about 頁面
+    location /about {
+      root /Users/1c00003/Desktop/nginx-demo;
+    }
+
+    // /alias-page 頁面 (別名)
+    location /alias-page {
+      alias /Users/1c00003/Desktop/nginx-demo/about;
+    }
+  }
+}
+```
+
+### 路由指向客製化檔案
+上面例子，都是使用 `index.html` 作為指向的默認檔案名稱，若被指向的檔案不為 `index.html` 就無法順利被使用。可以使用 `type_files` 來指定要指向的檔名。
+- `root` 根目錄位置
+- `try_files` 根目錄之下對應的目錄與檔案路徑
+
+```js {8-9}
+http {
+  server {
+    listen 1111;
+    root /Users/1c00003/Desktop/nginx-demo;
+
+    // 客製化指向檔案名稱
+    location /custom-page {
+      root /Users/1c00003/Desktop/nginx-demo;
+      try_files /custom/CustomPage.html /index.html =500;
+    }
+  }
+}
+```
+
+當匹配 `/custom-page` 路由時，就會顯示 `/Users/1c00003/Desktop/nginx-demo/custom/CustomPage.html` 檔案，若 `/Users/1c00003/Desktop/nginx-demo/custom/CustomPage.html` 失效，就顯示 `/Users/1c00003/Desktop/nginx-demo/index.html` 檔案，若這個檔案再失效，就顯示 `500` 錯誤頁面。
+
+
+:::warning 注意
+`try_files` 必須設置至少「兩個」檔案路徑，不然會報錯:
+```bash
+nginx: [emerg] invalid number of arguments in "try_files" directive in /usr/local/etc/nginx/nginx.conf:
+```
+**設置方法**
+```
+try_files [匹配檔案路徑] [第二匹配檔案路徑] [第三匹配檔案路徑]
+```
+也可以使用 `=500` `=400` 來表示預設的 status code 顯示的錯誤頁面。
+:::
 
 ## Reference
 [Web Server 網頁伺服器]: /Browser/web-application-server#web-server-網頁伺服器
