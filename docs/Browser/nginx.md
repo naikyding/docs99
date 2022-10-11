@@ -436,6 +436,112 @@ http {
 :::warning
 此方法無法使用 `alias` 設置
 :::
+
+### 路由重定向
+當路由需要重新轉址到指定路由時，可以使用此方法 `return [狀態碼 307] [導向路由]`。
+
+```js {11-13}
+http {
+  server {
+    listen 1111;
+    root /Users/1c00003/Desktop/nginx-demo;
+
+    location /about {
+      root /Users/1c00003/Desktop/nginx-demo;
+    }
+
+    // 重定向
+    location /redirect {
+      return 307 /about;
+    }
+  }
+}
+```
+
+:::warning 「重定向」與「別名路由」的差別
+- 「別名路由」: 不會更改 url，只是指向到同一個檔案。
+- 「重定向」: 會更改 url 到指定的路由。
+:::
+
+## 帶參數路由「別名」其它路由
+若我們帶 `參數` 的 url，不想被改變，但想要「別名」別的動態路由，可以這樣用。
+`/number/1` 將顯示 `/custom-params/1` 的內容，路由參數可以帶過去，且 url 不會被改變。
+
+```js {6}
+http {
+  server {
+    listen 11111;
+    root /Users/1c00003/Desktop/nginx-demo;
+
+    rewrite /number/(\w+) /custom-params/$1;
+
+    // 若符合 /custom-params/0 ~ 9 路由
+    location ~* /custom-params/[0-9] {
+      root /Users/1c00003/Desktop/nginx-demo;
+      try_files /custom-params/index.html index.html =404;
+    }
+  }
+}
+```
+
+:::details Demo
+```bash
+http {
+    # types {
+    #     text/css  css;
+    #     text/html html;
+    # }
+    include mime.types;
+
+    server {
+        # localhost 要監聽的埠號
+        listen 1111;
+        # 監聽埠號提供的入口頁面 (根目錄)
+        root /Users/1c00003/Desktop/nginx-demo;
+
+        location / {
+            rewrite ^/num/(\w+) /custom-params/$1;
+        }
+
+
+        # 路由設置 path 設置 (不用加 page)
+        location /about {
+            # 頁面根目錄 (子路由 path 會自動加入)
+            root /Users/1c00003/Desktop/nginx-demo;
+        }
+
+        # 別名路由: 與 /about 顯示一樣的頁面 (要加 path)
+        location /alias-page {
+            alias /Users/1c00003/Desktop/nginx-demo/about;
+        }
+
+        # 客製作路由指定檔名
+        location /custom-page {
+            root /Users/1c00003/Desktop/nginx-demo;
+            # 至少要有兩個路徑
+            try_files /custom/CustomPage.html /index.html =500;
+        }
+
+        location ~* /custom-params/[1-9] {
+            root /Users/1c00003/Desktop/nginx-demo;
+            try_files /custom-params/index.html /index.html =404;
+        }
+
+        location /redirect {
+            return 307 /about;
+        }
+    }
+}
+
+events {}
+```
+:::
+
+:::warning 注意
+匹配的路由必須加上 `~*`，不然會無法被匹配到。
+:::
+
+
 ## Reference
 [Web Server 網頁伺服器]: /Browser/web-application-server#web-server-網頁伺服器
 [反向代理]: /Browser/proxy#反向代理
