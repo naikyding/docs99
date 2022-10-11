@@ -417,6 +417,25 @@ try_files [匹配檔案路徑] [第二匹配檔案路徑] [第三匹配檔案路
 也可以使用 `=500` `=400` 來表示預設的 status code 顯示的錯誤頁面。
 :::
 
+### 正規表達式的路由匹配
+路由的匹配也可以使用正規表達式，如下，當路由匹配 `/test/1` ~ `/test/9` 時，可以指向特定的檔案。
+
+```js {6-9}
+http {
+  server {
+    listen 1111;
+    root /Users/1c00003/Desktop/nginx-demo;
+
+    location /test/[1-9] {
+      root /Users/1c00003/Desktop/nginx-demo;
+      try_files /index.html =404;
+    }
+  }
+}
+```
+:::warning
+此方法無法使用 `alias` 設置
+:::
 ## Reference
 [Web Server 網頁伺服器]: /Browser/web-application-server#web-server-網頁伺服器
 [反向代理]: /Browser/proxy#反向代理
@@ -432,3 +451,4 @@ try_files [匹配檔案路徑] [第二匹配檔案路徑] [第三匹配檔案路
 - [Nginx三大模块--事件(Event)模块](https://www.myfreax.com/nginx-event-module-introduction/)
 - [NGINX 官網](https://www.nginx.com/events/)
 - [NGINX 官方文件](https://nginx.org/en/docs/beginners_guide.html)
+- [NGINX 學習筆記](https://blog.learn-or-die.com/zh-tw/nginx/)
