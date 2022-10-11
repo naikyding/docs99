@@ -36,7 +36,7 @@ sudo apt-get update
 sudo apt-get install nginx
 ```
 
-## 操作
+## 操作指令
 nginx 最主要的功能，都來個它的設置檔，在了解功能後，可以在設置檔上，加上想要的功能。
 
 ### 基本
@@ -227,6 +227,7 @@ http {
   2️⃣ 設置 nginx 服務 `nginx.conf`
 ```bash
 http {
+  # 啟動服務
   server {
     # localhost 要監聽的埠號
     listen 8080;
@@ -245,7 +246,7 @@ nginx -s reload
 4️⃣ **輸入 `localhost:8080` 看到服務**
 ![](/Browser/img/nginx-demo-serve.png)
 
-## 檔案類型定義 types
+## 檔案類型定義 http > types
 承上 (啟動了「靜態」網頁服務)，在 `html` 引入了 `css` 樣式 `<link rel="stylesheet" href="./main.css">`，重新啟動 nginx 後，樣式還是沒有改變。
 
 :::details main.css
@@ -287,7 +288,7 @@ h1 {
 :::
 
 ### 解決方式 1️⃣
-設置 `types { ... }`，來指定識別的檔案類型，這樣樣式就可以恢復正常了。
+在 `http` 底下，設置 `types { ... }`，來指定識別的檔案類型，這樣樣式就可以恢復正常了。
 
 :::details Demo
 ```bash {2-5}
@@ -331,6 +332,33 @@ http {
 events {}
 ```
 :::
+
+
+## 路由設置 server > location
+在 `server` 底下，設置 `location { ... }`，來指向路由指定顯示的檔案。
+### 路由指向 `index.html` 
+當 url 為 `localhost:1111/about` 時，會指向  `/Users/1c00003/Desktop/nginx-demo/about` 的 `index.html`。
+
+```js {7-9}
+http {
+  include mime.types;
+  server {
+    listen 1111;
+
+    // 路由設置
+    location /about {
+      root /Users/1c00003/Desktop/nginx-demo;
+    }
+  }
+}
+```
+:::tip 
+會依照 `location` 設置的路由，自動加上 `/about` 在 `root` 結尾上，不需另加上 。
+:::
+### 別名路由指向
+
+### 路由指向，客製化檔名
+
 ## Reference
 [Web Server 網頁伺服器]: /Browser/web-application-server#web-server-網頁伺服器
 [反向代理]: /Browser/proxy#反向代理
