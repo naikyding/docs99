@@ -73,6 +73,16 @@ export const getBrowserSidebar = () => ({
         }
       ]
     },
+    {
+      text: 'Docker 容器化',
+      link: '/Browser/docker',
+      items: [
+        {
+          text: '容器化 Node JS App',
+          link: '/Browser/docker-node'
+        }
+      ]
+    }
   ]
 })
 
