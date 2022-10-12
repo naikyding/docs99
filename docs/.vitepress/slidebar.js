@@ -86,6 +86,7 @@ export const getBrowserSidebar = () => ({
   ]
 })
 
+
 export const getWeb3sidebar = () => ({
   text: 'Web3',
   collapsible: true,
