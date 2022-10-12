@@ -101,7 +101,7 @@ CMD [ "npm", "run", "start" ]
 docker build . -t naikyding/express-app
 ```
 
-## 啟動容器
+## 啟動 container
 以打包的 image 啟動一個容器，就可以在本地端 `localhost:3000` 看到服務。
 
 ```bash
