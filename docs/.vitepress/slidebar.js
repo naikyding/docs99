@@ -63,7 +63,15 @@ export const getBrowserSidebar = () => ({
     },
     {
       text: 'Nginx 網頁伺服器',
-      link: '/Browser/nginx'
+      link: '/Browser/nginx',
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+        text: '操作方法',
+        link: '/Browser/nginx-operate'
+        }
+      ]
     },
   ]
 })
