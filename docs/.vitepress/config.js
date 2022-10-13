@@ -1,4 +1,5 @@
 import { getIndexSidebar, getJavascriptSidebar, getVueSidebar, getBrowserSidebar, getSecuritySidebar, getWeb3sidebar, getCssSidebar } from './slidebar'
+import { getDevOpsNav, getVueNav } from './nav'
 
 module.exports = {
   head: [
@@ -22,6 +23,11 @@ module.exports = {
       apiKey: '362a9d66dde5158b946e62473e92179f',
       indexName: 'docs99'
     },
+
+    nav: [
+      getVueNav(),
+      getDevOpsNav(),
+    ],
 
     sidebar: [
       getIndexSidebar(),

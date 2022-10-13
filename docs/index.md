@@ -2,7 +2,6 @@
 
 [![Generic badge](https://img.shields.io/badge/since-2021/11/08-blue.svg)](https://shields.io/)
 
-
 基於 <img style="display: inline-block" width="30" src="https://camo.githubusercontent.com/61e102d7c605ff91efedb9d7e47c1c4a07cef59d3e1da202fd74f4772122ca4e/68747470733a2f2f766974656a732e6465762f6c6f676f2e737667"> `vitepress` 搭建的文檔專案，後續每日整理 `notion` 上所有的速記。同時，也是自我理解的再次檢視。
 
 <a href="mailto:74ding@gmail.com">
@@ -10,6 +9,7 @@
 </a>
 
 ## Browser
+
 - [HTTP 超文本傳輸協定](/Browser/http)
 - [Cookie](/Browser/cookie)
 - [TCP 傳輸控制協定](/Browser/tcp)
@@ -25,12 +25,14 @@
 - [Nginx 網頁伺服器](/Browser/nginx)
 
 ## Web 3.0
+
 - [Web 3.0](/Web3/web3)
 - [Blockchain 區塊鏈](/Web3/blockchain)
 - [Smart Contract 智能合約](/Web3/smart-contract)
 - [DApp 去中心化應用程式](/Web3/dapp)
 
 ## Javascript
+
 - [BOM 瀏覽器物件模型](/Javascript/bom)
 - [DOM 文件物件模型](/Javascript/dom)
 - [Virtual DOM](/Javascript/virtual-dom)
@@ -54,20 +56,34 @@
 - [Web APIs](/Javascript/web-apis)
 
 ## Vue
+
+**Component**
+
 - [父子組件資料傳遞 props、$emit](/Vue/props-emit)
-- [[前端] 產生 Google 登入按鈕](/Vue/google-signin-button)
-- [[前端] 產生 Apple 登入按鈕](/Vue/apple-signin-button)
-- [客製化開發伺服器網域](/Vue/dev-server-custom-domain)
-- [本地端開發機 https](/Vue/dev-server-ssl)
-- [[Router] 路由守衛 Navigation Guards](/Vue/navigation-guards)
-- [[Router] 路由信息設置 Meta Fields](/Vue/router-meta)
-- [[Router] 路由資料傳遞 Passing Props to Route Components](/Vue/router-props)
 - [Slots 插槽](/Vue/slots)
 
+**Router**
+
+- [路由守衛 Navigation Guards](/Vue/navigation-guards)
+- [路由信息設置 Meta Fields](/Vue/router-meta)
+- [路由資料傳遞 Passing Props to Route Components](/Vue/router-props)
+
+**Config**
+
+- [本地端開發機 https](/Vue/dev-server-ssl)
+- [客製化開發伺服器網域](/Vue/dev-server-custom-domain)
+
+**Auth**
+
+- [[前端] 產生 Google 登入按鈕](/Vue/google-signin-button)
+- [[前端] 產生 Apple 登入按鈕](/Vue/apple-signin-button)
+
 ## CSS
+
 - [元素置中的 5 個方法](/css/center)
 
 ## 程式設計
+
 - [Constructor 建構函式](/Javascript/constructor)
 - [Factory Function 工廠函式](/Javascript/factoryFunction)
 - [Constructor VS Factory Function](/Javascript/constructorVSfactory)
@@ -76,6 +92,7 @@
 - [SOLID 設計原則](/Javascript/solid)
 
 ## Security
+
 - [XSS 跨站腳本攻擊](/security/xss)
 - [CSRF 跨站偽造請求](/security/csrf)
 - [CORS 與 同源政策](/security/cors)

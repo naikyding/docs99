@@ -61,31 +61,8 @@ export const getBrowserSidebar = () => ({
       text: '正向代理與反向代理',
       link: '/Browser/proxy'
     },
-    {
-      text: 'Nginx 網頁伺服器',
-      link: '/Browser/nginx',
-      collapsible: true,
-      collapsed: true,
-      items: [
-        {
-        text: '操作方法',
-        link: '/Browser/nginx-operate'
-        }
-      ]
-    },
-    {
-      text: 'Docker 容器化',
-      link: '/Browser/docker',
-      items: [
-        {
-          text: '容器化 Node JS App',
-          link: '/Browser/docker-node'
-        }
-      ]
-    }
   ]
 })
-
 
 export const getWeb3sidebar = () => ({
   text: 'Web3',
@@ -257,12 +234,20 @@ export const getVueSidebar = () => ({
       link: '/Vue/props-emit'
     },
     {
-      text: '[前端] 產生 Google 登入按鈕',
-      link: '/Vue/google-signin-button'
+      text: 'Slots 插槽',
+      link: '/Vue/slots'
     },
     {
-      text: '[前端] 產生 Apple 登入按鈕',
-      link: '/Vue/apple-signin-button'
+      text: '路由守衛 Navigation Guards',
+      link: '/Vue/navigation-guards'
+    },
+    {
+      text: '路由信息設置 Meta Fields',
+      link: '/Vue/router-meta'
+    },
+    {
+      text: '路由資料傳遞 Passing Props to Route Components',
+      link: '/Vue/router-props'
     },
     {
       text: '客製化開發伺服器網域',
@@ -273,20 +258,12 @@ export const getVueSidebar = () => ({
       link: '/Vue/dev-server-ssl'
     },
     {
-      text: '[Router] 路由守衛 Navigation Guards',
-      link: '/Vue/navigation-guards'
+      text: '產生 Google 登入按鈕',
+      link: '/Vue/google-signin-button'
     },
     {
-      text: '[Router] 路由信息設置 Meta Fields',
-      link: '/Vue/router-meta'
-    },
-    {
-      text: '[Router] 路由資料傳遞 Passing Props to Route Components',
-      link: '/Vue/router-props'
-    },
-    {
-      text: 'Slots 插槽',
-      link: '/Vue/slots'
+      text: '產生 Apple 登入按鈕',
+      link: '/Vue/apple-signin-button'
     },
   ]
 })
