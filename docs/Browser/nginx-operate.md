@@ -388,6 +388,62 @@ http {
 }
 ```
 
+## 客製化 domain 名稱
+在某些第三方串接時，常常會需要有實際的 domain 才可以進行請求的允許，可以使用這個方法，讓你的 `localhost` 變成 `example.com`。
+
+**nginx.conf**
+
+在 `localhost` 啟動一個服務，且設置上 `server_name`。
+
+```nginx {12}
+http {
+  include mime.types;
+
+  upstream backendapp {
+    server 127.0.0.1:3000;
+    server 127.0.0.1:3001;
+    server 127.0.0.1:3002;
+  }
+
+  server {
+    listen 80;
+    server_name test.express.com;
+
+    location / {
+      proxy_pass http://backendapp/;
+    }
+  }
+}
+```
+
+**修改本地 hosts 名稱**
+
+`sudo vi /etc/hosts`
+```bash {9}
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1       localhost
+127.0.0.1       custom.domain.local
+127.0.0.1       test.express.com
+255.255.255.255 broadcasthost
+::1             localhost
+# Added by Docker Desktop
+# To allow the same kube context to work on the host and the container:
+127.0.0.1 kubernetes.docker.internal
+# End of section
+~
+~
+```
+
+### 查看客製 domain
+在瀏覽器輸入 `test.express.com`，就會被 `hosts` 指向到本地端 `127.0.0.1`，而本地端有由 nginx 提供的 `express` APP 的服務。這時也可以看到 `network` 請求的 url 也是 `test.express.com` 了。
+
+![](/Browser/nginx-custom-domain.png)
+
 ## Reference
 [Web Server 網頁伺服器]: /Browser/web-application-server#web-server-網頁伺服器
 [反向代理]: /Browser/proxy#反向代理
@@ -404,3 +460,6 @@ http {
 - [NGINX 官網](https://www.nginx.com/events/)
 - [NGINX 官方文件](https://nginx.org/en/docs/beginners_guide.html)
 - [NGINX 學習筆記](https://blog.learn-or-die.com/zh-tw/nginx/)
+- [Nginx的server_name和location配置](https://segmentfault.com/a/1190000021771733)
+- [Day26-好用的網頁伺服器-nginx（二）](https://ithelp.ithome.com.tw/articles/10280441?sc=iThomeR)
+- [作为一名前端，该如何理解Nginx？](https://juejin.cn/post/7082655545491980301)
