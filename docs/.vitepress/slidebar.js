@@ -221,6 +221,10 @@ export const getCssSidebar = () => ({
       text: '元素置中的 5 個方法',
       link: '/css/center'
     },
+    {
+      text: '滑鼠任意拖洩元素停留效果',
+      link: '/css/mouse-follow-drag'
+    },
   ]
 })
 
