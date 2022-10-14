@@ -1,4 +1,4 @@
-# 滑鼠任意拖洩元素停留效果
+# 滑鼠任意拖拽元素停留效果
 
 :::danger 行動裝置不支援 !!
 目前 `resize` 屬性，在 `web` 端都可以正常顯示與操作，但 `mobile` 行動裝置上，還是無法正常顯示與操作，使用前可能要先注意了。
@@ -6,7 +6,7 @@
 
 ## 說明
 
-純粹使用 `css` 達成的效果。滑鼠隨意拖洩 `太空人` ，並且停留在任意的地方。
+純粹使用 `css` 達成的效果。滑鼠隨意拖拽 `太空人` ，並且停留在任意的地方。
 
 <style>
   .outside {
@@ -101,7 +101,7 @@
 
 ## 主要屬性
 
-是使用 `css` 的 [resize](https://developer.mozilla.org/en-US/docs/Web/CSS/resize#using_resize_with_arbitrary_elements) 屬性「可調整元素尺吋」的特性，將拖洩效果元素附著在容器指定位置。
+是使用 `css` 的 [resize](https://developer.mozilla.org/en-US/docs/Web/CSS/resize#using_resize_with_arbitrary_elements) 屬性「可調整元素尺吋」的特性，將拖拽效果元素附著在容器指定位置。
 
 ### 一般 `resize` 樣式
 

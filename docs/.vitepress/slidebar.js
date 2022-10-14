@@ -222,7 +222,7 @@ export const getCssSidebar = () => ({
       link: '/css/center'
     },
     {
-      text: '滑鼠任意拖洩元素停留效果',
+      text: '滑鼠任意拖拽元素停留效果',
       link: '/css/mouse-follow-drag'
     },
   ]
