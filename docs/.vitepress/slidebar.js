@@ -225,6 +225,10 @@ export const getCssSidebar = () => ({
       text: '滑鼠任意拖拽元素停留效果',
       link: '/css/mouse-follow-drag'
     },
+    {
+      text: '原子化 CSS',
+      link: '/css/atomic-css'
+    },
   ]
 })
 
