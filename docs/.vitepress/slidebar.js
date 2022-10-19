@@ -218,6 +218,10 @@ export const getCssSidebar = () => ({
   collapsed: true,
   items: [
     {
+      text: 'CSS 設計模式',
+      link: '/css/css-type'
+    },
+    {
       text: '元素置中的 5 個方法',
       link: '/css/center'
     },

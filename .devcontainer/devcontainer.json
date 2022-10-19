@@ -53,7 +53,9 @@
 		"lllllllqw.jsdoc",
 		"pflannery.vscode-versionlens",
 		"usernamehw.errorlen",
-		"streetsidesoftware.code-spell-checker"
+		"streetsidesoftware.code-spell-checker",
+		// emoji icon
+		"perkovec.emoji"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
