@@ -10,6 +10,9 @@ Atomic CSS 指的是「原子化」 `css` ，是一種 `css` 的架構方法。�
 是近期最熱門的架構，Facebook 也使用來為其節省了 80% 的 `css` 體積，代表框架為
 [Tailwind css]、[Windi css]。
 
+![](/css/img/atomic-design-wide.png)
+[圖片出處](https://cantina.co/modular-css-atomic-design-in-the-enterprise/)
+
 ### 設計原則
 
 Atomic CSS 想解決的是，讓 `css` 只關注在樣式、`html` 關注在內容，而用 `class` 將兩者串聯在一起，只要調整 `class` 就可以直接改變樣式，不用為了某個需求，另客製化 `class` 命名且新增，且這些「原子 css」在其它元件也可以重覆使用。
@@ -169,3 +172,4 @@ Atomic CSS 想解決的是，讓 `css` 只關注在樣式、`html` 關注在內�
 - [Facebook 重构：抛弃 Sass / Less ，迎接原子化 CSS 时代](https://juejin.cn/post/6917073600474415117)
 - [[译] Atomic CSS-in-js](https://juejin.cn/post/6844904152548507661)
 - [前端好朋友 — tailwindcss](https://milkmidi.medium.com/%E5%89%8D%E7%AB%AF%E5%A5%BD%E6%9C%8B%E5%8F%8B-tailwindcss-e1e187df6fed)
+- [Modular CSS / Atomic Design in the Enterprise](https://cantina.co/modular-css-atomic-design-in-the-enterprise/)
