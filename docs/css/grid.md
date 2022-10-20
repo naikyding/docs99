@@ -114,22 +114,22 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 </style>
 
 - `grid-template-rows` 橫割
-  
-  <div class="container grid-container grid grid-rows-auto">
-    <div class="item content-center row-line">1</div>
-    <div class="item content-center row-line">2</div>
-    <div class="item content-center row-line">3</div>
-  </div>
+
+<div class="container grid-container grid grid-rows-auto">
+  <div class="item content-center row-line">1</div>
+  <div class="item content-center row-line">2</div>
+  <div class="item content-center row-line">3</div>
+</div>
 
 - `grid-template-columns` 直割
 
-  <div class="container grid-container grid grid-cols-1fr">
-    <div class="item content-center col-line">1</div>
-    <div class="item content-center col-line">2</div>
-    <div class="item content-center col-line">3</div>
-    <div class="item content-center col-line">4</div>
-    <div class="item content-center col-line">5</div>
-  </div>
+<div class="container grid-container grid grid-cols-1fr">
+  <div class="item content-center col-line">1</div>
+  <div class="item content-center col-line">2</div>
+  <div class="item content-center col-line">3</div>
+  <div class="item content-center col-line">4</div>
+  <div class="item content-center col-line">5</div>
+</div>
 
 ## 項目 Grid item 屬性
 
