@@ -1,4 +1,4 @@
-# 特殊且實用的功能
+# 特殊實用功能
 
 ## 垂直文字
 
@@ -40,7 +40,6 @@
       orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 
     </div>
   </div>
-
   <div id="card" class="d-flex">
     <div class="card__title text-black writing-mode-vertical">
     Vertical Text
@@ -178,17 +177,59 @@ img {
 	scroll-behavior: smooth; // 滾動平滑
 }
 ```
-
 :::details Reference
 - [fullPage scroll snapping. Create full screen pages fast and simple](https://alvarotrigo.com/fullPage/)
-
 - [Snap Scroll with CSS | Full Page Scrolling Effects](https://codepen.io/joealva1957/pen/vPrKEP)
-
 - [[JS] 整頁式滾動](https://medium.com/az-%E4%B8%8B%E7%AD%86%E8%A8%98/full-page-scroll-%E6%95%B4%E9%A0%81%E5%BC%8F%E6%BB%BE%E5%8B%95-d7a94eea7316)
-
 - [大侠，请留步，要不过来了解下CSS Scroll Snap？ " 张鑫旭-鑫空间-鑫生活](https://www.zhangxinxu.com/wordpress/2018/11/know-css-scroll-snap/)
-
 - [【乾貨】使用 CSS Scroll Snap 優化滾動，提升使用者體驗！_前端小智 - MdEditor](https://www.gushiciku.cn/pl/grR1/zh-tw)
+:::
+
+## 文本溢出省略
+
+<style>
+.text-over {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>
+
+<div class="d-flex">
+  <div id="card" class="mr-1">
+    <div class="card__title text-black">
+    Default Text
+    </div>
+    <div class="card__content text-black">
+      orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 
+    </div>
+  </div>
+  <div id="card" class="mr-1 text-over">
+    <div class="card__title text-black">
+    Default Text
+    </div>
+    <div class="card__content text-black text-over">
+      orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 
+    </div>
+  </div>
+</div>
+
+**文字區塊**
+```css
+.content {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; 
+  overflow: hidden;
+}
+```
+- `-webkit-line-clamp` 顯示幾行
+- `overflow: hidden;` 超出隱藏
+
+:::details Reference
+- [超出顯示 text-overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow)
+- [【教學文章】CSS多行文本溢出省略顯示](https://www.injerry.com/blog_view/149)
 :::
 ## Reference
 - [Top 10 CSS One Liners That Will Blow Your Mind (VIDEO)](https://www.youtube.com/watch?v=Xc6G3oV24yE)

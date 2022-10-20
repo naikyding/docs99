@@ -226,7 +226,7 @@ export const getCssSidebar = () => ({
       link: '/css/center'
     },
     {
-      text: '特殊且實用的功能',
+      text: '特殊實用功能',
       link: '/css/special-api'
     },
     {
