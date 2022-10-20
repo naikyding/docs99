@@ -226,6 +226,10 @@ export const getCssSidebar = () => ({
       link: '/css/center'
     },
     {
+      text: '特殊且實用的功能',
+      link: '/css/special-api'
+    },
+    {
       text: '滑鼠任意拖拽元素停留效果',
       link: '/css/mouse-follow-drag'
     },
