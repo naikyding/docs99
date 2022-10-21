@@ -124,6 +124,41 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 .border-radius-none {
   border-radius: 0;
 }
+
+.light-green {
+  background: lightgreen;
+}
+.light-blue {
+  background: lightblue;
+}
+.pink {
+  background: pink;
+}
+.orange {
+  background: orange;
+}
+
+/* grid-template-areas */
+.area-container {
+  grid-template-rows: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
+  grid-template-areas: "none header header ."
+                        "sidebar main main main"
+                        "footer footer footer .";
+}
+
+.area-item-1 {
+  grid-area: header;
+}
+.area-item-2 {
+  grid-area: main;
+}
+.area-item-3 {
+  grid-area: footer;
+}
+.area-item-4 {
+  grid-area: sidebar;
+}
 </style>
 
 ⭐ **grid-template-rows:** (橫割)
@@ -181,11 +216,21 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 :::warning 注意
 當混合單位設置，會先切割 `30px`空間，剩除空間才會按 `5fr` `2fr` 比例分配。
 ```css
-.item {
+.container {
   grid-template-rows: 30px 5fr 2fr;
 }
 ```
 :::
+
+### 🟢 grid-template-areas 網格區域定義
+
+<div class="container grid-container grid area-container">
+  <div class="grid-item content-center pink area-item-1">Header</div>
+  <div class="grid-item content-center orange area-item-2">Main</div>
+  <div class="grid-item content-center light-green area-item-3">Footer</div>
+  <div class="grid-item content-center light-blue area-item-4">Sidebar</div>
+</div>
+
 
 ## 項目 Grid item 屬性
 
