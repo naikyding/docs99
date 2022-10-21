@@ -271,6 +271,12 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
   grid-template: repeat(3, 100px) / repeat(3, auto);
   gap: 1px;
 }
+/* justify-content */
+.justify-content-demo {
+  grid-template: repeat(3, 100px) / repeat(3, 100px);
+  justify-content: space-evenly;
+}
+/* align-content */
 </style>
 
 ⭐ **grid-template-rows:** (橫割)
@@ -437,7 +443,7 @@ grid-template: `<grid-template-rows>` / `<grid-template-columns>`;
 - `start` 左
 - `end` 右
 - `center` 水平置中
-- `stretch` 水平填滿
+- `stretch` 水平填滿 (默認值)
 
 **網格單元內容「靠左對齊」** `justify-items: start;`
 ```css {4}
@@ -600,7 +606,7 @@ grid-template: `<grid-template-rows>` / `<grid-template-columns>`;
 - `start` 左
 - `end` 右
 - `center` 水平置中
-- `stretch` 水平填滿
+- `stretch` 水平填滿 (默認值)
 
 **網格單元內容「向上對齊」** `align-items: start;`
 ```css {4}
@@ -758,6 +764,60 @@ grid-template: `<grid-template-rows>` / `<grid-template-columns>`;
   </div>
 </div>
 
+### 網格單元對齊模式 (垂直/水平) place-items
+這是 `align-items` 與 `justify-items` 一起設置的縮寫。
+
+**value:**
+- `<align-items> <justify-items>`
+
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, 100px) / repeat(3, auto);
+  place-items: center / center; /* place-items: center; */
+}
+```
+
+### 網格容器「水平」對齊模式 justify-content
+某些時候，網格分割的區塊單元是「小於」網格容器，可以輕鬆使用這個方法，來調整網格容器內容「水平」的對齊方式。
+
+**value:**
+- `start` 水平靠左 (默認值)
+- `end` 水平靠右
+- `center` 水平置中
+- `space-between` 貼平左、右，均分中間空間
+- `space-around` 左、右 1/2，中間均分空間
+- `space-evenly` 環繞均分所有水平空間
+
+<div class="grid container justify-content-demo">
+  <div class="grid-item content-center">1</div>
+  <div class="grid-item content-center">2</div>
+  <div class="grid-item content-center">3</div>
+  <div class="grid-item content-center">4</div>
+  <div class="grid-item content-center">5</div>
+  <div class="grid-item content-center">6</div>
+  <div class="grid-item content-center">7</div>
+  <div class="grid-item content-center">8</div>
+  <div class="grid-item content-center">9</div>
+</div>
+
+**網格容器水平「靠左」對齊** `justify-content: start;`
+
+<div class="grid container justify-content-demo">
+  <div class="grid-item content-center">1</div>
+  <div class="grid-item content-center">2</div>
+  <div class="grid-item content-center">3</div>
+  <div class="grid-item content-center">4</div>
+  <div class="grid-item content-center">5</div>
+  <div class="grid-item content-center">6</div>
+  <div class="grid-item content-center">7</div>
+  <div class="grid-item content-center">8</div>
+  <div class="grid-item content-center">9</div>
+</div>
+
+
+### 網格容器「垂直」對齊模式 align-content
+某些時候，網格分割的區塊單元是「小於」網格容器，可以輕鬆使用這個方法，來調整網格容器內容「垂直」的對齊方式。
 ## 項目 Grid item 屬性
 
 
