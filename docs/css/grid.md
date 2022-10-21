@@ -77,7 +77,7 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 ```
 :::
 
-### 🟢 grid-template-* 分割網格
+### 🟢 grid-template-rows | columns 分割網格
 藉由此設置來定義 [Grid Track 網格軌道](#grid-track-網格軌道) 的空間，可以是「指定尺吋」或者「按比例」分割，可以混合設置。
 
 可使用設置值: `20%`、`20px`、`2fr`、`auto`、`repeat(n, size)`
@@ -137,14 +137,20 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 .orange {
   background: orange;
 }
-
+.black {
+  background: black;
+}
+.white {
+  background: white;
+}
 /* grid-template-areas */
 .area-container {
   grid-template-rows: repeat(3, auto);
   grid-template-columns: repeat(4, auto);
-  grid-template-areas: "none header header ."
-                        "sidebar main main main"
-                        "footer footer footer .";
+  grid-template-areas: 
+    "none header header ."
+    "sidebar main main main"
+    "footer footer footer .";
 }
 
 .area-item-1 {
@@ -159,6 +165,112 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 .area-item-4 {
   grid-area: sidebar;
 }
+
+.grid-template {
+  grid-template: repeat(3, auto) / repeat(4, auto);
+  grid-template-areas: 
+  "none header header . "
+  "sidebar main main main"
+  "footer footer footer .";
+}
+
+.grid-gap-demo {
+  grid-template: repeat(3, auto) / repeat(3, auto);
+  gap: 10px 50px;
+  /* row-gap: 10px;
+  column-gap: 50px; */
+}
+.relative {
+  position: relative;
+}
+.justify-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50px;
+  border-radius: 8px;
+}
+.justify-box-end {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50px;
+  border-radius: 8px;
+}
+.justify-box-center {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -25px;
+  height: 100%;
+  width: 50px;
+  border-radius: 8px;
+}
+.justify-box-stretch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+.w-50 {
+  width: 50px;
+}
+.grid-justify-start {
+  grid-template: repeat(3, auto) / repeat(3, auto);
+  justify-items: stretch;
+  gap: 1px;
+}
+
+.grid-justify-custom {
+  grid-template: repeat(3, 100px) / repeat(3, auto);
+  /* justify-items: stretch; */
+  align-items: start;
+}
+
+.align-box-start {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  border-radius: 8px;
+}
+.align-box-end {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  border-radius: 8px;
+}
+.align-box-center {
+  position: absolute;
+  top: 50%;
+  margin-top: -25px;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  border-radius: 8px;
+}
+.align-box-stretch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+.align-start {
+  align-items: start;
+}
+.grid-align-demo {
+  grid-template: repeat(3, 100px) / repeat(3, auto);
+  gap: 1px;
+}
 </style>
 
 ⭐ **grid-template-rows:** (橫割)
@@ -167,7 +279,6 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 /* 指定軌道尺吋 */
 .container {
   grid-template-rows: 30px 60px 90px;
-}
 ```
 
 <div class="container grid-container grid grid-rows-custom">
@@ -222,15 +333,430 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 ```
 :::
 
-### 🟢 grid-template-areas 網格區域定義
+⭐ **grid-template:** (縮寫)
 
-<div class="container grid-container grid area-container">
+可以同時設置 `grid-template-rows`、`grid-template-columns`，是更潔簡的寫法。
+:::info 語法:
+grid-template: `<grid-template-rows>` / `<grid-template-columns>`;
+:::
+
+```css
+.container {
+  grid-template: 
+}
+```
+
+### 🟢 grid-template-areas 網格區域定義
+語法可以視覺化的定義「網格區域」中的指定「網格單元」，使用 `.` 來表示空白的「網格單元」，`none` 來表示無定義「網格單元」。
+
+<div class="container grid-container grid grid-template">
   <div class="grid-item content-center pink area-item-1">Header</div>
   <div class="grid-item content-center orange area-item-2">Main</div>
   <div class="grid-item content-center light-green area-item-3">Footer</div>
   <div class="grid-item content-center light-blue area-item-4">Sidebar</div>
 </div>
 
+- 「網格項目」指定「網格單元」名稱
+  ```css
+  .item-1 {
+    grid-area: header;
+  }
+  .item-2 {
+    grid-area: main;
+  }
+  .item-3 {
+    grid-area: footer;
+  }
+  .item-4 {
+    grid-area: sidebar;
+  }
+  ```
+
+- 「網格區域」定義 `grid-template-areas`
+
+  使用「空白」來間隔要定義的「網格單元」名稱。
+
+  ```css {5-8}
+  .container {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(4, auto);
+    grid-template-areas: 
+      "none header header ."
+      "sidebar main main main"
+      "footer footer footer .";
+  }
+  ```
+
+  |none|header|header|.|
+  |:-:|:-:|:-:|:-:|
+  |sidebar|main|main|main|
+  |footer|footer|footer|.|
+
+
+### Gap 「網格線」寬度設置
+- `row-gap: <size>` (橫)
+- `column-gap: <size>` (直)
+- `gap: <row-gap> <column-gap>` (縮寫)
+
+
+<div class="grid container grid-gap-demo">
+  <div class="grid-item content-center">1</div>
+  <div class="grid-item content-center">2</div>
+  <div class="grid-item content-center">3</div>
+  <div class="grid-item content-center">4</div>
+  <div class="grid-item content-center">5</div>
+  <div class="grid-item content-center">6</div>
+  <div class="grid-item content-center">7</div>
+  <div class="grid-item content-center">8</div>
+  <div class="grid-item content-center">9</div>
+</div>
+
+```css {5-6}
+.container {
+  display: grid;
+  grid-template: repeat(3, auto) / repeat(3, auto);
+
+  row-gap: 10px;     /* 網格線 (橫) 寬度 */
+  column-gap: 50px;  /* 網格線 (直) 寬度 */
+
+  gap: 10px 50px;   /* 簡寫 <row-gap> <column-gap> */
+}
+```
+
+:::warning 注意
+`gap` 若無完善設置，如 `gap: 10px;`，就會自動調整全部「相同」的寬度。
+:::
+
+:::danger 舊語法再不再支持
+`grid-row-gap`、`grid-column-gap` 有 `grid` 前綴的寫法，在  Chrome 68+, Safari 11.2 Release 50+, and Opera 54+ 已不再支持了，請使用無前綴的寫法。
+::: 
+
+### 網格單元 `水平` 對齊模式 justify-items
+**value:**
+- `start` 左
+- `end` 右
+- `center` 水平置中
+- `stretch` 水平填滿
+
+**網格單元內容「靠左對齊」** `justify-items: start;`
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, auto) / repeat(3, auto);
+  justify-items: start;
+}
+```
+
+<div class="grid container grid-justify-start black">
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box content-center light-green all-center">1</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box content-center light-green all-center">2</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box content-center light-green all-center">3</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box content-center light-green all-center">4</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box content-center light-green all-center">5</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box content-center light-green all-center">6</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box content-center light-green all-center">7</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box content-center light-green all-center">8</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box content-center light-green all-center">9</div>
+  </div>
+</div>
+
+**網格單元內容「靠右對齊」** `justify-items: end;`
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, auto) / repeat(3, auto);
+  justify-items: end;
+}
+```
+
+<div class="grid container grid-justify-start black">
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-end content-center light-green all-center">1</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-end content-center light-green all-center">2</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-end content-center light-green all-center">3</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-end content-center light-green all-center">4</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-end content-center light-green all-center">5</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-end content-center light-green all-center">6</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-end content-center light-green all-center">7</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-end content-center light-green all-center">8</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-end content-center light-green all-center">9</div>
+  </div>
+</div>
+
+**網格單元內容「水平置中」** `justify-items: center;`
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, auto) / repeat(3, auto);
+  justify-items: center;
+}
+```
+
+<div class="grid container grid-justify-start black">
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-center content-center light-green all-center">1</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-center content-center light-green all-center">2</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-center content-center light-green all-center">3</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-center content-center light-green all-center">4</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-center content-center light-green all-center">5</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-center content-center light-green all-center">6</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-center content-center light-green all-center">7</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-center content-center light-green all-center">8</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-center content-center light-green all-center">9</div>
+  </div>
+</div>
+
+**網格單元內容「水平拉伸」** `justify-items: stretch;`
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, auto) / repeat(3, auto);
+  justify-items: stretch;
+}
+```
+
+<div class="grid container grid-justify-start black">
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-stretch content-center light-green all-center">1</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-stretch content-center light-green all-center">2</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-stretch content-center light-green all-center">3</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-stretch content-center light-green all-center">4</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-stretch content-center light-green all-center">5</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-stretch content-center light-green all-center">6</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-stretch content-center light-green all-center">7</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-stretch content-center light-green all-center">8</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="justify-box-stretch content-center light-green all-center">9</div>
+  </div>
+</div>
+
+### 網格單元 `垂直` 對齊模式 align-items
+**value:**
+- `start` 左
+- `end` 右
+- `center` 水平置中
+- `stretch` 水平填滿
+
+**網格單元內容「向上對齊」** `align-items: start;`
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, 100px) / repeat(3, auto);
+  align-items: start;
+}
+```
+
+<div class="grid container grid-align-demo black">
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-start content-center light-green all-center">1</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-start content-center light-green all-center">2</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-start content-center light-green all-center">3</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-start content-center light-green all-center">4</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-start content-center light-green all-center">5</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-start content-center light-green all-center">6</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-start content-center light-green all-center">7</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-start content-center light-green all-center">8</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-start content-center light-green all-center">9</div>
+  </div>
+</div>
+
+**網格單元內容「向下對齊」** `align-items: end;`
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, 100px) / repeat(3, auto);
+  align-items: end;
+}
+```
+
+<div class="grid container grid-align-demo black">
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-end content-center light-green all-center">1</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-end content-center light-green all-center">2</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-end content-center light-green all-center">3</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-end content-center light-green all-center">4</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-end content-center light-green all-center">5</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-end content-center light-green all-center">6</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-end content-center light-green all-center">7</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-end content-center light-green all-center">8</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-end content-center light-green all-center">9</div>
+  </div>
+</div>
+
+**網格單元內容「垂直置中」** `align-items: center;`
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, 100px) / repeat(3, auto);
+  align-items: center;
+}
+```
+
+<div class="grid container grid-align-demo black">
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-center content-center light-green all-center">1</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-center content-center light-green all-center">2</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-center content-center light-green all-center">3</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-center content-center light-green all-center">4</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-center content-center light-green all-center">5</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-center content-center light-green all-center">6</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-center content-center light-green all-center">7</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-center content-center light-green all-center">8</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-center content-center light-green all-center">9</div>
+  </div>
+</div>
+
+**網格單元內容「垂直拉伸」** `align-items: stretch;`
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, 100px) / repeat(3, auto);
+  align-items: stretch;
+}
+```
+
+<div class="grid container grid-align-demo black">
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">1</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">2</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">3</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">4</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">5</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">6</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">7</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">8</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">9</div>
+  </div>
+</div>
 
 ## 項目 Grid item 屬性
 
