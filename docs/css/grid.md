@@ -92,6 +92,12 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
   display: grid;
   background: white;
 }
+.rounded-none {
+  border-radius: 0;
+}
+.rounded {
+  border-radius: 8px;
+}
 .grid-rows-custom {
   grid-template-rows: 30px 60px 90px;
 }
@@ -142,6 +148,9 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 }
 .white {
   background: white;
+}
+.black--text {
+  color: black;
 }
 /* grid-template-areas */
 .area-container {
@@ -276,6 +285,24 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
   grid-template: repeat(3, 100px) / repeat(3, 100px);
   justify-content: space-evenly;
 }
+
+
+.border-lightgreen {
+  border: 1px solid lightgreen;
+}
+.bg-none {
+  background: none;
+}
+
+.custom-content-demo {
+  height: 300px;
+  grid-template: repeat(3, 80px) / repeat(3, 80px);
+  gap: 1px;
+}
+
+.align-content-start {
+  justify-content: start;
+}
 /* align-content */
 </style>
 
@@ -345,12 +372,6 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 :::info 語法:
 grid-template: `<grid-template-rows>` / `<grid-template-columns>`;
 :::
-
-```css
-.container {
-  grid-template: 
-}
-```
 
 ### 🟢 grid-template-areas 網格區域定義
 語法可以視覺化的定義「網格區域」中的指定「網格單元」，使用 `.` 來表示空白的「網格單元」，`none` 來表示無定義「網格單元」。
@@ -803,16 +824,16 @@ grid-template: `<grid-template-rows>` / `<grid-template-columns>`;
 
 **網格容器水平「靠左」對齊** `justify-content: start;`
 
-<div class="grid container justify-content-demo">
-  <div class="grid-item content-center">1</div>
-  <div class="grid-item content-center">2</div>
-  <div class="grid-item content-center">3</div>
-  <div class="grid-item content-center">4</div>
-  <div class="grid-item content-center">5</div>
-  <div class="grid-item content-center">6</div>
-  <div class="grid-item content-center">7</div>
-  <div class="grid-item content-center">8</div>
-  <div class="grid-item content-center">9</div>
+<div class="grid container custom-content-demo align-content-start border-lightgreen bg-none">
+  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
 
