@@ -45,6 +45,12 @@
   </a>
 </div>
 
+<button 
+onclick="location.href='mailto:74ding@gmail.com'"
+style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; border-radius: 8px;">
+  📨 聯絡我
+</button>
+
 :::
 
 ## PROJECTS
