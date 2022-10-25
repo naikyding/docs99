@@ -1,5 +1,10 @@
 # Grid 網格系統
 
+:::info ⚡ 快速進入
+- [Grid Container [網格容器] 屬性設置](/css/grid-container) 
+- [Grid Item [網格項目] 屬性設置](/css/grid-container) 
+:::
+
 ## 說明
 Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門為了處理 layout 所誕生的功能，它對於瀏覽器有很好的支援度。與 [Flex 彈性盒子] 有很類似的功能，但可以對佈局有更彈性的控制力。
 
@@ -60,8 +65,8 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 
 [圖片出處](https://css-tricks.com/snippets/css/complete-guide-grid/)
 ## 屬性設置
-- [Grid container 網格容器](/css/grid-container)
-- [Grid item 網格項目](/css/grid-container)
+- [Grid Container 網格容器](/css/grid-container)
+- [Grid Item 網格項目](/css/grid-container)
 
 
 ## Reference

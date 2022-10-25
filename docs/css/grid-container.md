@@ -363,7 +363,7 @@
 ```
 
 
-## 🔪 分割網格 grid-template (簡寫)
+## 🟢 分割網格 grid-template (簡寫)
 藉由此設置來定義容器中「垂直」、「水平」 [Grid Track 網格軌道](/css/grid#grid-track-網格軌道) 的空間，可以是「指定尺吋」或者「按比例」分割，可以混合設置。
 
 可以同時設置「水平」、「垂直」網格 `grid-template-rows`、`grid-template-columns` 的寫法。
@@ -1197,7 +1197,7 @@
 但原先定義的尺吋，在「行」「例」上還是會影響到部分的區塊單一邊長度；不在影響的區塊就可以完整的顯示指定的尺吋。
 :::
 
-## 🧑‍🦯 [網格項目] 放置方向 grid-auto-flow
+## 🧑‍🦯 [網格項目] 分配方向 grid-auto-flow
 這是關係到 [網格項目] 怎麼被分配到 [網格單元] 上，一般默認都是水平方向往右排列 (`row`)，滿了就跳下一行。但，也可以透過這個設置來改變分配方向。
 
 **value:**
@@ -1284,6 +1284,69 @@
   grid-auto-flow: column;
 }
 ```
+
+## 🟡 網格配置 grid (縮寫)
+可以針對以下的所有屬性進行配置，這是一個很簡化的寫法。
+- `grid-template-areas`
+- `grid-template-rows`
+- `grid-template-columns`
+- `grid-auto-rows`
+- `grid-auto-columns`
+- `grid-auto-flow`
+
+### 分割網格
+配置方式與 `grid-template:` 完全相同。
+
+**value:**  `<grid-template-rows> / <grid-template-columns>` 
+
+```css {3}
+.container {
+  display: grid;
+  grid: 20px 40px 80px / 30px 60px 90px;
+
+  /* 完全相同👇 */
+  grid-template: 20px 40px 80px / 30px 60px 90px; 
+
+  /* 完全相同👇 */
+  grid-template-rows: 20px 40px 80px;
+  grid-template-columns: 30px 60px 90px; 
+}
+```
+
+### [網格項目]分配方向 && 分割網格
+除了分割網格，還同時可以設置 [網格項目] 分配方向，`auto-flow` 寫的位置決定它的方向。
+
+- **分配方向 row**
+  
+  `auto-flow [dense] <grid-template-rows> / <grid-template-columns>` 
+  ```css {3}
+  .container {
+    display: grid;
+    grid: auto-flow repeat(3, auto) / 20px 40px 80px;
+    
+    /* 完全相同👇 */
+    grid-auto-flow: row;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 20px 40px 80px;
+  }
+  ```
+
+- **分配方向 column**
+  
+  `<grid-template-rows> / auto-flow [dense] <grid-template-columns>` 
+
+  ```css {3}
+  .container {
+    display: grid;
+    grid: repeat(3, auto) / auto-flow dense 20px 40px 80px;
+    
+    /* 完全相同👇 */
+    grid-auto-flow: column dense;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 20px 40px 80px;
+  }
+  ```
+
 ## 項目 Grid item 屬性
 
 
