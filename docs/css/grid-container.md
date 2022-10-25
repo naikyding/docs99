@@ -1238,6 +1238,13 @@
   </div>
 </div>
 
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, auto) / repeat(3, auto);
+  grid-auto-flow: row;
+}
+```
 ### ⬇️ 垂直方向 column
 
 <div class="grid container grid-align-demo black grid-auto-flow-column">
@@ -1270,6 +1277,13 @@
   </div>
 </div>
 
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, auto) / repeat(3, auto);
+  grid-auto-flow: column;
+}
+```
 ## 項目 Grid item 屬性
 
 
