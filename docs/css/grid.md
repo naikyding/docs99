@@ -66,6 +66,7 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 
 ## Reference
 [Flex 彈性盒子]: /css/flex
+- [格線佈局的基本概念 MDN](https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout)
 - [Gap MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap)
 - [[Day17] Grid 基本認識](https://ithelp.ithome.com.tw/articles/10247574)
 - [gap Demo](https://css-tricks.com/almanac/properties/g/gap/)

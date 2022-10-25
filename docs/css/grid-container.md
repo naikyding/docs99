@@ -265,7 +265,7 @@
 :::
 
 ## 🔴 display (必填屬性)
-這是必填屬性，在 Grid 容器上設置，網格系統才會生效。
+這個屬性宣告，會將元素建立為 [網格容器](/css/grid#grid-container-網格容器) ，它「直接子層」都會變成 [網格項目](/css/grid#grid-item-網格項目)。
 
 **value:**
 - `grid` block 區塊容器
@@ -361,7 +361,7 @@
 ```
 :::
 
-## 📍 網格區域定義 grid-template-areas
+## 📍 [網格區域]定義 grid-template-areas
 語法可以視覺化的定義「網格區域」中的指定 [網格單元](/css/grid#grid-cell-網格單元)，使用 `.` 來表示空白的「網格單元」，`none` 來表示無定義。
 
 <div class="container grid-container grid grid-template">
@@ -412,7 +412,7 @@
 |footer|footer|footer|.|
 
 
-## 📏 網格線寬度 Gap
+## 📏 [網格線]寬度 Gap
 設置 [網格線](/css/grid#grid-line-網格線) 的寬度，通常用來定義 [網格單元](/css/grid#grid-cell-網格單元) 的間距。
 
 <div class="grid container grid-gap-demo">
@@ -453,21 +453,16 @@
 `grid-row-gap`、`grid-column-gap` 有 `grid` 前綴的寫法，在  Chrome 68+, Safari 11.2 Release 50+, and Opera 54+ 已不再支持了，請使用無前綴的寫法。
 ::: 
 
-### 網格單元 `水平` 對齊模式 justify-items
-**value:**
-- `start` 左
-- `end` 右
-- `center` 水平置中
-- `stretch` 水平填滿 (默認值)
+## 👉 [網格單元]水平對齊 justify-items
+可以決定 [網格單元] 內容的「水平」對齊方式。
 
-**網格單元內容「靠左對齊」** `justify-items: start;`
-```css {4}
-.container {
-  display: grid;
-  grid-template: repeat(3, auto) / repeat(3, auto);
-  justify-items: start;
-}
-```
+**value:**
+- `start` 靠左對齊
+- `end` 靠右對齊
+- `center` 水平置中
+- `stretch` 水平撐滿 (默認值)
+
+### 靠左對齊 `justify-items: start;`
 
 <div class="grid container grid-justify-start black">
   <div class="grid-item relative white border-radius-none">
@@ -499,14 +494,14 @@
   </div>
 </div>
 
-**網格單元內容「靠右對齊」** `justify-items: end;`
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, auto) / repeat(3, auto);
-  justify-items: end;
+  justify-items: start;
 }
 ```
+### 靠右對齊 `justify-items: end;`
 
 <div class="grid container grid-justify-start black">
   <div class="grid-item relative white border-radius-none">
@@ -538,14 +533,14 @@
   </div>
 </div>
 
-**網格單元內容「水平置中」** `justify-items: center;`
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, auto) / repeat(3, auto);
-  justify-items: center;
+  justify-items: end;
 }
 ```
+### 水平置中 `justify-items: center;`
 
 <div class="grid container grid-justify-start black">
   <div class="grid-item relative white border-radius-none">
@@ -577,14 +572,14 @@
   </div>
 </div>
 
-**網格單元內容「水平拉伸」** `justify-items: stretch;`
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, auto) / repeat(3, auto);
-  justify-items: stretch;
+  justify-items: center;
 }
 ```
+### 水平撐滿 `justify-items: stretch;`
 
 <div class="grid container grid-justify-start black">
   <div class="grid-item relative white border-radius-none">
@@ -616,21 +611,23 @@
   </div>
 </div>
 
-### 網格單元 `垂直` 對齊模式 align-items
-**value:**
-- `start` 左
-- `end` 右
-- `center` 水平置中
-- `stretch` 水平填滿 (默認值)
-
-**網格單元內容「向上對齊」** `align-items: start;`
 ```css {4}
 .container {
   display: grid;
-  grid-template: repeat(3, 100px) / repeat(3, auto);
-  align-items: start;
+  grid-template: repeat(3, auto) / repeat(3, auto);
+  justify-items: stretch;
 }
 ```
+## 👇 [網格單元]垂直對齊 align-items
+可以決定 [網格單元] 內容的「垂直」對齊方式。
+
+**value:**
+- `start` 靠上對齊
+- `end` 靠下對齊
+- `center` 垂直置中
+- `stretch` 垂置撐滿 (默認值)
+
+### 向上對齊 `align-items: start;`
 
 <div class="grid container grid-align-demo black">
   <div class="grid-item relative white border-radius-none">
@@ -662,14 +659,15 @@
   </div>
 </div>
 
-**網格單元內容「向下對齊」** `align-items: end;`
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 100px) / repeat(3, auto);
-  align-items: end;
+  align-items: start;
 }
 ```
+
+### 向下對齊 `align-items: end;`
 
 <div class="grid container grid-align-demo black">
   <div class="grid-item relative white border-radius-none">
@@ -701,14 +699,15 @@
   </div>
 </div>
 
-**網格單元內容「垂直置中」** `align-items: center;`
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 100px) / repeat(3, auto);
-  align-items: center;
+  align-items: end;
 }
 ```
+
+**網格單元內容「垂直置中」** `align-items: center;`
 
 <div class="grid container grid-align-demo black">
   <div class="grid-item relative white border-radius-none">
@@ -740,14 +739,15 @@
   </div>
 </div>
 
-**網格單元內容「垂直拉伸」** `align-items: stretch;`
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 100px) / repeat(3, auto);
-  align-items: stretch;
+  align-items: center;
 }
 ```
+
+**網格單元內容「垂直拉伸」** `align-items: stretch;`
 
 <div class="grid container grid-align-demo black">
   <div class="grid-item relative white border-radius-none">
@@ -779,8 +779,16 @@
   </div>
 </div>
 
-### 網格單元對齊模式 (垂直/水平) place-items
-這是 `align-items` 與 `justify-items` 一起設置的縮寫。
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, 100px) / repeat(3, auto);
+  align-items: stretch;
+}
+```
+
+## 🟢 [網格單元]對齊模式(縮寫) place-items
+同時設置 `align-items` 與 `justify-items` 的縮寫。
 
 **value:**
 - `<align-items> <justify-items>`
@@ -789,29 +797,22 @@
 .container {
   display: grid;
   grid-template: repeat(3, 100px) / repeat(3, auto);
-  place-items: center / center; /* place-items: center; */
+  place-items: center center; /* place-items: center; */
 }
 ```
 
-### 網格容器「水平」對齊模式 justify-content
-某些時候，網格分割的區塊單元是「小於」網格容器，可以輕鬆使用這個方法，來調整網格容器內容「水平」的對齊方式。
+## 👉 [網格容器]水平對齊 justify-content
+某些時候，分割的 [網格單元] 總數是「小於」 [網格容器]，可以輕鬆使用這個方法，來調整 [網格容器] 內容 [網格單元] 的水平對齊方式。
 
 **value:**
-- `start` 水平靠左 (默認值)
-- `end` 水平靠右
+- `start` 靠左對齊 (默認值)
+- `end` 靠右對齊
 - `center` 水平置中
 - `space-between` 水平分散
 - `space-around` 左、右 1/2，中間均分空間
-- `space-evenly` 環繞均分所有水平空間
+- `space-evenly` 環繞均分所有空間
 
-**網格容器水平「靠左」對齊** `justify-content: start;`
-```css {4}
-.container {
-  display: grid;
-  grid-template: repeat(3, 80px) / repeat(3, 80px);
-  justify-content: start;
-}
-```
+### 靠左對齊 `justify-content: start;`
 
 <div class="grid container custom-content-demo justify-content-start border-lightgreen-dashed bg-none">
   <div class="grid-item content-center white border-radius-none black--text"></div>
@@ -825,14 +826,15 @@
   <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
-**網格容器水平「靠右」對齊 `justify-content: end;`**
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 80px) / repeat(3, 80px);
-  justify-content: end;
+  justify-content: start;
 }
 ```
+
+### 靠右對齊 `justify-content: end;`
 
 <div class="grid container custom-content-demo justify-content-end border-lightgreen-dashed bg-none">
   <div class="grid-item content-center white border-radius-none black--text"></div>
@@ -846,15 +848,15 @@
   <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
-
-**網格容器水平「置中」對齊** `justify-content: center;`
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 80px) / repeat(3, 80px);
-  justify-content: center;
+  justify-content: end;
 }
 ```
+
+### 水平置中 `justify-content: center;`
 
 <div class="grid container custom-content-demo justify-content-center border-lightgreen-dashed bg-none">
   <div class="grid-item content-center white border-radius-none black--text"></div>
@@ -868,16 +870,15 @@
   <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
-
-
-**網格容器水平「分散」對齊** `justify-content: space-between;`
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 80px) / repeat(3, 80px);
-  justify-content: space-between;
+  justify-content: center;
 }
 ```
+
+### 水平分散 `justify-content: space-between;`
 
 <div class="grid container custom-content-demo justify-content-space-between border-lightgreen-dashed bg-none">
   <div class="grid-item content-center white border-radius-none black--text"></div>
@@ -891,14 +892,15 @@
   <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
-**網格容器水平「左右 1/2，中間均分」對齊** `justify-content: space-around;`
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 80px) / repeat(3, 80px);
-  justify-content: space-around;
+  justify-content: space-between;
 }
 ```
+
+### 左右 1/2，中間均分 `justify-content: space-around;`
 
 <div class="grid container custom-content-demo justify-content-space-around border-lightgreen-dashed bg-none">
   <div class="grid-item content-center white border-radius-none black--text"></div>
@@ -912,14 +914,15 @@
   <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
-**網格容器水平「所有空間均分分散」對齊** `justify-content: space-evenly;`
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 80px) / repeat(3, 80px);
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 ```
+
+### 所有空間均分分散 `justify-content: space-evenly;`
 
 <div class="grid container custom-content-demo justify-content-space-evenly bg-none border-lightgreen-dashed">
   <div class="grid-item content-center white border-radius-none black--text"></div>
@@ -933,25 +936,26 @@
   <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
-### 網格容器「垂直」對齊模式 align-content
-某些時候，網格分割的區塊單元是「小於」網格容器，可以輕鬆使用這個方法，來調整網格容器內容「垂直」的對齊方式。
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, 80px) / repeat(3, 80px);
+  justify-content: space-evenly;
+}
+```
+
+## 👇 [網格容器]垂直對齊 align-content
+某些時候，分割的 [網格單元] 總數是「小於」 [網格容器]，可以輕鬆使用這個方法，來調整 [網格容器] 內容 [網格單元] 的垂直對齊方式。
 
 **value:**
-- `start` 垂直靠上 (默認值)
-- `end` 垂直靠下
+- `start` 靠上對齊 (默認值)
+- `end` 靠下對齊
 - `center` 垂直置中
 - `space-between` 垂直分散
 - `space-around` 上、下 1/2，中間均分空間
 - `space-evenly` 垂直均分所有空間
 
-**垂直「靠上」對齊 `align-content: start;`**
-```css {4}
-.container {
-  display: grid;
-  grid-template: repeat(3, 100px) / repeat(3, 100px);
-  align-content: start;
-}
-```
+### 靠上對齊 `align-content: start;`
 
 <div class="grid container custom-content-algin-demo bg-none border-lightgreen-dashed align-content-start">
   <div class="grid-item content-center white border-radius-none black--text"></div>
@@ -965,14 +969,15 @@
   <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
-**垂直「靠下」對齊 `align-content: end;`**
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 100px) / repeat(3, 100px);
-  align-content: end;
+  align-content: start;
 }
 ```
+
+### 靠下對齊 `align-content: end;`
 
 <div class="grid container custom-content-algin-demo bg-none border-lightgreen-dashed align-content-end">
   <div class="grid-item content-center white border-radius-none black--text"></div>
@@ -986,14 +991,15 @@
   <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
-**垂直「置中」對齊 `align-content: center;`**
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 100px) / repeat(3, 100px);
-  align-content: center;
+  align-content: end;
 }
 ```
+
+### 垂直置中 `align-content: center;`
 
 <div class="grid container custom-content-algin-demo bg-none border-lightgreen-dashed align-content-center">
   <div class="grid-item content-center white border-radius-none black--text"></div>
@@ -1007,14 +1013,15 @@
   <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
-**垂直「分散」對齊 `align-content: space-between;`**
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 100px) / repeat(3, 100px);
-  align-content: space-between;
+  align-content: center;
 }
 ```
+
+### 垂直分散 `align-content: space-between;`
 
 <div class="grid container custom-content-algin-demo bg-none border-lightgreen-dashed align-content-space-between">
   <div class="grid-item content-center white border-radius-none black--text"></div>
@@ -1028,14 +1035,15 @@
   <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
-**垂直「上、下 1/2，中間空間均分」對齊 `align-content: space-around;`**
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 100px) / repeat(3, 100px);
-  align-content: space-around;
+  align-content: space-between;
 }
 ```
+
+### 上、下 1/2，中間空間均分 `align-content: space-around;`
 
 <div class="grid container custom-content-algin-demo bg-none border-lightgreen-dashed align-content-space-around">
   <div class="grid-item content-center white border-radius-none black--text"></div>
@@ -1049,15 +1057,15 @@
   <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
-
-**垂直「全部空間均分」對齊 `align-content: space-evenly;`**
 ```css {4}
 .container {
   display: grid;
   grid-template: repeat(3, 100px) / repeat(3, 100px);
-  align-content: space-evenly;
+  align-content: space-around;
 }
 ```
+
+### 垂直均分所有空間 `align-content: space-evenly;`
 
 <div class="grid container custom-content-algin-demo bg-none border-lightgreen-dashed align-content-space-evenly">
   <div class="grid-item content-center white border-radius-none black--text"></div>
@@ -1071,7 +1079,15 @@
   <div class="grid-item content-center white border-radius-none black--text"></div>
 </div>
 
-### 網格容器 (垂直/水平) 對齊模式簡寫 `place-content`
+```css {4}
+.container {
+  display: grid;
+  grid-template: repeat(3, 100px) / repeat(3, 100px);
+  align-content: space-evenly;
+}
+```
+
+## 🟢 [網格容器]對齊模式(縮寫) `place-content`
 ```css
 .container {
   place-content: <align-content> / <justify-content>;
@@ -1083,6 +1099,8 @@
 
 ## Reference
 [Flex 彈性盒子]: /css/flex
+[網格單元]: /css/grid#grid-cell-網格單元
+[網格容器]: /css/grid#grid-container-網格容器
 - [Gap MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap)
 - [[Day17] Grid 基本認識](https://ithelp.ithome.com.tw/articles/10247574)
 - [gap Demo](https://css-tricks.com/almanac/properties/g/gap/)
