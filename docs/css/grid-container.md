@@ -1183,7 +1183,7 @@
 }
 ```
 
-<div class="container grid-container grid grid-template-row-col-custom grid-auto-row-col">
+<div class="container grid grid-template-row-col-custom grid-auto-row-col bg-none border-lightgreen-dashed">
   <div class="grid-item content-center pa-0">30*60</div>
   <div class="grid-item content-center pa-0">30*60</div>
   <div class="grid-item content-center pa-0 pink">30*90</div>
