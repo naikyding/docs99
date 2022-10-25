@@ -2,7 +2,7 @@
 
 :::info ⚡ 快速進入
 - [Grid Container [網格容器] 屬性設置](/css/grid-container) 
-- [Grid Item [網格項目] 屬性設置](/css/grid-container) 
+- [Grid Item [網格項目] 屬性設置](/css/grid-item) 
 :::
 
 ## 說明
@@ -66,7 +66,7 @@ Grid 是一個基於網格的「二度空間」 (x, y) 佈局系統，是專門�
 [圖片出處](https://css-tricks.com/snippets/css/complete-guide-grid/)
 ## 屬性設置
 - [Grid Container 網格容器](/css/grid-container)
-- [Grid Item 網格項目](/css/grid-container)
+- [Grid Item 網格項目](/css/grid-item)
 
 
 ## Reference

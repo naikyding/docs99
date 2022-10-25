@@ -1347,9 +1347,6 @@
   }
   ```
 
-## 項目 Grid item 屬性
-
-
 ## Reference
 [Flex 彈性盒子]: /css/flex
 [網格單元]: /css/grid#grid-cell-網格單元
