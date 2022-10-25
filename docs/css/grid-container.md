@@ -11,6 +11,24 @@
 .rounded {
   border-radius: 8px;
 }
+.grid-template-row-col-custom {
+  grid-template: 30px 30px / 60px 60px; 
+  gap: 1px;
+}
+.grid-auto-row-col {
+  grid-auto-columns: 90px;
+  grid-auto-rows: 120px;
+}
+
+.grid-custom-row-col {
+  grid-row: 4 / 5;
+  grid-column: 7 / 8;
+}
+.grid-custom-row-col-1 {
+  grid-row: 3 / 4;
+  grid-column: 6 / 7;
+}
+
 .border-lightgreen-dashed {
   border: 1px dashed lightgreen;
 }
@@ -25,6 +43,9 @@
   background: lightgreen;
   border-radius: 8px;
   padding: 1rem;
+}
+.pa-0 {
+  padding: 0;
 }
 .row-line {
   border-top: 1px dashed #2e2e2e;
@@ -150,6 +171,10 @@
   gap: 1px;
 }
 
+.grid-justify-items-center {
+  justify-items: center;
+}
+
 .grid-justify-custom {
   grid-template: repeat(3, 100px) / repeat(3, auto);
   /* justify-items: stretch; */
@@ -257,7 +282,13 @@
 .align-content-space-evenly {
   align-content: space-evenly;
 }
-/* align-content */
+
+.grid-auto-flow-row {
+  grid-auto-flow: row;
+}
+.grid-auto-flow-column {
+  grid-auto-flow: column;
+}
 </style>
 
 :::tip 提醒
@@ -265,7 +296,7 @@
 :::
 
 ## 🔴 display (必填屬性)
-這個屬性宣告，會將元素建立為 [網格容器](/css/grid#grid-container-網格容器) ，它「直接子層」都會變成 [網格項目](/css/grid#grid-item-網格項目)。
+這個屬性宣告，會將元素建立為 [網格容器](/css/grid#grid-container-網格容器) ，它「直接子層」都會變成 [網格項目]。
 
 **value:**
 - `grid` block 區塊容器
@@ -453,7 +484,7 @@
 `grid-row-gap`、`grid-column-gap` 有 `grid` 前綴的寫法，在  Chrome 68+, Safari 11.2 Release 50+, and Opera 54+ 已不再支持了，請使用無前綴的寫法。
 ::: 
 
-## 👉 [網格單元]水平對齊 justify-items
+## ➡️ [網格單元]水平對齊 justify-items
 可以決定 [網格單元] 內容的「水平」對齊方式。
 
 **value:**
@@ -618,7 +649,7 @@
   justify-items: stretch;
 }
 ```
-## 👇 [網格單元]垂直對齊 align-items
+## ⬇️ [網格單元]垂直對齊 align-items
 可以決定 [網格單元] 內容的「垂直」對齊方式。
 
 **value:**
@@ -801,7 +832,7 @@
 }
 ```
 
-## 👉 [網格容器]水平對齊 justify-content
+## ➡️ [網格容器]水平對齊 justify-content
 某些時候，分割的 [網格單元] 總數是「小於」 [網格容器]，可以輕鬆使用這個方法，來調整 [網格容器] 內容 [網格單元] 的水平對齊方式。
 
 **value:**
@@ -944,7 +975,7 @@
 }
 ```
 
-## 👇 [網格容器]垂直對齊 align-content
+## ⬇️ [網格容器]垂直對齊 align-content
 某些時候，分割的 [網格單元] 總數是「小於」 [網格容器]，可以輕鬆使用這個方法，來調整 [網格容器] 內容 [網格單元] 的垂直對齊方式。
 
 **value:**
@@ -1094,6 +1125,151 @@
 }
 ```
 
+## 🔒 自動生成網格尺吋定義 grid-auto-*
+當 [網格單元] 指定的位置，超出原本定義 [網格容器] 分割網格的數量時，Grid 系統會自動生成[網格單元]來補足中間的空隙，而自動生成的 [網格單元] 尺吋是「自動」分配的。
+
+可以使用下面的方式為自動生成的 [網格單元] 定義尺吋:
+-  `grid-auto-rows` 指定「高度」
+-  `grid-auto-columns` 指定「寬度」
+### 說明
+[網格容器] 定義了分割四格的網格，若 [網格項目] 也只有四個，其尺吋都會符合定義值。
+
+```css {3}
+.container {
+  display: grid;
+  grid-template: 30px 30px / 60px 60px;
+}
+```
+
+<div class="grid container grid-template-row-col-custom bg-none border-lightgreen-dashed align-content-start" style="height: 100px">
+  <div class="grid-item content-center white border-radius-none pa-0 black--text">30*60</div>
+  <div class="grid-item content-center white border-radius-none pa-0 black--text">30*60</div>
+  <div class="grid-item content-center white border-radius-none pa-0 black--text">30*60</div>
+  <div class="grid-item content-center white border-radius-none pa-0 black--text">30*60</div>
+</div>
+
+當指定位置的 [網格單元]，超出了原先在 [網格容器] 分割的網格區域時，就會自動生成的 [網格單元] 尺吋是「自動」分配的。
+
+```css
+.item-1 {
+  grid-row: 3 / 4;
+  grid-column: 6 / 7;
+}
+.item-2 {
+  grid-row: 4 / 5;
+  grid-column: 7 / 8;
+}
+```
+
+<div class="grid container grid-template-row-col-custom bg-none border-lightgreen-dashed align-content-start">
+  <div class="grid-item content-center white border-radius-none pa-0 black--text">30*60</div>
+  <div class="grid-item content-center white border-radius-none pa-0 black--text">30*60</div>
+  <div class="grid-item content-center pa-0 pink">自動分配</div>
+  <div class="grid-item content-center pa-0 pink">自動分配</div>
+
+  <div class="grid-item content-center pa-0 grid-custom-row-col-1 pink">item-1</div>
+  <div class="grid-item content-center pa-0 grid-custom-row-col pink">item-2</div>
+</div>
+
+### 為生成網格定義尺吋
+當設置了 `grid-auto-rows`、`grid-auto-columns`，網格就會此來自動生成。
+
+```css {4-5}
+.container {
+  display: grid;
+  grid-template: 30px 30px / 60px 60px;
+  grid-auto-rows: 90px;     // 定義高度
+  grid-auto-columns: 120px; // 定義寬度
+}
+```
+
+<div class="container grid-container grid grid-template-row-col-custom grid-auto-row-col">
+  <div class="grid-item content-center pa-0">30*60</div>
+  <div class="grid-item content-center pa-0">30*60</div>
+  <div class="grid-item content-center pa-0 pink">30*90</div>
+  <div class="grid-item content-center pa-0 pink">30*90</div>
+
+  <div class="grid-item content-center pa-0 grid-custom-row-col-1 pink">120*90</div>
+  <div class="grid-item content-center pa-0 grid-custom-row-col pink">120*90</div>
+</div>
+
+:::warning 注意
+但原先定義的尺吋，在「行」「例」上還是會影響到部分的區塊單一邊長度；不在影響的區塊就可以完整的顯示指定的尺吋。
+:::
+
+## 🧑‍🦯 [網格項目] 放置方向 grid-auto-flow
+這是關係到 [網格項目] 怎麼被分配到 [網格單元] 上，一般默認都是水平方向往右排列 (`row`)，滿了就跳下一行。但，也可以透過這個設置來改變分配方向。
+
+**value:**
+- `row` 水平方向 (默認)
+- `row dense` 緊密水平方向
+- `column` 垂直方向
+- `column dense` 緊密垂直方向
+
+### ➡️ 水平方向 row
+
+<div class="grid container grid-align-demo black grid-auto-flow-row">
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">1</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">2</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">3</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">4</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">5</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">6</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">7</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">8</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">9</div>
+  </div>
+</div>
+
+### ⬇️ 垂直方向 column
+
+<div class="grid container grid-align-demo black grid-auto-flow-column">
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">1</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">2</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">3</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">4</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">5</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">6</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">7</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">8</div>
+  </div>
+  <div class="grid-item relative white border-radius-none">
+    <div class="align-box-stretch content-center light-green all-center">9</div>
+  </div>
+</div>
+
 ## 項目 Grid item 屬性
 
 
@@ -1101,6 +1277,7 @@
 [Flex 彈性盒子]: /css/flex
 [網格單元]: /css/grid#grid-cell-網格單元
 [網格容器]: /css/grid#grid-container-網格容器
+[網格項目]: /css/grid#grid-item-網格項目
 - [Gap MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap)
 - [[Day17] Grid 基本認識](https://ithelp.ithome.com.tw/articles/10247574)
 - [gap Demo](https://css-tricks.com/almanac/properties/g/gap/)
