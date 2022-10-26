@@ -13,6 +13,16 @@
 .green {
   background: lightgreen;
 }
+.grey {
+  background: blue;
+  opacity: .5;
+}
+.grid-area-custom-with-grid-areas {
+  grid-area: 2 / 2 / 4 / 6;
+}
+.red {
+  background: red;
+}
 .rounded {
   border-radius: 8px;
 }
@@ -24,14 +34,55 @@
   justify-content: center;
   align-items: center;
 }
+.box {
+  width: 30px;
+  height: 100%;
+}
+.w-100 {
+  width: 100%;
+}
+.h-30 {
+  height: 30px;
+}
+.p-absolute {
+  position: absolute;
+}
+.top-50 {
+  top: 50%;
+}
+.mt--15 {
+  margin-top: -15px;
+}
+.ml--15 {
+  margin-left: -15px;
+}
+.top-0 {
+  top: 0;
+}
+.left-0 {
+  left: 0;
+}
+.right-0 {
+  right: 0;
+}
+.bottom-0 {
+  bottom: 0;
+}
+.left-50 {
+  left: 50%;
+}
+
 .grid-item-rows-cols {
   grid-template: 
   [row-line-1] 30px [row-line-2] 90px [row-line-3] 90px [row-line-4] 60px [row-line-end]
   /
   [col-line-1] 90px [col-line-2] 60px [col-line-3] 60px [col-line-4] 90px [col-line-5] auto [col-line-6] 60px [col-line-end] ;
 }
-.grid-item-box {
-  
+.grid-item-rows-cols-1 {
+  grid-template: 
+  [row-line-2] 90px [row-line-3]
+  /
+  [col-line-1] 90px [col-line-2] 60px [col-line-3] 60px [col-line-4] 90px [col-line-5] auto [col-line-6] 60px [col-line-end] ;
 }
 .bg-base {
   background: var(--vp-c-brand);
@@ -137,6 +188,34 @@
   'sidebar sidebar . . . . '
   'footer footer footer footer footer footer'
   ;
+}
+
+/* justify-self */
+.justify-self-start {
+  justify-self: start;
+}
+.justify-self-end {
+  justify-self: end;
+}
+.justify-self-center {
+  justify-self: center;
+}
+.justify-self-stretch {
+  justify-self: stretch;
+}
+
+/* align-self */
+.align-self-start {
+  align-self: start;
+}
+.align-self-end {
+  align-self: end;
+}
+.align-self-center {
+  align-self: center;
+}
+.align-self-stretch {
+  align-self: stretch;
 }
 </style>
 
@@ -383,7 +462,7 @@
 }
 ```
 
-### 二維 [網格區域] 定義位置
+### 水平、垂直定義 [網格區域] 
 定義水平 [網格線] 第 `2`、`4` 條、垂直[網格線] 第`3`、`6`條 之間的 [網格項目]。
 
 <div class="grid-item-container grid-item-rows-cols bg-base gap-1 outside-border">
@@ -507,6 +586,19 @@
   ;
 }
 ```
+:::tip 提醒
+- 若 [網格項目] 沒有指定位置，就會被排在「最前面」空白的 [網格單元]。
+- 若 [網格單元] 位置重覆被指定「不同的」 [網格項目]，[網格項目] 設置 `grid-area` 會在 [網格容器] 設置 `grid-template-areas` 的「上層」。
+
+<div class="grid-item-container grid-item-rows-cols gap-1 outside-border grid-template-areas">
+  <div class="green content-center rounded header">Header</div>
+  <div class="blue content-center rounded main">Main</div>
+  <div class="pink content-center rounded sidebar">Sidebar</div>
+  <div class="orange content-center rounded footer">Footer</div>
+  <div class="red content-center white--text">無指定</div>
+  <div class="grey content-center white--text grid-area-custom-with-grid-areas">grid-area</div>
+</div>
+:::
 
 ### [網格區域]終極縮寫
 可以一次將 `grid-row`、`grid-column` 都設置進去。
@@ -548,6 +640,262 @@ grid-area: `<grid-row-start>` / `<grid-column-start>` / `<grid-row-end>` / `<gri
   /* 相等 */
   grid-row: 2 / 4;
   grid-column: col-line-3 / col-line-6;
+}
+```
+
+## ➡️ ⬇️ [網格單元] 對齊方式
+針對 [網格單元] 來定義內容的對齊方式，影響到 [網格項目] 的顯示的位置。
+
+### 水平對齊 justify-self
+- **靠左 `justify-self: start;`**
+- **靠右 `justify-self: end;`**
+- **水平置中 `justify-self: center;`**
+- **水平撐滿 `justify-self: stretch;`** (默認值)
+
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border">
+  <div class="white--text p-relative black">
+    <div class="box content-center orange">1</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange">2</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange">3</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange">4</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange">5</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange">6</div>
+  </div>
+</div>
+
+```css
+.item {
+  justify-self: start;
+}
+```
+
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border">
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 right-0">1</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 right-0">2</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 right-0">3</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 right-0">4</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 right-0">5</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 right-0">6</div>
+  </div>
+</div>
+
+```css
+.item {
+  justify-self: end;
+}
+```
+
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border">
+  <div class="white--text p-relative black">
+    <div class="box orange content-center p-absolute top-0 left-50 ml--15">1</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-50 ml--15">2</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-50 ml--15">3</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-50 ml--15">4</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-50 ml--15">5</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-50 ml--15">6</div>
+  </div>
+</div>
+
+```css
+.item {
+  justify-self: center;
+}
+```
+
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border">
+  <div class="white--text p-relative black">
+    <div class="box orange content-center p-absolute top-0 left-0 w-100">1</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-0 w-100">2</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-0 w-100">3</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-0 w-100">4</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-0 w-100">5</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-0 w-100">6</div>
+  </div>
+</div>
+
+```css
+.item {
+  justify-self: stretch;
+}
+```
+
+### 垂直對齊 align-self
+- **靠上 `align-self: start;`**
+- **靠下 `align-self: end;`**
+- **垂直置中 `align-self: center;`**
+- **垂直撐滿 `align-self: stretch;`** (默認值)
+
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border">
+  <div class="white--text p-relative black">
+    <div class="box content-center orange w-100 h-30">1</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange w-100 h-30">2</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange w-100 h-30">3</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange w-100 h-30">4</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange w-100 h-30">5</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange w-100 h-30">6</div>
+  </div>
+</div>
+
+```css
+.item {
+  align-self: start;
+}
+```
+
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border">
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute h-30 w-100 bottom-0 right-0">1</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute h-30 w-100 bottom-0 right-0">2</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute h-30 w-100 bottom-0 right-0">3</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute h-30 w-100 bottom-0 right-0">4</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute h-30 w-100 bottom-0 right-0">5</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute h-30 w-100 bottom-0 right-0">6</div>
+  </div>
+</div>
+
+```css
+.item {
+  algin-self: end;
+}
+```
+
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border">
+  <div class="white--text p-relative black">
+    <div class="box orange content-center p-absolute w-100 h-30 top-50 mt--15">1</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute w-100 h-30 top-50 mt--15">2</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute w-100 h-30 top-50 mt--15">3</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute w-100 h-30 top-50 mt--15">4</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute w-100 h-30 top-50 mt--15">5</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute w-100 h-30 top-50 mt--15">6</div>
+  </div>
+</div>
+
+```css
+.item {
+  align-self: center;
+}
+```
+
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border">
+  <div class="white--text p-relative black">
+    <div class="box orange content-center p-absolute top-0 left-0 w-100">1</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-0 w-100">2</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-0 w-100">3</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-0 w-100">4</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-0 w-100">5</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="box content-center orange p-absolute top-0 left-0 w-100">6</div>
+  </div>
+</div>
+
+```css
+.item {
+  align-self: stretch;
+}
+```
+
+<div class="d-none grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border">
+  <div class="orange justify-self-end align-self-center content-center white--text">item</div>
+  <div class="orange justify-self-end align-self-center content-center white--text">item</div>
+  <div class="orange justify-self-end align-self-center content-center white--text">item</div>
+  <div class="orange justify-self-end align-self-center content-center white--text">item</div>
+  <div class="orange justify-self-end align-self-center content-center white--text">item</div>
+  <div class="orange justify-self-end align-self-center content-center white--text">item</div>
+</div>
+
+## 🟢 [網格單元] 對齊方式 (縮寫) place-self
+
+:::info 語法
+#### place-self: `<align-self>` / `<justify-self>`
+:::
+
+```css {2}
+.item {
+  place-self: center / end;
+
+  /* 相等 */
+  justify-self: end;
+  align-self: center;
 }
 ```
 
