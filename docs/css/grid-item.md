@@ -101,8 +101,8 @@
 - [Grid Container \[網格容器\] 屬性設置](/css/grid-container) 
 :::
 
-## ➡️ 水平 [網格線] 位置定義 grid-row-*
-可以透過 `grid-row-start:`、`grid-row-end:` [網格線] 區間來定義，[網格項目] 的「垂直」位置。
+## ➡️ [網格區域] 水平 [網格線] 定義 grid-row-*
+可以透過 `grid-row-start:`、`grid-row-end:` 水平[網格線] 區間來定義，[網格項目] 的 [網格區域] 位置。
 
 - #### `grid-row-start:` 起點
 - #### `grid-row-end:` 終點
@@ -222,8 +222,8 @@
 }
 ```
 
-## ⬇️ 垂直 [網格線] 位置定義 grid-column-*
-透過垂直的 `grid-column-start`、`grid-column-end` [網格線]，來定義 [網格項目] 的「水平」方向相對位置。
+## ⬇️ [網格區域] 垂直 [網格線] 定義 grid-column-*
+透過垂直的 `grid-column-start`、`grid-column-end` [網格線]，來定義 [網格項目] 的 [網格區域] 位置。
 
 - #### `grid-column-start` 起點
 - #### `grid-column-end` 終點
@@ -339,7 +339,7 @@
 }
 ```
 
-### 二維定義位置
+### 二維 [網格區域] 定義位置
 定義水平 [網格線] 第 `2`、`4` 條、垂直[網格線] 第`3`、`6`條 之間的 [網格項目]。
 
 <div class="grid-item-container grid-item-rows-cols bg-base gap-1 outside-border">
@@ -378,7 +378,7 @@
 }
 ```
 
-## 🟢 位置定義 (縮寫) grid-row | column
+## 🟢 [網格區域] 定義 (縮寫) grid-row | column
 
 - #### grid-row: `<grid-row-start> / <grid-row-end>`
 - #### grid-column: `<grid-column-start> / <grid-column-end>`
@@ -424,6 +424,7 @@
 [網格容器]: /css/grid#grid-container-網格容器
 [網格項目]: /css/grid#grid-item-網格項目
 [網格線]: /css/grid#grid-line-網格線
+[網格區域]: /css/grid#grid-area-網格區域
 - [Gap MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap)
 - [[Day17] Grid 基本認識](https://ithelp.ithome.com.tw/articles/10247574)
 - [gap Demo](https://css-tricks.com/almanac/properties/g/gap/)
