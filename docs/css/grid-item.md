@@ -10,6 +10,12 @@
 .gap-1 {
   gap: 1px;
 }
+.green {
+  background: lightgreen;
+}
+.rounded {
+  border-radius: 8px;
+}
 .white--text {
   color: white;
 }
@@ -35,6 +41,15 @@
 }
 .orange {
   background: orange;
+}
+.blue {
+  background: lightblue;
+}
+.pink {
+  background: pink;
+}
+.yellow {
+  background: yellow;
 }
 .white {
   background: white;
@@ -94,6 +109,35 @@
   grid-row: 2 / 4;
   grid-column: 3 / 6;
 }
+.grid-area-custom {
+  grid-area: 
+    2 /
+    col-line-3 /
+    4 /
+    col-line-6;
+}
+
+/* grid-areas */
+.header {
+  grid-area: header;
+}
+.main {
+  grid-area: main;
+}
+.sidebar {
+  grid-area: sidebar;
+}
+.footer {
+  grid-area: footer;
+}
+.grid-template-areas {
+  grid-template-areas:
+  '. header header header header .'
+  'sidebar sidebar main main main main'
+  'sidebar sidebar . . . . '
+  'footer footer footer footer footer footer'
+  ;
+}
 </style>
 
 :::info ⚡ 快速進入
@@ -101,7 +145,7 @@
 - [Grid Container \[網格容器\] 屬性設置](/css/grid-container) 
 :::
 
-## ➡️ [網格區域] 水平 [網格線] 定義 grid-row-*
+## ➡️ 水平 [網格線] 定義 [網格區域] grid-row-*
 可以透過 `grid-row-start:`、`grid-row-end:` 水平[網格線] 區間來定義，[網格項目] 的 [網格區域] 位置。
 
 - #### `grid-row-start:` 起點
@@ -222,7 +266,7 @@
 }
 ```
 
-## ⬇️ [網格區域] 垂直 [網格線] 定義 grid-column-*
+## ⬇️ 垂直 [網格線] 定義 [網格區域] grid-column-*
 透過垂直的 `grid-column-start`、`grid-column-end` [網格線]，來定義 [網格項目] 的 [網格區域] 位置。
 
 - #### `grid-column-start` 起點
@@ -378,7 +422,7 @@
 }
 ```
 
-## 🟢 [網格區域] 定義 (縮寫) grid-row | column
+## 🟢 定義 [網格區域] (縮寫) grid-row | column
 
 - #### grid-row: `<grid-row-start> / <grid-row-end>`
 - #### grid-column: `<grid-column-start> / <grid-column-end>`
@@ -411,10 +455,99 @@
 </div>
 
 
-```css
+```css {2-3}
 .item {
   grid-row: 2 / 4;
   grid-column: 3 / 6;
+
+  /* 相等 */
+  grid-row-start: 2;
+  grid-row-end: 4;
+  grid-column-start: 3;
+  grid-column-end: 6;
+}
+```
+
+## 🌟 [網格項目]命名 && [網格區域]終極縮寫 grid-area
+
+### [網格項目] 命名
+對 [網格項目] 命名，供 [`grid-template-areas`](/css/grid-container#📍-網格區域-定義-grid-template-areas) 定義排版位置。
+
+<div class="grid-item-container grid-item-rows-cols gap-1 outside-border grid-template-areas">
+  <div class="green content-center rounded header">Header</div>
+  <div class="blue content-center rounded main">Main</div>
+  <div class="pink content-center rounded sidebar">Sidebar</div>
+  <div class="orange content-center rounded footer">Footer</div>
+</div>
+
+**1️⃣ [網格項目] 命名**
+
+```css
+.header {
+  grid-area: header;
+}
+.main {
+  grid-area: main;
+}
+.sidebar {
+  grid-area: sidebar;
+}
+.footer {
+  grid-area: footer;
+}
+```
+**2️⃣ [網格容器] `grid-template-areas` 指定排版位置**
+```css
+.container {
+  grid-template-areas:
+  '. header header header header .'
+  'sidebar sidebar main main main main'
+  'sidebar sidebar . . . . '
+  'footer footer footer footer footer footer'
+  ;
+}
+```
+
+### [網格區域]終極縮寫
+可以一次將 `grid-row`、`grid-column` 都設置進去。
+
+:::info 語法
+grid-area: `<grid-row-start>` / `<grid-column-start>` / `<grid-row-end>` / `<grid-column-end>` ;
+:::
+<div class="grid-item-container grid-item-rows-cols bg-base gap-1 outside-border">
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="orange content-center white--text p-relative grid-area-custom">item</div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+  <div class="black content-center white--text"></div>
+</div>
+
+```css {2}
+.item {
+  grid-area: 2 / col-line-3 / 4 / col-line-6;
+
+  /* 相等 */
+  grid-row: 2 / 4;
+  grid-column: col-line-3 / col-line-6;
 }
 ```
 
