@@ -17,9 +17,7 @@
 .bg-base {
   background: var(--vp-c-brand);
 }
-.outside-border {
-  border: 1px dashed var(--vp-c-brand);
-}
+
 .gap-1 {
   gap: 1px;
 }
@@ -169,7 +167,9 @@
 .area-item-4 {
   grid-area: sidebar;
 }
-
+.outside-border {
+  border: 1px dashed var(--vp-c-brand);
+}
 .grid-template {
   grid-template: repeat(3, auto) / repeat(4, auto);
   grid-template-areas: 
@@ -294,9 +294,7 @@
 .border-lightgreen {
   border: 1px solid lightgreen;
 }
-.bg-none {
-  background: none;
-}
+
 
 .custom-content-demo {
   height: 300px;
@@ -352,23 +350,27 @@
 .grid-auto-flow-column {
   grid-auto-flow: column;
 }
+.bg-none {
+  background: none;
+}
 </style>
 
-
 :::info ⚡ 快速進入
+
 - [Grid 網格系統](/css/grid)
 - [Grid Item \[網格項目\] 屬性設置](/css/grid-item)
-:::
-
+  :::
 
 :::tip 提醒
 操作前，建議先了解 [Grid 網格系統](/css/grid) 及相關術語。
 :::
 
 ## 🔴 display (必填屬性)
+
 這個屬性宣告，會將元素建立為 [網格容器](/css/grid#grid-container-網格容器) ，它「直接子層」都會變成 [網格項目]。
 
 **value:**
+
 - `grid` block 區塊容器
 - `inline-grid` inline 行內容器
 
@@ -377,13 +379,15 @@
   display: grid;
 }
 ```
+
 ## 🔪 網格水平分割 grid-template-rows
+
 藉由此設置來定義容器中「水平」 [Grid Track 網格軌道](/css/grid#grid-track-網格軌道) 空間，可以是「指定尺吋」或者「按比例」分割，可以混合設置。[👉 尺吋設置方法](#🟢-grid-template-分割網格)
 
 <div class="container grid-container grid grid-rows-custom">
-  <div class="grid-item content-center row-line border-radius-none">1 (30px)</div>
-  <div class="grid-item content-center row-line border-radius-none">2 (60px)</div>
-  <div class="grid-item content-center row-line border-radius-none">3 (90px)</div>
+  <div class="grid-item content-center row-line border-radius-none orange">1 (30px)</div>
+  <div class="grid-item content-center row-line border-radius-none orange">2 (60px)</div>
+  <div class="grid-item content-center row-line border-radius-none orange">3 (90px)</div>
 </div>
 
 ```css
@@ -392,6 +396,7 @@
   grid-template-rows: 30px 60px 90px;
 }
 ```
+
 [👉 尺吋設置方法](#🟢-grid-template-分割網格)
 
 ### 命名網格線
@@ -404,21 +409,23 @@
 }
 ```
 
-## 🔪 網格垂直分割 grid-template-columns 
+## 🔪 網格垂直分割 grid-template-columns
+
 藉由此設置來定義容器中「垂直」 [Grid Track 網格軌道](/css/grid#grid-track-網格軌道) 空間，可以是「指定尺吋」或者「按比例」分割，可以混合設置。[👉 尺吋設置方法](#🟢-grid-template-分割網格)
 
-<div class="container grid-container grid grid-cols-custom">
-  <div class="grid-item content-center col-line border-radius-none">1 (4fr)</div>
-  <div class="grid-item content-center col-line border-radius-none">2(8fr)</div>
-  <div class="grid-item content-center col-line border-radius-none">3(2fr)</div>
-  <div class="grid-item content-center col-line border-radius-none">4(4fr)</div>
-  <div class="grid-item content-center col-line border-radius-none">5(8fr)</div>
+<div class="container grid-container grid grid-cols-custom bg-none outside-border">
+  <div class="grid-item content-center col-line border-radius-none orange">1 (4fr)</div>
+  <div class="grid-item content-center col-line border-radius-none orange">2(8fr)</div>
+  <div class="grid-item content-center col-line border-radius-none orange">3(2fr)</div>
+  <div class="grid-item content-center col-line border-radius-none orange">4(4fr)</div>
+  <div class="grid-item content-center col-line border-radius-none orange">5(8fr)</div>
+  <div class="grid-item content-center col-line border-radius-none orange">6(2fr)</div>
 </div>
 
 ```css
 .container {
   /* 按比例分配 */
-  grid-template-columns: 4fr 8fr 2fr; 
+  grid-template-columns: 4fr 8fr 2fr;
 }
 ```
 
@@ -428,15 +435,16 @@
 
 ```css
 .container {
-  grid-template-columns: [first] 4fr [line2] 8fr [line3] 2fr [end]; 
+  grid-template-columns: [first] 4fr [line2] 8fr [line3] 2fr [end];
 }
 ```
 
-
 ## 🟢 分割網格 grid-template (簡寫)
+
 藉由此設置來定義容器中「垂直」、「水平」 [Grid Track 網格軌道](/css/grid#grid-track-網格軌道) 的空間，可以是「指定尺吋」或者「按比例」分割，可以混合設置。
 
 可以同時設置「水平」、「垂直」網格 `grid-template-rows`、`grid-template-columns` 的寫法。
+
 ```css {3}
 .container {
   display: grid;
@@ -449,23 +457,27 @@
 可使用設置值: `20%`、`20px`、`2fr`、`auto`、`repeat(n, size)`
 
 :::tip
+
 - 「`fr` 按比例」: 剩餘空間等於 `fr` 數字總合，再按 `fr` 設置數字分配空間。
 - 「repeat(`幾個空間`, `空間尺吋`)」 可以使用這個方式來設置多個「重覆」的空間。
-:::
+  :::
 
 :::warning 注意
 當混合單位設置，會先切割 `30px`空間，剩除空間才會按 `5fr` `2fr` 比例分配。
+
 ```css
 .container {
   grid-template-rows: 30px 5fr 2fr;
 }
 ```
+
 :::
 
 ## 📍 [網格區域]定義 grid-template-areas
+
 語法可以視覺化的定義「網格區域」中的指定 [網格單元](/css/grid#grid-cell-網格單元)，使用 `.` 來表示空白的「網格單元」，`none` 來表示無定義。
 
-<div class="container grid-container grid grid-template">
+<div class="container grid-container grid grid-template bg-none outside-border">
   <div class="grid-item content-center pink area-item-1">Header</div>
   <div class="grid-item content-center orange area-item-2">Main</div>
   <div class="grid-item content-center light-green area-item-3">Footer</div>
@@ -473,7 +485,9 @@
 </div>
 
 ### 1️⃣ 指定網格單元名稱
+
 為 [網格項目](/css/grid#grid-item-網格項目) 指定 [網格單元](/css/grid#grid-cell-網格單元) 名稱
+
 ```css
 .item-1 {
   grid-area: header;
@@ -490,6 +504,7 @@
 ```
 
 ### 2️⃣ 「網格區域」定義 `grid-template-areas`
+
 定義 [網格區塊](/css/grid#grid-area-網格區域) 中，所有 [網格單元](/css/grid#grid-cell-網格單元) 的配置。
 (使用「空白」間隔)
 
@@ -498,25 +513,25 @@
   display: grid;
   grid-template-rows: repeat(3, auto);
   grid-template-columns: repeat(4, auto);
-  grid-template-areas: 
-    "none header header ."
-    "sidebar main main main"
-    "footer footer footer .";
+  grid-template-areas:
+    'none header header .'
+    'sidebar main main main'
+    'footer footer footer .';
 }
 ```
 
 **[網格單元](/css/grid#grid-cell-網格單元) 會是這樣配置:**
 
-|none|header|header|.|
-|:-:|:-:|:-:|:-:|
-|sidebar|main|main|main|
-|footer|footer|footer|.|
-
+|  none   | header | header |  .   |
+| :-----: | :----: | :----: | :--: |
+| sidebar |  main  |  main  | main |
+| footer  | footer | footer |  .   |
 
 ## 📏 [網格線]寬度 Gap
+
 設置 [網格線](/css/grid#grid-line-網格線) 的寬度，通常用來定義 [網格單元](/css/grid#grid-cell-網格單元) 的間距。
 
-<div class="grid container grid-gap-demo">
+<div class="grid container grid-gap-demo bg-none outside-border">
   <div class="grid-item content-center">1</div>
   <div class="grid-item content-center">2</div>
   <div class="grid-item content-center">3</div>
@@ -528,8 +543,8 @@
   <div class="grid-item content-center">9</div>
 </div>
 
-- `row-gap: <size>` (水平)
-- `column-gap: <size>` (垂直)
+- `row-gap: <size>` (水平方向)
+- `column-gap: <size>` (垂直方向)
 - `gap: <row-gap> <column-gap>` (縮寫)
 
 ### Demo
@@ -539,10 +554,10 @@
   display: grid;
   grid-template: repeat(3, auto) / repeat(3, auto);
 
-  row-gap: 10px;     /* 網格線 (橫) 寬度 */
-  column-gap: 50px;  /* 網格線 (直) 寬度 */
+  row-gap: 10px; /* 網格線 (橫) 寬度 */
+  column-gap: 50px; /* 網格線 (直) 寬度 */
 
-  gap: 10px 50px;   /* 簡寫 <row-gap> <column-gap> */
+  gap: 10px 50px; /* 簡寫 <row-gap> <column-gap> */
 }
 ```
 
@@ -551,13 +566,15 @@
 :::
 
 :::danger 舊語法再不再支持
-`grid-row-gap`、`grid-column-gap` 有 `grid` 前綴的寫法，在  Chrome 68+, Safari 11.2 Release 50+, and Opera 54+ 已不再支持了，請使用無前綴的寫法。
-::: 
+`grid-row-gap`、`grid-column-gap` 有 `grid` 前綴的寫法，在 Chrome 68+, Safari 11.2 Release 50+, and Opera 54+ 已不再支持了，請使用無前綴的寫法。
+:::
 
 ## ➡️ [網格單元]水平對齊 justify-items
+
 可以決定 [網格單元] 內容的「水平」對齊方式。
 
 **value:**
+
 - `start` 靠左對齊
 - `end` 靠右對齊
 - `center` 水平置中
@@ -611,6 +628,7 @@
   justify-items: start;
 }
 ```
+
 ### 靠右對齊 `justify-items: end;`
 
 <div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 auto-row outside-border">
@@ -659,6 +677,7 @@
   justify-items: end;
 }
 ```
+
 ### 水平置中 `justify-items: center;`
 
 <div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 auto-row outside-border">
@@ -707,6 +726,7 @@
   justify-items: center;
 }
 ```
+
 ### 水平撐滿 `justify-items: stretch;`
 
 <div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border auto-row">
@@ -755,10 +775,13 @@
   justify-items: stretch;
 }
 ```
+
 ## ⬇️ [網格單元]垂直對齊 align-items
+
 可以決定 [網格單元] 內容的「垂直」對齊方式。
 
 **value:**
+
 - `start` 靠上對齊
 - `end` 靠下對齊
 - `center` 垂直置中
@@ -961,9 +984,11 @@
 ```
 
 ## 🟢 [網格單元]對齊模式(縮寫) place-items
+
 同時設置 `align-items` 與 `justify-items` 的縮寫。
 
 **value:**
+
 - `<align-items> <justify-items>`
 
 ```css {4}
@@ -975,9 +1000,11 @@
 ```
 
 ## ➡️ [網格容器]水平對齊 justify-content
+
 某些時候，分割的 [網格單元] 總數是「小於」 [網格容器]，可以輕鬆使用這個方法，來調整 [網格容器] 內容 [網格單元] 的水平對齊方式。
 
 **value:**
+
 - `start` 靠左對齊 (默認值)
 - `end` 靠右對齊
 - `center` 水平置中
@@ -988,15 +1015,15 @@
 ### 靠左對齊 `justify-content: start;`
 
 <div class="grid container custom-content-demo justify-content-start border-lightgreen-dashed bg-none">
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
 </div>
 
 ```css {4}
@@ -1010,15 +1037,15 @@
 ### 靠右對齊 `justify-content: end;`
 
 <div class="grid container custom-content-demo justify-content-end border-lightgreen-dashed bg-none">
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
 </div>
 
 ```css {4}
@@ -1032,15 +1059,15 @@
 ### 水平置中 `justify-content: center;`
 
 <div class="grid container custom-content-demo justify-content-center border-lightgreen-dashed bg-none">
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
 </div>
 
 ```css {4}
@@ -1054,15 +1081,15 @@
 ### 水平分散 `justify-content: space-between;`
 
 <div class="grid container custom-content-demo justify-content-space-between border-lightgreen-dashed bg-none">
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
 </div>
 
 ```css {4}
@@ -1076,15 +1103,15 @@
 ### 左右 1/2，中間均分 `justify-content: space-around;`
 
 <div class="grid container custom-content-demo justify-content-space-around border-lightgreen-dashed bg-none">
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
 </div>
 
 ```css {4}
@@ -1098,15 +1125,15 @@
 ### 所有空間均分分散 `justify-content: space-evenly;`
 
 <div class="grid container custom-content-demo justify-content-space-evenly bg-none border-lightgreen-dashed">
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
 </div>
 
 ```css {4}
@@ -1118,9 +1145,11 @@
 ```
 
 ## ⬇️ [網格容器]垂直對齊 align-content
+
 某些時候，分割的 [網格單元] 總數是「小於」 [網格容器]，可以輕鬆使用這個方法，來調整 [網格容器] 內容 [網格單元] 的垂直對齊方式。
 
 **value:**
+
 - `start` 靠上對齊 (默認值)
 - `end` 靠下對齊
 - `center` 垂直置中
@@ -1131,15 +1160,15 @@
 ### 靠上對齊 `align-content: start;`
 
 <div class="grid container custom-content-algin-demo bg-none border-lightgreen-dashed align-content-start">
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
 </div>
 
 ```css {4}
@@ -1153,15 +1182,15 @@
 ### 靠下對齊 `align-content: end;`
 
 <div class="grid container custom-content-algin-demo bg-none border-lightgreen-dashed align-content-end">
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
 </div>
 
 ```css {4}
@@ -1175,15 +1204,15 @@
 ### 垂直置中 `align-content: center;`
 
 <div class="grid container custom-content-algin-demo bg-none border-lightgreen-dashed align-content-center">
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
 </div>
 
 ```css {4}
@@ -1197,15 +1226,15 @@
 ### 垂直分散 `align-content: space-between;`
 
 <div class="grid container custom-content-algin-demo bg-none border-lightgreen-dashed align-content-space-between">
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
 </div>
 
 ```css {4}
@@ -1219,15 +1248,15 @@
 ### 上、下 1/2，中間空間均分 `align-content: space-around;`
 
 <div class="grid container custom-content-algin-demo bg-none border-lightgreen-dashed align-content-space-around">
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
 </div>
 
 ```css {4}
@@ -1241,15 +1270,15 @@
 ### 垂直均分所有空間 `align-content: space-evenly;`
 
 <div class="grid container custom-content-algin-demo bg-none border-lightgreen-dashed align-content-space-evenly">
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text">Grid</div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
-  <div class="grid-item content-center white border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text">Grid</div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
+  <div class="grid-item content-center orange border-radius-none black--text"></div>
 </div>
 
 ```css {4}
@@ -1261,19 +1290,24 @@
 ```
 
 ## 🟢 [網格容器]對齊模式(縮寫) `place-content`
+
 ```css
 .container {
   place-content: <align-content> / <justify-content>;
 }
 ```
 
-## 🔒 自動生成網格尺吋定義 grid-auto-*
+## 🔒 自動生成網格尺吋定義 grid-auto-\*
+
 當 [網格單元] 指定的位置，超出原本定義 [網格容器] 分割網格的數量時，Grid 系統會自動生成[網格單元]來補足中間的空隙，而自動生成的 [網格單元] 尺吋是「自動」分配的。
 
 可以使用下面的方式為自動生成的 [網格單元] 定義尺吋:
--  `grid-auto-rows` 指定「高度」
--  `grid-auto-columns` 指定「寬度」
+
+- `grid-auto-rows` 指定「高度」
+- `grid-auto-columns` 指定「寬度」
+
 ### 說明
+
 [網格容器] 定義了分割四格的網格，若 [網格項目] 也只有四個，其尺吋都會符合定義值。
 
 ```css {3}
@@ -1284,10 +1318,10 @@
 ```
 
 <div class="grid container grid-template-row-col-custom bg-none border-lightgreen-dashed align-content-start" style="height: 100px">
-  <div class="grid-item content-center white border-radius-none pa-0 black--text">30*60</div>
-  <div class="grid-item content-center white border-radius-none pa-0 black--text">30*60</div>
-  <div class="grid-item content-center white border-radius-none pa-0 black--text">30*60</div>
-  <div class="grid-item content-center white border-radius-none pa-0 black--text">30*60</div>
+  <div class="grid-item content-center orange border-radius-none pa-0 black--text">30*60</div>
+  <div class="grid-item content-center orange border-radius-none pa-0 black--text">30*60</div>
+  <div class="grid-item content-center orange border-radius-none pa-0 black--text">30*60</div>
+  <div class="grid-item content-center orange border-radius-none pa-0 black--text">30*60</div>
 </div>
 
 當指定位置的 [網格單元]，超出了原先在 [網格容器] 分割的網格區域時，就會自動生成的 [網格單元] 尺吋是「自動」分配的。
@@ -1304,8 +1338,8 @@
 ```
 
 <div class="grid container grid-template-row-col-custom bg-none border-lightgreen-dashed align-content-start">
-  <div class="grid-item content-center white border-radius-none pa-0 black--text">30*60</div>
-  <div class="grid-item content-center white border-radius-none pa-0 black--text">30*60</div>
+  <div class="grid-item content-center orange border-radius-none pa-0 black--text">30*60</div>
+  <div class="grid-item content-center orange border-radius-none pa-0 black--text">30*60</div>
   <div class="grid-item content-center pa-0 pink">自動分配</div>
   <div class="grid-item content-center pa-0 pink">自動分配</div>
 
@@ -1314,13 +1348,14 @@
 </div>
 
 ### 為生成網格定義尺吋
+
 當設置了 `grid-auto-rows`、`grid-auto-columns`，網格就會此來自動生成。
 
 ```css {4-5}
 .container {
   display: grid;
   grid-template: 30px 30px / 60px 60px;
-  grid-auto-rows: 90px;     // 定義高度
+  grid-auto-rows: 90px; // 定義高度
   grid-auto-columns: 120px; // 定義寬度
 }
 ```
@@ -1340,9 +1375,11 @@
 :::
 
 ## 🧑‍🦯 [網格項目] 分配方向 grid-auto-flow
+
 這是關係到 [網格項目] 怎麼被分配到 [網格單元] 上，一般默認都是水平方向往右排列 (`row`)，滿了就跳下一行。但，也可以透過這個設置來改變分配方向。
 
 **value:**
+
 - `row` 水平方向 (默認)
 - `row dense` 緊密水平方向
 - `column` 垂直方向
@@ -1350,7 +1387,7 @@
 
 ### ➡️ 水平方向 row
 
-<div class="grid container grid-align-demo black grid-auto-flow-row">
+<div class="grid container grid-align-demo black grid-auto-flow-row outside-border">
   <div class="grid-item relative white border-radius-none">
     <div class="align-box-stretch content-center light-green all-center">1</div>
   </div>
@@ -1387,9 +1424,10 @@
   grid-auto-flow: row;
 }
 ```
+
 ### ⬇️ 垂直方向 column
 
-<div class="grid container grid-align-demo black grid-auto-flow-column">
+<div class="grid container grid-align-demo black grid-auto-flow-column outside-border">
   <div class="grid-item relative white border-radius-none">
     <div class="align-box-stretch content-center light-green all-center">1</div>
   </div>
@@ -1428,7 +1466,9 @@
 ```
 
 ## 🟡 網格配置 grid (縮寫)
+
 可以針對以下的所有屬性進行配置，這是一個很簡化的寫法。
+
 - `grid-template-areas`
 - `grid-template-rows`
 - `grid-template-columns`
@@ -1437,9 +1477,10 @@
 - `grid-auto-flow`
 
 ### 分割網格
+
 配置方式與 `grid-template:` 完全相同。
 
-**value:**  `<grid-template-rows> / <grid-template-columns>` 
+**value:** `<grid-template-rows> / <grid-template-columns>`
 
 ```css {3}
 .container {
@@ -1447,25 +1488,27 @@
   grid: 20px 40px 80px / 30px 60px 90px;
 
   /* 完全相同👇 */
-  grid-template: 20px 40px 80px / 30px 60px 90px; 
+  grid-template: 20px 40px 80px / 30px 60px 90px;
 
   /* 完全相同👇 */
   grid-template-rows: 20px 40px 80px;
-  grid-template-columns: 30px 60px 90px; 
+  grid-template-columns: 30px 60px 90px;
 }
 ```
 
 ### 分配方向 && 分割網格
+
 除了分割網格，還同時可以設置 [網格項目] 分配方向，`auto-flow` 寫的位置決定它的方向。
 
 - **分配方向 row**
-  
-  `auto-flow [dense] <grid-template-rows> / <grid-template-columns>` 
+
+  `auto-flow [dense] <grid-template-rows> / <grid-template-columns>`
+
   ```css {3}
   .container {
     display: grid;
     grid: auto-flow repeat(3, auto) / 20px 40px 80px;
-    
+
     /* 完全相同👇 */
     grid-auto-flow: row;
     grid-template-rows: repeat(3, auto);
@@ -1474,14 +1517,14 @@
   ```
 
 - **分配方向 column**
-  
-  `<grid-template-rows> / auto-flow [dense] <grid-template-columns>` 
+
+  `<grid-template-rows> / auto-flow [dense] <grid-template-columns>`
 
   ```css {3}
   .container {
     display: grid;
     grid: repeat(3, auto) / auto-flow dense 20px 40px 80px;
-    
+
     /* 完全相同👇 */
     grid-auto-flow: column dense;
     grid-template-rows: repeat(3, auto);
@@ -1490,15 +1533,17 @@
   ```
 
 ## Reference
-[Flex 彈性盒子]: /css/flex
+
+[flex 彈性盒子]: /css/flex
 [網格單元]: /css/grid#grid-cell-網格單元
 [網格容器]: /css/grid#grid-container-網格容器
 [網格項目]: /css/grid#grid-item-網格項目
+
 - [Gap MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap)
 - [[Day17] Grid 基本認識](https://ithelp.ithome.com.tw/articles/10247574)
 - [gap Demo](https://css-tricks.com/almanac/properties/g/gap/)
 - [How to Use CSS Grid Layout – Grid Properties Explained with Examples](https://www.freecodecamp.org/news/how-to-use-css-grid-layout/)
-- [Day 6 : HTML - 網頁排版超強神器part_2，CSS grid到底是什麼？](https://ithelp.ithome.com.tw/articles/10268087)
-- [一文搞懂grid布局 和 flex 布局及其区别](https://juejin.cn/post/6940627375537258527)
+- [Day 6 : HTML - 網頁排版超強神器 part_2，CSS grid 到底是什麼？](https://ithelp.ithome.com.tw/articles/10268087)
+- [一文搞懂 grid 布局 和 flex 布局及其区别](https://juejin.cn/post/6940627375537258527)
 - [CSS Grid @Lynn's TechBlog](https://clhuang224.github.io/TechBlog/2020/03/07/20200307-css-grid/?fbclid=IwAR1FVou6krHUbZG5utHiCxwsafMzTUr7lQWmjDG04B6Gkc66sbzLQrtJe9c)
 - [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
