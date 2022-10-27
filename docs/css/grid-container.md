@@ -5,6 +5,27 @@
   display: grid;
   background: white;
 }
+.grid-item-rows-cols-1 {
+  grid-template: 
+  [row-line-2] 90px [row-line-3]
+  /
+  [col-line-1] 90px [col-line-2] 60px [col-line-3] 60px [col-line-4] 90px [col-line-5] auto [col-line-6] 60px [col-line-end] ;
+}
+.auto-row {
+  grid-auto-rows: 90px;
+}
+.bg-base {
+  background: var(--vp-c-brand);
+}
+.outside-border {
+  border: 1px dashed var(--vp-c-brand);
+}
+.gap-1 {
+  gap: 1px;
+}
+.grid-item-container {
+  display: grid;
+}
 .rounded-none {
   border-radius: 0;
 }
@@ -19,7 +40,44 @@
   grid-auto-columns: 90px;
   grid-auto-rows: 120px;
 }
+.rounded {
+  border-radius: 8px;
+}
+.p-absolute {
+  position: absolute;
+}
+.top-50 {
+  top: 50%;
+}
+.mt--15 {
+  margin-top: -15px;
+}
+.ml--15 {
+  margin-left: -15px;
+}
+.p-relative {
+  position: relative;
+}
 
+.top-0 {
+  top: 0;
+}
+.left-0 {
+  left: 0;
+}
+.right-0 {
+  right: 0;
+}
+.bottom-0 {
+  bottom: 0;
+}
+.left-50 {
+  left: 50%;
+}
+.item-box {
+  width: 30px;
+  height: 100%;
+}
 .grid-custom-row-col {
   grid-row: 4 / 5;
   grid-column: 7 / 8;
@@ -165,12 +223,17 @@
 .w-50 {
   width: 50px;
 }
+.h-30 {
+  height: 30px;
+}
 .grid-justify-start {
   grid-template: repeat(3, auto) / repeat(3, auto);
   justify-items: stretch;
   gap: 1px;
 }
-
+.w-100 {
+  width: 100%;
+}
 .grid-justify-items-center {
   justify-items: center;
 }
@@ -502,33 +565,42 @@
 
 ### 靠左對齊 `justify-items: start;`
 
-<div class="grid container grid-justify-start black">
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box content-center light-green all-center">1</div>
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 auto-row outside-border">
+  <div class="white--text p-relative black">
+    <div class="item-box content-center orange rounded">1</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box content-center light-green all-center">2</div>
+  <div class="white--text p-relative black">
+    <div class="item-box content-center orange rounded">2</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box content-center light-green all-center">3</div>
+  <div class="white--text p-relative black">
+    <div class="item-box content-center orange rounded">3</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box content-center light-green all-center">4</div>
+  <div class="white--text p-relative black">
+    <div class="item-box content-center orange rounded">4</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box content-center light-green all-center">5</div>
+  <div class="white--text p-relative black">
+    <div class="item-box content-center orange rounded">5</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box content-center light-green all-center">6</div>
+  <div class="white--text p-relative black">
+    <div class="item-box content-center orange rounded">6</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box content-center light-green all-center">7</div>
+  <div class="white--text p-relative black">
+    <div class="item-box content-center orange rounded">7</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box content-center light-green all-center">8</div>
+  <div class="white--text p-relative black">
+    <div class="item-box content-center orange rounded">8</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box content-center light-green all-center">9</div>
+  <div class="white--text p-relative black">
+    <div class="item-box content-center orange rounded">9</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box content-center orange rounded">10</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box content-center orange rounded">11</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box content-center orange rounded">12</div>
   </div>
 </div>
 
@@ -541,33 +613,42 @@
 ```
 ### 靠右對齊 `justify-items: end;`
 
-<div class="grid container grid-justify-start black">
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-end content-center light-green all-center">1</div>
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 auto-row outside-border">
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 right-0">1</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-end content-center light-green all-center">2</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 right-0">2</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-end content-center light-green all-center">3</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 right-0">3</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-end content-center light-green all-center">4</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 right-0">4</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-end content-center light-green all-center">5</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 right-0">5</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-end content-center light-green all-center">6</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 right-0">6</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-end content-center light-green all-center">7</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 right-0">7</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-end content-center light-green all-center">8</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 right-0">8</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-end content-center light-green all-center">9</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 right-0">9</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 right-0">10</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 right-0">11</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 right-0">12</div>
   </div>
 </div>
 
@@ -580,33 +661,42 @@
 ```
 ### 水平置中 `justify-items: center;`
 
-<div class="grid container grid-justify-start black">
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-center content-center light-green all-center">1</div>
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 auto-row outside-border">
+  <div class="white--text p-relative black">
+    <div class="item-box rounded orange content-center p-absolute top-0 left-50 ml--15">1</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-center content-center light-green all-center">2</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-50 ml--15">2</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-center content-center light-green all-center">3</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-50 ml--15">3</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-center content-center light-green all-center">4</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-50 ml--15">4</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-center content-center light-green all-center">5</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-50 ml--15">5</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-center content-center light-green all-center">6</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-50 ml--15">6</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-center content-center light-green all-center">7</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded orange content-center p-absolute top-0 left-50 ml--15">7</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-center content-center light-green all-center">8</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-50 ml--15">8</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-center content-center light-green all-center">9</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-50 ml--15">9</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-50 ml--15">10</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-50 ml--15">11</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-50 ml--15">12</div>
   </div>
 </div>
 
@@ -619,33 +709,42 @@
 ```
 ### 水平撐滿 `justify-items: stretch;`
 
-<div class="grid container grid-justify-start black">
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-stretch content-center light-green all-center">1</div>
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border auto-row">
+  <div class="white--text p-relative black">
+    <div class="item-box rounded orange content-center p-absolute top-0 left-0 w-100">1</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-stretch content-center light-green all-center">2</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">2</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-stretch content-center light-green all-center">3</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">3</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-stretch content-center light-green all-center">4</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">4</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-stretch content-center light-green all-center">5</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">5</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-stretch content-center light-green all-center">6</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">6</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-stretch content-center light-green all-center">7</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded orange content-center p-absolute top-0 left-0 w-100">7</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-stretch content-center light-green all-center">8</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">8</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="justify-box-stretch content-center light-green all-center">9</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">9</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">10</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">11</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">12</div>
   </div>
 </div>
 
@@ -667,33 +766,42 @@
 
 ### 向上對齊 `align-items: start;`
 
-<div class="grid container grid-align-demo black">
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-start content-center light-green all-center">1</div>
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 auto-row outside-border">
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange w-100 h-30">1</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-start content-center light-green all-center">2</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange w-100 h-30">2</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-start content-center light-green all-center">3</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange w-100 h-30">3</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-start content-center light-green all-center">4</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange w-100 h-30">4</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-start content-center light-green all-center">5</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange w-100 h-30">5</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-start content-center light-green all-center">6</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange w-100 h-30">6</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-start content-center light-green all-center">7</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange w-100 h-30">7</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-start content-center light-green all-center">8</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange w-100 h-30">8</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-start content-center light-green all-center">9</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange w-100 h-30">9</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange w-100 h-30">10</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange w-100 h-30">11</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange w-100 h-30">12</div>
   </div>
 </div>
 
@@ -707,33 +815,42 @@
 
 ### 向下對齊 `align-items: end;`
 
-<div class="grid container grid-align-demo black">
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-end content-center light-green all-center">1</div>
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1  auto-row outside-border">
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute h-30 w-100 bottom-0 right-0">1</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-end content-center light-green all-center">2</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute h-30 w-100 bottom-0 right-0">2</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-end content-center light-green all-center">3</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute h-30 w-100 bottom-0 right-0">3</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-end content-center light-green all-center">4</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute h-30 w-100 bottom-0 right-0">4</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-end content-center light-green all-center">5</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute h-30 w-100 bottom-0 right-0">5</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-end content-center light-green all-center">6</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute h-30 w-100 bottom-0 right-0">6</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-end content-center light-green all-center">7</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute h-30 w-100 bottom-0 right-0">7</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-end content-center light-green all-center">8</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute h-30 w-100 bottom-0 right-0">8</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-end content-center light-green all-center">9</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute h-30 w-100 bottom-0 right-0">9</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute h-30 w-100 bottom-0 right-0">10</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute h-30 w-100 bottom-0 right-0">11</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute h-30 w-100 bottom-0 right-0">12</div>
   </div>
 </div>
 
@@ -747,33 +864,42 @@
 
 **網格單元內容「垂直置中」** `align-items: center;`
 
-<div class="grid container grid-align-demo black">
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-center content-center light-green all-center">1</div>
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border auto-row">
+  <div class="white--text p-relative black">
+    <div class="item-box rounded orange content-center p-absolute w-100 h-30 top-50 mt--15">1</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-center content-center light-green all-center">2</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute w-100 h-30 top-50 mt--15">2</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-center content-center light-green all-center">3</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute w-100 h-30 top-50 mt--15">3</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-center content-center light-green all-center">4</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute w-100 h-30 top-50 mt--15">4</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-center content-center light-green all-center">5</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute w-100 h-30 top-50 mt--15">5</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-center content-center light-green all-center">6</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute w-100 h-30 top-50 mt--15">6</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-center content-center light-green all-center">7</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded orange content-center p-absolute w-100 h-30 top-50 mt--15">7</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-center content-center light-green all-center">8</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute w-100 h-30 top-50 mt--15">8</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-center content-center light-green all-center">9</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute w-100 h-30 top-50 mt--15">9</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute w-100 h-30 top-50 mt--15">10</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute w-100 h-30 top-50 mt--15">11</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute w-100 h-30 top-50 mt--15">12</div>
   </div>
 </div>
 
@@ -787,33 +913,42 @@
 
 **網格單元內容「垂直拉伸」** `align-items: stretch;`
 
-<div class="grid container grid-align-demo black">
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-stretch content-center light-green all-center">1</div>
+<div class="grid-item-container grid-item-rows-cols-1 bg-base gap-1 outside-border auto-row">
+  <div class="white--text p-relative black">
+    <div class="item-box rounded orange content-center p-absolute top-0 left-0 w-100">1</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-stretch content-center light-green all-center">2</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">2</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-stretch content-center light-green all-center">3</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">3</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-stretch content-center light-green all-center">4</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">4</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-stretch content-center light-green all-center">5</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">5</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-stretch content-center light-green all-center">6</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">6</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-stretch content-center light-green all-center">7</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded orange content-center p-absolute top-0 left-0 w-100">7</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-stretch content-center light-green all-center">8</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">8</div>
   </div>
-  <div class="grid-item relative white border-radius-none">
-    <div class="align-box-stretch content-center light-green all-center">9</div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">9</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">10</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">11</div>
+  </div>
+  <div class="white--text p-relative black">
+    <div class="item-box rounded content-center orange p-absolute top-0 left-0 w-100">12</div>
   </div>
 </div>
 

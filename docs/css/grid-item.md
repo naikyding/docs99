@@ -816,7 +816,7 @@ grid-area: `<grid-row-start>` / `<grid-column-start>` / `<grid-row-end>` / `<gri
 
 ```css
 .item {
-  algin-self: end;
+  align-self: end;
 }
 ```
 
