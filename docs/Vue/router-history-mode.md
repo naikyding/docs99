@@ -31,22 +31,37 @@ const router = createRouter({
 ### 服務端設置
 在 SPA 網站中，是由 `Javascript` 來變化頁面的，沒有真正的 `服務端` 來分配路由，指定 `https://www.example.com/id/123` 「重刷」 or 「上一頁」會發生 `404` 找不到頁面。
 
-在網頁服務器 Nginx 配置 [路由指向特定檔案](/Browser/nginx-operate.html#路由指向客製化檔案)，當 SPA 重刷找不到 「首頁」 時，會回過頭來找 url 的根源 `index.html` 來匹配產生頁面。
 
-```nginx {8-11}
-http {
-  include mime.types;
 
-  server {
-    listen 80;
-    server_name example.com;
-    root /xxx/yyy/zzz;
+- **Nginx 配置**
 
-    location / {
-      try_files $uri $uri/ /index.html;
+  在網頁服務器 Nginx 配置 [路由指向特定檔案](/Browser/nginx-operate.html#路由指向客製化檔案)，當 SPA 重刷找不到 「首頁」 時，會回過頭來找 url 的根源 `index.html` 來匹配產生頁面。
+
+  ```nginx {8-11}
+  http {
+    include mime.types;
+
+    server {
+      listen 80;
+      server_name example.com;
+      root /xxx/yyy/zzz;
+
+      location / {
+        try_files $uri $uri/ /index.html;
+      }
     }
   }
-}
-```
+  ```
+
+- **Vercel 配置**
+
+  在專案最外層新增 `vercel.json` 來指定配置
+
+  ```json
+  {
+    "rewrites": [{ "source": "/:path*", "destination": "/index.html" }]
+  }
+  ```
+
 ## Reference
 - [Vue Router Different History modes](https://router.vuejs.org/guide/essentials/history-mode.html)
