@@ -266,6 +266,10 @@ export const getVueSidebar = () => ({
       link: '/Vue/router-props'
     },
     {
+      text: '路由 history 模式設置',
+      link: '/Vue/router-history-mode'
+    },
+    {
       text: '客製化開發伺服器網域',
       link: '/Vue/dev-server-custom-domain'
     },

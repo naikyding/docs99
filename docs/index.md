@@ -69,6 +69,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [路由守衛 Navigation Guards](/Vue/navigation-guards)
 - [路由信息設置 Meta Fields](/Vue/router-meta)
 - [路由資料傳遞 Passing Props to Route Components](/Vue/router-props)
+- [路由 history 模式設置](/Vue/router-history-mode)
 
 **Config**
 
@@ -103,6 +104,15 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [CSRF 跨站偽造請求](/security/csrf)
 - [CORS 與 同源政策](/security/cors)
 - [JWT 身份驗證機制](/security/jwt)
+
+
+## Devops
+### Nginx 網頁伺服器
+- [Nginx 基礎](/Browser/nginx)
+- [Nginx 文件設置方法](/Browser/nginx-operate)
+
+### Docker
+- [容器化 Node JS APP](/Browser/docker-node)
 
 <!-- ## Vue
 

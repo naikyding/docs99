@@ -11,6 +11,12 @@
   /
   [col-line-1] 90px [col-line-2] 60px [col-line-3] 60px [col-line-4] 90px [col-line-5] auto [col-line-6] 60px [col-line-end] ;
 }
+.grid-item-rows-cols {
+  grid-template: 
+  [row-line-1] 30px [row-line-2] 90px [row-line-3] 90px [row-line-4] 60px [row-line-end]
+  /
+  [col-line-1] 90px [col-line-2] 60px [col-line-3] 60px [col-line-4] 90px [col-line-5] auto [col-line-6] 60px [col-line-end] ;
+}
 .auto-row {
   grid-auto-rows: 90px;
 }
@@ -352,6 +358,14 @@
 .grid-auto-flow-column {
   grid-auto-flow: column;
 }
+.grid-template-areas {
+  grid-template-areas:
+  '. header header header header .'
+  'sidebar sidebar main main main main'
+  'sidebar sidebar . . . . '
+  'footer footer footer footer footer footer'
+  ;
+}
 </style>
 
 
@@ -470,6 +484,14 @@
   <div class="grid-item content-center orange area-item-2">Main</div>
   <div class="grid-item content-center light-green area-item-3">Footer</div>
   <div class="grid-item content-center light-blue area-item-4">Sidebar</div>
+</div>
+
+
+<div class="grid-item-container grid-item-rows-cols gap-1 outside-border grid-template-areas">
+  <div class="green content-center rounded header">Header</div>
+  <div class="blue content-center rounded main">Main</div>
+  <div class="pink content-center rounded sidebar">Sidebar</div>
+  <div class="orange content-center rounded footer">Footer</div>
 </div>
 
 ### 1️⃣ 指定網格單元名稱
