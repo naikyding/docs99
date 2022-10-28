@@ -24,7 +24,6 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [加入 Apple 開發者計劃](/Browser/register-apple-dev)
 - [Web Server 與 Application Server](/Browser/web-application-server)
 - [正向代理與反向代理](/Browser/proxy)
-- [Nginx 網頁伺服器](/Browser/nginx)
 
 ## Web 3.0
 
