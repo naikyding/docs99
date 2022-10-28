@@ -56,6 +56,10 @@ export const getVueNav = () => ({
         {
           text: '路由資料傳遞 Passing Props to Route Components',
           link: '/Vue/router-props'
+        },
+        {
+          text: '路由 history 模式',
+          link: '/Vue/router-history-mode'
         }
       ]
     },
