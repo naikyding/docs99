@@ -7,7 +7,7 @@
 <button 
 onclick="location.href='mailto:74ding@gmail.com'"
 style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; border-radius: 8px;">
-  📨 錯誤回報
+📨 錯誤回報
 </button>
 
 ## Browser
@@ -87,7 +87,12 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [元素置中的 5 個方法](/css/center)
 - [滑鼠任意拖拽元素停留效果](/css/mouse-follow-drag)
 - [特殊實用功能](/css/special-api)
+
+### Grid 網格系統佈局
+
 - [Grid 網格系統](/css/grid)
+- [Grid Container [網格容器] 屬性設置](/css/grid-container)
+- [Grid Item [網格項目] 屬性設置](/css/grid-item)
 
 ## 程式設計
 

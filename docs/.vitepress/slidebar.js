@@ -236,7 +236,15 @@ export const getCssSidebar = () => ({
     {
       text: 'Grid 網格系統',
       link: '/css/grid'
-    }
+    },
+    {
+      text: 'Grid Container 屬性設置',
+      link: '/css/grid-container'
+    },
+    {
+      text: 'Grid Item 屬性設置',
+      link: '/css/grid-item'
+    },
   ]
 })
 
