@@ -5,11 +5,11 @@ export const getDevOpsNav = () => ({
       text: 'Nginx',
       items: [
         {
-          text: '入門',
+          text: '基礎',
           link: '/Browser/nginx',
         },
         {
-          text: '操作方法',
+          text: '文件設置',
           link: '/Browser/nginx-operate'
         }
       ]
