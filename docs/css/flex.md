@@ -111,6 +111,18 @@
   margin-left: -17px;
   z-index: 9;
 }
+.self-start {
+  align-self: flex-start;
+}
+.self-end {
+  align-self: flex-end;
+}
+.self-center {
+  align-self: center;
+}
+.self-stretch {
+  align-self: stretch;
+}
 </style>
 
 ## 說明
@@ -124,7 +136,7 @@
 
 **結構**
 
-```html
+```html {1,6}
 <div class="flex-container border-dashed">
   <div class="flex-item bg-base pa-1 rounded text-center">1</div>
   <div class="flex-item bg-base pa-1 rounded text-center">2</div>
@@ -390,9 +402,9 @@
 ```css {3}
 .flex-container {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
 }
-flex-```
+```
 
 ### 靠下 `end`
 
@@ -406,9 +418,10 @@ flex-```
 ```css {3}
 .flex-container {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 ```
+
 ### 置中 `center` 
 
 <div class="flex-container border-dashed flex h-150 align-center">
@@ -426,7 +439,7 @@ flex-```
 ```
 
 ### 靠上，內容對齊 `baseline`
-「項目」靠上，再以「最高項目」的內容為基準，所有「項目」的內容向它對齊。
+「項目」靠上，再以「最高項目」為基準，所有「項目」的文字內容向它對齊。
 
 <div class="flex-container border-dashed flex align-baseline h-250">
   <div class="flex-item green pa-1 rounded text-center pt-3">
@@ -451,7 +464,38 @@ flex-```
 ```
 
 ## 項目屬性
-### 
+可以在「項目」設置相關屬性，來調整排版。
+
+```html {2-5}
+<div class="flex-container border-dashed">
+  <div class="flex-item bg-base pa-1 rounded text-center">1</div>
+  <div class="flex-item bg-base pa-1 rounded text-center">2</div>
+  <div class="flex-item bg-base pa-1 rounded text-center">3</div>
+  <div class="flex-item bg-base pa-1 rounded text-center">4</div>
+</div>
+```
+
+## 次軸對齊方式 align-self
+藉由 `align-self` 直接對「項目」調整 `次軸` 對齊方式，優先權會大於在「容器」調整的 [次軸對齊方式 align-items](/css/flex#次軸對齊方式-align-items)
+
+<div class="flex-container border-dashed flex h-150 align-center">
+  <div class="flex-item green pa-1 rounded text-center">1</div>
+  <div class="flex-item blue pa-1 rounded text-center">2</div>
+  <div class="flex-item orange pa-1 rounded text-center">3</div>
+  <div class="flex-item pink pa-1 rounded text-center self-stretch">4</div>
+</div>
+
+```css
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+```
+```css
+.item {
+
+}
+```
 
 ## Reference
 [圖片出處]: https://codeburst.io/flexbox-building-a-navigation-part-2-2-6cc58b9d4173
