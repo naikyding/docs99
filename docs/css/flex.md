@@ -476,13 +476,20 @@
 ```
 
 ## 次軸對齊方式 align-self
-藉由 `align-self` 直接對「項目」調整 `次軸` 對齊方式，優先權會大於在「容器」調整的 [次軸對齊方式 align-items](/css/flex#次軸對齊方式-align-items)
+藉由 `align-self` 直接對「項目」調整 `次軸` 對齊方式，優先權會大於在「容器」調整的 [次軸對齊方式 align-items](/css/flex#次軸對齊方式-align-items)。
+
+**value:**
+- `stretch` 拉撐 **(預設)**
+- `flex-start` 靠上
+- `flex-end` 靠下
+- `center` 置中
+- `baseline` 靠上，內容對齊
 
 <div class="flex-container border-dashed flex h-150 align-center">
   <div class="flex-item green pa-1 rounded text-center">1</div>
   <div class="flex-item blue pa-1 rounded text-center">2</div>
   <div class="flex-item orange pa-1 rounded text-center">3</div>
-  <div class="flex-item pink pa-1 rounded text-center self-stretch">4</div>
+  <div class="flex-item pink pa-1 rounded text-center self-stretch">self</div>
 </div>
 
 ```css
