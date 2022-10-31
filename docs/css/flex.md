@@ -61,6 +61,56 @@
 .justify-between {
   justify-content: space-between;
 }
+.h-150 {
+  height: 150px;
+}
+.align-start {
+  align-items: flex-start;
+}
+.align-end {
+  align-items: flex-end;
+}
+.align-center {
+  align-items: center;
+}
+.align-stretch {
+  align-items: stretch;
+}
+.align-baseline {
+  align-items: baseline;
+}
+.align-self-start {
+  align-self: 
+}
+.pt-3 {
+  padding-top: 3rem;
+}
+.pb-3 {
+  padding-bottom: 3rem;
+}
+.py-2 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.pt-4 {
+  padding-top: 4rem;
+}
+.h-250 {
+  height: 250px;
+}
+.relative {
+  position: relative;
+}
+.baseline::before {
+  content: '';
+  position: absolute;
+  border: 1px dashed red;
+  width: 34px;
+  top: 50%;
+  left: 50%;
+  margin-left: -17px;
+  z-index: 9;
+}
 </style>
 
 ## 說明
@@ -113,7 +163,7 @@
 可以定義「容器」 內 「項目」排序流向的 `主軸` 與 `方向`。
 
 **value**:
-- `row` 水平主軸，由左開始 **(默認)**
+- `row` 水平主軸，由左開始 **(預設值)**
 - `row-reverse` 水平主軸，反轉 (由右開始)
 - `column` 垂直主軸，由「頂部」開始
 - `column-reverse` 垂置主軸，反轉 (由「底部」開始)
@@ -188,15 +238,15 @@
 ## 主軸對齊方式 justify-content
 當定義了 [資料流 flex-direction](/css/flex#➡%EF%B8%8F⬅%EF%B8%8F⬇%EF%B8%8F⬆%EF%B8%8F-flex-direction-資料流) 同時決定了「主軸」，而可以藉由 `justify-content` 來對這個「主軸」做對齊方式的設置。
 
+下列以 [水平主軸，由左開始 `flex-direction: row;`](/css/flex#水平主軸，由左開始-row) 為例子顯示:
+
 **value:**
-- `flex-start` 靠左
+- `flex-start` 靠左 **(預設值)**
 - `flex-end` 靠右
 - `center` 置中
 - `space-between` 分散
 - `space-around` 分散 (左、右 1/2，其它均分空間)
 - `space-evenly` 均分所有空間
-
-下列以 [水平主軸，由左開始 `flex-direction: row;`](/css/flex#水平主軸，由左開始-row) 為例子顯顯示:
 
 ### 靠左 `flex-start` 
 
@@ -294,10 +344,114 @@
 }
 ```
 
+:::tip 提醒
+[justify-content MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+`flex-start`、 `flex-end` 寫做 `start` 、 `end` 也是不影響。
+:::
+
 ## 次軸對齊方式 align-items
 
+定義了 [資料流 flex-direction](/css/flex#➡%EF%B8%8F⬅%EF%B8%8F⬇%EF%B8%8F⬆%EF%B8%8F-flex-direction-資料流) 同時決定了「主軸」，與「主軸」垂直的方向就為「次軸」，而 `align-items` 可以為其定義對齊方向。
+
+下列以 [水平主軸，由左開始 `flex-direction: row;`](/css/flex#水平主軸，由左開始-row) 為例子顯示:
+
+**value:**
+- `stretch` 拉撐 **(預設)**
+- `flex-start` 靠上
+- `flex-end` 靠下
+- `center` 置中
+- `baseline` 靠上，內容對齊
+
+### 拉撐 `stretch`
+
+<div class="flex-container border-dashed flex h-150">
+  <div class="flex-item green pa-1 rounded text-center">1</div>
+  <div class="flex-item blue pa-1 rounded text-center">2</div>
+  <div class="flex-item orange pa-1 rounded text-center">3</div>
+  <div class="flex-item pink pa-1 rounded text-center">4</div>
+</div>
+
+```css {3}
+.flex-container {
+  display: flex;
+  align-items: stretch;
+}
+```
+
+### 靠上 `start`
+
+<div class="flex-container border-dashed flex h-150 align-start">
+  <div class="flex-item green pa-1 rounded text-center">1</div>
+  <div class="flex-item blue pa-1 rounded text-center">2</div>
+  <div class="flex-item orange pa-1 rounded text-center">3</div>
+  <div class="flex-item pink pa-1 rounded text-center">4</div>
+</div>
+
+```css {3}
+.flex-container {
+  display: flex;
+  align-items: start;
+}
+flex-```
+
+### 靠下 `end`
+
+<div class="flex-container border-dashed flex h-150 align-end">
+  <div class="flex-item green pa-1 rounded text-center">1</div>
+  <div class="flex-item blue pa-1 rounded text-center">2</div>
+  <div class="flex-item orange pa-1 rounded text-center">3</div>
+  <div class="flex-item pink pa-1 rounded text-center">4</div>
+</div>
+
+```css {3}
+.flex-container {
+  display: flex;
+  align-items: end;
+}
+```
+### 置中 `center` 
+
+<div class="flex-container border-dashed flex h-150 align-center">
+  <div class="flex-item green pa-1 rounded text-center">1</div>
+  <div class="flex-item blue pa-1 rounded text-center">2</div>
+  <div class="flex-item orange pa-1 rounded text-center">3</div>
+  <div class="flex-item pink pa-1 rounded text-center">4</div>
+</div>
+
+```css {3}
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+```
+
+### 靠上，內容對齊 `baseline`
+「項目」靠上，再以「最高項目」的內容為基準，所有「項目」的內容向它對齊。
+
+<div class="flex-container border-dashed flex align-baseline h-250">
+  <div class="flex-item green pa-1 rounded text-center pt-3">
+    <span class="relative baseline">1</span>
+  </div>
+  <div class="flex-item blue pa-1 rounded text-center pb-3">
+    <span class="relative baseline">2</span>
+  </div>
+  <div class="flex-item orange pa-1 rounded text-center">
+    <span class="relative baseline">3</span>
+  </div>
+  <div class="flex-item pink pa-1 rounded text-center pt-4">
+    <div class="relative baseline" style="display: flex; justify-content: center align-items: center;">4</div>
+  </div>
+</div>
+
+```css {3}
+.flex-container {
+  display: flex;
+  align-items: baseline;
+}
+```
 
 ## 項目屬性
+### 
 
 ## Reference
 [圖片出處]: https://codeburst.io/flexbox-building-a-navigation-part-2-2-6cc58b9d4173
