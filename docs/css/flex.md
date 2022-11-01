@@ -492,6 +492,7 @@
 - `wrap-reverse` 主軸反轉換行
 
 ### 不換行 `nowrap`
+
 <div class="flex-container border-dashed flex h-250">
   <div class="flex-item green content-center rounded w-150">1</div>
   <div class="flex-item blue content-center rounded w-150">2</div>
@@ -503,7 +504,7 @@
   <div class="flex-item pink content-center rounded w-150">8</div>
 </div>
 
-```css
+```css {3}
 .flex-container {
   display: flex;
   flex-wrap: nowrap;
@@ -517,6 +518,7 @@
 ```
 
 ### 換行 `wrap`
+
 <div class="flex-container border-dashed flex h-250 wrap">
   <div class="flex-item green content-center rounded w-150">1</div>
   <div class="flex-item blue content-center rounded w-150">2</div>
@@ -528,7 +530,7 @@
   <div class="flex-item pink content-center rounded w-150">8</div>
 </div>
 
-```css
+```css {3}
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -542,6 +544,7 @@
 ```
 
 ### 主軸反轉換行 `wrap-reverse`
+
 <div class="flex-container border-dashed flex h-250 wrap-reverse">
   <div class="flex-item green content-center rounded w-150">1</div>
   <div class="flex-item blue content-center rounded w-150">2</div>
@@ -553,7 +556,7 @@
   <div class="flex-item pink content-center rounded w-150">8</div>
 </div>
 
-```css
+```css {3}
 .flex-container {
   display: flex;
   flex-wrap: wrap-reverse;
