@@ -99,8 +99,17 @@
 .pt-4 {
   padding-top: 4rem;
 }
+.h-100 {
+  height: 100px;
+}
 .h-250 {
   height: 250px;
+}
+.w-300 {
+  width: 300px;
+}
+.w-100 {
+  width: 100px;
 }
 .relative {
   position: relative;
@@ -141,6 +150,12 @@
 }
 .wrap-reverse {
   flex-wrap: wrap-reverse;
+}
+.grow-1 {
+  flex-grow: 1;
+}
+.grow-2 {
+  flex-grow: 2;
 }
 </style>
 
@@ -489,7 +504,7 @@
 **value:**
 - `nowrap` 不換行 **(預設值)
 - `wrap` 換行
-- `wrap-reverse` 主軸反轉換行
+- `wrap-reverse` 主軸起、終點反轉換行
 
 ### 不換行 `nowrap`
 
@@ -543,7 +558,7 @@
 }
 ```
 
-### 主軸反轉換行 `wrap-reverse`
+### 主軸起、終點反轉換行 `wrap-reverse`
 
 <div class="flex-container border-dashed flex h-250 wrap-reverse">
   <div class="flex-item green content-center rounded w-150">1</div>
@@ -699,6 +714,65 @@
   align-self: baseline;
 }
 ```
+
+## x軸空位伸展 flex-grow 
+當「項目」總寬度小於「容器」寬度時，會產生 `空白` 的空間，而 `flex-grow` 可以決定哪個「項目」分配多少這個 `空白` 空間的比例。
+
+:::tip 使用說明
+所有 「項目」 設置的 `flex-grow` 數字 `加總` 等於空白空間，各別「項目」再依本身設置的 `flex-grow` 數字來分配空間比例。
+:::
+
+<div class="flex-container border-dashed flex h-100">
+  <div class="flex-item green content-center rounded w-100">1</div>
+  <div class="flex-item blue content-center rounded w-100">2</div>
+  <div class="flex-item orange content-center rounded w-100">flex-grow-0</div>
+  <div class="flex-item pink content-center rounded w-100">4</div>
+  <div class="flex-item content-center rounded w-100 grow-1">空白空間</div>
+</div>
+
+**value `number`** (不可為負數):
+- `0` (預設值)
+- `1` ~ ...
+
+### 單「項目」設置
+只有一個「項目」設置 `flex-grow: 1;`, 空白空間共分為 `1` 等分，而特定「項目」分配 `1` 等份 (就是全部)。 
+
+<div class="flex-container border-dashed flex h-100">
+  <div class="flex-item green content-center rounded w-100">1</div>
+  <div class="flex-item blue content-center rounded w-100">2</div>
+  <div class="flex-item orange content-center rounded w-100 grow-1">flex-grow-1</div>
+  <div class="flex-item pink content-center rounded w-100">4</div>
+</div>
+
+```css
+.orange {
+  flex-grow: 1;
+}
+```
+
+### 多「項目」設置
+所有「項目」 `flex-grow` 加總為 `3` (1 + 2)，空白空間分 `3` 等份，`.orange` 分配當中的 `1` 等分、`.pink` 分配到 `2` 分。
+
+<div class="flex-container border-dashed flex h-100">
+  <div class="flex-item green content-center rounded w-100">1</div>
+  <div class="flex-item blue content-center rounded w-100">2</div>
+  <div class="flex-item orange content-center rounded w-100 grow-1">flex-grow-1</div>
+  <div class="flex-item pink content-center rounded w-100 grow-2">flex-grow-2</div>
+</div>
+
+```css
+.orange {
+  flex-grow: 1;
+}
+
+.pink {
+  flex-grow: 2;
+}
+```
+
+## flex-shrink 收縮
+
+## flex-basis 基礎
 
 ## Reference
 [圖片出處]: https://codeburst.io/flexbox-building-a-navigation-part-2-2-6cc58b9d4173
