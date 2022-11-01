@@ -86,6 +86,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [元素置中的 5 個方法](/css/center)
 - [滑鼠任意拖拽元素停留效果](/css/mouse-follow-drag)
 - [特殊實用功能](/css/special-api)
+- [Flexbox 彈性盒子](/css/flex)
 
 ### Grid 網格系統佈局
 

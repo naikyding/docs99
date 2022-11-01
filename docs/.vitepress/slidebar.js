@@ -234,6 +234,10 @@ export const getCssSidebar = () => ({
       link: '/css/mouse-follow-drag'
     },
     {
+      text: 'Flexbox 彈性盒子',
+      link: '/css/flex'
+    },
+    {
       text: 'Grid 網格系統',
       link: '/css/grid'
     },

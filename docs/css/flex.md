@@ -208,7 +208,7 @@
   <div class="flex-item bg-base pa-1 rounded text-center">4</div>
 </div>
 ```
-## 🔴 使用「彈性盒子」模式 (必填)
+## ├ 🔴 使用「彈性盒子」模式 (必填)
 在容器 (父層) 定義 `display: flex;` 使用 `flexbox` 排版，啟動後 「項目」的 `block` 就會變的不佔據區塊，而可以被自由調整排版。
 
 ### 一般狀態
@@ -235,7 +235,7 @@
 }
 ```
 
-## ➡️⬅️⬇️⬆️  flex-direction 資料流
+## ├ ➡️⬅️⬇️⬆️  flex-direction 資料流
 可以定義「容器」 內 「項目」排序流向的 `主軸` 與 `方向`。
 
 **value**:
@@ -311,7 +311,7 @@
 }
 ```
 
-## 主軸對齊方式 justify-content
+## ├ 主軸對齊方式 justify-content
 當定義了 [資料流 flex-direction](/css/flex#➡%EF%B8%8F⬅%EF%B8%8F⬇%EF%B8%8F⬆%EF%B8%8F-flex-direction-資料流) 同時決定了「主軸」，而可以藉由 `justify-content` 來對這個「主軸」做對齊方式的設置。
 
 下列以 [水平主軸，由左開始 `flex-direction: row;`](/css/flex#水平主軸，由左開始-row) 為例子顯示:
@@ -425,7 +425,7 @@
 `flex-start`、 `flex-end` 寫做 `start` 、 `end` 也是不影響。
 :::
 
-## 次軸對齊方式 align-items
+## ├ 次軸對齊方式 align-items
 
 定義了 [資料流 flex-direction](/css/flex#➡%EF%B8%8F⬅%EF%B8%8F⬇%EF%B8%8F⬆%EF%B8%8F-flex-direction-資料流) 同時決定了「主軸」，與「主軸」垂直的方向就為「次軸」，而 `align-items` 可以為其定義對齊方向。
 
@@ -528,7 +528,7 @@
 ```
 
 
-## 換行設置 flex-wrap
+## └ 換行設置 flex-wrap
 當使用 `flex` 模式，所有「項目」就會被撐滿在「容器」之中，無視「項目」的寬度，只會被塞在一行裡。但可以透過這個屬性，恢復「項目」原有的寬度、超過 `自動` 換行。
 
 **value:**
@@ -626,7 +626,7 @@
 </div>
 ```
 
-## 次軸對齊方式 align-self
+## ├ 次軸對齊方式 align-self
 藉由 `align-self` 直接對「項目」調整 `次軸` 對齊方式，優先權會大於在「容器」調整的 [次軸對齊方式 align-items](/css/flex#次軸對齊方式-align-items)。
 
 **value:**
@@ -745,7 +745,7 @@
 }
 ```
 
-## x軸空白伸展 flex-grow 
+## ├ x軸空白伸展 flex-grow 
 當「項目」總寬度小於「容器」寬度時，會產生 `空白` 的空間，而 `flex-grow` 可以決定哪個「項目」分配多少這個 `空白` 空間的比例。
 
 :::tip 使用說明
@@ -800,7 +800,7 @@
 }
 ```
 
-## x軸空間收縮 flex-shrink 
+## ├ x軸空間收縮 flex-shrink 
 當「容器」x軸空間不足時，可以在「項目」設置 `flex-shrink` 來指定可以被收縮的佔比。
 
 <div class="flex-container border-dashed flex h-100">
@@ -847,7 +847,7 @@
 }
 ```
 
-## 主軸初始尺吋 flex-basis
+## └ 主軸初始尺吋 flex-basis
 依不同的「主軸」設定，決定不同的方向的尺吋，`flex-basis` 優先權大於 `width` (`height`)。
 
 **value:**
