@@ -157,6 +157,36 @@
 .grow-2 {
   flex-grow: 2;
 }
+.shrink-0 {
+  flex-shrink: 0;
+}
+.shrink-1 {
+  flex-shrink: 1;
+}
+.shrink-3 {
+  flex-shrink: 3;
+}
+.w-full {
+  width: 150px;
+}
+.basis-300 {
+  flex-basis: 300px;
+}
+.w-50 {
+  width: 50px;
+}
+.basis-100 {
+  flex-basis: 100px;
+}
+.basis-auto {
+  flex-basis: auto;
+}
+.basis-50 {
+  flex-basis: 50%;
+}
+.basis-25 {
+  flex-basis: 25%;
+}
 </style>
 
 ## 說明
@@ -715,11 +745,11 @@
 }
 ```
 
-## x軸空位伸展 flex-grow 
+## x軸空白伸展 flex-grow 
 當「項目」總寬度小於「容器」寬度時，會產生 `空白` 的空間，而 `flex-grow` 可以決定哪個「項目」分配多少這個 `空白` 空間的比例。
 
 :::tip 使用說明
-所有 「項目」 設置的 `flex-grow` 數字 `加總` 等於空白空間，各別「項目」再依本身設置的 `flex-grow` 數字來分配空間比例。
+所有 「項目」 設置的 `flex-grow` 數字 `加總` 等於空白空間，各別「項目」再依本身設置的 `flex-grow` 數字來分配空間份數。
 :::
 
 <div class="flex-container border-dashed flex h-100">
@@ -735,7 +765,7 @@
 - `1` ~ ...
 
 ### 單「項目」設置
-只有一個「項目」設置 `flex-grow: 1;`, 空白空間共分為 `1` 等分，而特定「項目」分配 `1` 等份 (就是全部)。 
+只有一個「項目」設置 `flex-grow: 1;`, 空白空間共分為 `1` 等分，而 `.orange` 分配 `1` 等份 (就是全部)。 
 
 <div class="flex-container border-dashed flex h-100">
   <div class="flex-item green content-center rounded w-100">1</div>
@@ -770,9 +800,118 @@
 }
 ```
 
-## flex-shrink 收縮
+## x軸空間收縮 flex-shrink 
+當「容器」x軸空間不足時，可以在「項目」設置 `flex-shrink` 來指定可以被收縮的佔比。
 
-## flex-basis 基礎
+<div class="flex-container border-dashed flex h-100">
+  <div class="flex-item green content-center rounded w-300">1</div>
+  <div class="flex-item blue content-center rounded w-300">2</div>
+  <div class="flex-item orange content-center rounded w-300">3</div>
+  <div class="flex-item pink content-center rounded w-300">4</div>
+</div>
+
+**value `number`** (不可為負數):
+- `1` (預設值) 收縮佔比
+- `0` 不被收縮
+
+### 不被收縮
+在 `.green` 設置 `flex-shrink: 0;` 可以保證其不被「收縮」，保有原本設置的寬度，當「容器」寬度變窄，會先收縮其它「項目」的寬度。
+
+<div class="flex-container border-dashed flex h-100">
+  <div class="flex-item green content-center rounded w-300 shrink-0">flex-shrink-0</div>
+  <div class="flex-item blue content-center rounded w-300">2</div>
+  <div class="flex-item orange content-center rounded w-300">3</div>
+  <div class="flex-item pink content-center rounded w-300">4</div>
+</div>
+
+```css {3}
+.green {
+  width: 300px;
+  flex-shrink: 0;
+}
+```
+
+### 指定收縮
+當 `.orange` 設置 `flex-shrink: 3;`，其它「項目」為`預設值`，當「容器」變窄時， `.orange` 被收縮的量為 `3/6` 等份。
+
+<div class="flex-container border-dashed flex h-100 w-300">
+  <div class="flex-item green content-center rounded w-300">1</div>
+  <div class="flex-item blue content-center rounded w-300">2</div>
+  <div class="flex-item orange content-center rounded w-300 shrink-3">3</div>
+  <div class="flex-item pink content-center rounded w-300">4</div>
+</div>
+
+```css
+.orange {
+  flex-shrink: 3;
+}
+```
+
+## 主軸初始尺吋 flex-basis
+依不同的「主軸」設定，決定不同的方向的尺吋，`flex-basis` 優先權大於 `width` (`height`)。
+
+**value:**
+- `auto` 根據「項目」決定大小。
+- `%` 指定比例
+- `px`.. 指定尺吋
+
+### 不同主軸不同結果
+
+**主軸 row**
+
+<div class="flex-container border-dashed flex h-100">
+  <div class="flex-item green content-center rounded basis-25">25%</div>
+  <div class="flex-item blue content-center rounded basis-50">50%</div>
+  <div class="flex-item orange content-center rounded basis-25">25%</div>
+</div>
+
+```css
+.flex-container {
+  display: flex;
+}
+```
+
+```css
+.green {
+  flex-basis: 25%;
+}
+.orange {
+  flex-basis: 25%;
+}
+.blue {
+  flex-basis: 50%;
+}
+```
+
+**主軸 column**
+
+<div class="flex-container border-dashed flex h-100 flex-col">
+  <div class="flex-item green content-center rounded basis-25">25%</div>
+  <div class="flex-item blue content-center rounded basis-50">50%</div>
+  <div class="flex-item orange content-center rounded basis-25">25%</div>
+</div>
+
+
+```css
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+```
+
+```css
+.green {
+  flex-basis: 25%;
+}
+.orange {
+  flex-basis: 25%;
+}
+.blue {
+  flex-basis: 50%;
+}
+```
+
+
 
 ## Reference
 [圖片出處]: https://codeburst.io/flexbox-building-a-navigation-part-2-2-6cc58b9d4173
@@ -781,3 +920,4 @@
 - [Get started with Flexbox.](https://dev.to/virensuthar/get-started-with-flexbox-3in5)
 - [CSS | 所以我說那個版能不能好切一點？ - Flex 基本用法](https://medium.com/enjoy-life-enjoy-coding/css-%E6%89%80%E4%BB%A5%E6%88%91%E8%AA%AA%E9%82%A3%E5%80%8B%E7%89%88%E8%83%BD%E4%B8%8D%E8%83%BD%E5%A5%BD%E5%88%87%E4%B8%80%E9%BB%9E-flex-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-e68cc2906995)
 - [六角學院-flex 基礎教學](https://w3c.hexschool.com/category/flexbasic)
+- [深入理解css3中的flex-grow、flex-shrink、flex-basis](http://zhoon.github.io/css3/2014/08/23/flex.html)
