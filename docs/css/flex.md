@@ -64,6 +64,7 @@
 .h-150 {
   height: 150px;
 }
+
 .align-start {
   align-items: flex-start;
 }
@@ -91,6 +92,9 @@
 .py-2 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+.w-150 {
+  width: 150px;
 }
 .pt-4 {
   padding-top: 4rem;
@@ -122,6 +126,21 @@
 }
 .self-stretch {
   align-self: stretch;
+}
+.content-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+.nowrap {
+  flex-wrap: nowrap;
+}
+.wrap-reverse {
+  flex-wrap: wrap-reverse;
 }
 </style>
 
@@ -463,6 +482,90 @@
 }
 ```
 
+
+## 換行設置 flex-wrap
+當使用 `flex` 模式，所有「項目」就會被撐滿在「容器」之中，無視「項目」的寬度，只會被塞在一行裡。但可以透過這個屬性，恢復「項目」原有的寬度、超過 `自動` 換行。
+
+**value:**
+- `nowrap` 不換行 **(預設值)
+- `wrap` 換行
+- `wrap-reverse` 主軸反轉換行
+
+### 不換行 `nowrap`
+<div class="flex-container border-dashed flex h-250">
+  <div class="flex-item green content-center rounded w-150">1</div>
+  <div class="flex-item blue content-center rounded w-150">2</div>
+  <div class="flex-item orange content-center rounded w-150">3</div>
+  <div class="flex-item pink content-center rounded w-150">4</div>
+  <div class="flex-item green content-center rounded w-150">5</div>
+  <div class="flex-item blue content-center rounded w-150">6</div>
+  <div class="flex-item orange content-center rounded w-150">7</div>
+  <div class="flex-item pink content-center rounded w-150">8</div>
+</div>
+
+```css
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+```
+
+```css
+.item {
+  width: 150px;
+}
+```
+
+### 換行 `wrap`
+<div class="flex-container border-dashed flex h-250 wrap">
+  <div class="flex-item green content-center rounded w-150">1</div>
+  <div class="flex-item blue content-center rounded w-150">2</div>
+  <div class="flex-item orange content-center rounded w-150">3</div>
+  <div class="flex-item pink content-center rounded w-150">4</div>
+  <div class="flex-item green content-center rounded w-150">5</div>
+  <div class="flex-item blue content-center rounded w-150">6</div>
+  <div class="flex-item orange content-center rounded w-150">7</div>
+  <div class="flex-item pink content-center rounded w-150">8</div>
+</div>
+
+```css
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+```
+
+```css
+.item {
+  width: 150px;
+}
+```
+
+### 主軸反轉換行 `wrap-reverse`
+<div class="flex-container border-dashed flex h-250 wrap-reverse">
+  <div class="flex-item green content-center rounded w-150">1</div>
+  <div class="flex-item blue content-center rounded w-150">2</div>
+  <div class="flex-item orange content-center rounded w-150">3</div>
+  <div class="flex-item pink content-center rounded w-150">4</div>
+  <div class="flex-item green content-center rounded w-150">5</div>
+  <div class="flex-item blue content-center rounded w-150">6</div>
+  <div class="flex-item orange content-center rounded w-150">7</div>
+  <div class="flex-item pink content-center rounded w-150">8</div>
+</div>
+
+```css
+.flex-container {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+```
+
+```css
+.item {
+  width: 150px;
+}
+```
+
 ## 項目屬性
 可以在「項目」設置相關屬性，來調整排版。
 
@@ -479,17 +582,19 @@
 藉由 `align-self` 直接對「項目」調整 `次軸` 對齊方式，優先權會大於在「容器」調整的 [次軸對齊方式 align-items](/css/flex#次軸對齊方式-align-items)。
 
 **value:**
-- `stretch` 拉撐 **(預設)**
+- `stretch` 拉撐 (預設值，若`align-items` 無特別設置)
 - `flex-start` 靠上
 - `flex-end` 靠下
 - `center` 置中
-- `baseline` 靠上，內容對齊
+- `baseline` 對齊 `align-items` 內容
+
+### 拉撐 `stretch`
 
 <div class="flex-container border-dashed flex h-150 align-center">
   <div class="flex-item green pa-1 rounded text-center">1</div>
   <div class="flex-item blue pa-1 rounded text-center">2</div>
   <div class="flex-item orange pa-1 rounded text-center">3</div>
-  <div class="flex-item pink pa-1 rounded text-center self-stretch">self</div>
+  <div class="flex-item pink pa-1 rounded text-center self-stretch content-center">self</div>
 </div>
 
 ```css
@@ -498,9 +603,97 @@
   align-items: center;
 }
 ```
-```css
-.item {
 
+```css {2}
+.self {
+  align-self: stretch;
+}
+```
+
+### 靠上 `flex-start`
+
+<div class="flex-container border-dashed flex h-150 align-center">
+  <div class="flex-item green pa-1 rounded text-center">1</div>
+  <div class="flex-item blue pa-1 rounded text-center">2</div>
+  <div class="flex-item orange pa-1 rounded text-center">3</div>
+  <div class="flex-item pink pa-1 rounded text-center self-start content-center">self</div>
+</div>
+
+```css
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+```
+
+```css {2}
+.self {
+  align-self: start;
+}
+```
+
+### 靠下 `flex-end`
+
+<div class="flex-container border-dashed flex h-150 align-center">
+  <div class="flex-item green pa-1 rounded text-center">1</div>
+  <div class="flex-item blue pa-1 rounded text-center">2</div>
+  <div class="flex-item orange pa-1 rounded text-center">3</div>
+  <div class="flex-item pink pa-1 rounded text-center self-end content-center">self</div>
+</div>
+
+```css
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+```
+
+```css {2}
+.self {
+  align-self: end;
+}
+```
+
+### 置中 `center`
+
+<div class="flex-container border-dashed flex h-150">
+  <div class="flex-item green pa-1 rounded text-center">1</div>
+  <div class="flex-item blue pa-1 rounded text-center">2</div>
+  <div class="flex-item orange pa-1 rounded text-center">3</div>
+  <div class="flex-item pink pa-1 rounded text-center self-center content-center">self</div>
+</div>
+
+```css
+.flex-container {
+  display: flex;
+}
+```
+
+```css {2}
+.self {
+  align-self: center;
+}
+```
+
+### 對齊 `align-items` 內容 `baseline`
+
+<div class="flex-container border-dashed flex h-150 align-center">
+  <div class="flex-item green pa-1 rounded text-center">1</div>
+  <div class="flex-item blue pa-1 rounded text-center">2</div>
+  <div class="flex-item orange pa-1 rounded text-center">3</div>
+  <div class="flex-item pink pa-1 rounded text-center self-baseline content-center">self</div>
+</div>
+
+```css
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+```
+
+```css {2}
+.self {
+  align-self: baseline;
 }
 ```
 
@@ -510,3 +703,4 @@
 - [深入解析 CSS Flexbox](https://www.oxxostudio.tw/articles/201501/css-flexbox.html)
 - [Get started with Flexbox.](https://dev.to/virensuthar/get-started-with-flexbox-3in5)
 - [CSS | 所以我說那個版能不能好切一點？ - Flex 基本用法](https://medium.com/enjoy-life-enjoy-coding/css-%E6%89%80%E4%BB%A5%E6%88%91%E8%AA%AA%E9%82%A3%E5%80%8B%E7%89%88%E8%83%BD%E4%B8%8D%E8%83%BD%E5%A5%BD%E5%88%87%E4%B8%80%E9%BB%9E-flex-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-e68cc2906995)
+- [六角學院-flex 基礎教學](https://w3c.hexschool.com/category/flexbasic)
