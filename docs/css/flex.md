@@ -108,8 +108,11 @@
 .w-300 {
   width: 300px;
 }
-.w-100 {
+.w-100px {
   width: 100px;
+}
+.w-25 {
+  width: 25%;
 }
 .relative {
   position: relative;
@@ -753,11 +756,11 @@
 :::
 
 <div class="flex-container border-dashed flex h-100">
-  <div class="flex-item green content-center rounded w-100">1</div>
-  <div class="flex-item blue content-center rounded w-100">2</div>
-  <div class="flex-item orange content-center rounded w-100">flex-grow-0</div>
-  <div class="flex-item pink content-center rounded w-100">4</div>
-  <div class="flex-item content-center rounded w-100 grow-1">空白空間</div>
+  <div class="flex-item green content-center rounded w-100px">1</div>
+  <div class="flex-item blue content-center rounded w-100px">2</div>
+  <div class="flex-item orange content-center rounded w-100px">flex-grow-0</div>
+  <div class="flex-item pink content-center rounded w-100px">4</div>
+  <div class="flex-item content-center rounded w-100px grow-1">空白空間</div>
 </div>
 
 **value `number`** (不可為負數):
@@ -768,10 +771,10 @@
 只有一個「項目」設置 `flex-grow: 1;`, 空白空間共分為 `1` 等分，而 `.orange` 分配 `1` 等份 (就是全部)。 
 
 <div class="flex-container border-dashed flex h-100">
-  <div class="flex-item green content-center rounded w-100">1</div>
-  <div class="flex-item blue content-center rounded w-100">2</div>
-  <div class="flex-item orange content-center rounded w-100 grow-1">flex-grow-1</div>
-  <div class="flex-item pink content-center rounded w-100">4</div>
+  <div class="flex-item green content-center rounded w-100px">1</div>
+  <div class="flex-item blue content-center rounded w-100px">2</div>
+  <div class="flex-item orange content-center rounded w-100px grow-1">flex-grow-1</div>
+  <div class="flex-item pink content-center rounded w-100px">4</div>
 </div>
 
 ```css
@@ -784,10 +787,10 @@
 所有「項目」 `flex-grow` 加總為 `3` (1 + 2)，空白空間分 `3` 等份，`.orange` 分配當中的 `1` 等分、`.pink` 分配到 `2` 分。
 
 <div class="flex-container border-dashed flex h-100">
-  <div class="flex-item green content-center rounded w-100">1</div>
-  <div class="flex-item blue content-center rounded w-100">2</div>
-  <div class="flex-item orange content-center rounded w-100 grow-1">flex-grow-1</div>
-  <div class="flex-item pink content-center rounded w-100 grow-2">flex-grow-2</div>
+  <div class="flex-item green content-center rounded w-100px">1</div>
+  <div class="flex-item blue content-center rounded w-100px">2</div>
+  <div class="flex-item orange content-center rounded w-100px grow-1">flex-grow-1</div>
+  <div class="flex-item pink content-center rounded w-100px grow-2">flex-grow-2</div>
 </div>
 
 ```css
