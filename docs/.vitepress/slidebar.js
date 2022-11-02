@@ -209,6 +209,10 @@ export const getJavascriptSidebar = () => ({
       text: 'Web APIs',
       link: '/Javascript/web-apis'
     },
+    {
+      text: 'Notification 推播信息',
+      link: 'Javascript/notification'
+    }
   ]
 })
 

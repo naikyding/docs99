@@ -55,6 +55,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [Math 數學函式](/Javascript/math)
 - [Variable 變數](/Javascript/variable)
 - [Web APIs](/Javascript/web-apis)
+- [Notification 推播信息](/Javascript/notification)
 
 ## Vue
 
