@@ -160,3 +160,7 @@ dialogBtn.addEventListener('click', () => {
 </iframe>
 
 :::
+
+## Reference
+- [\<dialog>: The Dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+- [\::backdrop](https://css-tricks.com/almanac/selectors/b/backdrop/)
