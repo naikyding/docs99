@@ -212,6 +212,18 @@ export const getJavascriptSidebar = () => ({
   ]
 })
 
+export const getHtmlSidebar = () => ({
+  text: 'Html',
+  collapsible: true,
+  collapsed: true,
+  items: [
+    {
+      text: 'dialog 對話彈窗',
+      link: '/Html/dialog'
+    }
+  ]
+})
+
 export const getCssSidebar = () => ({
   text: 'CSS',
   collapsible: true,
