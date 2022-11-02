@@ -98,6 +98,7 @@
   </div>
 </dialog>
 
+:::details Code
 **元素設置**
 ```html {5-15}
 <button class="dialog-btn">
@@ -147,3 +148,15 @@ dialogBtn.addEventListener('click', () => {
   dialogShow()
 })
 ```
+:::
+
+:::details Codepen
+[👉 Codepen](https://codepen.io/naiky/pen/xxjoLzR)
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="[html] dialog" src="https://codepen.io/naiky/embed/xxjoLzR?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/xxjoLzR">
+  [html] dialog</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+:::
