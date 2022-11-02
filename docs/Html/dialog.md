@@ -1,4 +1,4 @@
-# dialog 對話彈窗
+# dialog 對話視窗
 
 <style scope>
   dialog {
@@ -52,7 +52,7 @@
 </script>
 
 ## 說明
-`<dialog>` 元素，可以用來顯示 `彈窗` 或其它信息的呈現，也可以為文件內容更 `語意` 化；這個元素本身是帶有 `position: absolute;` 屬性。
+`<dialog>` 元素，可以用來顯示 `對話視窗` 或其它信息的呈現，也可以為文件內容更 `語意` 化；這個元素本身是帶有 `position: absolute;` 屬性。
 
 ```html
 <dialog open> ... </dialog>
@@ -70,15 +70,15 @@
 :::
 
 ## 事件
-- `.show()` 開啟視窗區塊
+- `.show()` 開啟「對話視窗」區塊
   
   這個方法，無法為 `<dialog>` 添加背景。
 
-- `.showModal()` 開啟視窗整體 **(建議)**
+- `.showModal()` 開啟「對話視窗」整體 **(建議)**
 
-  可以使用 `dialog::backdrop` 選取器，為彈窗客製背景。
+  可以使用 `dialog::backdrop` 選取器，為「對話視窗」客製底背景。
 
-- `.close()` 關閉視窗
+- `.close()` 關閉「對話視窗」
 
 ## Demo
 
