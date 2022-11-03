@@ -23,67 +23,100 @@
 
 <script>
   export default {
+    data: () => ({
+      onceLeaveNotificationID: null,
+
+      notificationID: null,
+      timeIntervalID: null,
+      leaveDate: null
+    }),
+
     mounted() {
-      const notificationBtn = document.querySelector('.notification-btn')
+      console.log('mounted')
+      this.notificationForButton()
+      this.leaveNotification()
+      this.leaveNotificationInterval()
+    },
 
-      // ----------- 按鈕推播通知 ----------- //
-      notificationBtn.addEventListener('click', async() => {
-        const permissionStatus = await Notification.requestPermission()
-        if(permissionStatus === 'granted') {
-          const notification1 = new Notification('推播通知標題', {
-            body: 'yo, 你已經成功推播這個通知了!',
-            data: {name: 'naiky'},
-            icon: '/document.svg',
-            // tag: 'hello'
-          })
+    methods: {
+      notificationForButton() {
+        const notificationBtn = document.querySelector('.notification-btn')
 
-          notification1.addEventListener('show', (e) => {
-            console.log(e)
-          })
+        notificationBtn.addEventListener('click', async() => {
+          const permissionStatus = await Notification.requestPermission()
+          if(permissionStatus === 'granted') {
+            const notification1 = new Notification('推播通知標題', {
+              body: 'yo, 你已經成功推播這個通知了!',
+              data: {name: 'naiky'},
+              icon: '/document.svg',
+              // tag: 'hello'
+            })
 
-        } else if(permissionStatus === 'denied') {
-          new Notification('不同意!')
+            notification1.addEventListener('show', (e) => {
+              console.log(e)
+            })
 
-        }
-      })
-
-      //----------- 不可見推播通知 ----------- //
-      let notification
-
-      document.addEventListener('visibilitychange', () => {
+          } else if(permissionStatus === 'denied') {
+            new Notification('不同意!')
+          }
+        })
+      },
+      onceNotificationFun() {
         if(document.visibilityState === 'hidden') {
-          notification = new Notification('Notification 推播信息', {
-            icon: '/document.svg',
-            body: '你離開頁面了，快回來!!'
-          })
-          return false
+          this.onceLeaveNotificationID = new Notification('Notification 推播信息', {
+          icon: '/document.svg',
+          body: '你離開頁面了，快回來!!'
+        })
+        } else {
+          this.onceLeaveNotificationID.close()
         }
-        notification.close()
-      })
+      },
 
-      // ---------- 不可見推播通知 (倒數功能) ---------- //
-      let notificationInterval
-      let leaveDate
-      let intervalTimeId
+      leaveNotification() {
+        document.addEventListener('visibilitychange', this.onceNotificationFun)
+      },
 
-      document.addEventListener('visibilitychange', () => {
+      leaveNotificationIntervalFun() {
         if(document.visibilityState === 'hidden') {
-          leaveDate = new Date()
+          this.leaveDate = new Date()
 
-          intervalTimeId = setInterval(() => {
-            let sec = Math.round((new Date - leaveDate) / 1000)
+          this.timeIntervalID = setInterval(() => {
+            let sec = Math.round((new Date - this.leaveDate) / 1000)
 
-            notificationInterval = new Notification('您正在交易中 (Notification 測試)', {
+            this.notificationID = new Notification('您正在交易中 (Notification 測試)', {
               icon: '/document.svg',
               body: `頁面已經離開 ${sec} 秒了!`,
             })
           }, 10000)
         } else {
-          if(intervalTimeId) clearInterval(intervalTimeId)
-          if(notificationInterval) notificationInterval.close()
-          leaveDate = 0
+          this.clearLeaveNotification()
         }
-      })
+      },
+
+      // 頁面「不可見」倒數功能
+      leaveNotificationInterval() {
+        document.addEventListener('visibilitychange', this.leaveNotificationIntervalFun)
+      },
+
+      // 清除倒數通知功能
+      clearLeaveNotification() {
+        if(this.notificationID) this.notificationID.close()
+        if(this.timeIntervalID) clearInterval(this.timeIntervalID)
+        this.leaveDate = null
+      }
+    },
+
+    beforeUnmount() {
+      console.log('unmount')
+
+      const logger = () => {
+        console.log('REMOVE!')
+      }
+      document.removeEventListener('visibilitychange', this.onceNotificationFun)
+      document.removeEventListener('visibilitychange', this.leaveNotificationIntervalFun)
+
+      this.clearLeaveNotification()
+      this.onceLeaveNotificationID.close()
     }
   }
 </script>
