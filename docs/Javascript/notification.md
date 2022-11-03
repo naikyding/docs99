@@ -26,9 +26,9 @@
     mounted() {
       const notificationBtn = document.querySelector('.notification-btn')
 
+      // ----------- 按鈕推播通知 ----------- //
       notificationBtn.addEventListener('click', async() => {
         const permissionStatus = await Notification.requestPermission()
-
         if(permissionStatus === 'granted') {
           const notification1 = new Notification('推播通知標題', {
             body: 'yo, 你已經成功推播這個通知了!',
@@ -44,6 +44,44 @@
         } else if(permissionStatus === 'denied') {
           new Notification('不同意!')
 
+        }
+      })
+
+      //----------- 不可見推播通知 ----------- //
+      let notification
+
+      document.addEventListener('visibilitychange', () => {
+        if(document.visibilityState === 'hidden') {
+          notification = new Notification('Notification 推播信息', {
+            icon: '/document.svg',
+            body: '你離開頁面了，快回來!!'
+          })
+          return false
+        }
+        notification.close()
+      })
+
+      // ---------- 不可見推播通知 (倒數功能) ---------- //
+      let notificationInterval
+      let leaveDate
+      let intervalTimeId
+
+      document.addEventListener('visibilitychange', () => {
+        if(document.visibilityState === 'hidden') {
+          leaveDate = new Date()
+
+          intervalTimeId = setInterval(() => {
+            let sec = Math.round((new Date - leaveDate) / 1000)
+
+            notificationInterval = new Notification('您正在交易中 (Notification 測試)', {
+              icon: '/document.svg',
+              body: `頁面已經離開 ${sec} 秒了!`,
+            })
+          }, 10000)
+        } else {
+          if(intervalTimeId) clearInterval(intervalTimeId)
+          if(notificationInterval) notificationInterval.close()
+          leaveDate = 0
         }
       })
     }
@@ -135,6 +173,65 @@ notification.addEventListener('show', (event) => {
 })
 ```
 
+## 頁面不可見通知
+頁面 `不可見` 時，彈出「推播通知」，當頁面 `可見` 後，`關閉`「推播通知」。
+
+- [頁面可見度 判斷](/Javascript/web-apis#頁面能見度-document-visibilitystate)
+- `notification.close()` 關閉通知視窗。
+
+:::tip 提醒
+本頁含有此功能，切換頁面 `可見度` 試試!
+:::
+
+```js
+let notification
+
+document.addEventListener('visibilitychange', () => {
+  // 頁面可見度判斷
+  if(document.visibilityState === 'hidden') {
+    notification = new Notification('Notification 推播信息', {
+      icon: '/document.svg',
+      body: '你離開頁面了，快回來!!'
+    })
+    return false
+  }
+  notification.close() // 關閉通知
+})
+```
+
+## 頁面不可見倒數應用
+頁面 `不可見` 後，開始通知離開秒數 (十秒一次)，頁面 `可見`後，關閉通知。
+
+```js
+let notificationInterval
+let leaveDate
+let intervalTimeId
+
+document.addEventListener('visibilitychange', () => {
+  // 當頁面「不可見」執行
+  if(document.visibilityState === 'hidden') {
+    // 離開時間
+    leaveDate = new Date()
+
+    intervalTimeId = setInterval(() => {
+      // 離開間隔時間
+      let sec = Math.round((new Date - leaveDate) / 1000)
+
+      notificationInterval = new Notification('您正在交易中 (Notification 測試)', {
+        body: `頁面已經離開 ${sec} 秒了!`,
+      })
+    }, 10000)
+  } else {
+    // 如果頁面「可見」執行
+    intervalTimeId && clearInterval(intervalTimeId)
+    notificationInterval && notificationInterval.close()
+    leaveDate = undefined
+  }
+})
+```
+
 ## Reference
 - [Notification @MDN](https://developer.mozilla.org/en-US/docs/Web/API/Notification)
 - [那些被忽略但很好用的 Web API / Notification](https://ithelp.ithome.com.tw/articles/10281329)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Bm0JjR4kP8w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
