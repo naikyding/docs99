@@ -33,7 +33,7 @@
           const notification1 = new Notification('推播通知標題', {
             body: 'yo, 你已經成功推播這個通知了!',
             data: {name: 'naiky'},
-            icon: '../public/document.svg',
+            icon: '/document.svg',
             // tag: 'hello'
           })
 
