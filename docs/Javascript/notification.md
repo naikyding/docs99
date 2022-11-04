@@ -32,7 +32,6 @@
     }),
 
     mounted() {
-      console.log('mounted')
       this.notificationForButton()
       this.leaveNotification()
       this.leaveNotificationInterval()
@@ -55,12 +54,12 @@
             notification1.addEventListener('show', (e) => {
               console.log(e)
             })
-
           } else if(permissionStatus === 'denied') {
             new Notification('不同意!')
           }
         })
       },
+
       onceNotificationFun() {
         if(document.visibilityState === 'hidden') {
           this.onceLeaveNotificationID = new Notification('Notification 推播信息', {
@@ -107,11 +106,6 @@
     },
 
     beforeUnmount() {
-      console.log('unmount')
-
-      const logger = () => {
-        console.log('REMOVE!')
-      }
       document.removeEventListener('visibilitychange', this.onceNotificationFun)
       document.removeEventListener('visibilitychange', this.leaveNotificationIntervalFun)
 
