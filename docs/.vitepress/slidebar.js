@@ -206,13 +206,17 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/variable'
     },
     {
+      text: 'Websocket 客戶端與服務端雙向資料傳輸',
+      link: 'Javascript/websocket'
+    },
+    {
       text: 'Web APIs',
       link: '/Javascript/web-apis'
     },
     {
       text: 'Notification 推播信息',
       link: 'Javascript/notification'
-    }
+    },
   ]
 })
 

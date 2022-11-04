@@ -108,9 +108,7 @@
     beforeUnmount() {
       document.removeEventListener('visibilitychange', this.onceNotificationFun)
       document.removeEventListener('visibilitychange', this.leaveNotificationIntervalFun)
-
       this.clearLeaveNotification()
-      this.onceLeaveNotificationID.close()
     }
   }
 </script>
