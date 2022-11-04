@@ -8,12 +8,16 @@
 ## 說明
 
 `websocket` 是一種通訊協定，可以在單次連線後，進行 `客戶端` 與 `服務端` 「雙向」資料交換的持久互動，直到某一端「取消」後才會中斷連線。
-是以 `ws` or `wss` 前綴來表示連結。
+是以 `ws://` or `wss://` 前綴來表示連結 (相當於 `http` or `https`)。
 
 <img style="background: white; padding: 1rem; border-radius: 8px;" src="/Javascript/img/websocket-flow.png" alt="websocket-flow" />
 
 [圖片出處](https://www.pubnub.com/blog/websockets-vs-rest-api-understanding-the-difference/)
 
+- http 方法請求 `ws`
+- 收到 `服務端` status code `101` 後，建立連線
+- TCP/IP 雙向互動
+- 一方「取消」後中斷。
 
 ### 常用場景:
 - **即時應用:** 即時價格顯示、即時數據顯示的網站應用。
@@ -34,6 +38,10 @@
 
 
 ## Reference
+- [What is web socket and how it is different from the HTTP?](https://www.geeksforgeeks.org/what-is-web-socket-and-how-it-is-different-from-the-http/)
 - [JavaScript | WebSocket 讓前後端沒有距離](https://medium.com/enjoy-life-enjoy-coding/javascript-websocket-%E8%AE%93%E5%89%8D%E5%BE%8C%E7%AB%AF%E6%B2%92%E6%9C%89%E8%B7%9D%E9%9B%A2-34536c333e1b)
 - [WebSocket WIKI](https://zh.wikipedia.org/zh-tw/WebSocket)
 - [製作 WebSocket 客戶端應用程式](https://developer.mozilla.org/zh-TW/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications)
+- [WebSockets vs REST: Understanding the Difference](https://www.pubnub.com/blog/websockets-vs-rest-api-understanding-the-difference/)
+- [(Video) WebSockets in 100 Seconds & Beyond with Socket.io](https://www.youtube.com/watch?v=1BfCnjr_Vjg&t=174s)
+- [(Video) How to use WebSockets - JavaScript Tutorial For Beginners](https://www.youtube.com/watch?v=FduLSXEHLng)
