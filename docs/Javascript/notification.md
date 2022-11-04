@@ -100,8 +100,8 @@
 
       // 清除倒數通知功能
       clearLeaveNotification() {
-        if(this.notificationID) this.notificationID.close()
-        if(this.timeIntervalID) clearInterval(this.timeIntervalID)
+        this.notificationID && this.notificationID.close()
+        this.timeIntervalID && clearInterval(this.timeIntervalID)
         this.leaveDate = null
       }
     },
@@ -126,9 +126,9 @@
 ## 推播許可詢問 `Notification.requestPermission`
 ![](/Javascript/img/notification_permission.png)
 
-詢問 `客戶端` 是否同意接受「推播通知」，這是一個 [Promise](/Javascript/promise) 方法，也可以直接使用回調函式，只會詢問一次，之後會回傳 `value` 值。
+詢問 `客戶端` 是否同意接受「推播通知」，這是一個 [Promise](/Javascript/promise) 方法，也可以直接使用回調函式，只會詢問一次，之後會回傳 `property` 值。
 
-**value:**
+**property:**
 - `granted` 允許推播通知
 - `denied` 拒絕推播通知
 - `default` 關閉互動視窗 (短時間內，關閉太多次會變「拒絕」)
@@ -256,15 +256,21 @@ document.addEventListener('visibilitychange', () => {
     }, 10000)
   } else {
     // 如果頁面「可見」執行
-    intervalTimeId && clearInterval(intervalTimeId)
-    notificationInterval && notificationInterval.close()
-    leaveDate = undefined
+    this.notificationID && this.notificationID.close()
+    this.timeIntervalID && clearInterval(this.timeIntervalID)
+    this.leaveDate = null
   }
 })
 ```
+
+:::warning 注意
+離開頁面記得移除監聽 `visibilitychange`
+
+`document.removeEventListener('visibilitychange', 監聽執行事件)`
+:::
 
 ## Reference
 - [Notification @MDN](https://developer.mozilla.org/en-US/docs/Web/API/Notification)
 - [那些被忽略但很好用的 Web API / Notification](https://ithelp.ithome.com.tw/articles/10281329)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Bm0JjR4kP8w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" height="auto" src="https://www.youtube.com/embed/Bm0JjR4kP8w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
