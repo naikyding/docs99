@@ -57,6 +57,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [Web APIs](/Javascript/web-apis)
 - [Notification 推播信息](/Javascript/notification)
 - [Websocket 客戶端與服務端雙向資料傳輸](/Javascript/websocket)
+- [Websocket Demo](/Javascript/websocket-demo)
 
 ## Vue
 

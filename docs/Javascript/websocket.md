@@ -14,21 +14,21 @@
 
 [圖片出處](https://www.pubnub.com/blog/websockets-vs-rest-api-understanding-the-difference/)
 
-- http 方法請求 `ws`
+- http 方法請求 `ws` 連線
 - 收到 `服務端` status code `101` 後，建立連線
 - TCP/IP 雙向互動
 - 一方「取消」後中斷。
 
-### 常用場景:
+## 常用場景:
 - **即時應用:** 即時價格顯示、即時數據顯示的網站應用。
 - **遊戲應用:** ui 必須要不斷刷顯示數據。
 - **聊天室:** 方便與使用者即時通信互動。
 
 :::tip 提醒
-如果只有「一次」加載資料需要，就不需要使用到 `websocket` 了。
+如果只有「一次」加載資料需求，就不需要使用到 `websocket` 了。
 :::
 
-### 與 http 比較
+## 與 http 比較
 
 | websocket | http |
 |-|-|
@@ -36,6 +36,8 @@
 | 建立在即時數據應用的服務上，可以在通道上持續獲得數據 | 通常藉由 http 無狀態，單向獲得數據|
 | `websocket` 連線速度比 `http` 快。 | 請求方式簡單、無狀態，應用單純 |
 
+## 實務應用
+[Websocket Demo](/Javascript/websocket-demo)
 
 ## Reference
 - [What is web socket and how it is different from the HTTP?](https://www.geeksforgeeks.org/what-is-web-socket-and-how-it-is-different-from-the-http/)
