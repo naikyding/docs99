@@ -48,9 +48,14 @@ socket.readyState // 3
 
 ## 傳送數據
 
+操作 `.send()` 對 `服務端`傳送數據。
+
 ```js
 socket.send('要傳送到服務端的數據')
 ```
+
+**可以在 `network/ws` 查看到傳送信息。**
+![](/Javascript/img/websocket-network.png)
 
 ## 監聽事件
 
@@ -113,6 +118,8 @@ npm i ws
 ## 啟動服務
 
 籍由 `WebSocketServer` 創建實例，來啟動一個服務 ([更多方式](https://www.npmjs.com/package/ws))。之後也是使用這個實例來進行其它操作。
+
+**啟動一個 `ws://localhost:7777` 的服務。**
 
 ```js
 const { WebSocketServer } = require('ws')
