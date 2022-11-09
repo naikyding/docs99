@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Websocket</title>
+</head>
+<body style="background: #2e2e2e;">
+
+  <button id="closeBtn">Close WS</button>
+
+  <button id="sendBtn">Send WS</button>
+
+  <script>
+    // 建立 websocket 連線
+    const socket = new WebSocket('ws://localhost:7777')
+
+    // 建立連線 事件
+    socket.onopen = () => {
+      console.log(`${new Date().getTime()}: ws 建立連線`)
+    }
+
+    // 連線錯誤
+    // 若服務端沒有開啟 也會 error
+    socket.onerror = (error) => {
+      console.log(`${new Date().getTime()}: ws 發生錯誤`)
+      console.log(error)
+    }
+    
+    // 關閉連線 事件
+    // 服務端本身沒有開啟服務也會 onclose，在 onerror 之後
+    socket.onclose = (event) => {
+      console.log(`${new Date().getTime()}: ws 關閉連線`)
+      console.log(event) // 服務端沒有開啟 or 中斷服務，通常 code 為 1006
+    }
+
+    // 接收數據，當 ws 有傳資料
+    socket.onmessage = messageEvent => {
+      console.log(messageEvent.data)
+    }
+
+    const closeBtn = document.querySelector('#closeBtn')
+    closeBtn.addEventListener('click', () => {
+      console.log('close')
+      // socket.close(777, '連線結束')
+      socket.close(1000, '連線結束')
+    })
+
+    const sendBtn = document.querySelector('#sendBtn')
+    sendBtn.addEventListener('click', () => {
+      socket.send('這是客戶端傳送的資料')
+    })
+  </script>
+</body>
+</html>
