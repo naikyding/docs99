@@ -21,6 +21,7 @@
     // 建立連線 事件
     socket.onopen = () => {
       console.log(`${new Date().getTime()}: ws 建立連線`)
+      socket.send(JSON.stringify({id: 1, name: 'naiky'}))
     }
 
     // 連線錯誤

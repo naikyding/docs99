@@ -48,10 +48,13 @@ socket.readyState // 3
 
 ## 傳送數據
 
-操作 `.send()` 對 `服務端`傳送數據。
+操作 `.send()` 對 `服務端`傳送數據，如果要傳送 `json` 格式的話，建議字串化再傳送 `JSON.stringify()`，服務端再解回 json。
 
 ```js
 socket.send('要傳送到服務端的數據')
+
+// 傳送 json
+socket.send(JSON.stringify({ id: 1, name: 'naiky' }))
 ```
 
 **可以在 `network/ws` 查看到傳送信息。**
@@ -182,6 +185,12 @@ wsServer.on('connection', (ws) => {
 })
 ```
 
+:::tip 提醒
+若 `客戶端` 傳送 json 格式，建議 `JSON.stringify` 化傳送，`服務端` 再 `JSON.parse()` 轉換回 json，不然為 buffer 資料。
+
+![](/Javascript/img/websocket-send-data.png)
+:::
+
 ## 傳送資料
 
 使用 `ws.send()` 來傳送數據到 `客戶端`。
@@ -202,6 +211,10 @@ wsServer.on('connection', (ws) => {
   })
 })
 ```
+
+:::tip 提醒
+若要傳送 `json`，建議 `JSON.stringify` 後，再送出。
+:::
 
 ## 所有連線傳送數據
 
@@ -282,3 +295,4 @@ function clientVerify(info) {
 - [製作 WebSocket 客戶端應用程式](https://developer.mozilla.org/zh-TW/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications)
 - [JavaScript | WebSocket 讓前後端沒有距離](https://medium.com/enjoy-life-enjoy-coding/javascript-websocket-%E8%AE%93%E5%89%8D%E5%BE%8C%E7%AB%AF%E6%B2%92%E6%9C%89%E8%B7%9D%E9%9B%A2-34536c333e1b)
 - [WebSocket info](https://zh.javascript.info/websocket)
+- [Vue 项目使用 WebSocket 技术](https://juejin.cn/post/6982078455722557448)
