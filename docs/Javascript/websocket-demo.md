@@ -29,7 +29,7 @@ socket.close()
 
 ## 連線狀態
 
-可以透過 `socket.readyState` 來查看當前 `socket` 的連線狀態。
+可以透過 `socket.readyState` 來查看當前 `socket` 這個實例的連線狀態。
 
 **value:**
 
@@ -128,7 +128,8 @@ const websocketServer = new WebSocketServer({ port: 7777 })
 
 ## 連線事件
 
-當 `客戶端` 連線時，會觸發 `.on('connection')` 這個事件，可以在 `第二參數` 帶入一個想要執行的 `callback` 函式，而 `callback` 會帶入 `ws` 的實體，方便後續操作。
+當 `客戶端` 連線時，會觸發 `.on('connection')` 這個事件，可以在 `第二參數` 帶入一個想要執行的 `callback` 函式，而 `callback` 會帶入這個連線 `ws` 的實體，後續也是針對這個
+`ws` 連線的實體來進行其它操作。
 
 ```js
 websocketServer.on('connection', (ws) => {
@@ -138,7 +139,7 @@ websocketServer.on('connection', (ws) => {
 
 ## 中斷連線
 
-可以使用 `.on('close')` 來監聽連線是否被 `客戶端` 中斷連線。而 `callback` 函式會帶有 `code` 關閉連線的代碼 [客戶端關閉連線](/Javascript/websocket-demo#關閉-websocket-連線) 。
+可以使用 `ws.on('close')` 來監聽連線是否被 `客戶端` 中斷連線。而 `callback` 函式會帶有 `code` 關閉連線的代碼 [客戶端關閉連線](/Javascript/websocket-demo#關閉-websocket-連線) 。
 
 ```js {4-7}
 websocketServer.on('connection', (ws) => {
@@ -153,7 +154,7 @@ websocketServer.on('connection', (ws) => {
 
 ## 接收數據
 
-當 `客戶端` 有傳送數據時， `服務端` 可以由 `.on('message')` 觸發相關的事件，而數據會在 `callback` 的參數當中。
+當 `客戶端` 有傳送數據時， `服務端` 可以由 `ws.on('message')` 觸發相關的事件，而數據會在 `callback` 的參數當中。
 
 ```js {9-11}
 wsServer.on('connection', (ws) => {
@@ -172,7 +173,7 @@ wsServer.on('connection', (ws) => {
 
 ## 傳送資料
 
-使用 `.send()` 來傳送數據到 `客戶端`。
+使用 `ws.send()` 來傳送數據到 `客戶端`。
 
 ```js {12}
 wsServer.on('connection', (ws) => {
@@ -187,6 +188,33 @@ wsServer.on('connection', (ws) => {
     console.log(`這是客戶端傳送的數據: ${data}`)
 
     ws.send('服務端已收到你的數據')
+  })
+})
+```
+
+## 所有連線傳送數據
+
+上面的傳送數據方式，只會針對「單一」連線的 `客戶端` 做數據傳送。
+使用以下的方法 `服務端` 可以同時傳送數據給「所有」連線的 `客戶端`。 ([ws 廣播](https://github.com/websockets/ws#server-broadcast))
+
+- `wsServer.clients` 所有客戶端
+
+  當 `服務端` 收到數據，同時傳送給「所有」 `客戶端` 其收到的數據。
+
+```js {10-13}
+const { WebSocketServer } = require('ws')
+const wsServer = new WebSocketServer({ port: 7777 })
+
+wsServer.on('connection', (ws) => {
+  ws.send('客戶端已經連線')
+
+  ws.on('message', (data) => {
+    console.log(`這是客戶端傳送的資料: ${data}`)
+
+    wsServer.clients.forEach((client) => {
+      // client 是每個連線的實體
+      client.send(`服務端接收到資料: ${data}`)
+    })
   })
 })
 ```

@@ -9,7 +9,8 @@
 <body style="background: #2e2e2e;">
 
   <button id="closeBtn">Close WS</button>
-
+  <br/>
+  <input type="text">
   <button id="sendBtn">Send WS</button>
 
   <script>
@@ -49,7 +50,8 @@
 
     const sendBtn = document.querySelector('#sendBtn')
     sendBtn.addEventListener('click', () => {
-      socket.send('這是客戶端傳送的資料')
+      // socket.send('這是客戶端傳送的資料')
+      socket.send(document.querySelector('input').value)
     })
   </script>
 </body>
