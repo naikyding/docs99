@@ -24,12 +24,19 @@
 //     })
 //   })
 // })
-
 const { WebSocketServer } = require('ws')
-const wsServer = new WebSocketServer({ port: 7777 })
+const url = require('url')
+const wsServer = new WebSocketServer({ port: 7777, verifyClient })
+
+function verifyClient(info) {
+  const { access_token } = url.parse(info.req.url, true).query
+  return access_token === 'AAAAAA'
+}
+
 
 wsServer.on('connection', (ws) => {
   ws.send('客戶端已經連線')
+  ws.send(`當前連線數量: ${wsServer._server._connections}`)
 
   ws.on('message', (data) => {
     console.log(`這是客戶端傳送的資料: ${data}`)

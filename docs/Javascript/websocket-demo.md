@@ -137,6 +137,17 @@ websocketServer.on('connection', (ws) => {
 })
 ```
 
+### 當前連線數量
+
+可以透過 `wsServer._server._connections` 來取得當前的連線總數量。
+
+```js {3}
+wsServer.on('connection', (ws) => {
+  ws.send('客戶端已經連線')
+  ws.send(`當前連線數量: ${wsServer._server._connections}`)
+})
+```
+
 ## 中斷連線
 
 可以使用 `ws.on('close')` 來監聽連線是否被 `客戶端` 中斷連線。而 `callback` 函式會帶有 `code` 關閉連線的代碼 [客戶端關閉連線](/Javascript/websocket-demo#關閉-websocket-連線) 。
@@ -218,6 +229,52 @@ wsServer.on('connection', (ws) => {
   })
 })
 ```
+
+## 客戶端驗證
+
+避免 `ws` 服務被盜連與攻擊，當 `客戶端` 是「合法」身份，才可以進行連線與數據傳輸。
+
+:::warning 注意
+`Websocket` 不可以自定請求的 `headers`。
+:::
+
+**Client**
+
+`url` 帶有 `query` 的 `access_token` 請求。
+
+```js
+const socket = new WebSocket(`ws://localhost:7777?access_token=${token}`)
+```
+
+**Server**
+
+根據 `客戶端` 請求的 url 參數 `access_token` 來進行驗證，「通過」才可以連線。
+
+- Websocket 服務器加上 `客戶端` 驗證 `verifyClient` 函式。
+- 設置驗證函式 `clientVerify`，函式會自帶請求的相關資料 `info`。
+  - 解析請求 url 參數 `access_token` 進行驗證。
+  - 「通過」 `return true`
+  - 「拒絕」 `return false`
+
+```js
+// 解析 url 工具
+const url = require('url')
+const { WebsocketServer } = require('ws')
+
+// 加入客戶端驗證功能 verifyClient
+const wsServer = new WebsocketServer({ port: 7777, verifyClient: clientVerify })
+
+// 驗證功能
+function clientVerify(info) {
+  const { access_token } = url.parse(info.req.url, true).query
+  return access_token === 'AAAAAA'
+}
+```
+
+:::warning 提醒
+若 `客戶端` 身份驗證失敗，被拒絕連線，會出現 (下圖)，無法對 `ws` 發送、接收數據。
+![](/Javascript/img/websocket-connection-fail.png)
+:::
 
 ## Reference
 

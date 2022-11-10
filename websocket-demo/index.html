@@ -15,7 +15,8 @@
 
   <script>
     // 建立 websocket 連線
-    const socket = new WebSocket('ws://localhost:7777')
+    const token = 'AAAAAA'
+    const socket = new WebSocket(`ws://localhost:7777?access_token=${token}`)
 
     // 建立連線 事件
     socket.onopen = () => {
