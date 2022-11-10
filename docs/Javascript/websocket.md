@@ -60,7 +60,7 @@
 
 ## 實務應用
 
-[Websocket Demo](/Javascript/websocket-demo)
+[Websocket 基礎操作](/Javascript/websocket-demo)
 
 ## Reference
 

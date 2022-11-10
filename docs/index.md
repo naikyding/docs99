@@ -57,7 +57,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [Web APIs](/Javascript/web-apis)
 - [Notification 推播信息](/Javascript/notification)
 - [Websocket 客戶端與服務端雙向資料傳輸](/Javascript/websocket)
-- [Websocket Demo](/Javascript/websocket-demo)
+- [Websocket 基礎操作](/Javascript/websocket-demo)
 
 ## Vue
 
@@ -113,13 +113,15 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [CORS 與 同源政策](/security/cors)
 - [JWT 身份驗證機制](/security/jwt)
 
-
 ## Devops
+
 ### Nginx 網頁伺服器
+
 - [Nginx 基礎](/Browser/nginx)
 - [Nginx 文件設置方法](/Browser/nginx-operate)
 
 ### Docker
+
 - [容器化 Node JS APP](/Browser/docker-node)
 
 <!-- ## Vue
@@ -127,4 +129,5 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 ## CSS -->
 
 ## Html
+
 - [dialog 對話彈窗](/Html/dialog)

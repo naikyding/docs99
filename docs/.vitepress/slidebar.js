@@ -218,7 +218,7 @@ export const getJavascriptSidebar = () => ({
       link: 'Javascript/websocket'
     },
     {
-      text: 'Websocket Demo',
+      text: 'Websocket 基礎操作',
       link: 'Javascript/websocket-demo'
     },
   ]
