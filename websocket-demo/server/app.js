@@ -39,9 +39,11 @@ wsServer.on('connection', (ws) => {
   ws.send(`當前連線數量: ${wsServer._server._connections}`)
 
   ws.on('message', (data) => {
-    console.log(`這是客戶端傳送的資料: ${data}`)
-    ws.send(JSON.stringify(wsServer))
-    console.log(wsServer)
+    console.log(`這是客戶端傳送的資料:`)
+    console.log(data)
+    ws.send(JSON.stringify(JSON.parse(data)))
+    // ws.send(JSON.stringify(wsServer))
+    // console.log(wsServer)
 
     wsServer.clients.forEach((client) => {
       client.send(`服務端接收到資料: ${data}`)
