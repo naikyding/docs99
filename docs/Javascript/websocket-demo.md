@@ -1,5 +1,8 @@
 # Websocket 基礎操作
 
+![](/Javascript/img/ws-HTTP-Connection.png)
+[圖片出處](https://www.geeksforgeeks.org/what-is-web-socket-and-how-it-is-different-from-the-http/)
+
 ## 🧑‍💻 Client
 
 ## 建立 websocket 連線

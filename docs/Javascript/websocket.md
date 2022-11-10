@@ -1,10 +1,5 @@
 # Websocket 客戶端、服務端雙向通訊與持久連線
 
-<!--
-![](/Javascript/img/ws-HTTP-Connection.png)
-[圖片出處](https://www.geeksforgeeks.org/what-is-web-socket-and-how-it-is-different-from-the-http/)
- -->
-
 ## 說明
 
 `websocket` 是一種通訊協定，可以在單次連線後，進行 `客戶端` 與 `服務端` 「雙向」資料交換的持久互動，直到某一端「取消」後才會中斷連線。
