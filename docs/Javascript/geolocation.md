@@ -11,6 +11,7 @@
   <p>當前位置: </p>
   <p>經度 <span id="longitude-position" style="color: lightgreen; margin-left: .5rem;">n/a</span></p>
   <p>緯度 <span id="latitude-position" style="color: lightgreen; margin-left: .5rem;">n/a</span></p>
+  <p>定位時間 <span id="date-position" style="color: lightgreen; margin-left: .5rem;">n/a</span></p>
 </div>
 
 <button
@@ -29,12 +30,16 @@ export default {
     const longitudeEl = document.querySelector('#longitude-position')
     // 緯度
     const latitudeEl = document.querySelector('#latitude-position')
+    const dateEl = document.querySelector('#date-position')
 
     const getLocationSuccess = (info) => {
       console.log('Success:', info)
+      const { timestamp, coords: { longitude, latitude } } = info
+      const date = new Date(timestamp)
 
-      longitudeEl.textContent = info.coords.longitude
-      latitudeEl.textContent = info.coords.latitude
+      longitudeEl.textContent = longitude
+      latitudeEl.textContent = latitude
+      dateEl.textContent = date
     }
 
     const getLocationError = error => {
@@ -48,6 +53,10 @@ export default {
 
     getLocationBtn.addEventListener('click', () => {
       if(!Geolocation) return alert('瀏覽器不支援 Geolocation API')
+
+      longitudeEl.textContent = '...'
+      latitudeEl.textContent = '...'
+      dateEl.textContent = '...'
 
       Geolocation.getCurrentPosition(getLocationSuccess, getLocationError, {
         timeout: 5000,
