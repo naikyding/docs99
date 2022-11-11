@@ -1,5 +1,9 @@
 # Geolocation API 取得裝置地理位置
 
+:::warning 注意
+僅能在 `https` 下使用，部分瀏覽器 `http` 無法使用。
+:::
+
 ## 說明
 `Geolocation API` 可以使 `客戶端` 根據網頁應用程式，提供「當前」裝置的地理位置，基於隱私原因，需要 `客戶端` 「許可」後才執行。
 
@@ -64,7 +68,7 @@ Geolocation.getCurrentPosition( `successCallback` `[, errorCallback]` `, [option
 - `errorCallback` (失敗)取得地理位置函式
 
 - `options` 其它選項
-  - `maximumAge` **緩存時效** (默認 `0`) 表示不使用緩存位置。
+  - `maximumAge` **緩存時效 (cache)** (默認 `0`) 表示不使用緩存。
   - `enableHighAccuracy` **啟用高精準度** (默認 `false`)
 
     如果「啟用」 `響應` 時間上會增加、 `消耗功率` 也會增加，因為會使用到設備的 GPS 晶片。
@@ -103,6 +107,17 @@ Geolocation.getCurrentPosition(successCallback, errorCallback, options)
 **Success 成功取得**
 
 大部分會拿 `經度` 、 `緯度` 來做後續的操作。
+
+|屬性 |	說明 |
+|-|-|
+|latitude |	緯度|
+|longitude |	經度|
+|altitude |	高度|
+|accuracy |	位置誤差|
+|altitudeAccuracy |	高度誤差|
+|heading |	移動方向|
+|speed |	移動速度|
+
 ```json
 {
   coords: {
@@ -134,6 +149,10 @@ Geolocation.getCurrentPosition(successCallback, errorCallback, options)
       message: "Timeout expired"
     }
     ```
+
+## 其它相關
+[監聽位置變動 Geolocation.watchPosition() MDN](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/watchPosition)
+
 ## Reference
 - [Geolocation API MDN](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
 - [Geolocation.getCurrentPosition() MDN](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition)
