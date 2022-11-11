@@ -7,6 +7,12 @@
 ## 說明
 `Geolocation API` 可以使 `客戶端` 根據網頁應用程式，提供「當前」裝置的地理位置，基於隱私原因，需要 `客戶端` 「許可」後才執行。
 
+<div style="padding: 0 1rem; border: 1px solid lightgreen; border-radius: 8px;">
+  <p>當前位置: </p>
+  <p>經度 <span id="longitude-position" style="color: lightgreen; margin-left: .5rem;">n/a</span></p>
+  <p>緯度 <span id="latitude-position" style="color: lightgreen; margin-left: .5rem;">n/a</span></p>
+</div>
+
 <button
 id="geolocation-btn"
 style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; border-radius: 8px;">
@@ -19,8 +25,16 @@ export default {
     const Geolocation = navigator.geolocation
     const getLocationBtn = document.querySelector('#geolocation-btn')
 
+    // 經度
+    const longitudeEl = document.querySelector('#longitude-position')
+    // 緯度
+    const latitudeEl = document.querySelector('#latitude-position')
+
     const getLocationSuccess = (info) => {
       console.log('Success:', info)
+
+      longitudeEl.textContent = info.coords.longitude
+      latitudeEl.textContent = info.coords.latitude
     }
     const getLocationError = error => {
       console.log('Error:', error)
@@ -29,7 +43,6 @@ export default {
     getLocationBtn.addEventListener('click', () => {
       Geolocation.getCurrentPosition(getLocationSuccess, getLocationError, {
         timeout: 5000,
-        enableHighAccuracy: true
       })
     })
   },
