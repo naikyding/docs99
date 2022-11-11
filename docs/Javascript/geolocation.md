@@ -36,11 +36,19 @@ export default {
       longitudeEl.textContent = info.coords.longitude
       latitudeEl.textContent = info.coords.latitude
     }
+
     const getLocationError = error => {
       console.log('Error:', error)
+
+      const errorCode = error.code
+      if(errorCode === 1) return alert('請「啟用」地理位置')
+      else if(errorCode === 3) return alert('響應時間超時了 (5秒) !')
+      else alert('發生錯誤')
     }
 
     getLocationBtn.addEventListener('click', () => {
+      if(!Geolocation) return alert('瀏覽器不支援 Geolocation API')
+
       Geolocation.getCurrentPosition(getLocationSuccess, getLocationError, {
         timeout: 5000,
       })
