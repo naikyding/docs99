@@ -1,7 +1,7 @@
 # Geolocation API 取得裝置地理位置
 
 :::warning 注意
-僅能在 `https` 下使用，部分瀏覽器 `http` 無法使用。
+主要在 `https` 支援使用，部分瀏覽器 `http` 無法使用。
 :::
 
 ## 說明
