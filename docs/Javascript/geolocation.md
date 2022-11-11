@@ -7,6 +7,8 @@
 ## 說明
 `Geolocation API` 可以使 `客戶端` 根據網頁應用程式，提供「當前」裝置的地理位置，基於隱私原因，需要 `客戶端` 「許可」後才執行。
 
+![](/Javascript/img/geolocation-img.png)
+
 <div style="padding: 0 1rem; border: 1px solid lightgreen; border-radius: 8px;">
   <p>當前位置: </p>
   <p>經度 <span id="longitude-position" style="color: lightgreen; margin-left: .5rem;">n/a</span></p>
