@@ -1,7 +1,8 @@
 # Geolocation API 取得裝置地理位置
 
 :::warning 注意
-主要在 `https` 支援使用，部分瀏覽器 `http` 無法使用。
+- 主要在 `https` 支援使用，部分瀏覽器 `http` 無法使用。
+- 初次操作 `響應` 會比較久。
 :::
 
 ## 說明
@@ -10,10 +11,17 @@
 ![](/Javascript/img/geolocation-img.png)
 
 <div style="padding: 0 1rem; border: 1px solid lightgreen; border-radius: 8px;">
-  <p>當前位置: </p>
+  <p><strong>當前位置: </strong></p>
   <p>經度 <span id="longitude-position" style="color: lightgreen; margin-left: .5rem;">n/a</span></p>
   <p>緯度 <span id="latitude-position" style="color: lightgreen; margin-left: .5rem;">n/a</span></p>
   <p>定位時間 <span id="date-position" style="color: lightgreen; margin-left: .5rem;">n/a</span></p>
+
+  <hr/>
+
+  <p><strong>監聽動態位置:</strong></p>
+  <p>經度 <span id="longitude-watch" style="color: lightgreen; margin-left: .5rem;">n/a</span></p>
+  <p>緯度 <span id="latitude-watch" style="color: lightgreen; margin-left: .5rem;">n/a</span></p>
+  <p>變更定位時間 <span id="date-watch" style="color: lightgreen; margin-left: .5rem;">n/a</span></p>
 </div>
 
 <button
@@ -21,18 +29,27 @@ id="geolocation-btn"
 style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; border-radius: 8px;">
 取得地理位置</button>
 
+<button
+id="geolocation-watch-btn"
+style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; border-radius: 8px;">
+監聽位置變動</button>
+
 
 <script>
 export default {
   mounted() {
     const Geolocation = navigator.geolocation
     const getLocationBtn = document.querySelector('#geolocation-btn')
+    const getLocationWatchBtn = document.querySelector('#geolocation-watch-btn')
 
-    // 經度
-    const longitudeEl = document.querySelector('#longitude-position')
-    // 緯度
-    const latitudeEl = document.querySelector('#latitude-position')
+    
+    const longitudeEl = document.querySelector('#longitude-position') // 經度
+    const latitudeEl = document.querySelector('#latitude-position')   // 緯度
     const dateEl = document.querySelector('#date-position')
+
+    const longitudeWatchEl = document.querySelector('#longitude-watch') // 經度
+    const latitudeWatchEl = document.querySelector('#latitude-watch')   // 緯度
+    const dateWatchEl = document.querySelector('#date-watch')
 
     const getLocationSuccess = (info) => {
       console.log('Success:', info)
@@ -42,6 +59,16 @@ export default {
       longitudeEl.textContent = longitude
       latitudeEl.textContent = latitude
       dateEl.textContent = date
+    }
+
+    const watchLocationSuccess = (info) => {
+      console.log('Success:', info)
+      const { timestamp, coords: { longitude, latitude } } = info
+      const date = new Date(timestamp)
+
+      longitudeWatchEl.textContent = longitude
+      latitudeWatchEl.textContent = latitude
+      dateWatchEl.textContent = date
     }
 
     const getLocationError = error => {
@@ -61,6 +88,20 @@ export default {
       dateEl.textContent = '...'
 
       Geolocation.getCurrentPosition(getLocationSuccess, getLocationError, {
+        timeout: 5000,
+      })
+    })
+
+    getLocationWatchBtn.addEventListener('click', () => {
+      if(!Geolocation) return alert('瀏覽器不支援 Geolocation API')
+
+      console.log(getLocationWatchBtn.style.display = 'none')
+
+      longitudeWatchEl.textContent = '...'
+      latitudeWatchEl.textContent = '...'
+      dateWatchEl.textContent = '...'
+
+      Geolocation.watchPosition(watchLocationSuccess, getLocationError, {
         timeout: 5000,
       })
     })
