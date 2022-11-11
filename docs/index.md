@@ -54,10 +54,11 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [\<script> 非同步資源載入與安全驗証](/Javascript/script-attribute)
 - [Math 數學函式](/Javascript/math)
 - [Variable 變數](/Javascript/variable)
-- [Web APIs](/Javascript/web-apis)
 - [Notification 推播信息](/Javascript/notification)
 - [Websocket 客戶端與服務端雙向資料傳輸](/Javascript/websocket)
 - [Websocket 基礎操作](/Javascript/websocket-demo)
+- [Web APIs](/Javascript/web-apis)
+- [Geolocation API 取得裝置地理位置](/Javascript/geolocation)
 
 ## Vue
 

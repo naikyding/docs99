@@ -221,6 +221,10 @@ export const getJavascriptSidebar = () => ({
       text: 'Websocket 基礎操作',
       link: 'Javascript/websocket-demo'
     },
+    {
+      text: 'Geolocation API 取得裝置地理位置',
+      link: 'Javascript/geolocation'
+    }
   ]
 })
 
