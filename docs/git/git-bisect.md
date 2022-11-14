@@ -7,12 +7,10 @@
 使用 `git bisect` 語法，藉由定義發生 `bug` 的 `commit` 與「沒問題」 `commit` 的範圍，運用演算法來幫助使用者，有效率找出「有問題」的 `commit`。
 
 ### 原理
-當定義了 `bug` 可能出現的範圍，`git bisect` 會跳到範圍的「中間」 `commit` ，逐步引導使用者來標記 `bad` 或 `good`，若標記為 `bad` 就會向 `good` 方向跳，而標記 `good` 就會向 `bad` 方向跳，交叉定位到「最初發生問題」的 `commit` 位置為止。
+當定義了 `bug` 出現的範圍，`git bisect` 會跳到範圍的「中間」 `commit` ，逐步引導使用者來依「當前」所在的 `commit` 來標記 `bad` 或 `good`，若標記為 `bad` 就會向 `good` 方向跳，而標記 `good` 就會向 `bad` 方向跳，交叉定位到「最初發生問題」的 `commit` 位置為止。
 
-## 語法
-
-### 開始搜尋模式
-當 `git bisect start` 啟動了搜尋模式，系統就會「等待」使用者在不同 `commit` 「好」、「壞」標記。
+## 開始搜尋模式
+當 `git bisect start` 啟動了搜尋模式，系統就會「等待」使用者在不同 `commit` 標記 「好」or「壞」。
 
 ```bash
 git bisect start
@@ -23,7 +21,7 @@ git bisect start
 << status: waiting for both good and bad commits
 ```
 
-### 標記搜尋範圍
+## 標記搜尋範圍
 
 **標記含 bug 的 commit**
 
@@ -36,7 +34,34 @@ git bisect bad
 git bisect good
 ```
 
-### 結束搜尋模式
+
+**回傳**
+
+當定義好「好」與「壞」的範圍，系統會說明還有幾個版本需要測試，大約還要幾個步驟。
+```text
+<< Bisecting: 2 revisions left to test after this (roughly 2 steps)
+```
+
+## 定位到最初的問題 commit
+當經過幾次 `commit` 標記的「好」與「壞」，最後系統會定位出「最初」發生 `bug` 的 `commit` 且說明其相關的內容。~~就可以抓到戰犯了~~
+
+![](/git/img/git-bisect_bug.png)
+
+```text
+dd177ba7b1f2eb83a1e359960469e5bda0abd8e1 is the first bad commit
+commit dd177ba7b1f2eb83a1e359960469e5bda0abd8e1
+Author: NaikyDing <74ding@gmail.com>
+Date:   Mon Nov 14 10:17:01 2022 +0800
+
+    feat: bug-1
+
+ test.yaml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+```
+
+## 結束搜尋模式
+已經定位到 `bug` 的 `commit` 後，就可以關閉搜尋模式，讓系統將知道已經結束。
+
 ```bash
 git bisect reset
 ```
