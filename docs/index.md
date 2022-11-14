@@ -132,3 +132,6 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 ## Html
 
 - [dialog 對話彈窗](/Html/dialog)
+
+## Git
+- [快速找出 bug commit](/git/git-bisect)

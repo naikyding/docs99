@@ -351,3 +351,15 @@ export const getSecuritySidebar = () => ({
     },
   ]
 })
+
+export const getGitSidebar = () => ({
+  text: 'Git',
+  collapsible: true,
+  collapsed: true,
+  items: [
+    {
+      text: '快速找出 bug commit',
+      link: '/git/git-bisect'
+    }
+  ]
+})
