@@ -12,8 +12,15 @@
 ## 語法
 
 ### 開始搜尋模式
+當 `git bisect start` 啟動了搜尋模式，系統就會「等待」使用者在不同 `commit` 「好」、「壞」標記。
+
 ```bash
 git bisect start
+```
+
+**回傳**
+```text
+<< status: waiting for both good and bad commits
 ```
 
 ### 標記搜尋範圍
