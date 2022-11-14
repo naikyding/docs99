@@ -4,7 +4,7 @@
 [圖片出處](https://www.google.com/url?sa=i&url=https%3A%2F%2Fmedium.com%2Fstarbugs%2Fuse-git-bisect-to-find-the-buggy-commit-b35e12ddd26b&psig=AOvVaw2Jcfxl8HF3RqvRPDS6vn7i&ust=1668483629092000&source=images&cd=vfe&ved=0CBEQjhxqFwoTCID0_IHgrPsCFQAAAAAdAAAAABAJ)
 
 ## 說明
-使用 `git bisect` 語法，藉由定義發生 `bug` 的 `commit` 與「沒問題」 `commit` 的範圍，運用演算法來幫助使用者，有效率找出「有問題」的 `commit`。
+使用 `git bisect` 語法，藉由定義發生 `bug` 的 `commit` 與「沒問題」 `commit` 的範圍，運用演算法來幫助使用者，有效率找出發生問題的 `commit`。
 
 ### 原理
 當定義了 `bug` 出現的範圍，`git bisect` 會跳到範圍的「中間」 `commit` ，逐步引導使用者來依「當前」所在的 `commit` 來標記 `bad` 或 `good`，若標記為 `bad` 就會向 `good` 方向跳，而標記 `good` 就會向 `bad` 方向跳，交叉定位到「最初發生問題」的 `commit` 位置為止。
