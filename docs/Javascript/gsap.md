@@ -21,10 +21,11 @@ gsap.to('.box', {
 [👉 GSAP Tween 補間動畫](/Javascript/gsap-tween)
 
 ## 時間線 Timeline
-[👉 GSAP 時間線](/Javascript/gsap-timeline)
+[👉 GSAP Timeline 時間線](/Javascript/gsap-timeline)
 
-## 滾動觸發器 ScrollTrigger
-[👉 GSAP 滾動觸發器](/Javascript/gsap-scroll-trigger)
+
+## 插件
+- [👉 GSAP ScrollTrigger 滾動觸發器](/Javascript/gsap-scroll-trigger)
 
 ## Reference
 - [GSAP Doc](https://greensock.com/docs/)
