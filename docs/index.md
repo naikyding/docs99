@@ -60,6 +60,13 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [Web APIs](/Javascript/web-apis)
 - [Geolocation API 取得裝置地理位置](/Javascript/geolocation)
 
+### GSAP
+- [GSAP 特效動畫](/Javascript/gsap)
+- [GSAP 安裝](/Javascript/gsap-install)
+- [GSAP 補間動畫](/Javascript/gsap-tween)
+- [GSAP 時間線](/Javascript/gsap-timeline)
+- [GSAP 滾動觸發器](/Javascript/gsap-scroll-trigger)
+
 ## Vue
 
 **Component**

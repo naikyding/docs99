@@ -224,7 +224,27 @@ export const getJavascriptSidebar = () => ({
     {
       text: 'Geolocation API 取得裝置地理位置',
       link: 'Javascript/geolocation'
-    }
+    },
+    {
+      text: 'GSAP 特效動畫',
+      link: 'Javascript/gsap'
+    },
+    {
+      text: 'GSAP 安裝',
+      link: 'Javascript/gsap-install'
+    },
+    {
+      text: 'GSAP 補間動畫',
+      link: 'Javascript/gsap-tween'
+    },
+    {
+      text: 'GSAP 時間線',
+      link: 'Javascript/gsap-timeline'
+    },
+    {
+      text: 'GSAP 滾動觸發器',
+      link: 'Javascript/gsap-scroll-trigger'
+    },
   ]
 })
 
