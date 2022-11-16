@@ -147,7 +147,14 @@ document.querySelector('#restart').onclick = () => logo.restart()
 除了可以直接設置屬性的「值」，也可以使用「函式」方法
 
 ```js
-
+gsap.to(
+  '.logo',
+  { x: function(index, target, targets) {
+    console.log(`目標元素索引: ${index}`)
+    console.log(`目標元素: ${target}`)
+    console.log(`目標元素群: ${targets}`)
+    } }
+)
 ```
 
 ### 亂數設置
