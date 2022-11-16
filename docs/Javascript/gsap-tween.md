@@ -153,7 +153,7 @@ gsap.to(
     console.log(`目標元素索引: ${index}`)
     console.log(`目標元素: ${target}`)
     console.log(`目標元素群: ${targets}`)
-    } }
+  }}
 )
 ```
 
