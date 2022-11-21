@@ -66,7 +66,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [GSAP 安裝](/Javascript/gsap-install)
 - [GSAP 補間動畫](/Javascript/gsap-tween)
 - [GSAP 關鍵幀](/Javascript/gsap-keyframes)
-- [GSAP 時間線](/Javascript/gsap-timeline)
+- [GSAP 時間軸](/Javascript/gsap-timeline)
 - [GSAP 滾動觸發器](/Javascript/gsap-scroll-trigger)
 
 ## Vue

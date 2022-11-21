@@ -242,7 +242,7 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/gsap-keyframes'
     },
     {
-      text: 'GSAP 時間線',
+      text: 'GSAP 時間軸',
       link: '/Javascript/gsap-timeline'
     },
     {
