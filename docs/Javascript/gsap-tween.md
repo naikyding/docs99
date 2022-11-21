@@ -148,12 +148,14 @@ document.querySelector('#restart').onclick = () => logo.restart()
 
 **特效類**
 
-| 屬性       | 說明                                     |
-| ---------- | ---------------------------------------- |
-| `x`        | 橫向位移，等於 `transform: translateX()` |
-| `y`        | 直向位移，等於 `transform: translateY()` |
-| `rotation` | 旋轉，等於 `transform: rotate()`         |
-| `opacity`  | 透明度                                   |
+| 屬性              | 說明                                     |
+| ----------------- | ---------------------------------------- |
+| `x`               | 橫向位移，等於 `transform: translateX()` |
+| `y`               | 直向位移，等於 `transform: translateY()` |
+| `rotation`        | 旋轉，等於 `transform: rotate()`         |
+| `opacity`         | 透明度                                   |
+| `scale`           | 放大 / 縮小                              |
+| `transformOrigin` | 定位 `"0% 100%"`                         |
 
 ## 動態設置值
 

@@ -211,39 +211,43 @@ export const getJavascriptSidebar = () => ({
     },
     {
       text: 'Notification 推播信息',
-      link: 'Javascript/notification'
+      link: '/Javascript/notification'
     },
     {
       text: 'Websocket 客戶端與服務端雙向資料傳輸',
-      link: 'Javascript/websocket'
+      link: '/Javascript/websocket'
     },
     {
       text: 'Websocket 基礎操作',
-      link: 'Javascript/websocket-demo'
+      link: '/Javascript/websocket-demo'
     },
     {
       text: 'Geolocation API 取得裝置地理位置',
-      link: 'Javascript/geolocation'
+      link: '/Javascript/geolocation'
     },
     {
       text: 'GSAP 特效動畫',
-      link: 'Javascript/gsap'
+      link: '/Javascript/gsap'
     },
     {
       text: 'GSAP 安裝',
-      link: 'Javascript/gsap-install'
+      link: '/Javascript/gsap-install'
     },
     {
       text: 'GSAP 補間動畫',
-      link: 'Javascript/gsap-tween'
+      link: '/Javascript/gsap-tween'
+    },
+    {
+      text: 'GSAP 關鍵幀',
+      link: '/Javascript/gsap-keyframes'
     },
     {
       text: 'GSAP 時間線',
-      link: 'Javascript/gsap-timeline'
+      link: '/Javascript/gsap-timeline'
     },
     {
       text: 'GSAP 滾動觸發器',
-      link: 'Javascript/gsap-scroll-trigger'
+      link: '/Javascript/gsap-scroll-trigger'
     },
   ]
 })
