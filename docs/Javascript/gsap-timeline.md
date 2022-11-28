@@ -14,17 +14,38 @@ gsap.to('.item', { y: 100, duration: 2, delay: 2 }) // delay == 前一個動畫�
 gsap.to('.item', { x: 0, duration: 2, delay: 4 }) // delay == 前二個動畫的秒數加總
 ```
 
-**使用 `timeline`**
-
+## 操作 timeline
 只需要為 `指定元素` 「依序」的加上特效，它就會按這個順序「向下執行」，不會與上一個特效時間交疊。
 
+<iframe height="300" style="width: 100%;" scrolling="no" title="GSAP Timeline 時間軸" src="https://codepen.io/naiky/embed/MWXrZRN?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/MWXrZRN">
+  GSAP Timeline 時間軸</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+### 創建時間軸實體
+新增一個「時間軸」實體。
 ```js
 const timelineItem = gsap.timeline()
-
-timelineItem.to('.item', { x: 100, duration: 2 }) // 執行1
-timelineItem.to('.item', { y: 100, duration: 2 }) // 執行2
-timelineItem.to('.item', { x: 0, duration: 2 }) // 執行3
 ```
+
+### 操作時間軸特效
+對「時間軸」加入每個階段的步驟，它會依序向下執行不會 `交疊`。
+
+```js
+timelineItem.to('.item', { x: 100, duration: 2 }) // 步驟 1
+timelineItem.to('.item', { y: 100, duration: 2 }) // 步驟 2
+timelineItem.to('.item', { x: 0, duration: 2 })   // 步驟 3
+timelineItem.to('.item', { y: 0, duration: 2 })   // 步驟 4
+
+// 鏈式串接方法
+timelineItem
+  .to(timeLineItem, { x: 100, duration: 2 }) // 步驟 1
+  .to(timeLineItem, { y: 100, duration: 2 }) // 步驟 2
+  .to(timeLineItem, { x: 0, duration: 2 })   // 步驟 3
+  .to(timeLineItem, { y: 0, duration: 2 })   // 步驟 4
+```
+
 
 ## Reference
 
