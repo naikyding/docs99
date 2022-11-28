@@ -154,6 +154,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/hoisting'
     },
     {
+      text: '解析網址查詢參數 URLSearchParams',
+      link: '/Javascript/parseUrlQuery'
+    },
+    {
       text: 'By Value && By Reference 傳值傳址',
       link: '/Javascript/by-value-by-reference'
     },
