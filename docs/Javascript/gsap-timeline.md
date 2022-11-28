@@ -24,9 +24,9 @@ gsap.to('.item', { x: 0, duration: 2, delay: 4 }) // delay == 前二個動畫的
 </iframe>
 
 ### 創建時間軸實體
-新增一個「時間軸」實體。
+新增一個「時間軸」實體，也可以針對這個「時間軸」設置相關參數。
 ```js
-const timelineItem = gsap.timeline()
+const timelineItem = gsap.timeline({ repeat: -1 })
 ```
 
 ### 操作時間軸特效
