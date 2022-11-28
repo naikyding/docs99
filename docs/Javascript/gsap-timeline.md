@@ -28,6 +28,6 @@ timelineItem.to('.item', { x: 0, duration: 2 }) // 執行3
 
 ## Reference
 
-[gsap tween 補間動畫]: /Javascript/gasp-tween
+[gsap tween 補間動畫]: /Javascript/gsap-tween
 
 - [GSAP TimeLine](https://greensock.com/docs/v3/GSAP/Timeline)
