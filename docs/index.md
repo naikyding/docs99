@@ -89,10 +89,10 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [本地端開發機 https](/Vue/dev-server-ssl)
 - [客製化開發伺服器網域](/Vue/dev-server-custom-domain)
 
-**Auth**
+**Third Party**
 
-- [[前端] 產生 Google 登入按鈕](/Vue/google-signin-button)
-- [[前端] 產生 Apple 登入按鈕](/Vue/apple-signin-button)
+- [產生 Google 登入按鈕](/Vue/google-signin-button)
+- [產生 Apple 登入按鈕](/Vue/apple-signin-button)
 
 ## CSS
 

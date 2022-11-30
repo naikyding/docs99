@@ -77,7 +77,7 @@ export const getVueNav = () => ({
       ]
     },
     {
-      text: 'Auth',
+      text: 'Third Party',
       items: [
         {
           text: '產生 Google 登入按鈕',
