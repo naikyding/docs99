@@ -86,6 +86,10 @@ export const getVueNav = () => ({
         {
           text: '產生 Apple 登入按鈕',
           link: '/Vue/apple-signin-button'
+        },
+        {
+          text: 'LINE LIFF 應用程式',
+          link: '/Vue/liff'
         }
       ]
     }
