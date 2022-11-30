@@ -1,4 +1,4 @@
-# [前端] 產生 Apple 登入按鈕
+# 產生 Apple 登入按鈕
 
 :::tip 操作必備:
 - 合法操作 API 的 `clientID`
