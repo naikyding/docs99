@@ -3,6 +3,9 @@
 ## 說明
 LINE Front-end Framework (LIFF) 是 LINE 提供的前端應用程式框架，可以在 LINE 內運行網頁 APP，藉由 LIFF 應用程式來取得 LINE 相關的用戶資訊以便後續的操作。
 
+### 專屬網址
+LIFF 服務會提供一個 `LIFF URL` 像是這樣 `https://liff.line.me/1657xxxxx-M12dnxxxx` ，會在點擊開啟 LINE 在 「LIFF 瀏覽器」 中顯示網站。
+
 ## 流程
 -  [LINE Develop console] 創建「LINE Login」頻道且新增「LIFF」服務，取得 `LIFF ID`。
 -  專案加上 [LIFF SDK]，`liff` 將會被掛載在 `window.liff`。
@@ -153,6 +156,50 @@ liff
   "displayName": "Brown",
   "pictureUrl": "https://profile.line-scdn.net/abcdefghijklmn",
   "statusMessage": "Hello, LINE!"
+}
+```
+
+## LIFF URL 重新導向
+### 不會重新導向
+一般的情況下 LIFF URL 會是這樣 [專屬網址](/Vue/liff#專屬網址)，點擊會直接進入 `Endpoint URL`。
+
+### 多次重新導向
+```
+https://liff.line.me/1657672659-G540g2e1?liff_id=1657672659-G540g2e1
+```
+LIFF URL 加上查詢參數 `?liff_id=1657672659-G540g2e1` ，LINE 開啟時就會經過多次「重新導向」的步驟。[LIFF 重新導向說明](https://engineering.linecorp.com/zh-hant/blog/new-liff-url-infomation/#:~:text=3.%20%E4%BD%BF%E7%94%A8%E5%B8%B6%E6%9C%89%20Path%E3%80%81Query%20Parameter%20%E5%92%8C%20URL%20fragment%20%E7%9A%84%20LIFF%20URL%20%E6%B8%AC%E8%A9%A6%E3%80%82)
+
+- **第一次重新導向** URL 編碼後，把查詢參數放在 `liff.state` 內 
+  ```
+  https://liff.line.me/1657672659-G540g2e1?liff.state=%2#liff_id1@#1657672659!@#G540g2e1
+  ```
+- **第二次重新導向** `liff.state` 解碼後再加到 `Endpoint URL` 上
+  ```
+  https://liff.line.me/1657672659-G540g2e1?liff_id=1657672659-G540g2e1
+  ```
+
+### 重新導向取查詢參數
+如果會重新導向，你無法預測會導向的次數 (LINE 可能也會增加再次導向)，可以使用下面的方法，解析網址後取得「查詢參數」。
+
+```js
+export const parseUrlQuery = (locationSearch) => {
+  let liffId = null
+  let agentCode = null
+
+  const liffState = new URLSearchParams(locationSearch).get('liff.state')
+
+  // 若參數在 liff.state 內
+  if (liffState) {
+    liffId = new URLSearchParams(liffState).get('liff_Id')
+    agentCode = new URLSearchParams(liffState).get('agent_code')
+
+  // 已解碼到 Endpoint URL 上
+  } else {
+    liffId = new URLSearchParams(locationSearch).get('liff_Id')
+    agentCode = new URLSearchParams(locationSearch).get('agent_code')
+  }
+
+  return { liff_Id: liffId, agent_code: agentCode }
 }
 ```
 
