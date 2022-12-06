@@ -88,7 +88,7 @@ gsap.to(thirdLogo, {
 
 `keyframes` 本身為物件，以 `陣列` 方法設置動畫。`陣列` 中每個「值」都是一 `幀`。
 
-```js
+```js {2-5}
 gsap.to(forLogo, {
   keyframes: {
     x: [0, 100, 100, 0, 0],
