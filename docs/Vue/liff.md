@@ -205,6 +205,7 @@ export const parseUrlQuery = (locationSearch) => {
 
 :::danger 特殊情況
 移動裝置如果是 `android` 需要另外處理 url 的 `search` 參數!
+
 `url` 有加上 `search` 參數的情況下，第一次重新導向的網址會是 
 ```
 www.example.com?liff.state=%2F%3Fliff_Id%3D1657711508-k2K91AR3%26log%3Dtrue
@@ -219,7 +220,7 @@ console.log(liffState) // /?liff_Id=1657711508-k2K91AR3&log=true
 這會導致你的 `liff_Id` 為 `null`，因為變成了 `/?liff_Id`。
 
 所以剛的函式可以這樣改，把 `/?` 移除。
-```js {9,11}
+```js {9-12}
 export const parseUrlQuery = (locationSearch) => {
   let liffId = null
   let agentCode = null
