@@ -203,6 +203,49 @@ export const parseUrlQuery = (locationSearch) => {
 }
 ```
 
+:::danger 特殊情況
+移動裝置如果是 `android` 需要另外處理 url 的 `search` 參數!
+`url` 有加上 `search` 參數的情況下，第一次重新導向的網址會是 
+```
+www.example.com?liff.state=%2F%3Fliff_Id%3D1657711508-k2K91AR3%26log%3Dtrue
+```
+在 `liff.state` 的值會被「多加」符號 `/?`
+```
+const liffState = new URLSearchParams('?liff.state=%2F%3Fliff_Id%3D1657711508-k2K91AR3%26log%3Dtrue').get('liff.state')
+
+console.log(liffState) // /?liff_Id=1657711508-k2K91AR3&log=true
+```
+
+這會導致你的 `liff_Id` 為 `null`，因為變成了 `/?liff_Id`。
+
+所以剛的函式可以這樣改，把 `/?` 移除。
+```js {9,11}
+export const parseUrlQuery = (locationSearch) => {
+  let liffId = null
+  let agentCode = null
+
+  const liffState = new URLSearchParams(locationSearch).get('liff.state')
+
+  // 若參數在 liff.state 內
+  if (liffState) {
+    // 如果有 /?
+    if (liffState.indexOf('/?') > -1) {
+      liffState = liffState.replace('/?', '')
+    }
+    liffId = new URLSearchParams(liffState).get('liff_Id')
+    agentCode = new URLSearchParams(liffState).get('agent_code')
+
+  // 已解碼到 Endpoint URL 上
+  } else {
+    liffId = new URLSearchParams(locationSearch).get('liff_Id')
+    agentCode = new URLSearchParams(locationSearch).get('agent_code')
+  }
+
+  return { liff_Id: liffId, agent_code: agentCode }
+}
+```
+:::
+
 ## Reference
 [NGROK]: https://ngrok.com/
 [vConsole]: https://www.npmjs.com/package/vconsole/v/3.15.0
