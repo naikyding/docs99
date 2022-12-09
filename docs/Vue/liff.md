@@ -181,6 +181,15 @@ LIFF URL 加上查詢參數 `?liff_id=1657672659-G540g2e1` ，LINE 開啟時就�
 ### 重新導向取查詢參數
 如果會重新導向，你無法預測會導向的次數 (LINE 可能也會增加再次導向)，可以使用下面的方法，解析網址後取得「查詢參數」。
 
+:::warning 注意
+LIFF URL 如果要帶參數 (search)，不要在參數前加 `/`，會影響到 android url 解析。
+
+```
+❌ https://liff.line.me/1657672659-G540g2e1/?liff_Id=1657672659-G540g2e1
+✅ https://liff.line.me/1657672659-G540g2e1?liff_Id=1657672659-G540g2e1
+```
+:::
+
 ```js
 export const parseUrlQuery = (locationSearch) => {
   let liffId = null
@@ -203,10 +212,14 @@ export const parseUrlQuery = (locationSearch) => {
 }
 ```
 
-:::danger 特殊情況
-移動裝置如果是 `android` 需要另外處理 url 的 `search` 參數!
+:::danger 🔥🔥 android 特殊情況 🔥🔥
 
-`url` 有加上 `search` 參數的情況下，第一次重新導向的網址會是 
+假設 LIFF URL (search 前加上 `/`)，在 `android` 需要另外處理 url 的 `search` 參數!
+```
+https://liff.line.me/1657672659-G540g2e1/?liff_Id=1657672659-G540g2e1
+```
+
+#### 第一次重新導向的網址會是 
 ```
 www.example.com?liff.state=%2F%3Fliff_Id%3D1657711508-k2K91AR3%26log%3Dtrue
 ```
@@ -245,6 +258,12 @@ export const parseUrlQuery = (locationSearch) => {
   return { liff_Id: liffId, agent_code: agentCode }
 }
 ```
+
+  ::: tip 這是可以正常進入的 LIFF URL
+  ```
+  https://liff.line.me/1657672659-G540g2e1?liff_Id=1657672659-G540g2e1
+  ```
+
 :::
 
 ## Reference
