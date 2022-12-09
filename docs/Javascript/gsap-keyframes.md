@@ -112,7 +112,7 @@ gsap.to(forLogo, {
   :::
 
 ## 監聽函式
-可以使用 `onStart`、`onComplete` 來監聽關鍵幀執行前後的函式。
+可以使用 `onStart`、`onComplete` 屬性，來監聽關鍵幀執行前後，觸發要執行的事件。
 
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="GSAP-callBack function 回調函式" src="https://codepen.io/naiky/embed/WNymWWz" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
