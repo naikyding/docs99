@@ -145,6 +145,8 @@ document.querySelector('#restart').onclick = () => logo.restart()
 | `delay`    | 動畫播放前的「延遲時間」 (以秒為單位)                                                                |
 | `repeat`   | 動畫「重播次數」，默認 `0` 只播 1 次、`-1` 無限播放、`1` 會播 2 次                                   |
 | `stagger`  | 「交錯播放」。如果有多個 `目標元素` 可以交錯啟動播放。`stagger: 0.1` 每個元素啟動播放的間隔是 0.1 秒 |
+| `onStart`  | 函式，動畫開始前執行 |
+| `onComplete`  | 函式，動畫完成後執行 |
 
 **特效類**
 

@@ -242,12 +242,12 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/gsap-tween'
     },
     {
-      text: 'GSAP 關鍵幀',
-      link: '/Javascript/gsap-keyframes'
-    },
-    {
       text: 'GSAP 時間軸',
       link: '/Javascript/gsap-timeline'
+    },
+    {
+      text: 'GSAP 關鍵幀',
+      link: '/Javascript/gsap-keyframes'
     },
     {
       text: 'GSAP 滾動觸發器',

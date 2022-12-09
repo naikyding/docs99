@@ -111,6 +111,45 @@ gsap.to(forLogo, {
 - `easeEach` 是針對「個別」幀的效果來設置。
   :::
 
+## 監聽函式
+可以使用 `onStart`、`onComplete` 來監聽關鍵幀執行前後的函式。
+
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="GSAP-callBack function 回調函式" src="https://codepen.io/naiky/embed/WNymWWz" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/WNymWWz">
+  GSAP-callBack function 回調函式</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+```js {12-14,19-21}
+const logo = document.querySelector('.logo')
+
+gsap.to(logo,
+{
+  duration: 4,
+  repeat: -1,
+  keyframes: [
+    { xPercent: 50, yPercent: 0 },
+    { 
+      xPercent: 50,
+      yPercent: 50,
+      onStart: () => {
+        console.log('動畫開始前執行')
+      }
+    },
+    { 
+      xPercent: 0,
+      yPercent: 50,
+      onComplete: ()  => {
+        console.log('動畫完成後執行')
+      }
+    },
+    { xPercent: 0, yPercent: 0 },
+  ]
+})
+```
+
+
 ## Reference
 
 [gsap keyframes 關鍵幀]: /Javascript/gsap-keyframes
