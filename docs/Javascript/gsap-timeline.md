@@ -54,6 +54,94 @@ timelineItem
   .to(timeLineItem, { y: 0, duration: 2 }) // 步驟 4
 ```
 
+## 非線性播放
+上面的操作「時間軸」都是按著順序連結播放，如果動畫比較複雜且不同步播放的話，可以使用這個方式，來指定不同的播放時機 [參考](https://greensock.com/docs/v3/GSAP/Timeline#:~:text=Positioning%20animations%20in%20a%20timeline)。
+
+<iframe height="250" style="width: 100%;" scrolling="no" title="GSAP-timeline 同步播放 &quot;&lt;&quot;" src="https://codepen.io/naiky/embed/WNyBRbP" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/WNyBRbP">
+  GSAP-timeline 同步播放 &quot;&lt;&quot;</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+### 一般模式
+就是依「時間軸」的順序， `greenBall` 播放完成後，`pinkBall` 接著播放。
+
+```js
+const timeline = gsap.time()
+
+timeline.to(greenBall, {
+  xPercent: 500,
+  duration: 4,
+  ease: 'none'
+})
+
+timeline.to(pinkBall, {
+  xPercent: 500,
+  duration: 2,
+  ease: 'none'
+})
+```
+
+### 指定放放時機
+- **`'<'` 播放時機: `上一個動畫` 的「起點」。** (與上一個動畫「同時」播放)
+- **`'>'` 播放時機: `上一個動畫` 的「終點」。** (預設值)
+- **`'<1'` 播放時機: `上一個動畫` 「播放後 `1` 秒」 播放。**
+- **`'>1'` 播放時機: `上一個動畫` 「播放完成 `1` 秒」 播放。** 
+
+**與上個動畫「同時」播放**
+
+```js {13}
+const timeline = gsap.time()
+
+timeline.to(greenBall, {
+  xPercent: 500,
+  duration: 4,
+  ease: 'none'
+})
+
+timeline.to(pinkBall, {
+  xPercent: 500,
+  duration: 2,
+  ease: 'none'
+}, '<')
+```
+
+**上個動畫播放 `2秒` 後播放**
+
+```js {13}
+const timeline = gsap.time()
+
+timeline.to(greenBall, {
+  xPercent: 500,
+  duration: 4,
+  ease: 'none'
+})
+
+timeline.to(pinkBall, {
+  xPercent: 500,
+  duration: 2,
+  ease: 'none'
+}, '<2')
+```
+
+**上個動畫播放完成 `1秒` 後播放**
+
+```js {13}
+const timeline = gsap.time()
+
+timeline.to(greenBall, {
+  xPercent: 500,
+  duration: 4,
+  ease: 'none'
+})
+
+timeline.to(pinkBall, {
+  xPercent: 500,
+  duration: 2,
+  ease: 'none'
+}, '>1')
+```
+
 ## Reference
 
 [gsap tween 補間動畫]: /Javascript/gsap-tween
