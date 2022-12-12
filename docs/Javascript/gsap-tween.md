@@ -295,3 +295,4 @@ li > span {
 
 - [GSAP Tween](https://greensock.com/docs/v3/GSAP/Tween)
 - [GSAP3 - 專門處理動畫與特效的 JS 套件](https://chupai.github.io/posts/200229_gsap3/)
+- [GSAP實作滾動視差與動畫](https://sleet-berry-8a9.notion.site/GSAP-ddc5d9cf73b94b6fa16bd0d6a637482b)
