@@ -1,5 +1,6 @@
 # GSAP scrollTrigger 滾動觸發器
 
+
 ## 說明
 `滾動動作` 可以指定「觸發元素」在某些動作時，「指定元素」執行播放動畫或播放方式。
 
@@ -110,6 +111,67 @@ gsap.to('.play-element', {
 :::tip 提醒
 `scrub: true` 開啟，就會依滾動來播放，而 `druation` 與 `toggleActions` 就沒有作用了。
 :::
+
+## 客制觸發位置
+`scrollTrigger` 大部分的觸發方法，都是以 `目標元素` 「進入」與「離開」畫面來觸發動畫發放，若有不符合播放的時機可以使用這個方法來調整。
+
+實際的作法是在 `scrollTrigger` 物件中，加入 `start`、`end` 屬性來客制化觸發的位置，而 `markers: true` 則可以看到觸發的標示 (建議打開)。
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="GSAP-scrollTrigger start and end 客制開始與結束" src="https://codepen.io/naiky/embed/dyKEvNw?default-tab=js%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/dyKEvNw">
+  GSAP-scrollTrigger start and end 客制開始與結束</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+
+**無客製化**
+```js
+gsap.to('.play-element', {
+  duration: 10,
+  rotation: 720,
+  xPercent: 1000,
+
+  scrollTrigger: {
+    trigger: '.target-elemnt',
+    toggleActions: 'play pause reverse reset',
+  }
+})
+```
+
+**客製化觸發位置**
+
+```js {9-11}
+gsap.to('.play-element', {
+  duration: 10,
+  rotation: 720,
+  xPercent: 1000,
+
+  scrollTrigger: {
+    trigger: '.target-elemnt',
+    toggleActions: 'play pause reverse reset',
+	start: 'top center', // 起始點 位置
+    end: '20 10%',       // 結整點 位置
+	markers: true        // 顯示觸發位置
+  }
+})
+```
+
+### 說明
+`start` 為 scrollTrigger 的 「起始點」，`end` 則為 scrollTrigger 的 「結束點」。
+
+#### `start: '[觸發元素] [整個視窗]'`
+值為兩個字串以 `空格` 區隔，第一個字串為「觸發元素」要提供觸發的位置、第二個字串為「視窗」提供觸發的位置。
+
+![](/Javascript/img/gsap-scrollTrigger-start-end.png)
+
+
+**value:**
+- `top`: 位置在「上」
+- `bottom`: 位置在「下」
+- `center`: 位置在「中」
+- 數字: 為 `px` 像素
+- `n%` 百分比 (與 `top` 的相對位置)
+
 
 ## Reference
 [GSAP Tween 補間動畫]: /Javascript/gsap-tween
