@@ -215,6 +215,82 @@ gsap.to('.logo', {
 
   > 陣列存放所有 `目標元素`。
 
+## 跑馬無限播放
+- 容器 `overflow: hidden;`
+- 文字設置「不換行」
+- 橫移一半就結束 `xPercent: -50`
+- 無限播放
+
+<iframe height="400" style="width: 100%;" scrolling="no" title="GSAP 文字無限輪播" src="https://codepen.io/naiky/embed/MWXdjov" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/MWXdjov">
+  GSAP 文字無限輪播</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+:::details DEMO CODE
+
+**js**
+```js
+const liEl = document.querySelectorAll('li')
+
+gsap.to(liEl, {
+  xPercent: -50,  // 移動 -50%
+  duration: 10,   // 時間
+  ease: "none",   // 無特效播放 
+  repeat: -1     // 無限播放
+})
+```
+
+**html**
+```html
+<div class="container">
+  <ul class="loop-area">
+  <li>
+    <sapn> GSAP GSAP GSAP GSAP GSAP GSAP GSAP </span>
+     <sapn> GSAP GSAP GSAP GSAP GSAP GSAP GSAP</span>
+   </li>
+  <li>
+    <sapn> GSAP GSAP GSAP GSAP GSAP GSAP GSAP </span>
+     <sapn> GSAP GSAP GSAP GSAP GSAP GSAP GSAP</span>
+   </li>
+  <li>
+    <sapn> GSAP GSAP GSAP GSAP GSAP GSAP GSAP </span>
+     <sapn> GSAP GSAP GSAP GSAP GSAP GSAP GSAP</span>
+   </li>
+</ul>  
+</div>
+
+```
+
+**css**
+```css
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.container {
+  height: 100vh;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.loop-area {
+  display: inline-block;            /* 強化無限播放，視覺 */
+  font-family: "Dela Gothic One";
+  font-size: 4.5rem;
+  color: transparent;               /* 透明字體 */
+  -webkit-text-stroke: 1px #2e2e2e; /* 字體邊框樣式 */
+  white-space:nowrap;               /* 文字不換行 */
+}
+
+li > span {
+   display: inline-block;           /* 強化無限播放，視覺 */
+}
+```
+:::
+
 ## Reference
 
 - [GSAP Tween](https://greensock.com/docs/v3/GSAP/Tween)
