@@ -169,8 +169,8 @@ gsap.to('.play-element', {
 - `top`: 位置在「上」
 - `bottom`: 位置在「下」
 - `center`: 位置在「中」
-- 數字: 為 `px` 像素
-- `n%` 百分比 (與 `top` 的相對位置)
+- 數字: 為 `px` 像素 (與 `top` 的相對位置)
+- `n%`: 百分比 (與 `top` 的相對位置)
 
 
 ## Reference
