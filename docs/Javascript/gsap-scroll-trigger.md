@@ -36,6 +36,12 @@ gsap.to('.logo', {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
 	```
+
+	在操作 `GSAP` 檔案中 `.js`，使用套件功能。
+	```js
+	gsap.registerPlugin(ScrollTrigger, TextPlugin);
+	```
+
 - npm
 	```js
 	import { gsap } from "gsap";
@@ -107,4 +113,6 @@ gsap.to('.play-element', {
 
 ## Reference
 [GSAP Tween 補間動畫]: /Javascript/gsap-tween
+- [GSAP INSTALL](https://greensock.com/docs/v3/Installation)
 - [GSAP ScrollTrigger](https://greensock.com/docs/v3/Plugins/ScrollTrigger)
+- [GSAP實作滾動視差與動畫](https://sleet-berry-8a9.notion.site/GSAP-ddc5d9cf73b94b6fa16bd0d6a637482b)
