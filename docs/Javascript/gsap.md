@@ -35,3 +35,4 @@ gsap.to('.box', {
 
 - [GSAP Doc](https://greensock.com/docs/)
 - [GSAP 實作滾動視差與動畫](https://sleet-berry-8a9.notion.site/GSAP-ddc5d9cf73b94b6fa16bd0d6a637482b)
+- [GSAP 常見錯誤使用](https://greensock.com/mistakes/)

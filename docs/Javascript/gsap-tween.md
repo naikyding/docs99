@@ -148,7 +148,7 @@ document.querySelector('#restart').onclick = () => logo.restart()
 | `onStart`  | 函式，動畫開始前執行 |
 | `onComplete`  | 函式，動畫完成後執行 |
 
-**特效類**
+**特效類** [更多](https://greensock.com/docs/v3/GSAP/CorePlugins/CSSPlugin)
 
 | 屬性              | 說明                                     |
 | ----------------- | ---------------------------------------- |
