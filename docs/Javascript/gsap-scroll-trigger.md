@@ -80,8 +80,9 @@ gsap.to('.play-element', {
 ```
 
 - `trigger` 觸發元素
-- `toggleActions` 觸發執行動作。 `'向下進入執行 向下離開執行 向上進入執行 向上離開執行'`
-	可以設置的動作:
+- `toggleActions` 觸發執行動作。 (`'向下進入執行 向下離開執行 向上進入執行 向上離開執行'`)
+
+	**可以設置的動作:**
 	|動作| 說明|
 	|-|-|
 	| `play` | 播放 |
@@ -171,7 +172,6 @@ gsap.to('.play-element', {
 - `center`: 位置在「中」
 - 數字: 為 `px` 像素 (與 `top` 的相對位置)
 - `n%`: 百分比 (與 `top` 的相對位置)
-
 
 ## Reference
 [GSAP Tween 補間動畫]: /Javascript/gsap-tween

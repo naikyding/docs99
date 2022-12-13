@@ -264,7 +264,11 @@ export const getHtmlSidebar = () => ({
     {
       text: 'dialog 對話彈窗',
       link: '/Html/dialog'
-    }
+    },
+    {
+      text: 'picture 響應式載入圖片',
+      link: '/Html/picture'
+    },
   ]
 })
 
