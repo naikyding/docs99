@@ -1,6 +1,5 @@
 # GSAP scrollTrigger 滾動觸發器
 
-
 ## 說明
 `滾動動作` 可以指定「觸發元素」在某些動作時，「指定元素」執行播放動畫或播放方式。
 
@@ -64,7 +63,7 @@ gsap.to('.play-element', {
 })
 ```
 
-## 進階操作
+## 客製化設置
 如同設置 [GSAP Tween 補間動畫] 方法一樣，增加了 `scrollTrigger` 屬性，改為 `物件` 可以讓我們客製化更多設置。
 
 ```js {2-5}
@@ -94,9 +93,8 @@ gsap.to('.play-element', {
 	| `complete` | 到完成位置 |
 	| `none` | 無動作 |
 
-## 依滾動播放反轉
-如同設置 [GSAP Tween 補間動畫] 方法一樣，增加了 `scrollTrigger` 屬性，改為 `物件` 其中新增 `scrub` 可以讓我們依滾動播放。
-
+## scrub 依滾動方向播放
+如同設置 [GSAP Tween 補間動畫] 方法一樣，增加了 `scrollTrigger` 屬性，改為 `物件` 其中設置 `scrub: true` 可以依滾動方向播放。
 
 ```js {4}
 gsap.to('.play-element', {
@@ -110,8 +108,11 @@ gsap.to('.play-element', {
 ```
 
 :::tip 提醒
-`scrub: true` 開啟，就會依滾動來播放，而 `druation` 與 `toggleActions` 就沒有作用了。
+`scrub: true` 開啟，就會依滾動方向來播放，而 `druation` 與 `toggleActions` 就沒有作用了。
 :::
+
+### 播放緩衝
+若 `scrub: 1` 指的是需要 `1秒` 的時間趕上「滾動」結束。
 
 ## 客制觸發位置
 `scrollTrigger` 大部分的觸發方法，都是以 `目標元素` 「進入」與「離開」畫面來觸發動畫發放，若有不符合播放的時機可以使用這個方法來調整。
@@ -124,9 +125,8 @@ gsap.to('.play-element', {
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
-
 **無客製化**
-```js
+```js {6-9}
 gsap.to('.play-element', {
   duration: 10,
   rotation: 720,
@@ -139,9 +139,9 @@ gsap.to('.play-element', {
 })
 ```
 
-**客製化觸發位置**
+### 客製化「觸發元素」`start`、`end` 指定位置 
 
-```js {9-11}
+```js {9-10}
 gsap.to('.play-element', {
   duration: 10,
   rotation: 720,
@@ -157,6 +157,22 @@ gsap.to('.play-element', {
 })
 ```
 
+### 客製化 `end` 觸發元素 `endTrigger`
+一般而言，都是使用屬性 `trigger` 來設置「觸發元素」的 `start`、`end`，若希望別的「元素」可以作為 `end` 的觸發，可以使用屬性 `endTrigger`來達成。
+
+```js {7}
+gsap.to('.play-element', {
+  xPercent: 1000,
+  duration: 3,
+  scrollTrigger: {
+    markers: true,
+    trigger: '.target-1',    // start 所在的 觸發元素
+    endTrigger: '.target-2', // end 所在的 觸發元素
+    scrub: true
+  }
+})
+```
+
 ### 說明
 `start` 為 scrollTrigger 的 「起始點」，`end` 則為 scrollTrigger 的 「結束點」。
 
@@ -165,7 +181,6 @@ gsap.to('.play-element', {
 
 ![](/Javascript/img/gsap-scrollTrigger-start-end.png)
 
-
 **value:**
 - `top`: 位置在「上」
 - `bottom`: 位置在「下」
@@ -173,7 +188,70 @@ gsap.to('.play-element', {
 - 數字: 為 `px` 像素 (與 `top` 的相對位置)
 - `n%`: 百分比 (與 `top` 的相對位置)
 
+## 「時間軸」加上滾動觸發
+[`timeline` 時間軸]內部新增 `物件` 來設置 `scrollTrigger` 相關參數，這個 `timeline` 就會依「滾動觸發」設置來執行動畫了。
+
+:::tip 提醒
+相同的，內部的 `duration` 就無作用了，因為會依滾動方向來播放。
+:::
+
+```js {2-6}
+const timeline = gsap.timeline({
+  scrollTrigger: {
+    markers: true,
+    trigger: '.target-element',
+    scrub: true,
+  }
+})
+
+timeline
+  .to('.play-element', {
+    duration: 3,
+    xPercent: 400,
+  })
+  .to('.play-element', {
+    duration: 3,
+    yPercent: 400,
+  })
+  .to('.play-element', {
+    duration: 3,
+    xPercent: 0,
+  })
+  .to('.play-element', {
+    duration: 3,
+    yPercent: 0,
+  })
+```
+
+## 「關鍵幀」加上滾動觸發
+直接在內部設置 `scrollTrigger: { ... }`，[關鍵幀]的動畫就會依「滾動觸發」設置來播放了。
+
+```js {2-5}
+gsap.to('.play-element', {
+  scrollTrigger: {
+    trigger: '.target-element',
+    scrub: true
+  },
+  keyframes: [
+    { duration: 2, x: 100 },
+    { duration: 2, y: 100 },
+    { duration: 2, x: 0 },
+    { duration: 2, y: 0 },
+  ],
+})
+```
+
+## DEMO
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="GSAP-scrollTrigger slider demo" src="https://codepen.io/naiky/embed/vYrqaJe" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/vYrqaJe">
+  GSAP-scrollTrigger slider demo</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
 ## Reference
+[`timeline` 時間軸]: /Javascript/gsap-timeline
+[關鍵幀]: /Javascript/gsap-keyframes
 [GSAP Tween 補間動畫]: /Javascript/gsap-tween
 - [GSAP INSTALL](https://greensock.com/docs/v3/Installation)
 - [GSAP ScrollTrigger](https://greensock.com/docs/v3/Plugins/ScrollTrigger)
