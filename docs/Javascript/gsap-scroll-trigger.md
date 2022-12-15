@@ -290,7 +290,7 @@ gsap.to('.play-element', {
 - `pin: true` 動畫元素「固定」
 - `pin: '.target-element'` 「指定固定」動畫元素
 
-## DEMO
+## DEMO 滾動 slider
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="GSAP-scrollTrigger slider demo" src="https://codepen.io/naiky/embed/vYrqaJe" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/naiky/pen/vYrqaJe">
