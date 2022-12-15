@@ -260,6 +260,51 @@ gsap.to('.play-element', {
 })
 ```
 
+## ScrollTrigger.create 創建滾動觸發實例
+
+雖然「關鍵幀」、「時間軸」也可以加入 `滾動觸發器` 來操作動畫，但，創建一個 `滾動觸發` 實例，可以更靈活的針對 `回調` 函式的觸發來做更多的事。
+
+```js {6-8,9-16}
+ScrollTrigger.create({
+  animation: timeline,
+  trigger: 'section:nth-child(2)',
+  scrub: true,
+  markers: true,
+  onToggle: (self) => {
+    console.log(`執行狀態: ${self.isActive}`)
+  },
+  onUpdate: (self) => {
+    console.log(`執行進度: ${self.progress}`)
+    console.log(`方向: ${self.direction}`)
+    console.log(
+      `滾動速度 (像素/秒) / 滾動方向: ${self.getVelocity()} / ${
+        self.direction > 0 ? '正轉' : '反轉'
+      } `
+    )
+  },
+})
+```
+
+**屬性:**
+
+#### `onToggle: self => { ... }` **當 `start` 與 `end` 觸發時執行。**
+
+- `self.isActive` 判斷是否執行動畫中 ( `true` || `false` )。
+
+#### `onUpdate: self => { ... }` **每次 `scrollTrigger` 發生變化時，都會執行**
+
+- `self.progress` 顯示執行進度:
+
+  (`0 ~ 1`)， `1` 表示到「終點」 / `0` 表示在「起點」。
+
+- `self.direction` 顯示滾動方向:
+
+  正轉: `1`、反轉: `-1`
+
+- `self.getVelocity()` 滾動速度 (像素/秒):
+
+  正轉為 `正數`，反轉為 `負數`。
+
 ## pin 動畫元素固定
 
 一般而言，動畫元素會隨著滾動消失在畫面中，而 `pin` 屬性，可以將滾動播放的「動畫元素」固定在原本位置上，不受滾動影響，直到「觸發元素」離開畫面。
