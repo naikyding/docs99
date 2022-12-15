@@ -93,6 +93,21 @@ gsap.fromTo(
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
+## 默認設置 `gsap.defaults`
+
+默認設定值，會套用在後面的補間動畫，但可以被覆蓋。
+
+```js {1-4}
+gsap.defaults({
+  duration: 5,
+  ease: 'back',
+})
+
+gsap.to('.play-element', {
+  xPercent: 500,
+})
+```
+
 ## 動畫操作方法
 
 可以藉由動畫操作方法，對 `目標元素` 實體，進行任意的操作。
@@ -137,16 +152,16 @@ document.querySelector('#restart').onclick = () => logo.restart()
 
 **設置類**
 
-| 屬性       | 說明                                                                                                 |
-| ---------- | ---------------------------------------------------------------------------------------------------- |
-| `duration` | 動畫時間 (以「秒」為單位)，默認 `0.5`                                                                |
-| `ease`     | 動畫「播放過程樣式」，默認 `power1.out` [參考更多](https://greensock.com/docs/v3/Eases)              |
-| `paused`   | 動畫創建後，是否「暫停」，默認 `false`                                                               |
-| `delay`    | 動畫播放前的「延遲時間」 (以秒為單位)                                                                |
-| `repeat`   | 動畫「重播次數」，默認 `0` 只播 1 次、`-1` 無限播放、`1` 會播 2 次                                   |
-| `stagger`  | 「交錯播放」。如果有多個 `目標元素` 可以交錯啟動播放。`stagger: 0.1` 每個元素啟動播放的間隔是 0.1 秒 |
-| `onStart`  | 函式，動畫開始前執行 |
-| `onComplete`  | 函式，動畫完成後執行 |
+| 屬性         | 說明                                                                                                 |
+| ------------ | ---------------------------------------------------------------------------------------------------- |
+| `duration`   | 動畫時間 (以「秒」為單位)，默認 `0.5`                                                                |
+| `ease`       | 動畫「播放過程樣式」，默認 `power1.out` [參考更多](https://greensock.com/docs/v3/Eases)              |
+| `paused`     | 動畫創建後，是否「暫停」，默認 `false`                                                               |
+| `delay`      | 動畫播放前的「延遲時間」 (以秒為單位)                                                                |
+| `repeat`     | 動畫「重播次數」，默認 `0` 只播 1 次、`-1` 無限播放、`1` 會播 2 次                                   |
+| `stagger`    | 「交錯播放」。如果有多個 `目標元素` 可以交錯啟動播放。`stagger: 0.1` 每個元素啟動播放的間隔是 0.1 秒 |
+| `onStart`    | 函式，動畫開始前執行                                                                                 |
+| `onComplete` | 函式，動畫完成後執行                                                                                 |
 
 **特效類** [更多](https://greensock.com/docs/v3/GSAP/CorePlugins/CSSPlugin)
 
@@ -216,6 +231,7 @@ gsap.to('.logo', {
   > 陣列存放所有 `目標元素`。
 
 ## 跑馬無限播放
+
 - 容器 `overflow: hidden;`
 - 文字設置「不換行」
 - 橫移一半就結束 `xPercent: -50`
@@ -230,18 +246,20 @@ gsap.to('.logo', {
 :::details DEMO CODE
 
 **js**
+
 ```js
 const liEl = document.querySelectorAll('li')
 
 gsap.to(liEl, {
-  xPercent: -50,  // 移動 -50%
-  duration: 10,   // 時間
-  ease: "none",   // 無特效播放 
-  repeat: -1     // 無限播放
+  xPercent: -50, // 移動 -50%
+  duration: 10, // 時間
+  ease: 'none', // 無特效播放
+  repeat: -1, // 無限播放
 })
 ```
 
 **html**
+
 ```html
 <div class="container">
   <ul class="loop-area">
@@ -257,12 +275,13 @@ gsap.to(liEl, {
     <sapn> GSAP GSAP GSAP GSAP GSAP GSAP GSAP </span>
      <sapn> GSAP GSAP GSAP GSAP GSAP GSAP GSAP</span>
    </li>
-</ul>  
+</ul>
 </div>
 
 ```
 
 **css**
+
 ```css
 * {
   margin: 0;
@@ -277,22 +296,23 @@ gsap.to(liEl, {
 }
 
 .loop-area {
-  display: inline-block;            /* 強化無限播放，視覺 */
-  font-family: "Dela Gothic One";
+  display: inline-block; /* 強化無限播放，視覺 */
+  font-family: 'Dela Gothic One';
   font-size: 4.5rem;
-  color: transparent;               /* 透明字體 */
+  color: transparent; /* 透明字體 */
   -webkit-text-stroke: 1px #2e2e2e; /* 字體邊框樣式 */
-  white-space:nowrap;               /* 文字不換行 */
+  white-space: nowrap; /* 文字不換行 */
 }
 
 li > span {
-   display: inline-block;           /* 強化無限播放，視覺 */
+  display: inline-block; /* 強化無限播放，視覺 */
 }
 ```
+
 :::
 
 ## Reference
 
 - [GSAP Tween](https://greensock.com/docs/v3/GSAP/Tween)
 - [GSAP3 - 專門處理動畫與特效的 JS 套件](https://chupai.github.io/posts/200229_gsap3/)
-- [GSAP實作滾動視差與動畫](https://sleet-berry-8a9.notion.site/GSAP-ddc5d9cf73b94b6fa16bd0d6a637482b)
+- [GSAP 實作滾動視差與動畫](https://sleet-berry-8a9.notion.site/GSAP-ddc5d9cf73b94b6fa16bd0d6a637482b)
