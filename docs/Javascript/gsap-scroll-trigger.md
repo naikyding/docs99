@@ -263,6 +263,12 @@ gsap.to('.play-element', {
 
 雖然「關鍵幀」、「時間軸」 都可以加入 `滾動觸發器` 來操作動畫，但創建一個 `滾動觸發` 實例，可以更靈活的針對 `回調` 函式的觸發來做更多的事。
 
+<iframe height="300" style="width: 100%;" scrolling="no" title="GSAP scrollTrigger create" src="https://codepen.io/naiky/embed/gOKVLyg" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/gOKVLyg">
+  GSAP scrollTrigger create</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
 ```js {6-9,11-19}
 ScrollTrigger.create({
   // --- 滾動觸發設置 --- //
@@ -286,7 +292,7 @@ ScrollTrigger.create({
 })
 ```
 
-**屬性:**
+**屬性:** ([更多設置](<https://greensock.com/docs/v3/Plugins/ScrollTrigger/static.create()>))
 
 - **`animation` 指定動畫:**
   可以是 [tween 補間動畫] 或 [timeline 時間軸]
@@ -404,6 +410,27 @@ gsap.to('.play-element', {
   GSAP-scrollTrigger slider demo</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
+
+## pinSpacing 元素固定空間處理
+
+承上 `pin: true` 屬性，可以將元素固定在畫面上，直到觸發結束。如果設置的 `end` 超出 「觸發元素」高度時，會產生空白區塊 (如下)，可以使用 `pinSpacing: true` 來消除這個空白區塊。[更多說明](https://greensock.com/docs/v3/Plugins/ScrollTrigger#:~:text=iframe%20content%20intact.-,pinSpacing,-Boolean%20%7C%20String%20%2D%20By)
+
+<iframe height="700px" style="width: 100%;" scrolling="no" title="GSAP scrollTrigger pin" src="https://codepen.io/naiky/embed/zYagQQe?default-tab=js%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/zYagQQe">
+  GSAP scrollTrigger pin</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+```js {5}
+ScrollTrigger.create({
+  trigger: '.secondary',
+  start: 'top top',
+  end: '+=600px', // 產生 空白區塊的設置
+  pinSpacing: false, // 不顯示 「空白」 區塊
+  pin: true,
+  markers: true,
+})
+```
 
 ## Reference
 
