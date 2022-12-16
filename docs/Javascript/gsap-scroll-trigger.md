@@ -10,7 +10,7 @@
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
-**一般來說**
+**基本補間動畫**
 
 當動畫設置後，就會直接播放，這不符合大部分需求。
 
@@ -21,7 +21,7 @@ gsap.to('.logo', {
 })
 ```
 
-可以使用 `scrollTrigger` 來指定什麼時候才播放這個動畫，像是這樣:
+設置 `scrollTrigger` 可以使「滾動」到特定位置時播放動畫，像是這樣:
 
 ```js {4}
 gsap.to('.logo', {
@@ -59,7 +59,7 @@ gsap.to('.logo', {
 
 ## 基本操作
 
-如同設置 [GSAP Tween 補間動畫] 方法一樣，只是增加了 `scrollTrigger` 屬性，將其設置上一個「觸發元素」。
+如同設置 [Tween 補間動畫] 方法一樣，只是增加了 `scrollTrigger` 屬性，將其設置上一個「觸發元素」。
 當「觸發元素」 `進入` 畫面時，就會播放這個「補間動畫」。
 
 ```js {2}
@@ -73,13 +73,13 @@ gsap.to('.play-element', {
 
 ## 客製化設置
 
-如同設置 [GSAP Tween 補間動畫] 方法一樣，增加了 `scrollTrigger` 屬性，改為 `物件` 可以讓我們客製化更多設置。
+如同設置 [Tween 補間動畫] 方法一樣，增加了 `scrollTrigger` 屬性，改為 `物件` 可以讓我們客製化更多設置。
 
 ```js {2-5}
 gsap.to('.play-element', {
   scrollTrigger: {
-    trigger: '.target-element',
-    toggleActions: 'play pause resume reverse',
+    trigger: '.target-element', // 觸發動畫的元素
+    toggleActions: 'play pause resume reverse', // 觸發播放方式
   },
   duration: 3,
   xPercent: 1000,
@@ -104,7 +104,7 @@ gsap.to('.play-element', {
 
 ## scrub 依滾動方向播放
 
-如同設置 [GSAP Tween 補間動畫] 方法一樣，增加了 `scrollTrigger` 屬性，改為 `物件` 其中設置 `scrub: true` 可以依滾動方向播放。
+如同設置 [Tween 補間動畫] 方法一樣，增加了 `scrollTrigger` 屬性，改為 `物件` 其中設置 `scrub: true` 可以依滾動方向播放。
 
 ```js {4}
 gsap.to('.play-element', {
@@ -117,13 +117,12 @@ gsap.to('.play-element', {
 })
 ```
 
+- `scrub: true` 開啟依滾動播放模式。
+- `scrub: 1` 播放緩衝時間: 指的是需要 `1秒` 的時間趕上「滾動」結束。
+
 :::tip 提醒
 `scrub: true` 開啟，就會依滾動方向來播放，而 `druation` 與 `toggleActions` 就沒有作用了。
 :::
-
-### 播放緩衝
-
-若 `scrub: 1` 指的是需要 `1秒` 的時間趕上「滾動」結束。
 
 ## start end 客制觸發位置
 
@@ -152,7 +151,7 @@ gsap.to('.play-element', {
 })
 ```
 
-### 客製化「觸發元素」`start`、`end` 指定位置
+### 客製化觸發位置
 
 ```js {9-10}
 gsap.to('.play-element', {
@@ -166,23 +165,6 @@ gsap.to('.play-element', {
     start: 'top center', // 起始點 位置
     end: '20 10%', // 結束點 位置
     markers: true, // 顯示觸發位置
-  },
-})
-```
-
-### 客製化 `end` 觸發元素 `endTrigger`
-
-一般而言，都是使用屬性 `trigger` 來設置「觸發元素」的 `start`、`end`，若希望別的「元素」可以作為 `end` 的觸發，可以使用屬性 `endTrigger`來達成。
-
-```js {7}
-gsap.to('.play-element', {
-  xPercent: 1000,
-  duration: 3,
-  scrollTrigger: {
-    markers: true,
-    trigger: '.target-1', // start 所在的 觸發元素
-    endTrigger: '.target-2', // end 所在的 觸發元素
-    scrub: true,
   },
 })
 ```
@@ -205,9 +187,26 @@ gsap.to('.play-element', {
 - 數字: 為 `px` 像素 (與 `top` 的相對位置)
 - `n%`: 百分比 (與 `top` 的相對位置)
 
+### `endTrigger` 客製化 `end` 觸發位置
+
+一般而言，都是使用屬性 `trigger` 來設置「觸發元素」的 `start`、`end`，若希望別的「元素」可以作為 `end` 的觸發，可以使用屬性 `endTrigger`來達成。
+
+```js {7}
+gsap.to('.play-element', {
+  xPercent: 1000,
+  duration: 3,
+  scrollTrigger: {
+    markers: true,
+    trigger: '.target-1', // start 所在的 觸發元素
+    endTrigger: '.target-2', // end 所在的 觸發元素
+    scrub: true,
+  },
+})
+```
+
 ## 「時間軸」加上滾動觸發
 
-[`timeline` 時間軸]內部新增 `物件` 來設置 `scrollTrigger` 相關參數，這個 `timeline` 就會依「滾動觸發」設置來執行動畫了。
+[Timeline 時間軸]內部新增 `物件` 來設置 `scrollTrigger` 相關參數，這個 `timeline` 就會依「滾動觸發」設置來執行動畫了。
 
 :::tip 提醒
 相同的，內部的 `duration` 就無作用了，因為會依滾動方向來播放。
@@ -243,7 +242,7 @@ timeline
 
 ## 「關鍵幀」加上滾動觸發
 
-直接在內部設置 `scrollTrigger: { ... }`，[關鍵幀]的動畫就會依「滾動觸發」設置來播放了。
+直接在內部設置 `scrollTrigger: { ... }`，[Keyframes 關鍵幀]的動畫就會依「滾動觸發」設置來播放了。
 
 ```js {2-5}
 gsap.to('.play-element', {
@@ -260,50 +259,113 @@ gsap.to('.play-element', {
 })
 ```
 
-## ScrollTrigger.create 創建滾動觸發實例
+## ScrollTrigger.create 滾動觸發實例
 
-雖然「關鍵幀」、「時間軸」也可以加入 `滾動觸發器` 來操作動畫，但，創建一個 `滾動觸發` 實例，可以更靈活的針對 `回調` 函式的觸發來做更多的事。
+雖然「關鍵幀」、「時間軸」 都可以加入 `滾動觸發器` 來操作動畫，但創建一個 `滾動觸發` 實例，可以更靈活的針對 `回調` 函式的觸發來做更多的事。
 
-```js {6-8,9-16}
+```js {6-9,11-19}
 ScrollTrigger.create({
-  animation: timeline,
-  trigger: 'section:nth-child(2)',
-  scrub: true,
-  markers: true,
+  // --- 滾動觸發設置 --- //
+  animation: tween, // 指定動畫
+  trigger: '.target-element', // 觸發元素
+
+  // 當 start 與 end 觸發時執行
   onToggle: (self) => {
-    console.log(`執行狀態: ${self.isActive}`)
+    console.log(self.isActive) // 是否執行動畫狀態中 `true` || `false`
   },
+
+  // 每次 scrollTrigger 發生變化 (滾動) 時執行
   onUpdate: (self) => {
-    console.log(`執行進度: ${self.progress}`)
-    console.log(`方向: ${self.direction}`)
-    console.log(
-      `滾動速度 (像素/秒) / 滾動方向: ${self.getVelocity()} / ${
-        self.direction > 0 ? '正轉' : '反轉'
-      } `
-    )
+    console.log(`
+    動畫執行: 
+    播放進度 (0 ~ 1): ${self.progress}
+    滾動方向 (+n ~ -n): ${self.direction}
+    滾動速度 (像素/秒): ${self.getVelocity()}
+    `)
   },
 })
 ```
 
 **屬性:**
 
-#### `onToggle: self => { ... }` **當 `start` 與 `end` 觸發時執行。**
+- **`animation` 指定動畫:**
+  可以是 [tween 補間動畫] 或 [timeline 時間軸]
 
-- `self.isActive` 判斷是否執行動畫中 ( `true` || `false` )。
+- **`onToggle: self => { ... }` 當 `start` 與 `end` 觸發時執行:**
+  `self.isActive` 判斷是否執行動畫中 ( `true` || `false` )。
 
-#### `onUpdate: self => { ... }` **每次 `scrollTrigger` 發生變化時，都會執行**
+- **`onUpdate: self => { ... }` 每次 `scrollTrigger` 發生變化時，都會執行:**
 
-- `self.progress` 顯示執行進度:
+  - **`self.progress` 顯示執行進度:** (`0 ~ 1`)， `1` 表示到「終點」 / `0` 表示在「起點」。
+  - **`self.direction` 顯示滾動方向:** 正轉: `1`、反轉: `-1`
+  - **`self.getVelocity()` 滾動速度 (像素/秒):** 正轉為 `正數`，反轉為 `負數`。
 
-  (`0 ~ 1`)， `1` 表示到「終點」 / `0` 表示在「起點」。
+### 時間軸 + 滾動觸發實例
 
-- `self.direction` 顯示滾動方向:
+```js {3,22}
+const timeline = gsap.timeline()
 
-  正轉: `1`、反轉: `-1`
+timeline
+  .to('.box', {
+    duration: 3,
+    xPercent: 300,
+  })
+  .to('.box', {
+    duration: 3,
+    yPercent: 300,
+  })
+  .to('.box', {
+    duration: 3,
+    xPercent: 0,
+  })
+  .to('.box', {
+    duration: 3,
+    yPercent: 0,
+  })
 
-- `self.getVelocity()` 滾動速度 (像素/秒):
+ScrollTrigger.create({
+  animation: timeline,
+  trigger: 'section:nth-child(2)',
+  scrub: true,
+  markers: true,
+  onToggle: (self) => {},
+  onUpdate: (self) => {},
+})
+```
 
-  正轉為 `正數`，反轉為 `負數`。
+### 補間動畫 + 滾動觸發實例
+
+```js {1,23}
+const tween = gsap.to('.box', {
+  keyframes: [
+    {
+      duration: 3,
+      xPercent: 300,
+    },
+    {
+      duration: 3,
+      yPercent: 300,
+    },
+    {
+      duration: 3,
+      xPercent: 0,
+    },
+    {
+      duration: 3,
+      yPercent: 0,
+    },
+  ],
+})
+
+ScrollTrigger.create({
+  animation: tween,
+  trigger: 'section:nth-child(2)',
+  scrub: true,
+  markers: true,
+  onToggle: (self) => {},
+  onUpdate: (self) => {},
+})
+```
 
 ## pin 動畫元素固定
 
@@ -335,7 +397,7 @@ gsap.to('.play-element', {
 - `pin: true` 動畫元素「固定」
 - `pin: '.target-element'` 「指定固定」動畫元素
 
-## DEMO 滾動 slider
+### DEMO 滾動 slider
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="GSAP-scrollTrigger slider demo" src="https://codepen.io/naiky/embed/vYrqaJe" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/naiky/pen/vYrqaJe">
@@ -345,9 +407,9 @@ gsap.to('.play-element', {
 
 ## Reference
 
-[`timeline` 時間軸]: /Javascript/gsap-timeline
-[關鍵幀]: /Javascript/gsap-keyframes
-[gsap tween 補間動畫]: /Javascript/gsap-tween
+[timeline 時間軸]: /Javascript/gsap-timeline
+[keyframes 關鍵幀]: /Javascript/gsap-keyframes
+[tween 補間動畫]: /Javascript/gsap-tween
 
 - [GSAP INSTALL](https://greensock.com/docs/v3/Installation)
 - [GSAP ScrollTrigger](https://greensock.com/docs/v3/Plugins/ScrollTrigger)
