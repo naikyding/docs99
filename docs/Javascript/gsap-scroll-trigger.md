@@ -130,6 +130,10 @@ gsap.to('.play-element', {
 
 實際的作法是在 `scrollTrigger` 物件中，加入 `start`、`end` 屬性來客制化觸發的位置，而 `markers: true` 則可以看到觸發的標示 (建議打開)。
 
+:::tip 提示
+若同時有太多 `scrollTrigger` 又 `markers: true` 會有很多標記，可以再設置 `id: '標記1'` 來增加識別。
+:::
+
 <iframe height="300" style="width: 100%;" scrolling="no" title="GSAP-scrollTrigger start and end 客制開始與結束" src="https://codepen.io/naiky/embed/dyKEvNw?default-tab=js%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/naiky/pen/dyKEvNw">
   GSAP-scrollTrigger start and end 客制開始與結束</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
@@ -383,6 +387,8 @@ ScrollTrigger.create({
     console.log('[回頭離開] 動畫_終止播放')
   },
 
+  toggleClass: 'red',
+
   // 當 start 與 end 觸發時執行
   onToggle: (self) => {
     console.log(self.isActive) // 是否執行動畫狀態中 `true` || `false`
@@ -409,8 +415,11 @@ ScrollTrigger.create({
 - **`animation` 指定動畫:**
   可以是 [tween 補間動畫] 或 [timeline 時間軸]
 
-- **`onToggle: self => { ... }` 當 `start` 與 `end` 觸發時執行:**
+- **`onToggle: self => { ... }` 「開始播放」與「停止播放」時觸發:**
   `self.isActive` 判斷是否執行動畫中 ( `true` || `false` )。
+
+- **`toggleClass` 播放/停止 動態的 `class`**
+  會加在 `trigger` 觸發元素上。
 
 - **`onUpdate: self => { ... }` 每次 `scrollTrigger` 發生變化時，都會執行:**
 
