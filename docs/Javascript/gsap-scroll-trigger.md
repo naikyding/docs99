@@ -190,6 +190,7 @@ gsap.to('.play-element', {
 - `center`: 位置在「中」
 - 數字: 為 `px` 像素 (與 `top` 的相對位置)
 - `n%`: 百分比 (與 `top` 的相對位置)
+- `+=100` 以 `top` 加上數字像素來算位置。
 
 ### `endTrigger` 客製化 `end` 觸發位置
 
