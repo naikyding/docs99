@@ -259,120 +259,6 @@ gsap.to('.play-element', {
 })
 ```
 
-## ScrollTrigger.create 滾動觸發實例
-
-雖然「關鍵幀」、「時間軸」 都可以加入 `滾動觸發器` 來操作動畫，但創建一個 `滾動觸發` 實例，可以更靈活的針對 `回調` 函式的觸發來做更多的事。
-
-<iframe height="300" style="width: 100%;" scrolling="no" title="GSAP scrollTrigger create" src="https://codepen.io/naiky/embed/gOKVLyg" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/naiky/pen/gOKVLyg">
-  GSAP scrollTrigger create</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
-
-```js {6-9,11-19}
-ScrollTrigger.create({
-  // --- 滾動觸發設置 --- //
-  animation: tween, // 指定動畫
-  trigger: '.target-element', // 觸發元素
-
-  // 當 start 與 end 觸發時執行
-  onToggle: (self) => {
-    console.log(self.isActive) // 是否執行動畫狀態中 `true` || `false`
-  },
-
-  // 每次 scrollTrigger 發生變化 (滾動) 時執行
-  onUpdate: (self) => {
-    console.log(`
-    動畫執行: 
-    播放進度 (0 ~ 1): ${self.progress}
-    滾動方向 (+n ~ -n): ${self.direction}
-    滾動速度 (像素/秒): ${self.getVelocity()}
-    `)
-  },
-})
-```
-
-**屬性:** ([更多設置](<https://greensock.com/docs/v3/Plugins/ScrollTrigger/static.create()>))
-
-- **`animation` 指定動畫:**
-  可以是 [tween 補間動畫] 或 [timeline 時間軸]
-
-- **`onToggle: self => { ... }` 當 `start` 與 `end` 觸發時執行:**
-  `self.isActive` 判斷是否執行動畫中 ( `true` || `false` )。
-
-- **`onUpdate: self => { ... }` 每次 `scrollTrigger` 發生變化時，都會執行:**
-
-  - **`self.progress` 顯示執行進度:** (`0 ~ 1`)， `1` 表示到「終點」 / `0` 表示在「起點」。
-  - **`self.direction` 顯示滾動方向:** 正轉: `1`、反轉: `-1`
-  - **`self.getVelocity()` 滾動速度 (像素/秒):** 正轉為 `正數`，反轉為 `負數`。
-
-### 時間軸 + 滾動觸發實例
-
-```js {3,22}
-const timeline = gsap.timeline()
-
-timeline
-  .to('.box', {
-    duration: 3,
-    xPercent: 300,
-  })
-  .to('.box', {
-    duration: 3,
-    yPercent: 300,
-  })
-  .to('.box', {
-    duration: 3,
-    xPercent: 0,
-  })
-  .to('.box', {
-    duration: 3,
-    yPercent: 0,
-  })
-
-ScrollTrigger.create({
-  animation: timeline,
-  trigger: 'section:nth-child(2)',
-  scrub: true,
-  markers: true,
-  onToggle: (self) => {},
-  onUpdate: (self) => {},
-})
-```
-
-### 補間動畫 + 滾動觸發實例
-
-```js {1,23}
-const tween = gsap.to('.box', {
-  keyframes: [
-    {
-      duration: 3,
-      xPercent: 300,
-    },
-    {
-      duration: 3,
-      yPercent: 300,
-    },
-    {
-      duration: 3,
-      xPercent: 0,
-    },
-    {
-      duration: 3,
-      yPercent: 0,
-    },
-  ],
-})
-
-ScrollTrigger.create({
-  animation: tween,
-  trigger: 'section:nth-child(2)',
-  scrub: true,
-  markers: true,
-  onToggle: (self) => {},
-  onUpdate: (self) => {},
-})
-```
-
 ## pin 動畫元素固定
 
 一般而言，動畫元素會隨著滾動消失在畫面中，而 `pin` 屬性，可以將滾動播放的「動畫元素」固定在原本位置上，不受滾動影響，直到「觸發元素」離開畫面。
@@ -464,6 +350,142 @@ gsap.to('.slider', {
 :::tip 技巧
 觸發終點 `end` 基於「容器」的寬度 `offsetWidth`，會讓滾動感覺更自然。
 :::
+
+## 滾動回調函式與客製化設置
+
+雖然「關鍵幀」、「時間軸」 都可以加入 `滾動觸發器` 來操作動畫，但創建一個 `滾動觸發` 實例，可以更靈活的針對 `回調函式` 執行更多的事件。
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="GSAP scrollTrigger create" src="https://codepen.io/naiky/embed/gOKVLyg" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/gOKVLyg">
+  GSAP scrollTrigger create</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+```js
+ScrollTrigger.create({
+  // --- 滾動觸發設置 --- //
+  animation: tween, // 指定動畫
+  trigger: '.target-element', // 觸發元素
+
+  onEnter: () => {
+    console.log('[進入] 動畫_開始播放')
+  },
+
+  onLeave: () => {
+    console.log('[離開] 動畫_終止播放')
+  },
+
+  onEnterBack: () => {
+    console.log('[回頭進入] 動畫_反向播放')
+  },
+
+  onLeaveBack: () => {
+    console.log('[回頭離開] 動畫_終止播放')
+  },
+
+  // 當 start 與 end 觸發時執行
+  onToggle: (self) => {
+    console.log(self.isActive) // 是否執行動畫狀態中 `true` || `false`
+  },
+
+  // 每次 scrollTrigger 發生變化 (滾動) 時執行
+  onUpdate: (self) => {
+    console.log(`
+    動畫執行: 
+    播放進度 (0 ~ 1): ${self.progress}
+    滾動方向 (+n ~ -n): ${self.direction}
+    滾動速度 (像素/秒): ${self.getVelocity()}
+    `)
+  },
+})
+```
+
+**屬性:** ([更多設置](<https://greensock.com/docs/v3/Plugins/ScrollTrigger/static.create()>))
+
+- **`onEnter` [進入] 播放動畫**
+- **`onLeave` [離開] 停止播放**
+- **`onEnterBack` [回頭進入] 反向播放**
+- **`onLeaveBack` [回頭離開] 停止播放**
+- **`animation` 指定動畫:**
+  可以是 [tween 補間動畫] 或 [timeline 時間軸]
+
+- **`onToggle: self => { ... }` 當 `start` 與 `end` 觸發時執行:**
+  `self.isActive` 判斷是否執行動畫中 ( `true` || `false` )。
+
+- **`onUpdate: self => { ... }` 每次 `scrollTrigger` 發生變化時，都會執行:**
+
+  - **`self.progress` 顯示執行進度:** (`0 ~ 1`)， `1` 表示到「終點」 / `0` 表示在「起點」。
+  - **`self.direction` 顯示滾動方向:** 正轉: `1`、反轉: `-1`
+  - **`self.getVelocity()` 滾動速度 (像素/秒):** 正轉為 `正數`，反轉為 `負數`。
+
+### 時間軸 + 滾動觸發實例
+
+```js {3,22}
+const timeline = gsap.timeline()
+
+timeline
+  .to('.box', {
+    duration: 3,
+    xPercent: 300,
+  })
+  .to('.box', {
+    duration: 3,
+    yPercent: 300,
+  })
+  .to('.box', {
+    duration: 3,
+    xPercent: 0,
+  })
+  .to('.box', {
+    duration: 3,
+    yPercent: 0,
+  })
+
+ScrollTrigger.create({
+  animation: timeline,
+  trigger: 'section:nth-child(2)',
+  scrub: true,
+  markers: true,
+  start: 'top center',
+  end: 'bottom 100',
+  onUpdate: (self) => {},
+  onToggle: (self) => {},
+})
+```
+
+### 補間動畫 + 滾動觸發實例
+
+```js {1,23}
+const tween = gsap.to('.box', {
+  keyframes: [
+    {
+      duration: 3,
+      xPercent: 300,
+    },
+    {
+      duration: 3,
+      yPercent: 300,
+    },
+    {
+      duration: 3,
+      xPercent: 0,
+    },
+    {
+      duration: 3,
+      yPercent: 0,
+    },
+  ],
+})
+
+ScrollTrigger.create({
+  animation: tween,
+  trigger: 'section:nth-child(2)',
+  scrub: true,
+  markers: true,
+  onToggle: (self) => {},
+  onUpdate: (self) => {},
+})
+```
 
 ## Reference
 
