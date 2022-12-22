@@ -432,6 +432,39 @@ ScrollTrigger.create({
 })
 ```
 
+## 橫向滾動磁吸 snap
+
+可以藉由 `scrollTrigger` 達成橫向滾動，但還需要 `snap` 屬性來讓你的切換具有「磁吸」效果，不會卡在中間。
+
+`snap` 是一個顯示區塊的「斷點」設置，一般來說是 `0.1`，如果你有 `1` 個以上的數量可以這樣設置 `snap: 1 / (區塊數量 - 1)`
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="GSAP-scrollTrigger snap" src="https://codepen.io/naiky/embed/WNyVVyN" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/WNyVVyN">
+  GSAP-scrollTrigger snap</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+```js
+const allSlider = document.querySelectorAll('.slider')
+
+gsap.to('.slider', {
+  xPercent: -100 * (allSlider.length - 1),
+  ease: 'none',
+  scrollTrigger: {
+    markers: true,
+    trigger: '.container',
+    scrub: 1, // 滾動緩和
+    pin: true,
+    snap: 1 / (allSlider.length - 1),
+    end: () => `+=${document.querySelector('.container').offsetWidth}`,
+  },
+})
+```
+
+:::tip 技巧
+觸發終點 `end` 基於「容器」的寬度 `offsetWidth`，會讓滾動感覺更自然。
+:::
+
 ## Reference
 
 [timeline 時間軸]: /Javascript/gsap-timeline
