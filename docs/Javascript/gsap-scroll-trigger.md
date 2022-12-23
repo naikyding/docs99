@@ -2,7 +2,7 @@
 
 ## 說明
 
-`滾動動作` 可以指定「觸發元素」在某些動作時，「指定元素」執行播放動畫或播放方式。
+`scrollTrigger` 可以指定 「觸發元素」 在 `觸發` 時，「動畫元素」 執行動畫操作。
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="GSAP-scrollTrigger 滾動觸發" src="https://codepen.io/naiky/embed/GRGebKX" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/naiky/pen/GRGebKX">
@@ -59,7 +59,7 @@ gsap.to('.logo', {
 
 ## 基本操作
 
-如同設置 [Tween 補間動畫] 方法一樣，只是增加了 `scrollTrigger` 屬性，將其設置上一個「觸發元素」。
+如同設置 [Tween 補間動畫] 方法一樣，只是增加了 `scrollTrigger` 屬性，在設置上「觸發元素」。
 當「觸發元素」 `進入` 畫面時，就會播放這個「補間動畫」。
 
 ```js {2}
