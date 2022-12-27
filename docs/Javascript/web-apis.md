@@ -385,6 +385,28 @@ const buttonEl = document
 
 :::
 
+## 原生加解密功能 crypto
+
+之前經常使用 [uuid 套件](https://www.npmjs.com/package/uuid) 來操作加解密功能，而原生的 [Crypto](https://developer.mozilla.org/en-US/docs/Web/API/Crypto) API 已擁有這個功能且強大，可以不需要再依賴套件了。
+
+**使用 uuid 套件**
+
+```js
+const { v4: uuidv4 } = require('uuid')
+uuidv4() // 5b493ee8-6b5c-4c34-a7d0-750dc1488ccf
+```
+
+**原生 uuid v4 隨機產生**
+
+```js
+crypto.randomUUID() // '14197bf2-140f-454d-83b4-1efb984d911c'
+```
+
+### Reference
+
+- [Crypto MDN](https://developer.mozilla.org/en-US/docs/Web/API/Crypto)
+- [[WebAPIs] 資料加密 Crypto and Cipher](https://pjchender.dev/webapis/webapis-crypto-cipher/)
+
 ## Reference
 
 - Page Visibility
