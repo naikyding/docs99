@@ -148,3 +148,4 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 ## Git
 
 - [快速找出 bug commit](/git/git-bisect)
+- [複製 commit 到當前分支 cherry-pick](/git/cherry-pick)

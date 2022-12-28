@@ -396,6 +396,10 @@ export const getGitSidebar = () => ({
     {
       text: '快速找出 bug commit',
       link: '/git/git-bisect'
+    },
+    {
+      text: '複製 commit 到當前分支 cherry-pick',
+      link: '/git/cherry-pick'
     }
   ]
 })
