@@ -32,5 +32,7 @@ export default {
 
 **`pages/About.vue` 關於頁面 (`/about`)**
 
+
 ## Reference
 - [Nuxt3 Views](https://nuxt.com/docs/getting-started/views)
+- [Router 路由設置](/nuxt3/router)

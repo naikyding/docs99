@@ -30,6 +30,15 @@ export const getNuxt3Nav = () => ({
   text: 'Nuxt3',
   items: [
     {
+      text: 'Config',
+      items: [
+        {
+          text: 'Assets 資源',
+          link: '/nuxt3/assets'
+        }
+      ]
+    },
+    {
       text: 'Views',
       items: [
         {
@@ -44,6 +53,19 @@ export const getNuxt3Nav = () => ({
           text: 'Layouts 佈局',
           link: '/nuxt3/layouts'
         },
+      ]
+    },
+    {
+      text: 'Router',
+      items: [
+        {
+          text: 'Router 路由基礎操作',
+          link: '/nuxt3/router'
+        },
+        {
+          text: 'Middleware 中間件',
+          link: '/nuxt3/middleware'
+        }
       ]
     }
   ]

@@ -381,6 +381,18 @@ export const getNuxt3Slidebar = () => ({
       text: 'Layouts 佈局',
       link: '/nuxt3/layouts'
     },
+    {
+      text: 'Assets 資源',
+      link: '/nuxt3/assets'
+    },
+    {
+      text: 'Router 路由基礎操作',
+      link: '/nuxt3/router'
+    },
+    {
+      text: 'Router Middleware 中間件',
+      link: '/nuxt3/middleware'
+    }
   ]
 })
 
