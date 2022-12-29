@@ -26,6 +26,29 @@ export const getDevOpsNav = () => ({
   ]
 })
 
+export const getNuxt3Nav = () => ({
+  text: 'Nuxt3',
+  items: [
+    {
+      text: 'Views',
+      items: [
+        {
+          text: 'Components 元件',
+          link: '/nuxt3/components'
+        },
+        {
+          text: 'Pages 頁面',
+          link: '/nuxt3/pages'
+        },
+        {
+          text: 'Layouts 佈局',
+          link: '/nuxt3/layouts'
+        },
+      ]
+    }
+  ]
+})
+
 export const getVueNav = () => ({
   text: 'Vue',
   items: [

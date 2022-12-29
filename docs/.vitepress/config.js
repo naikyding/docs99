@@ -1,10 +1,10 @@
 import {
   getIndexSidebar, getJavascriptSidebar, getVueSidebar,
   getBrowserSidebar, getSecuritySidebar, getWeb3sidebar, getCssSidebar,
-  getHtmlSidebar, getGitSidebar
+  getHtmlSidebar, getGitSidebar, getNuxt3Slidebar
 } from './slidebar'
 
-import { getDevOpsNav, getVueNav } from './nav'
+import { getDevOpsNav, getVueNav, getNuxt3Nav } from './nav'
 
 module.exports = {
   head: [
@@ -31,6 +31,7 @@ module.exports = {
 
     nav: [
       getVueNav(),
+      getNuxt3Nav(),
       getDevOpsNav(),
     ],
 
@@ -40,6 +41,7 @@ module.exports = {
       getWeb3sidebar(),
       getJavascriptSidebar(),
       getVueSidebar(),
+      getNuxt3Slidebar(),
       getHtmlSidebar(),
       getCssSidebar(),
       getSecuritySidebar(),
