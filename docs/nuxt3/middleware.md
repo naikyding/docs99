@@ -10,7 +10,7 @@
 :::
 
 ## 命名中間件
-設置在 `middleware/` 目錄之下，`page` 頁面使用時會透過「非同步」自動加載。
+設置在 `middleware/` 目錄之下，`page` 頁面使用時會透過「非同步」自動加載，在進入頁面之前執行中間件。
 
 ### 1️⃣ 定義中間件
 在 `middleware/` 創建中間件檔案，使用 **`defineNuxtRouteMiddleware`** 來定義函式方法。
