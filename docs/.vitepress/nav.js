@@ -35,7 +35,11 @@ export const getNuxt3Nav = () => ({
         {
           text: 'Assets 資源',
           link: '/nuxt3/assets'
-        }
+        },
+        {
+          text: 'SEO and Meta',
+          link: '/nuxt3/seo-and-meta'
+        },
       ]
     },
     {

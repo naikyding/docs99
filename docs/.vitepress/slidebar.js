@@ -392,6 +392,10 @@ export const getNuxt3Slidebar = () => ({
     {
       text: 'Router Middleware 中間件',
       link: '/nuxt3/middleware'
+    },
+    {
+      text: 'SEO and Meta',
+      link: '/nuxt3/seo-and-meta'
     }
   ]
 })
