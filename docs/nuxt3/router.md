@@ -89,6 +89,27 @@ pages/
 :::
 
 ## Validation 驗證
+通過 `definePageMeta` 設置的 `validate` 來對特定的頁面進行「驗證」。
+
+`validate` 是一個帶有 `route` 參數的函式，可以透過回傳 `布林值`，來確認這是不是有效的路由頁面。
+
+- `return true` 進入頁面
+- `return false` 停止進入到頁面，維持在原先頁面。
+
+```vue {3-6}
+<script setup>
+definePageMeta({
+  validate: async(route) => {
+    if(route.params.id) return true
+    throw new Error('Under Construction!')
+  }
+})
+</script>
+```
+
+:::tip 提醒
+如果是更複雜的驗證方式，建議還是使用 `middleware` 中間件。
+:::
 
 ## Reference
 - [Nuxt3 Routing](https://nuxt.com/docs/getting-started/routing)
