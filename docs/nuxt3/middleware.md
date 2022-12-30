@@ -102,5 +102,9 @@ definePageMeta({
 執行順序會是 `全域中間件` > `命名中間件`。
 :::
 
+## 動態載入中間件
+coming soon!
+
 ## Reference
 - [Nuxt3 middleware](https://nuxt.com/docs/guide/directory-structure/middleware)
+- [[Day 5] 認識 Nuxt3 專案結構 - middleware](https://ithelp.ithome.com.tw/articles/10295114)
