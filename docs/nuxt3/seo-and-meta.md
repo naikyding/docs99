@@ -1,10 +1,14 @@
-# SEO and Meta
+# Head 設置 (SEO and Meta)
 
-透過 `<head>` 內部 `meta` 相關設置，可以更強化 `Nuxt` 應用程式  SEO 的表現。
+透過 `<head>` 相關設置，可以強化 `Nuxt` 應用程式  SEO 的表現。
 
-**在 `Nuxt` 中有不同的設置方式:**
+**在 `Nuxt` 中有不同的 Head 設置方式:**
 
-## 全站設置
+- [全站靜態設置 config](/nuxt3/seo-and-meta#_1%EF%B8%8F⃣-全站靜態設置-config)
+- [組件腳本設置 useHead](/nuxt3/seo-and-meta#_2%EF%B8%8F⃣-組件腳本設置-usehead)
+- [模板設置 template](/nuxt3/seo-and-meta#_3%EF%B8%8F⃣-模板設置-template)
+
+## 1️⃣ 全站靜態設置 config
 可以在 `nuxt.config` 檔案內，`app.head` 來設置 **整個應用程式** 需要的夾帶「靜態」資訊。 [參考更多 `app.head`](https://nuxt.com/docs/api/configuration/nuxt-config#head)
 
 **默認生成的 meta 內容:**
@@ -34,10 +38,10 @@ export default defineNuxtConfig({
 ```
 
 :::tip 提示
-這個設置方式是「靜態」資料，若內容是「動態」的資料，請在 `app.vue` 中使用 `useHead` 方法。
+這個設置方式是「靜態」資料，若內容是「動態」的資料，請使用 [組件腳本設置 useHead](/nuxt3/seo-and-meta#_2%EF%B8%8F⃣-組件腳本設置-usehead)。
 :::
 
-## 腳本設置 useHead
+## 2️⃣ 組件腳本設置 useHead
 `Nuxt` 提供了一個組合函式 `useHead` 可以讓你在想要的頁面或 `app.vue` 設置頁面 `head` 內容，這是可以使用「動態」的資料。
 
 **可設置參數:** [更多設置](https://nuxt.com/docs/getting-started/seo-meta#types)
@@ -76,14 +80,14 @@ useHead({
 ```
 
 :::tip 提醒
-在頁面內設置的 `useHead` 內容，會覆蓋過 [全站「靜態」設置](/nuxt3/seo-and-meta#全站「靜態」設置)。
+在頁面內設置的 `useHead` 內容，會覆蓋過 [全站靜態設置 config](/nuxt3/seo-and-meta#_1%EF%B8%8F⃣-全站靜態設置-config)。
 :::
 
 :::warning 注意
 優先權: 模板設置 > 腳本設置
 :::
 
-## 模板設置
+## 3️⃣ 模板設置 template
 在元件中 `Nuxt` 也提供了類似原生 tag 的標籤方法，一般常見的 `head` 內容都可以直接設置，而且是「動態」的。
 - `<Head>`
 - `<Meta>`
@@ -116,7 +120,7 @@ const title = ref('App Title')
 
 **提供功能**
 
-當頁面沒有設置 `title` 它提供了基本的標題，或也可以一次性為所有頁面的標題「加料」
+當頁面沒有設置 `title` 它提供了基本的標題，或也可以一次性為所有頁面的標題「加料」。
 
 **`app.vue`**
 ```vue
@@ -128,7 +132,93 @@ useHead({
 })
 </script>
 ```
-- `titleChunk` 頁面本身設置的標題
+- `titleChunk` 默認的 `title` 設置
+
+
+:::tip 提醒
+若 `titleTemplate` 為函式，回傳 `null` 時為默認 `title`。
+:::
+
+## Body 插入腳本設置
+基本 `useHead` 的設置都是加入在 `<head>` 當中，若在 `script` 設置中加入 `body: true` 可以讓 `<script>` 在 `<body>` 內的最未端置入。
+
+**操作**
+```vue {6,10}
+<script setup>
+useHead({
+  script: [
+    {
+      src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js',
+      body: true
+    },
+    {
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js',
+      body: true
+    }
+  ]
+})
+</script>
+```
+**html 生成**
+
+```html {4-5}
+<body class="body-class" id="app">
+  ...
+  <script type="module" src="/_nuxt/workspaces/nuxt3-test-20221223/node_modules/nuxt/dist/app/entry.mjs" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+</body>
+```
+
+## 設置路由 meta 資料
+可以使用 `definePageMeta` 設置頁面「元信息」與 `useHead` 搭配使用。
+
+**設置 meta 資料**
+
+在路由 `pages/about.vue` 設置頁面 `meta` 資料
+
+```vue {3}
+<script setup>
+definePageMeta({
+  title: 'default title'
+})
+</script>
+```
+
+**在佈局取得之前設置在 `route.meta` 的資料，來寫入供 SEO Head `meta` 的設置。**
+
+```vue {5-6}
+<script setup>
+const $route = useRoute()
+
+useHead({
+  title: $route.meta.title,
+  meta: [{ property: 'og:title', content: $route.meta.title }]
+})
+</script>
+```
+
+## 引入 CSS
+在 `useHead` 可以使用 `link` 屬性來引入頁面需要的 `css`。
+
+**假設在頁面引入 google fonts 字體 css**
+```vue {3-7}
+<script setup>
+useHead({
+  link: [
+    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+    { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;900&display=swap' }
+  ]
+})
+
+/* 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;900&display=swap" rel="stylesheet"> 
+*/
+</script>
+```
 
 ## Reference
 - [HTML 基礎 SEO 標籤：meta、og](https://www.tpisoftware.com/tpu/articleDetails/1989)

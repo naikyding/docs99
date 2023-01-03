@@ -394,7 +394,7 @@ export const getNuxt3Slidebar = () => ({
       link: '/nuxt3/middleware'
     },
     {
-      text: 'SEO and Meta',
+      text: 'Head 設置 (SEO and Meta)',
       link: '/nuxt3/seo-and-meta'
     }
   ]
