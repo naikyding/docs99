@@ -40,6 +40,10 @@ export const getNuxt3Nav = () => ({
           text: 'Head 設置 (SEO and Meta)',
           link: '/nuxt3/seo-and-meta'
         },
+        {
+          text: '資料獲取 Data Fetching',
+          link: '/nuxt3/data-fetching'
+        }
       ]
     },
     {
