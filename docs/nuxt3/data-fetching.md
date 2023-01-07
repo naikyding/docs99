@@ -2,7 +2,7 @@
 過去可能會使用 `AXIOS` 來打 `api`，而 `Nuxt3` 提供了下列幾種打 `api` 的方法，這些方式只在 `setup` 或 生命週期內可以使用。
 
 :::danger 注意
-`nuxt3` 預設服務在 `localhost:3000`，若本機啟動服務 `localhost:xxxx` 供應用程式 **請求** 的話，可能會受到無法連線的影響。最好避開應用程式使用的 `baseUrl`
+`nuxt3` 啟動服務器在 `localhost:3000`，若本機同時啟動「API 服務端」在 `localhost:xxxx` 供應用程式 **請求** 的話，可能會受到無法連線的影響。最好避開應用程式使用的服務。 (`nuxt3` 服務同時為 `baseUrl`)
 :::
 
 ## $fetch 基本請求數據
@@ -25,10 +25,38 @@ const data = await $fetch('/api/v1/....')
 
 :::tip 提醒
 - `$fetch` 是一個 `promise` 必須要 `await` 非同步處理。
-- 在 `server` 與 `client` 都會各執行一次，`server` 端的執行是為了提供「服務端渲染」，`client` 端的執行是為了「更新」數據，不會寫入頁面原始碼。
+- 在 `server` 與 `client` 都會各執行一次，`server` 端的執行是為了提供「服務端渲染」，`client` 端在下載 `vue js` 後也會再執行一次，不會寫入頁面原始碼。
 :::
 
-:::danger 注意
+:::warning 🟡 服務端與客戶端資料不相符 Hydration text content mismatch in 🟡
+初次頁面載入時 `$fetch` 會在「服務端」「客戶端」各執行一次，當兩個數據不符合時，`log` 會發出警告 `Hydration text content mismatch in`。
+
+
+#### 解決方法
+
+使用 `useState` 可以解決這個問題 [參考](https://juejin.cn/post/7086859150759559176)
+
+
+```vue {3,14}
+<template>
+  <div>
+    {{ domText }}
+  </div>
+</template>
+
+<script setup>
+const apiUrl = 'https://f48b-61-220-84-123.ngrok.io/user'
+
+const res = reactive({ data: [] })
+
+const data = await $fetch(apiUrl)
+res.data = data
+const domText = useState('user', () => res.data)
+</script>
+```
+:::
+
+:::danger 警示
 這是 **阻塞型** 請求，在得到請求 **回傳** 後才會開始渲染頁面內容，在此之前會是「空白」頁面。
 :::
 
@@ -43,12 +71,20 @@ const data = await $fetch('/api/v1/....')
 
     是否在路由加載後再 **非同步請求**，而不阻塞客戶端導航到頁面。
 
-  - `default` 默認值工廠函式 (默認 `true`)
+  - `default` 默認值 (工廠函式):
 
-    回傳還沒執行 「非同步執行函式」 前的默認數據值。
+    回傳還沒執行 「非同步執行函式」 前的默認數據值，通常跟 `lazy: true` 搭配使用。(回傳應與請求獲得的數據格式相同)
+  
+  - `server` 是否在服務端請求 (預設: `true`):
 
+    - 頁面載入會「服務端」請求數據。(若 `server: false` 僅會在「客戶端」請求數據，原始頁面為 `default` 或空白)。
+    - `NuxtLink` 導航會「客戶端」請求數據。
 
-```vue {8}
+  - `transform` 加工回傳數據函式:
+
+    函式自帶的參數為 **回傳**的數據，可以加工後再 `return` 使用。
+
+```vue
 <template>
   <div>
     {{ data }}
@@ -56,12 +92,38 @@ const data = await $fetch('/api/v1/....')
 </template>
 
 <script setup>
-const { data } = await useAsyncData('userList', () => $fetch('https://4fef-61-220-84-123.ngrok.io/user'))
+const apiUrl = 'https://f48b-61-220-84-123.ngrok.io/user'
+const res = reactive({ data: [] })
+
+const options = {
+  // 懶加載
+  lazy: true, 
+
+  // 數據預設值
+  default: () => ({ id: '--', name: '--' }), 
+
+  // 服務端請求
+  server: true, 
+
+  // 加工回傳數據
+  transform: (value) => { 
+    const cloneValue = { ...value }
+    cloneValue.transform = 'Ya'
+    return cloneValue
+  },
+}
+
+const { data } = await useAsyncData('userList', () => $fetch(apiUrl), options)
+res.data = data
 </script>
 ```
 
+:::tip 基本操作
+- 頁面載入時僅會在 `server 端` 請求數據來渲染頁面。
+- `<NuxtLink>` 導航頁面，僅會在 `client 端` 請求數據。
+:::
 
-:::danger 注意
+:::danger 警示
 這是 **阻塞型** 請求，在得到請求 **回傳** 後才會開始渲染頁面內容，在此之前會是「空白」頁面。
 
 在 `options` 中加入 `lazy: true` 可解決這個部分。
