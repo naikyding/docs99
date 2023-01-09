@@ -80,20 +80,34 @@ const domText = useState('user', () => res.data)
     - 頁面載入會「服務端」請求數據。(若 `server: false` 僅會在「客戶端」請求數據，原始頁面為 `default` 或空白)。
     - `NuxtLink` 導航會「客戶端」請求數據。
 
-  - `transform` 加工回傳數據函式:
+  - `transform` 加工 `handler` 回傳數據的函式:
 
     函式自帶的參數為 **回傳**的數據，可以加工後再 `return` 使用。
+
+  - `pick` 指定取得欄位資料 (`[ resultKey ]`):  
+
+    `handler` 回傳資料的欄位，包含 `transform` 的處理。
+
+  - `watch` 監聽響應式的資料 (`[ref, reactive]`) 來自動打 api。
+
+    當陣列內的「值」發生變化時，將會重新請求 `handler` 刷新資料。
 
 ```vue
 <template>
   <div>
     {{ data }}
+
+    <button @click="refresh ++"> REFRESH </button>
+    <button @click="refreshBtn = !refreshBtn"> REFRESH (refreshBtn)</button>
   </div>
 </template>
 
 <script setup>
 const apiUrl = 'https://f48b-61-220-84-123.ngrok.io/user'
 const res = reactive({ data: [] })
+
+const refresh = ref(1)
+const refreshBtn = ref(true)
 
 const options = {
   // 懶加載
@@ -111,6 +125,12 @@ const options = {
     cloneValue.transform = 'Ya'
     return cloneValue
   },
+
+  // 指定回傳資料欄位 (只取 'name' 的資料)
+  pick: ['name'],
+
+  // 監聽數據來重新請求
+  watch: [refresh, refreshBtn]
 }
 
 const { data } = await useAsyncData('userList', () => $fetch(apiUrl), options)
