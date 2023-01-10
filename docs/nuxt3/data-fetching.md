@@ -76,10 +76,10 @@ const domText = useState('user', () => res.data)
 
 ### useAsyncData( `key`, `handler`, `options`)
 
-### 傳參:
+### 參數:
 
 - **`key` 唯一值密鑰 :** 確保重新請求時，正確刪去之前請求舊的數據資料。
-- **`handler` 非同步執行函式 :** 打 API 或加功數據資料的地方 (可以組合 `$fetch` 使用)。
+- **`handler` 非同步執行函式 :** 打 API 或加功數據資料的地方 (組合 `$fetch` 使用)。
 - **`options` 選項 :** 
   - `lazy` 懶加載 (默認 `false`):
 
@@ -190,16 +190,98 @@ const {
 若不在服務端請求數據 `option.server: false`，那 `<script setup />` 中的 `data` 為是為 `null`。
 :::
 
+## useFetch 請求數據封裝
+在頁面、組件、封裝邏輯都可以使用，是將 `useAsyncData` 與 `$fetch` 包裝在一個更簡單請求數據的函式，只需要 api `URL` 就可以使用了。
+在 `useFetch` 中，會自動產生 `key` 來對應請求的數據更新。
 
+### useFetch(`url`, `options`)
 
-## useFetch
+```js
+const apiUrl = '/user'
 
+const options = {
+  baseURL: 'https://ed91-61-220-84-123.ngrok.io'
+  method: 'post',
+  headers: { 'test-header': 'test' },
+  query: { query: 'test' },
+  params: {params: 'test'},
+  body: { id: 111, name: 999 },
 
-## useLazyData
+  default: () => ({ id: '--', name: '--' }), // 數據預設值
+  server: true, // 服務端請求
+  transform: (value) => { // 加工回傳數據
+    const cloneValue = { ...value }
+    cloneValue.transform = 'Ya'
+    return cloneValue
+  },
+  pick: ['name'],
+  watch: [refreshBtn],
+  // server: false,
+  // immediate: false
+}
 
+const {  data, pending, refresh, error } = await useFetch(apiUrl, options)
+```
+
+### 參數
+- `url` API 請求連結
+- **`options` 選項 (1/2):**
+  - `baseURL` {string} 基本請求 URL (與 `axios` 相同)
+  - `method` {string} 請求方法 (`get`'、`post`…)
+  - `headers` {object} 請求頭部
+  - `search` 請求連結加上 `query` 參數。
+  - `params` 與 `search` 相同，擇一使用即可。
+  - `body` {string / object} 若傳入 `物件` 自動轉換成字串。
+
+- **`options` 選項 (2/2): (與 [useAsyncData 非同步請求數據](/nuxt3/data-fetching#useasyncdata-非同步請求數據) 相同)** 
+  - `key` 唯一值密鑰: 確保重新請求時，正確刪去之前請求舊的數據資料 (供 `useAsyncData` 使用)。
+  - `lazy` 懶加載 (默認 `false`):
+
+    是否在路由加載後再 **非同步請求**，而不阻塞客戶端導航到頁面。
+
+  - `default` 默認值 (工廠函式):
+
+    回傳還沒執行 「非同步執行函式」 前的默認數據值，通常跟 `lazy: true` 搭配使用。(回傳應與請求獲得的數據格式相同)
+  
+  - `server` 是否在服務端請求 (預設: `true`):
+
+    - 頁面載入會「服務端」請求數據。(若 `server: false` 僅會在「客戶端」請求數據，原始頁面為 `default` 或空白)。
+    - `NuxtLink` 導航會「客戶端」請求數據。
+
+  - `transform` 加工 `handler` 回傳數據的函式:
+
+    函式自帶的參數為 **回傳**的數據，可以加工後再 `return` 使用。
+
+  - `pick` 指定取得欄位資料 (`[ resultKey ]`):  
+
+    `handler` 回傳資料的欄位，包含 `transform` 的處理。
+
+  - `watch` 監聽響應式的資料 (`[ref, reactive]`) 來自動打 api。
+
+    當陣列內的「值」發生變化時，將會重新請求 `handler` 刷新資料。
+
+  - `immediate` 即時觸發 (預設 `true`)
+
+    當 `immediate: false` 會避免 **立即** 觸發請求。(但事件觸發不影響)
+
+### 回傳值
+- `data` 請求回傳的數據，若回傳且有設置 `option.default` 則會是預設值。
+- `pending` {boolean} 是否仍在獲取數據。
+- `refresh` {func} 重新執行請求數據函式 (`handler`)。
+
+  預設情況下 `refresh` 函式，必須執行完成才可以再次執行。
+
+- `error` {object} 請求錯誤信息，若無錯誤為 `null`。
+
+:::warning 注意
+若你提供 url 的方式是 `function` 、 `ref` 響應式 或 `options` 設置本身就是一個 `function`，在使用 `useFetch` 時看起來就算是一樣，但數據還是不會匹配來做更新。如果是這樣的情況，必須要為 `useFetch` 設置上 `key`來確保這種事情的發生。
+:::
+
+## useLazyFetch
 
 ## useLazyAsyncData
 
 ## Reference
 - [Nuxt3 Data Fetching](https://nuxt.com/docs/getting-started/data-fetching)
 - [[Day 15] Nuxt 3 資料獲取 (Data Fetching)](https://ithelp.ithome.com.tw/articles/10301876)
+- [[Day 11] Nuxt3 的 AJAX 家族：useAsyncData、useFetch、useLazyFetch、useLazyAsyncData](https://ithelp.ithome.com.tw/articles/10298741)
