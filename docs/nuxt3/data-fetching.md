@@ -233,6 +233,8 @@ const {  data, pending, refresh, error } = await useFetch(apiUrl, options)
   - `params` 與 `search` 相同，擇一使用即可。
   - `body` {string / object} 若傳入 `物件` 自動轉換成字串。
 
+    有傳 `body` 的情況下，一定要設置方法 (ex: `method: 'post'`) ，不然無法請求。
+
 - **`options` 選項 (2/2): (與 [useAsyncData 非同步請求數據](/nuxt3/data-fetching#useasyncdata-非同步請求數據) 相同)** 
   - `key` 唯一值密鑰: 確保重新請求時，正確刪去之前請求舊的數據資料 (供 `useAsyncData` 使用)。
   - `lazy` 懶加載 (默認 `false`):
