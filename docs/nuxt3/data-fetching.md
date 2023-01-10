@@ -63,7 +63,21 @@ const domText = useState('user', () => res.data)
 ## useAsyncData 非同步請求數據
 在組件、頁面、或套件，都可以使用 `useAsyncData` 來進行「非同步」取得數據。
 
+:::tip 基本操作
+- 頁面載入時僅會在 `server 端` 請求數據來渲染頁面。
+- `<NuxtLink>` 導航頁面，僅會在 `client 端` 請求數據。
+:::
+
+:::danger 警示
+這是 **阻塞型** 請求，在得到請求 **回傳** 後才會開始渲染頁面內容，在此之前會是「空白」頁面。
+
+在 `options` 中加入 `lazy: true` 可解決這個部分。
+:::
+
 ### useAsyncData( `key`, `handler`, `options`)
+
+### 傳參:
+
 - **`key` 唯一值密鑰 :** 確保重新請求時，正確刪去之前請求舊的數據資料。
 - **`handler` 非同步執行函式 :** 打 API 或加功數據資料的地方 (可以組合 `$fetch` 使用)。
 - **`options` 選項 :** 
@@ -92,6 +106,11 @@ const domText = useState('user', () => res.data)
 
     當陣列內的「值」發生變化時，將會重新請求 `handler` 刷新資料。
 
+  - `immediate` 即時觸發 (預設 `true`)
+
+    當 `immediate: false` 會避免 **立即** 觸發請求。(但事件觸發不影響)
+
+:::details Template
 ```vue
 <template>
   <div>
@@ -101,7 +120,10 @@ const domText = useState('user', () => res.data)
     <button @click="refreshBtn = !refreshBtn"> REFRESH (refreshBtn)</button>
   </div>
 </template>
+```
+:::
 
+```vue {9-34}
 <script setup>
 const apiUrl = 'https://f48b-61-220-84-123.ngrok.io/user'
 const res = reactive({ data: [] })
@@ -109,6 +131,7 @@ const res = reactive({ data: [] })
 const refresh = ref(1)
 const refreshBtn = ref(true)
 
+// useAsyncData options
 const options = {
   // 懶加載
   lazy: true, 
@@ -130,7 +153,10 @@ const options = {
   pick: ['name'],
 
   // 監聽數據來重新請求
-  watch: [refresh, refreshBtn]
+  watch: [refresh, refreshBtn],
+
+  // 即時請求
+  immediate: false
 }
 
 const { data } = await useAsyncData('userList', () => $fetch(apiUrl), options)
@@ -138,16 +164,33 @@ res.data = data
 </script>
 ```
 
-:::tip 基本操作
-- 頁面載入時僅會在 `server 端` 請求數據來渲染頁面。
-- `<NuxtLink>` 導航頁面，僅會在 `client 端` 請求數據。
+:::tip 提醒
+若前往的路由，請求數據為 `lazy: false` 會阻止前往的導航，直到取得數據，為了用戶的使用體驗感受，建議使用 `lazy: true`。
 :::
 
-:::danger 警示
-這是 **阻塞型** 請求，在得到請求 **回傳** 後才會開始渲染頁面內容，在此之前會是「空白」頁面。
+### 回傳值
+- `data` 請求回傳的數據，若回傳且有設置 `option.default` 則會是預設值。
+- `pending` {boolean} 是否仍在獲取數據。
+- `refresh` {func} 重新執行請求數據函式 (`handler`)。
 
-在 `options` 中加入 `lazy: true` 可解決這個部分。
+  預設情況下 `refresh` 函式，必須執行完成才可以再次執行。
+
+- `error` {object} 請求錯誤信息，若無錯誤為 `null`。
+
+```js
+const { 
+  data,
+  pending,
+  refresh,
+  error
+} = await useAsyncData('userList', () => $fetch(apiUrl))
+```
+
+:::warning 注意
+若不在服務端請求數據 `option.server: false`，那 `<script setup />` 中的 `data` 為是為 `null`。
 :::
+
+
 
 ## useFetch
 
