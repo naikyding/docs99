@@ -190,7 +190,7 @@ const {
 若不在服務端請求數據 `option.server: false`，那 `<script setup />` 中的 `data` 為是為 `null`。
 :::
 
-## useFetch 請求數據封裝
+## useFetch 組合式請求數據
 在頁面、組件、封裝邏輯都可以使用，是將 `useAsyncData` 與 `$fetch` 包裝在一個更簡單請求數據的函式，只需要 api `URL` 就可以使用了。
 在 `useFetch` 中，會自動產生 `key` 來對應請求的數據更新。
 
@@ -269,6 +269,8 @@ const {  data, pending, refresh, error } = await useFetch(apiUrl, options)
 ### 回傳值
 - `data` 請求回傳的數據，若回傳且有設置 `option.default` 則會是預設值。
 - `pending` {boolean} 是否仍在獲取數據。
+
+  常見使用在是否顯示 `loading` 畫面 `v-if="pending"`。
 - `refresh` {func} 重新執行請求數據函式 (`handler`)。
 
   預設情況下 `refresh` 函式，必須執行完成才可以再次執行。
@@ -279,7 +281,102 @@ const {  data, pending, refresh, error } = await useFetch(apiUrl, options)
 若你提供 url 的方式是 `function` 、 `ref` 響應式 或 `options` 設置本身就是一個 `function`，在使用 `useFetch` 時看起來就算是一樣，但數據還是不會匹配來做更新。如果是這樣的情況，必須要為 `useFetch` 設置上 `key`來確保這種事情的發生。
 :::
 
+### 攔截器 interceptors
+`useFetch` 在請求方法中，`options` 也提供了幾個 `hook`，可以針對 「請求前」、「獲得回傳」來處理特定事件: [參考 interceptors](https://github.com/unjs/ofetch#%EF%B8%8F-interceptors)
+
+- `onRequest` 請求前處理: 一旦請求就會馬上執行。
+- `onRequestError` 請求前發生錯誤執行
+- `onResponse` 處理回傳數據，一旦得到回傳執行。
+
+  在此處理回傳數據 `response._data`，會造成 `onResponseError` 無法正常運作。
+
+- `onResponseError` 獲取回傳錯誤
+
+  就算回傳錯誤，還是會進入 `onResponse` 這個 `hook`，只是數據不會回傳。
+
+```js
+const apiUrl = '/user'
+
+const options = {
+  baseURL: 'https://www.example.com',
+
+  onRequest({ request, options }) {
+    console.log(request) // /user <- 請求的 `url`
+
+    // 設置請求 headers
+    options.headers = { ...options.headers, Authorization: '111222333' }
+
+    // 請求 log
+    console.log(`[Fetch Request] /api${request}`, options, new Date())
+  },
+
+  onRequestError({ request, options, error }) {
+    console.log(error)
+  },
+
+  onResponse({ request, response, options }) {
+    console.log(request) // 請求的完整連結 request === response.url
+
+    // 回傳 log
+    console.log(`[Fetch Response] ${request}`, response._data, new Date())
+    
+    return response._data
+  },
+
+  onResponseError({ request, response, options }) {
+    console.log('[------- fetch response error -------]', request, response.status, response._data)
+  },
+}
+
+const { data, pending, refresh } = await useFetch(apiUrl, options)
+```
+
+:::warning 注意
+當 `onRequest` 直接對 `headers` 內容賦值的話，`onRequestError` 會報錯。
+
+```js {2}
+onRequest({ request, options }) {
+  options.headers.Authorization = '...'
+}
+```
+
+`onRequestError` 錯誤:
+```
+DOMException: Failed to execute 'fetch' on 'Window': The user aborted a request.
+at $fetchRaw2
+```
+
+**解決方式**
+
+整個 `headers` 重新賦值。
+```js {2}
+onRequest({ request, options }) {
+  options.headers = { ...options.headers, Authorization: '111222333' }
+}
+```
+:::
+
 ## useLazyFetch
+與 [useFetch 組合式請求數據](/nuxt3/data-fetching#usefetch-組合式請求數據) 功能一樣，就只是在 `options` 設置了 `lazy: true` 而已。這會讓路由導航不會因為等待請求的數據而 **延後渲染畫面**，相反的必須處理 **數據為空** 的情況，`options.default` 可以設置數據為空的默認值。
+
+```vue
+<template>
+  <div v-if="pending">
+    Loading...
+  </div>
+
+  <div v-else>
+    {{ data }}
+  </div>
+</template>
+
+<script setup>
+const apiUrl = '...'
+const options = { ... }
+
+const { data, pending } = await useLazyFetch(apiUrl, options)
+</script>
+```
 
 ## useLazyAsyncData
 
