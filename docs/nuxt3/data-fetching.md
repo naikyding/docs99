@@ -1,6 +1,10 @@
 # 資料獲取 Data Fetching
 過去可能會使用 `AXIOS` 來打 `api`，而 `Nuxt3` 提供了下列幾種打 `api` 的方法，這些方式只在 `setup` 或 生命週期內可以使用。
 
+:::tip 簡單說
+使用 `useFetch` 會是最靈活的方法。
+:::
+
 :::danger 注意
 `nuxt3` 啟動服務器在 `localhost:3000`，若本機同時啟動「API 服務端」在 `localhost:xxxx` 供應用程式 **請求** 的話，可能會受到無法連線的影響。最好避開應用程式使用的服務。 (`nuxt3` 服務同時為 `baseUrl`)
 :::
@@ -388,12 +392,19 @@ const { data, pending } = await useLazyFetch(apiUrl, options)
 「參數」、「回傳值」與「攔截器」與 [useFetch 組合式請求數據](/nuxt3/data-fetching#usefetch-組合式請求) 相同。
 :::
 
+:::warning 注意
+在這個方法下，就無法在 `options` 再設置 `lazy: false`。
+:::
+
 ## useLazyAsyncData 懶加載非同步請求
 與 [useAsyncData 非同步請求](/nuxt3/data-fetching#useasyncdata-非同步請求) 功能一樣，就只是在 `options` 預設了 `lazy: true` 而已。這會讓路由導航不會因為等待請求的數據而 **延後渲染畫面**，相反的必須處理 **數據為空** 的情況，`options.default` 可以設置數據為空的默認值。
 
 ```js
 const { pending, data } = useLazyAsyncData('count', () => $fetch('/api/count'))
 ```
+:::warning 注意
+在這個方法下，就無法在 `options` 再設置 `lazy: false`。
+:::
 
 ## Reference
 - [ohmyfetch](https://github.com/unjs/ofetch#%EF%B8%8F-interceptors)
