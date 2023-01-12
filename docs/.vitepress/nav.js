@@ -40,10 +40,6 @@ export const getNuxt3Nav = () => ({
           text: 'Head 設置 (SEO and Meta)',
           link: '/nuxt3/seo-and-meta'
         },
-        {
-          text: '資料獲取 Data Fetching',
-          link: '/nuxt3/data-fetching'
-        }
       ]
     },
     {
@@ -73,6 +69,19 @@ export const getNuxt3Nav = () => ({
         {
           text: 'Middleware 中間件',
           link: '/nuxt3/middleware'
+        }
+      ]
+    },
+    {
+      text: 'Data',
+      items: [
+        {
+          text: '資料獲取 Data Fetching',
+          link: '/nuxt3/data-fetching'
+        },
+        {
+          text: '狀態管理 useState',
+          link: '/nuxt3/use-state'
         }
       ]
     }
