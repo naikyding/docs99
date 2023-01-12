@@ -5,7 +5,7 @@
 `nuxt3` 啟動服務器在 `localhost:3000`，若本機同時啟動「API 服務端」在 `localhost:xxxx` 供應用程式 **請求** 的話，可能會受到無法連線的影響。最好避開應用程式使用的服務。 (`nuxt3` 服務同時為 `baseUrl`)
 :::
 
-## $fetch 基本請求數據
+## $fetch 基本請求
 這是 `nuxt3` 請求 api 方法，可以直接在 `nuxt` 中直接 HTTP 請求資源。
 
 ### $fetch( `apiUrl`, `options` )
@@ -60,7 +60,7 @@ const domText = useState('user', () => res.data)
 這是 **阻塞型** 請求，在得到請求 **回傳** 後才會開始渲染頁面內容，在此之前會是「空白」頁面。
 :::
 
-## useAsyncData 非同步請求數據
+## useAsyncData 非同步請求
 在組件、頁面、或套件，都可以使用 `useAsyncData` 來進行「非同步」取得數據。
 
 :::tip 基本操作
@@ -190,7 +190,7 @@ const {
 若不在服務端請求數據 `option.server: false`，那 `<script setup />` 中的 `data` 為是為 `null`。
 :::
 
-## useFetch 組合式請求數據
+## useFetch 組合式請求
 在頁面、組件、封裝邏輯都可以使用，是將 `useAsyncData` 與 `$fetch` 包裝在一個更簡單請求數據的函式，只需要 api `URL` 就可以使用了。
 在 `useFetch` 中，會自動產生 `key` 來對應請求的數據更新。
 
@@ -235,7 +235,7 @@ const {  data, pending, refresh, error } = await useFetch(apiUrl, options)
 
     有傳 `body` 的情況下，一定要設置方法 (ex: `method: 'post'`) ，不然無法請求。
 
-- **`options` 選項 (2/2): (與 [useAsyncData 非同步請求數據](/nuxt3/data-fetching#useasyncdata-非同步請求數據) 相同)** 
+- **`options` 選項 (2/2): (與 [useAsyncData 非同步請求](/nuxt3/data-fetching#useasyncdata-非同步請求) 相同)** 
   - `key` 唯一值密鑰: 確保重新請求時，正確刪去之前請求舊的數據資料 (供 `useAsyncData` 使用)。
   - `lazy` 懶加載 (默認 `false`):
 
@@ -266,6 +266,8 @@ const {  data, pending, refresh, error } = await useFetch(apiUrl, options)
 
     當 `immediate: false` 會避免 **立即** 觸發請求。(但事件觸發不影響)
 
+  - `retry` 重新請求 (預設 `undefined`)，當 `onResponseError` 時，會再重新請求一次。
+
 ### 回傳值
 - `data` 請求回傳的數據，若回傳且有設置 `option.default` 則會是預設值。
 - `pending` {boolean} 是否仍在獲取數據。
@@ -292,7 +294,11 @@ const {  data, pending, refresh, error } = await useFetch(apiUrl, options)
 
 - `onResponseError` 獲取回傳錯誤
 
-  就算回傳錯誤，還是會進入 `onResponse` 這個 `hook`，只是數據不會回傳。
+  就算回傳錯誤 `onResponse` 這個 `hook` 還是會觸發。
+
+:::warning onResponseError 請求兩次
+預設情況`onResponseError` 觸發後錯誤，會再執行一次 **重新請求** 重新跑一次，而在第二次 (最後一次) 請求的 `options` 內可以看到 `retry: 0`，原因是預設 **發生錯誤** 會再重新請求一次，若不需要可以在請求加上 `retry: 0` ，這樣就算發生請求錯誤，也就只會請求一次。 [參考](https://github.com/unjs/ofetch/issues/109)
+:::
 
 ```js
 const apiUrl = '/user'
@@ -356,8 +362,8 @@ onRequest({ request, options }) {
 ```
 :::
 
-## useLazyFetch
-與 [useFetch 組合式請求數據](/nuxt3/data-fetching#usefetch-組合式請求數據) 功能一樣，就只是在 `options` 設置了 `lazy: true` 而已。這會讓路由導航不會因為等待請求的數據而 **延後渲染畫面**，相反的必須處理 **數據為空** 的情況，`options.default` 可以設置數據為空的默認值。
+## useLazyFetch 懶加載組合式請求
+與 [useFetch 組合式請求](/nuxt3/data-fetching#usefetch-組合式請求) 功能一樣，就只是在 `options` 預設了 `lazy: true` 而已。這會讓路由導航不會因為等待請求的數據而 **延後渲染畫面**，相反的必須處理 **數據為空** 的情況，`options.default` 可以設置數據為空的默認值。
 
 ```vue
 <template>
@@ -378,9 +384,19 @@ const { data, pending } = await useLazyFetch(apiUrl, options)
 </script>
 ```
 
-## useLazyAsyncData
+:::tip 提示
+「參數」、「回傳值」與「攔截器」與 [useFetch 組合式請求數據](/nuxt3/data-fetching#usefetch-組合式請求) 相同。
+:::
+
+## useLazyAsyncData 懶加載非同步請求
+與 [useAsyncData 非同步請求](/nuxt3/data-fetching#useasyncdata-非同步請求) 功能一樣，就只是在 `options` 預設了 `lazy: true` 而已。這會讓路由導航不會因為等待請求的數據而 **延後渲染畫面**，相反的必須處理 **數據為空** 的情況，`options.default` 可以設置數據為空的默認值。
+
+```js
+const { pending, data } = useLazyAsyncData('count', () => $fetch('/api/count'))
+```
 
 ## Reference
+- [ohmyfetch](https://github.com/unjs/ofetch#%EF%B8%8F-interceptors)
 - [Nuxt3 Data Fetching](https://nuxt.com/docs/getting-started/data-fetching)
 - [[Day 15] Nuxt 3 資料獲取 (Data Fetching)](https://ithelp.ithome.com.tw/articles/10301876)
 - [[Day 11] Nuxt3 的 AJAX 家族：useAsyncData、useFetch、useLazyFetch、useLazyAsyncData](https://ithelp.ithome.com.tw/articles/10298741)
