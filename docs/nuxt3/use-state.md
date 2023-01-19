@@ -64,7 +64,7 @@ Hydration completed but contains mismatches.
 
 ### useState(`key`, `init`)
 
-- `key` 唯一值密鑰，用來識別要取得的數據
+- `key` 唯一值密鑰，用來識別數據
 - `init` 初始值 (函式)
 
 ```vue
@@ -131,6 +131,56 @@ const data = useState('count')
 :::warning 注意
 若設置 `默認值` 則為 `undefined`。
 :::
+
+## 封裝使用
+可以在 `composables/` 目錄封裝共享狀態。
+
+### type1 命名輸出
+
+`/composables/useState.js`
+
+```js
+export const useCount = () => useState('count', () => 1)
+export const useNum = () => useState('num', () => 9)
+```
+
+`/page1.vue`
+
+```vue
+<template>
+  <div>
+    <div>{{ count }}</div>
+    <div>{{ num }}</div>
+  </div>
+</template>
+
+<script setup>
+const count = useCount()
+const num = useNum()
+</script>
+```
+
+### type2 默認輸出
+
+`/composable/useCount.js`
+
+```js
+export default function () {
+  return useState('count', () =>1)
+}
+```
+
+```vue
+<template>
+  <div>
+    <div>{{ count }}</div>
+  </div>
+</template>
+
+<script setup>
+const count = useCount()
+</script>
+```
 
 ## Reference
 
