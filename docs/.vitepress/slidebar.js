@@ -310,7 +310,7 @@ export const getCssSidebar = () => ({
       link: '/css/grid-item'
     },
     {
-      text: '移動裝置高度填滿',
+      text: '動態視窗填滿 dvh',
       link: '/css/mobile-viewport'
     }
   ]

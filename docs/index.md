@@ -102,7 +102,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [滑鼠任意拖拽元素停留效果](/css/mouse-follow-drag)
 - [特殊實用功能](/css/special-api)
 - [Flexbox 彈性盒子](/css/flex)
-- [移動裝置高度填滿](/css/mobile-viewport)
+- [動態視窗填滿 dvh](/css/mobile-viewport)
 
 ### Grid 網格系統佈局
 
