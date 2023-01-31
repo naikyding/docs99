@@ -23,6 +23,12 @@ HTTP 壓縮是 `網頁伺服器` 與 `瀏覽器` 之間改進傳輸速度的方�
 ![](/Browser/img/HTTP-compression-fllow.png)
 [圖片出處](https://kadiska.com/using-http-compression-to-improve-web-performance/)
 
+:::warning 壓縮方式
+HTTP 中有兩種壓縮方式:
+- `Transfer-Encoding` 較低層級，部分瀏覽器不支援。
+- `Content-Encoding` 較高層級，廣範支援。 ✅
+:::
+
 ## Reference
 - [Using HTTP compression to improve web performance](https://kadiska.com/using-http-compression-to-improve-web-performance/)
 - [HTTP壓縮 WIKI](https://zh.wikipedia.org/zh-tw/HTTP%E5%8E%8B%E7%BC%A9)
