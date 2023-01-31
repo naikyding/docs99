@@ -63,7 +63,7 @@ export const getBrowserSidebar = () => ({
     },
     {
       text: 'HTTP 請求壓縮',
-      link: '/Browser/http-zip'
+      link: '/Browser/http-compression'
     },
   ]
 })
