@@ -61,6 +61,10 @@ export const getBrowserSidebar = () => ({
       text: '正向代理與反向代理',
       link: '/Browser/proxy'
     },
+    {
+      text: 'HTTP 請求壓縮',
+      link: '/Browser/http-zip'
+    },
   ]
 })
 
