@@ -98,7 +98,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 
 **Perf**
 
-- [打包壓縮檔 gzip](/Vue/vue-build-compression)
+- [打包壓縮檔](/Vue/vue-build-compression)
 
 ## CSS
 

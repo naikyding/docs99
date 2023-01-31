@@ -159,7 +159,7 @@ export const getVueNav = () => ({
       text: 'Perf',
       items: [
         {
-          text: '打包壓縮檔 gzip',
+          text: '打包壓縮檔',
           link: '/Vue/vue-build-compression'
         }
       ]

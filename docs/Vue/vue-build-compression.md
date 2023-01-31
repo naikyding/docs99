@@ -1,4 +1,4 @@
-# 打包壓縮檔 gzip
+# 打包壓縮檔
 
 ## 說明
 
@@ -28,7 +28,7 @@ import viteCompression from 'vite-plugin-compression'
 
 export default defineConfig({
   plugins: [
-    // 預設壓縮方式
+    // 預設壓縮方式 GZIP
     viteCompression(),
     // 大於 1mb 的文件進行壓縮
     // viteCompression({
