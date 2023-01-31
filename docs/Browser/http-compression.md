@@ -29,6 +29,12 @@ HTTP 中有兩種壓縮方式:
 - `Content-Encoding` 較高層級，廣範支援。 ✅
 :::
 
+## 實際應用
+當網頁應用程式想要提升載入速度，有兩個方案:
+- 前端專案打包生成 `gzip` 檔案 (`.gz`)，再經由 `nginx` 設置提供 `客戶端` 使用。 (文件體積大)
+- `服務端` 直接壓縮 `gzip` 提供 `客戶端` 使用。 (耗效能)
+
 ## Reference
 - [Using HTTP compression to improve web performance](https://kadiska.com/using-http-compression-to-improve-web-performance/)
 - [HTTP壓縮 WIKI](https://zh.wikipedia.org/zh-tw/HTTP%E5%8E%8B%E7%BC%A9)
+- [vue打包时gzip压缩的两种方案](https://juejin.cn/post/6885513630583324680)

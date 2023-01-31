@@ -96,6 +96,10 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [產生 Apple 登入按鈕](/Vue/apple-signin-button)
 - [LINE LIFF 應用程式](/Vue/liff)
 
+**Perf**
+
+- [打包壓縮檔 gzip](/Vue/vue-build-compression)
+
 ## CSS
 
 - [CSS 設計模式](/css/css-type)

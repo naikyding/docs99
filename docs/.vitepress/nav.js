@@ -154,6 +154,15 @@ export const getVueNav = () => ({
           link: '/Vue/liff'
         }
       ]
+    },
+    {
+      text: 'Perf',
+      items: [
+        {
+          text: '打包壓縮檔 gzip',
+          link: '/Vue/vue-build-compression'
+        }
+      ]
     }
   ]
 })
