@@ -2,7 +2,7 @@
 # sidebar: auto
 ---
 
-# CV 2022
+# CV 2023
 
 <style>
   svg {
@@ -11,14 +11,17 @@
 </style>
 
 ## INFO
+
 :::info Naiky Ding
+
 <div class="avatar" style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin-top: 1rem;">
-  <img src="https://www.cakeresume.com/cdn-cgi/image/fit=scale-down,format=auto,w=828/https://images.cakeresume.com/XD2zB/naikyding/a8bc480b-a153-4b60-a270-2b92d7d5262e.png">
+  <img src="https://images.cakeresume.com/XD2zB/naikyding/c27d4258-7673-488d-8da2-c24f49317d04.png">
 </div>
 
 > Taipei City University of Science & Technology (TPCU), Digital Multimedia Design
 
-從設計開始出發，具有審美意識，不斷的與公司學習成長，接觸過數位行銷、設計...。
+從設計開始出發，具有審美意識，不斷的與公司學習成長，數位行銷、品牌設計都有實務經驗。
+
 目前專注於 前端開發，熱衷於解決難題並使產品更易於使用。
 
 **對跨領域事務充滿好奇 「不怕學習，持續學習」** [學習筆記](https://bit.ly/docs_99)
@@ -48,55 +51,68 @@
 <button 
 onclick="location.href='mailto:74ding@gmail.com'"
 style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; border-radius: 8px;">
-  📨 聯絡我
+📨 聯絡我
 </button>
 
 :::
 
 ## PROJECTS
+
 ### [移動端]遊戲平台
+
 <img style="margin-top: 1rem;" src="https://images.cakeresume.com/XD2zB/naikyding/7a9ea601-4e66-4d71-8f0b-e423268ecef0.png" alt="遊戲平台">
 
-獨立開發前端專案。專案規劃、後端 api 討論與調整及前端部署配置，專案風格制定, 可依站台配置動態顯示與資料處理。
+獨立開發前端專案。專案規劃、後端 api 討論與調整及前端部署配置，專案風格制定, 可依後台配置動態顯示樣板。
 
-特色: 
-- 依站台主題設置，動態換色 (亮/暗/色系組合/漸層組合) 
-- 主頁依站台客製化顯示樣式 - 單一專案共用不同站台 
-- 依需求動態取得遊戲 
-- 多樣化金流類型 - 動態客戶服務導向 
-- 動態個人資料驗証方式 
-- 多國語系 
+特色:
 
-專案技術: 
-- Vue js - Vuetify Design Framework 
-- eslint / stylelint 專案格式控管 
-- gitflow 工作流 (feat br / PR) 
-- i18n 多國語系，導入 excel doc 統一管理 
-- Drone CI 自動部署 / 管理 
+- 依站台主題設置，動態換色 (亮/暗/色系組合/漸層組合)
+- 依後台設置動態顯示前台樣式，單一專案共用不同站台
+- 多樣化金流類型 - 動態客戶服務導向
+- 動態個人資料驗証方式
+- 多國語系
+
+專案技術:
+
+- Vue js - Vuetify Design Framework
+- eslint / stylelint 專案格式控管
+- gitflow 工作流 (feat br / PR)
+- i18n 多國語系，導入 excel doc 統一管理
+- Drone CI 自動部署 / 管理
 - 文件編寫 : wiki / release / jsdoc
 
-### MetaWall
+<hr/>
+
+### 社群平台
+
 <a href="https://meta-wall.vercel.app" target="_blank">
   <img style="margin-top: 1rem;" src="https://i.imgur.com/0r2NF4b.png" alt="社群平台">
 </a>
 
 🌐 https://meta-wall.vercel.app
 
-使用 Vue3 + NodeJS + MongoDB 開發常見的社群平台
-
-全端開發:
-- 前端 Vue3 + Pinia
-- 後端 Node JS
-- 資料庫 MongoDB
+使用 Vue3 + NodeJS + MongoDB 開發社群平台
 
 特色:
-- Imgur 圖床串接
+
+- 留言 / 追踨 / 喜愛
+- 上傳圖像留言
+- 第三方登入功能 (google / apple)
+
+開發技術:
+
+- Vue3 ∙ Pinia frontend
+- Node.js ∙ Expressjs backend
+- MongoDB ∙ Mongoose database
+- Restful API
 - JWT 登入機制
-- Google、Facebook 第三方登入
-- Restful API 串接
-- MongoDB for database
+- Imgur 圖床串接
+- Tailwind CSS
+
+<hr/>
 
 ### Online Store
+
 <a href="https://bit.ly/nikedinVue" targe="_blank">
   <img style="margin-top: 1rem;" src="https://images.cakeresume.com/XD2zB/naikyding/9970ea3f-60d4-43dd-be3d-4251762e4bf4.png" alt="電商網站">
 </a>
@@ -104,17 +120,19 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 🌐 https://bit.ly/nikedinVue
 
 獨立開發電商網站，包含版面設計、前端處理、後端 api 製作、資料庫建置。
-Vue CLI 為專案架構製作、Vuex 管理共同資料(購物車資料...等)、Vue Router 控制頁面路由名稱，後台 統一整合由 `admin/api.js` 操作後端 API 動作，再經由 SweetAlert 互動顯示操作狀態。 
+Vue CLI 為專案架構製作、Vuex 管理共同資料(購物車資料...等)、Vue Router 控制頁面路由名稱，後台 統一整合由 `admin/api.js` 操作後端 API 動作，再經由 SweetAlert 互動顯示操作狀態。
 
 全端開發:
+
 - 前端 VueJS
 - 後端 PHP
 - 資料庫 MySQL
 
-特色: 
+特色:
 前端由 AXIOS 後端 API 互動； 後端使用 PHP PDO 技術連線 MySQL 操作 SQL CRUD 亦針對 SQL injection 防護。
 
 ## SKILLS
+
 <!-- |Web Dev|Desgin / Image processing|
 |-|-|
 |**Javascript**|**PS** 影像處理|
@@ -125,6 +143,7 @@ Vue CLI 為專案架構製作、Vuex 管理共同資料(購物車資料...等)�
 |**MongoDB** Mongoose| **Shapr3D** 工業設計 | -->
 
 ### Web Dev
+
 - **Javascript**
 - **Vue JS** Vue CLI、Vuex、Vue-Router
 - **Vuetify** / **Tailwind**
@@ -133,21 +152,37 @@ Vue CLI 為專案架構製作、Vuex 管理共同資料(購物車資料...等)�
 - **MongoDB** Mongoose
 
 ### Desgin / Image processing
+
 - **PS** 影像處理
 - **Ai** 數位設計
 - **Lr** 影像處理
 - **Pr** 影片編輯
 - **Final Cut Pro** 影片編輯
-- **Shapr3D** 工業設計 
+- **Shapr3D** 工業設計
 
 ## WORK EXPERIENCE
 
 :::info 🟢 NOW
 
-### **** CO., LTD. 
-<h3 style="display: inline-block; margin-top: 0;">Frontend</h3> 2020/07 ~ 至今 (2年1個月)
+### \*\*\*\* CO., LTD.
 
-> 遊戲平台開發與維護。前端開發、專案規劃、後端 api 討論與調整及前端部署配置，專案風格制定。獨立作業，成功為公司節省一員人力配置。
+<h3 style="display: inline-block; margin-top: 0;">Frontend</h3> 2020/07 ~ 在職中 (2年7個月)
+
+> 遊戲平台開發與維護。前端開發與專案規劃、後端 api 討論與調整及部署配置。獨立作業且成功為公司節省一名人力配置。
+
+內容：
+
+- 依需求規劃專案架構
+- 代碼風格管理引入
+- 導入 Drone CI 持續整合與部署
+- LINE LIFF 導入
+- WebviewAPP 與 WEB 功能串接
+- 行動裝置開發與故障排除
+- 前台動態樣式組件開發
+- 依後台設置，前台動態樣板切換。
+- i18n 多國語系開發，由 Google doc 統一管理，方便非開發者編輯與後續資料整合。
+- Trello / Notion 工作管理
+- 獨立開發前端專案
 
 <div style="display: flex; justify-content: center;">
   <img width="33%" height="auto" src="https://imgur.com/uB9AH3f.gif">
@@ -155,24 +190,10 @@ Vue CLI 為專案架構製作、Vuex 管理共同資料(購物車資料...等)�
   <img width="33%" height="auto" src="https://i.imgur.com/MhsHxbE.gif">
 </div>
 
-平均數據：
-- 4+ commit/日
-- 1+ release/周
-
-工作主責：
-- 獨立開發全新專案
-- 依需求設置專案架構與規劃
-- stylelint / eslint 代碼風格管理
-- 導入 Drone CI 持續整合與部署
-- 請求邏輯封裝，統一 API 出口
-- vuetify 可依後台「主題樣式」、「色系」，達成動態元組與動態換色邏輯
-- layout 可依後台設定 ，動態載入畫面板塊與資料配置 (動態 compoents 邏輯封裝)
-- i18n 多國語系 (簡/英/泰/越)，且導出由 google doc 統一管理，方便非開發者編輯與後續資料整合。
-- gitflow 工作流
-- APP Webview 功能串接處理
 :::
 
 :::info ⚪
+
 ### GSiT CO., LTD.
 
 <h3 style="display: inline-block; margin-top: 0;">Frontend</h3> 2019/04 ~ 2019/08 (公司解散)
@@ -182,35 +203,45 @@ Vue CLI 為專案架構製作、Vuex 管理共同資料(購物車資料...等)�
 - 前端開發
 - UI 規劃 / 數位設計
 - 行銷數據分析與企畫
-:::
+  :::
 
 :::info ⚪
+
 ### VisualGoal Technology
 
 <h3 style="display: inline-block; margin-top: 0;">Frontend</h3> 2018 ~ 2019
 
 > 符合公司目標、品牌策略的 UI 設計與前端開發。
 
-- 前端開發 / UI 設計
-- Wordpress
+- 前端開發
+- UI 設計
 - 2018AMPA 台北國際汽車配件展，統籌、企劃與數位設計
 
-:::
+  ![](https://mir-s3-cdn-cf.behance.net/project_modules/fs/ef8e4777256669.5c823593b5462.png)
+  :::
 
 :::info ⚪
+
 ### China Airlines (Yestrip)
+
 <h3 style="display: inline-block; margin-top: 0;">Frontend / Marketing</h3> 2015 - 2018
 
-> 符合公司形象之前端開發、UI 設計，華航專案前端規劃與製作，集團活動專案洽談需求與規劃，依時間線專案規劃與開發交付。
+> 符合公司形象之前端開發、UI 設計，華航專案前端規劃與製作，集團活動專案洽談行銷需求與行銷企劃，依時間線專案規劃與開發交付。
 
 - 前端開發 / UI
 - 數位行銷規劃與執行 / 社群經營與線上活動企劃
 - 華航行銷案對接及活動頁面開發
 - 「五月天聯名演唱會」、「華航精緻旅遊」、「日本鹿兒島觀光局」…. 專案規劃與開發。
 
+![](https://mir-s3-cdn-cf.behance.net/project_modules/fs/569cd575267717.5c47f0d3c7f5f.png)
+
+<hr/>
+
+![](https://mir-s3-cdn-cf.behance.net/project_modules/fs/84969775267717.5c658ef5786b6.png)
 :::
 
 ## LICENCE
+
 - **[Google Analytics (分析) 認證](https://drive.google.com/file/d/1HYSJJCEjh2wQM65w4NeCgF3mJFGodGCm/view)**
 - **Adobe Photoshop ACA 國際認證**
 - **[網頁設計 技術士](https://drive.google.com/file/d/11TVbRxj034wyF-V9pnEpTbmMkYVU37dE/view?usp=sharing)**
@@ -219,3 +250,9 @@ Vue CLI 為專案架構製作、Vuex 管理共同資料(購物車資料...等)�
 - **2012「台北城市之美」全國大專院校攝影寫作比賽: 第一名、最佳攝影獎**
 - **2010「創意實務專題競賽」創意影像製作組: 佳作**
 - **[2022 「中華賽車會」賽道攝影師執照](https://www.ctmsa.org.tw/article/3210#:~:text=P22070,%E4%B8%81%E4%BF%A1%E5%AE%8F)**
+
+<button 
+onclick="location.href='mailto:74ding@gmail.com'"
+style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; border-radius: 8px;">
+📨 聯絡我
+</button>
