@@ -316,6 +316,10 @@ export const getCssSidebar = () => ({
     {
       text: '動態視窗填滿 dvh',
       link: '/css/mobile-viewport'
+    },
+    {
+      text: '字體尺吋單位 px、em、rem',
+      link: '/css/px-em-rem'
     }
   ]
 })

@@ -108,6 +108,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [特殊實用功能](/css/special-api)
 - [Flexbox 彈性盒子](/css/flex)
 - [動態視窗填滿 dvh](/css/mobile-viewport)
+- [字體尺吋單位 px、em、rem](/css/px-em-rem)
 
 ### Grid 網格系統佈局
 
