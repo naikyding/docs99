@@ -1,7 +1,17 @@
 # Pages 頁面
 
-創建 `/pages` 資料夾，且新增 `.vue` (以大駱峰命名為原則) 將自動以「檔案名稱」生成在「路由」上， `.vue` 還需要加上 `<NuxtPage />` 供路由頁面顯示。
+## 說明
 
+在 `nuxt` 中，只要在 `/pages` 資料夾，創建相關的 `.vue` 檔案(「烤肉串」命名為原則)，就可以自動生成 `routes`，
+再插入 `<NuxtPage />` 供路由頁面顯示。
+
+**設置「首頁`/`」 、 「about 頁 `/about`」**
+
+```text
+-| pages/
+---| index.vue
+---| about.vue
+```
 
 **`app.vue`**
 
@@ -13,28 +23,67 @@
 </template>
 ```
 
-**`pages/index.vue` 首頁 (`/`) 顯示**
+## 子層路由
 
-```vue
+若路由是有層級的，可以在 `/pages` 設置以「路由名稱」設置資料夾，再在其資料夾新增 `.vue` 檔案來顯示子層頁面。
+
+### 層級設置
+
+- **`/product` 頁面:** `~/product/index.vue`
+- **`/product/item` 頁面:** `~/product/item.vue`
+
+```text {2-4}
+-| pages/
+---| product 📂
+-----| index.vue
+-----| item.vue
+```
+
+### 多層級
+
+- **`/product/sport` 頁面:** `~/product/index.vue`
+- **`/product/sport/item` 頁面:** `~/product/item.vue`
+
+```text {5-7}
+-| pages/
+---| product 📂
+-----| index.vue
+-----| item.vue
+-------| sport 📂
+---------| index.vue
+---------| item.vue
+```
+
+## 動態路由
+
+以 `[]` 來表示動態參數的部分設置 `.vue` 檔案。
+
+- **`/data/:id` 頁面:** `~/data/[id].vue`
+- **`/data/item-:id` 頁面:** `~/data/item-[id].vue`
+- **`/product-:group/:id` 頁面:** `~/product-[group]/[id].vue`
+
+```text
+-| pages/
+---| data 📂
+-----| [id].vue
+-----| item-[id].vue
+---| product-[group] 📂
+-----| [id].vue
+```
+
+### 取得動態參數
+
+`~/product-[group]/[id].vue`
+
+```vue {3-4}
 <template>
   <div>
-    <h1>Index</h1>
+    <h1>Route.params.group: {{ $route.params.group }}</h1>
+    <h1>Route.params.id: {{ $route.params.id }}</h1>
   </div>
 </template>
 
-<script>
-export default {
-  setup () {
-    return {}
-  }
-}
+<script setup>
+const $route = useRoute()
 </script>
 ```
-
-**`pages/About.vue` 關於頁面 (`/about`)**
-
-
-## Reference
-- [Nuxt3 Views](https://nuxt.com/docs/getting-started/views)
-- [Router 路由設置](/nuxt3/router)
-- [[Day 07] Nuxt 3 頁面 (Pages) 與路由 (Routing)](https://ithelp.ithome.com.tw/articles/10296131)
