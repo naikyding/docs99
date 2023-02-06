@@ -56,7 +56,7 @@
 
 ## 動態路由
 
-以 `[]` 來表示動態參數的部分設置 `.vue` 檔案。
+以 `[]` 來表示動態參數設置資料夾或 `.vue` 檔案名稱。
 
 - **`/data/:id` 頁面:** `~/data/[id].vue`
 - **`/data/item-:id` 頁面:** `~/data/item-[id].vue`
@@ -87,3 +87,40 @@
 const $route = useRoute()
 </script>
 ```
+
+## 補獲所有路由
+
+在 `/pages` 下新增 `[...slug].vue` 可以用來匹配所有路由，當要 **補獲不存在路由** 時可以使用這個方式。
+
+**設置補獲**
+
+```
+-| pages/
+-----| [...slug].vue
+```
+
+```vue
+<template>
+  <div>
+    <h1>頁面不存在</h1>
+    <p>當前路由: {{ $route.params }}</p>
+  </div>
+</template>
+
+<script setup>
+const $route = useRoute()
+</script>
+
+<style lang="scss" scoped></style>
+```
+
+**頁面顯示**
+
+```
+頁面不存在
+當前路由: { "slug": [ "aaa", "bbb" ] }
+```
+
+:::tip 提示
+常用的 `404` 不存在畫面可以使用這個方法，並可以在 `route.params.slug` 中，取得補獲頁面的路由。
+:::
