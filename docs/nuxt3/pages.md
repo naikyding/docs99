@@ -127,16 +127,18 @@ const $route = useRoute()
 
 ## 崁套路由
 
-可以使用 `<NuxtPage />` 來顯示崁套路由頁面，
+創建與路由資料夾 **同名** 的 `.vue` 檔案，在其中插入 `<NuxtPage />` 供顯示崁套的子層頁面，而 `index.vue` 就會是默認的 「根」頁面內容。
+
+此時，頁面已經可以依路由來切換子層頁面。
 
 **路由頁面**
 
 ```
 /person                                                /person/emails                                         /person/profile
 +-----------------------------------+                  +-----------------------------------+                  +-----------------------------------+
-| tab                               |                  | tab                               |                  | tab                               |
+| person.vue                        |                  | person.vue                        |                  | person.vue                        |
 | +-----+-------------------------+ |                  | +-----+-------------------------+ |                  | +-----+-------------------------+ |
-| | default                       | |                  | | emails                        | |                  | | profile                       | |
+| | index.vue(default)            | |                  | | emails.vue                    | |                  | | profile.vue                   | |
 | |                               | |  +------------>  | |                               | |  +------------>  | |                               | |
 | |                               | |                  | |                               | |                  | |                               | |
 | +-----+-------------------------+ |                  | +-----+-------------------------+ |                  | +-----+-------------------------+ |
@@ -147,10 +149,27 @@ const $route = useRoute()
 **設置檔案**
 
 ```
--| pages/
----| person /
-------| index.vue
-------| profile.vue
+---| person 📂
+------| index.vue (default)
 ------| emails.vue
+------| profile.vue
 ---| person.vue
+```
+
+`person.vue`
+
+```vue {11}
+<template>
+  <div>
+    <h1>Nav</h1>
+    <NuxtLink to="/person">index</NuxtLink>
+    <br />
+    <NuxtLink to="/person/emails">Emails</NuxtLink>
+    <br />
+    <NuxtLink to="/person/profile">Profile</NuxtLink>
+
+    <!-- 崁入子層頁面 -->
+    <NuxtPage />
+  </div>
+</template>
 ```
