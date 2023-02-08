@@ -194,6 +194,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/solid'
     },
     {
+      text: 'MVVM 軟體架構',
+      link: '/Javascript/mvvm'
+    },
+    {
       text: 'Virtual DOM',
       link: '/Javascript/virtual-dom'
     },

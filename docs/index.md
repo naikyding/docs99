@@ -124,6 +124,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [Pure Function 純粹函式](/Javascript/pure-function)
 - [Functional Programming 函式程式設計](/Javascript/functional-programming)
 - [SOLID 設計原則](/Javascript/solid)
+- [MVVM 軟體架構](/Javascript/mvvm)
 
 ## Security
 
