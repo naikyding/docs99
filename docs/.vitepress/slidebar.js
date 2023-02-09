@@ -376,6 +376,10 @@ export const getVueSidebar = () => ({
     {
       text: 'LINE LIFF 應用程式',
       link: '/Vue/liff'
+    },
+    {
+      text: 'directive 自定義指令 v-\*',
+      link: '/Vue/directive'
     }
   ]
 })

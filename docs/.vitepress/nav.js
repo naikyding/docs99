@@ -101,6 +101,10 @@ export const getVueNav = () => ({
         {
           text: 'Slots 插槽',
           link: '/Vue/slots'
+        },
+        {
+          text: 'directive 自定義指令 v-\*',
+          link: '/Vue/directive'
         }
       ]
     },

@@ -77,6 +77,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 
 - [父子組件資料傳遞 props、$emit](/Vue/props-emit)
 - [Slots 插槽](/Vue/slots)
+- [directive 自定義指令 v-\*](/Vue/directive)
 
 **Router**
 
