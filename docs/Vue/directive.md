@@ -108,16 +108,56 @@ new Vue({
 
 **函式參數:**
 
-- `el` : 綁定的元素 DOM
-- `binding` : 綁定元素的內容對象
-  - `name` : 指令名稱 (不包含 `v-` )
-  - `value` : 指令綁定的值，例如: `v-test="1 + 1"` ，值為 `2`
-    (也可以傳送物件型態 `v-test="{ id: 1, name: 'nike' }"` )
-  - `expression` : 指令的表達式，例如 `v-test="1 + 1"` 則為 `1 + 1`
-  - `arg` : 傳給指令的參數，例如 `v-text:data` ，則參數為 `data` (也可帶入動態參數)，綁定時必須要在修飾符之前哦!!
-  - `modifiers` : 指令的修飾符內容，例如 `[v-test.foo.bar](http://v-test.foo.bar)` ，則為 `{ foo: true, bar: true }` 。
-- `vnode` : VNode ( 虛擬 DOM )
-- `oldVnode` : 上一個 VNode ( 虛擬 DOM )
+| 參數       | 說明 / 子項目             | 子項目說明                                                                                                                            |
+| ---------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `el`       | 綁定的元素 DOM            | --                                                                                                                                    |
+| `binding`  | 綁定元素的內容對象        | --                                                                                                                                    |
+| --         | `name`                    | 指令名稱 (不包含 `v-` )                                                                                                               |
+| --         | `rawName`                 | 自定義指令名稱 `v-*` )                                                                                                                |
+| --         | `value`                   | 傳遞的數據 ex: `v-focus="1 + 1"` 則為 `2`                                                                                             |
+| --         | `expression`              | 原始寫在屬性上，傳遞的表達式 ex: `v-focus="value + 1"` 則為 `value + 1`                                                               |
+| --         | `arg`                     | 傳遞指令`參數` 的數據 ex: `v-focus:passData` 則為 `"passData"`；若要傳遞「動態」數據，加入 `[]` ex `v-focus:[value]` (要在修飾符之前) |
+| --         | `modifiers`               | 指令修飾符，可以拿來判斷是否執行是某個操作 ex `v-template.typeA.typeB` 則為 `{ typeA: true, typeB: true }`                            |
+| `vnode`    | VNode ( 虛擬 DOM )        | --                                                                                                                                    |
+| `oldVnode` | 上一個 VNode ( 虛擬 DOM ) | --                                                                                                                                    |
+
+:::details CODE
+
+```vue {3}
+<template>
+  <div>
+    <input v-focus="1 + 1" :value="value" />
+  </div>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    value: 1,
+  }),
+
+  directives: {
+    focus: {
+      inserted(el, binding) {
+        console.log(binding)
+        // {
+        //   name: 'focus',
+        //   rawName: 'v-focus',
+        //   value: 2,
+        //   expression: '1 + 1',
+        //   modifiers: Object,
+        //   def: {...}
+        // }
+      },
+    },
+  },
+}
+</script>
+```
+
+:::
+
+## 實務應用
 
 ## Reference
 
