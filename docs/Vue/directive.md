@@ -159,6 +159,59 @@ export default {
 
 ## 實務應用
 
+### 圖像應用
+
+新增一個指令 `v-img` 來判斷圖像的載入中、若失效、載入完成，的相關操作應用。
+
+<iframe src="https://codesandbox.io/embed/practical-feather-be1iuo?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="practical-feather-be1iuo"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
+```vue
+<template>
+  <div>
+    <img v-img src="null" />
+  </div>
+</template>
+
+<script>
+export default {
+  directives: {
+    img: {
+      inserted(el) {
+        console.log(el.src)
+        const img = new Image()
+        img.src = el.src
+
+        // 圖片載入中
+        el.src =
+          'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png'
+
+        // 如果圖片載入
+        img.onload = () => {
+          console.log('img load')
+          el.src = img.src
+        }
+
+        // 如果圖片失效
+        img.onerror = () => {
+          console.log('img onError')
+          el.src = 'https://www.freeiconspng.com/uploads/error-icon-28.png'
+        }
+      },
+    },
+  },
+}
+</script>
+```
+
 ## Reference
 
 - [[Vue] Custom Directives 自定義指令](https://medium.com/itsems-frontend/vue-custom-directives-c991ce456748)
+
+```
+
+```
