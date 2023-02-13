@@ -102,7 +102,7 @@ new Vue({
 | ------------------ | ----------------------------------------------------------------------------------------- |
 | `bind`             | `directive` 初次綁定到元素時，執行的函式 (只執行一次)，一般可以在此做 **初始化**設置。    |
 | `inserted`         | 當綁定的元素被插入 `父節點` 時，執行的函式。(只保証父節點存在，綁定的元素不一定在 dom 中) |
-| `update`           | 所在組件的更新時執行的函式 (可能發生在綁定元素其子元素更新之前)。                         |
+| `update`           | 組件傳送數據更新時執行函式 (可能發生在綁定元素其子元素更新之前)。                         |
 | `componentUpdated` | 所在組件的與其子元素全部更新後執行的函式。                                                |
 | `unbind`           | 解除綁定元素時執行函式。(元素不存在)                                                      |
 
@@ -208,10 +208,16 @@ export default {
 </script>
 ```
 
+### 定位綁定
+
+<iframe src="https://codesandbox.io/embed/practical-feather-be1iuo?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="practical-feather-be1iuo"
+     allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+     sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+   ></iframe>
+
 ## Reference
 
 - [[Vue] Custom Directives 自定義指令](https://medium.com/itsems-frontend/vue-custom-directives-c991ce456748)
-
-```
-
-```
+- [不只懂 Vue 語法：什麼是 directive？請示範如何使用 directive？](https://ithelp.ithome.com.tw/articles/10272564?sc=iThomeR)
