@@ -90,8 +90,46 @@ console.log(copyObj.obj2.id) // 2
 這個方法僅適用於沒有 **函式** 屬性的物件格式，字串化的物件是無法還原 **函式** 的。
 :::
 
+### 缺點
+
+- 無法拷貝 `函式`
+- 無法拷貝 `原型鏈`
+
+## structuredClone 深拷貝
+
+這是最新用來處理「深拷貝」的原生語法，如果物件結構是較大較復雜的情況，使用 `structuredClone` 效能與速度會更優於 `JSON.stringify`。
+
+**特點**
+
+- 不可拷貝函式
+- 不保留原型鏈
+
+### 語法
+
+`structuredClone` 本身會回傳拷貝後的物件。
+
+#### structuredClone(`<將拷貝的物件>`)
+
+```js
+const obj = {
+  id: 1,
+  name: 'naiky',
+  data: {
+    age: 37,
+  },
+}
+
+// 深拷貝
+const strterObj = structuredClone(obj)
+```
+
+:::warning 注意
+當拷貝 `function`、`Error`、`DOM`，會報錯 `Uncaught DOMException: Failed to execute 'structuredClone' on 'Window': `
+:::
+
 ## Reference
 
 - [JS-淺拷貝(Shallow Copy) VS 深拷貝(Deep Copy)](https://kanboo.github.io/2018/01/27/JS-ShallowCopy-DeepCopy/)
 - [關於 JS 中的淺拷貝(shallow copy)以及深拷貝(deep copy)](https://medium.com/andy-blog/%E9%97%9C%E6%96%BCjs%E4%B8%AD%E7%9A%84%E6%B7%BA%E6%8B%B7%E8%B2%9D-shallow-copy-%E4%BB%A5%E5%8F%8A%E6%B7%B1%E6%8B%B7%E8%B2%9D-deep-copy-5f5bbe96c122)
 - [[JavaScript] 實作技巧： 淺拷貝(Shallow Copy) & 深拷貝(Deep Copy)](https://zwh.zone/javascript--e5-af-a6-e4-bd-9c-e6-8a-80-e5-b7-a7-ef-bc-9a--e6-b7-ba-e6-8b-b7-e8-b2-9dshallow-copy--e6-b7-b1-e6-8b-b7-e8-b2-9ddeep-copy/)
+- [JS 深拷贝的原生终结者 structuredClone API](https://juejin.cn/post/7080433165264748557)
