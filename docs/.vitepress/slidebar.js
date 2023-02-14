@@ -238,6 +238,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/geolocation'
     },
     {
+      text: 'getter 與 setter',
+      link: '/Javascript/getter-setter'
+    },
+    {
       text: 'GSAP 特效動畫',
       link: '/Javascript/gsap'
     },
