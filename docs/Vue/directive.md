@@ -210,12 +210,83 @@ export default {
 
 ### 定位綁定
 
+利用自定義傳參，來變更元素定位方式，`input type="range"` 改變定位數值。
+
 <iframe src="https://codesandbox.io/embed/practical-feather-be1iuo?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="practical-feather-be1iuo"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
+
+```vue
+<template>
+  <div>
+    <div v-position="{ position, value }" class="fixed red">Position</div>
+    <button @click="positionBtn('top')">Top</button>
+    <button @click="positionBtn('bottom')">Bottom</button>
+    <button @click="positionBtn('right')">Right</button>
+    <button @click="positionBtn('left')">Left</button>
+    <input type="range" v-model="value" />
+  </div>
+</template>
+
+<script>
+export default {
+  directives: {
+    position: {
+      // 初始化
+      inserted(el, binding) {
+        el.style[binding.value.position] = `${binding.value.value}%`
+      },
+
+      // 數據更改時
+      update(el, binding) {
+        console.log('update')
+        if (
+          binding.value.position === 'top' ||
+          binding.value.position === 'bottom'
+        ) {
+          el.style.top = ''
+          el.style.bottom = ''
+        }
+        if (
+          binding.value.position === 'right' ||
+          binding.value.position === 'left'
+        ) {
+          el.style.left = ''
+          el.style.right = ''
+        }
+        el.style[binding.value.position] = `${binding.value.value}%`
+      },
+    },
+  },
+
+  data: () => ({
+    position: 'top',
+    value: 0,
+  }),
+
+  methods: {
+    positionBtn(type) {
+      this.position = type
+      this.value = 0
+    },
+  },
+}
+</script>
+
+<style lang="css" scoped>
+.fixed {
+  position: fixed;
+}
+.red {
+  background: red;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+</style>
+```
 
 ## Reference
 
