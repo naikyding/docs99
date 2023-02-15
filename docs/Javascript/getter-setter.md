@@ -143,7 +143,7 @@ person.firstName // undefined
 
 **原理**
 
-初次訪問屬性 -> 執行邏輯 -> 刪除 `getter` -> 重新寫入屬性供訪問暫存數據。
+初次訪問屬性 -> 執行邏輯 -> 刪除 `getter` 屬性 -> 重新寫入屬性供訪問暫存數據。
 
 ```js {2-3}
 get notifier() {
@@ -152,6 +152,30 @@ get notifier() {
 
   return this.notifier
 }
+```
+
+### 在 class 設置 getter
+
+```js {2-4}
+class Person {
+  get firstName() {
+    return 'hello'
+  }
+}
+```
+
+```js
+const niki = new Person()
+
+console.log(niki.firstName) // hello
+```
+
+**刪除 class `getter`**
+
+```js
+delete Person.prototype.firstName
+
+console.log(niki.firstName) // undefined
 ```
 
 ## setter
