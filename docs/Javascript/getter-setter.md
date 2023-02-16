@@ -206,6 +206,51 @@ delete Person.prototype.firstName
 console.log(niki.firstName) // undefined
 ```
 
+### class 與 defineProperty 定義 getter 差別
+
+在 [class 類] 定義的 `get` 實際上與 `Object.defineProperty()` 定義的 `get` 使用上沒有什麼不同?
+
+**class**
+
+```js
+class Person {
+  get hello() {
+    return `hello`
+  }
+}
+
+const niki = new Person()
+niki.hello // 'hello'
+
+const nico = new Person()
+nico.hello // 'hello'
+
+// 取得自身屬性
+Object.getOwnPropertyDescriptor(niki, 'hello') // undefined
+```
+
+**defineProperty**
+
+```js
+const obj = {}
+Object.defineProperty(obj, 'hello', {
+  get() {
+    return `Hello`
+  },
+})
+
+// 取得自身屬性內容 -> 執行
+const helloDec = Object.getOwnPropertyDescriptor(obj, 'hello')
+helloDec.get() // Hello
+```
+
+:::tip 最大差別
+
+- class `get` 是定義在 「原型」上的方法，可以被所有「實例」繼承，而不在實例本身。
+- `Object.defineProperty()` 是直接定義在指定的物件本身屬性上。
+
+:::
+
 ### 懶加載的 getter
 
 `getter` 是智能的，有使用到才會執行邏輯；相反的，若都沒有使用到是不會有負擔的開銷。
