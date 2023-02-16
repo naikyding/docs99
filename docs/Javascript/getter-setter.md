@@ -83,7 +83,7 @@ console.log(person.fullName()) // Uncaught TypeError: person.fullName is not a f
 
 - #### get `[動態屬性]() { return ... }`
 
-### 設置 getter
+### 物件設置 getter
 
 ```js {5-7}
 const person = {
@@ -118,7 +118,7 @@ const num = {
 console.log(num.last) // 4
 ```
 
-### 刪除 getter
+**刪除 getter**
 
 與一般刪除物件屬性方法一樣。
 
@@ -126,6 +126,84 @@ console.log(num.last) // 4
 delete person.firstName
 
 person.firstName // undefined
+```
+
+### 為已存在對象定義 `getter`
+
+可以透過 [Object.defineProperty()] 為已經存在的物件，定義 `getter`。
+
+#### 語法
+
+#### Object.defineProperty(`物件`, `屬性`, `屬性描述檔`)
+
+```js {3-7}
+const obj = { a: 1 }
+
+Object.defineProperty(obj, 'b', {
+  get() {
+    return this.a * 5
+  },
+})
+
+console.log(obj.b) // 5
+```
+
+:::warning ⛔⛔ 注意 ⛔⛔ 屬性無法刪除
+若在 [Object.defineProperty()] 定義的 `getter` 會有刪除的可能性，上面的寫法會無法刪除。(重新賦 get 為 undefined)
+
+**解決方法**
+
+設置時，預先在描述檔設置上 `configurable: true`，這樣可以為之後的刪除屬性留後路。
+
+```js {4}
+const obj = { a: 1 }
+
+Object.defineProperty(obj, 'b', {
+  configurable: true,
+  get() {
+    return this.a * 5
+  },
+})
+
+obj.b // 5
+```
+
+**刪除屬性**
+
+```js
+Object.defineProperty(obj, 'b', {
+  get: undefined,
+})
+
+obj.b // undefined
+```
+
+:::
+
+### class 設置 getter
+
+```js {2-4}
+class Person {
+  get firstName() {
+    return 'hello'
+  }
+}
+```
+
+```js
+const niki = new Person()
+
+console.log(niki.firstName) // hello
+```
+
+**刪除 class `getter`**
+
+從 class 刪除原型方法
+
+```js
+delete Person.prototype.firstName
+
+console.log(niki.firstName) // undefined
 ```
 
 ### 懶加載的 getter
@@ -154,30 +232,6 @@ get notifier() {
 }
 ```
 
-### 在 class 設置 getter
-
-```js {2-4}
-class Person {
-  get firstName() {
-    return 'hello'
-  }
-}
-```
-
-```js
-const niki = new Person()
-
-console.log(niki.firstName) // hello
-```
-
-**刪除 class `getter`**
-
-```js
-delete Person.prototype.firstName
-
-console.log(niki.firstName) // undefined
-```
-
 ## setter
 
 ## Reference
@@ -185,6 +239,7 @@ console.log(niki.firstName) // undefined
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bl98dm7vJt0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 [class 類]: /Javascript/class
+[object.defineproperty()]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
 
 - [MDN getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
 - [MDN setter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
