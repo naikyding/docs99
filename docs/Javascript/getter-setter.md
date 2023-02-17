@@ -77,7 +77,7 @@ console.log(person.fullName()) // Uncaught TypeError: person.fullName is not a f
 
 在物件中 `get` 語法以 `屬性`作為函式名稱設置。當物件的 `屬性` 被「訪問」就會執行這個函式。這個方法 [class 類] 也適用。 (也有點像 `vue` 的計算屬性 `computed`)
 
-### 方法
+### 語法
 
 - #### get `屬性() { return ... }`
 
@@ -278,6 +278,167 @@ get notifier() {
 ```
 
 ## setter
+
+在物件中 `set` 語法以 屬性作為函式名稱設置。當物件的 屬性被「修改」就會執行這個函式。這個方法 [class 類] 也適用。常用來修改屬性資料或驗證。
+
+### 語法
+
+- #### set `屬性() { ... }`
+
+- #### set `[動態屬性]() { ... }`
+
+### 物件設置 setter
+
+```js {8-10}
+const obj = {
+  _langs: ['en'],
+
+  get langs() {
+    return this._langs
+  },
+
+  set lang(newLang) {
+    this._langs.push(newLang)
+  },
+}
+
+obj.langs // ['en']
+obj.lang = 'vn'
+
+obj.langs // ['en', 'vn']
+```
+
+**驗證例子**
+
+```js
+const person = {
+  _firstName: 'naiky',
+
+  get firstName() {
+    return this._firstName
+  },
+
+  set firstName(newName) {
+    if (!newName) {
+      console.log(`名稱不可為空`)
+      return false
+    }
+    this._firstName = newName
+  },
+}
+
+person.firstName = '' // 名稱不可為空
+```
+
+**刪除 setter**
+
+```js {9}
+const langs = {
+  log: ['en'],
+
+  set lang(newLang) {
+    this.log.push(newLang)
+  },
+}
+
+delete person.lang
+```
+
+:::danger 注意
+`setter` 與一般屬性同名時，會無法取得。
+
+```js {13}
+const person = {
+  firstName: 'naiky',
+
+  set firstName(newName) {
+    if (!newName) {
+      console.log(`名稱不可為空`)
+      return false
+    }
+    this.firstName = newName
+  },
+}
+
+person.firstName // undefined
+```
+
+:::
+
+### 為已存在物件新增 setter
+
+使用 `Object.defineProperty` 可以為已存在的物件定義 `setter`。
+
+```js {4-7}
+const obj = { a: 0 }
+
+Object.defineProperty(obj, 'plusNum', {
+  set(newNum) {
+    this.a += newNum
+    return this.a
+  },
+})
+
+obj.a // 0
+
+obj.plusNum = 9 // 9
+obj.a // 9
+```
+
+:::danger 刪除 getter
+必須在定義 `setter` 時加入 `configurable: true` 可方便後續的刪除。
+
+```js
+const obj = { a: 1 }
+Object.defineProperty(obj, 'b', {
+  set(val) {
+    this.a += val
+  },
+  configurable: true,
+})
+```
+
+**刪除 `setter`**
+
+```js
+delete obj.b
+```
+
+:::
+
+### 在 class 設置 setter
+
+```js {8-11}
+class Person {
+  #firstName = 'default'
+
+  get firstName() {
+    return this.#firstName
+  }
+
+  set firstName(newName) {
+    this.#firstName = newName
+    return this.#firstName
+  }
+}
+
+const niki = new Person()
+niki.firstName // 'default'
+
+niki.firstName = 'NIKI'
+niki.firstName // 'NIKI'
+```
+
+**刪除 class 中的 `setter`**
+
+```js
+delete Person.prototype.firstName
+```
+
+### class 與 defineProperty `setter` 差異
+
+- class 定義的 `setter` 是定全在「原型」之中，所有 `實例` 都會繼承到這個方法。要從 class 原型做刪除。
+- defineProperty 是定義在物件本身的屬性上。[可參考](/Javascript/getter-setter#class-與-defineproperty-定義-getter-差別)
 
 ## Reference
 
