@@ -242,6 +242,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/getter-setter'
     },
     {
+      text: '物件屬性定義 Object.defineProperty',
+      link: '/Javascript/object-defineProperty'
+    },
+    {
       text: 'GSAP 特效動畫',
       link: '/Javascript/gsap'
     },

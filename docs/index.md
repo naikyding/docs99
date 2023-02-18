@@ -62,6 +62,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [Geolocation API 取得裝置地理位置](/Javascript/geolocation)
 - [解析網址查詢參數 URLSearchParams](/Javascript/parseUrlQuery)
 - [getter 與 setter](/Javascript/getter-setter)
+- [物件屬性定義 Object.defineProperty](/Javascript/object-defineProperty)
 
 ### GSAP
 
