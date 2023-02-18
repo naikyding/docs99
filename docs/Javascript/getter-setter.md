@@ -130,7 +130,7 @@ person.firstName // undefined
 
 ### 為已存在對象定義 `getter`
 
-可以透過 [Object.defineProperty()] 為已經存在的物件，定義 `getter`。
+可以透過 [物件屬性定義 Object.defineProperty] 為已經存在的物件，定義 `getter`。
 
 #### 語法
 
@@ -149,11 +149,12 @@ console.log(obj.b) // 5
 ```
 
 :::warning ⛔⛔ 注意 ⛔⛔ 屬性無法刪除
-若在 [Object.defineProperty()] 定義的 `getter` 會有刪除的可能性，上面的寫法會無法刪除。(重新賦 get 為 undefined)
+若在 [物件屬性定義 Object.defineProperty] 定義的 `getter` 會有刪除的可能性，上面的寫法會無法刪除。(重新賦 get 為 undefined)
 
 **解決方法**
 
 設置時，預先在描述檔設置上 `configurable: true`，這樣可以為之後的刪除屬性留後路。
+詳細可以看 [物件屬性定義 Object.defineProperty]
 
 ```js {4}
 const obj = { a: 1 }
@@ -385,8 +386,9 @@ obj.plusNum = 9 // 9
 obj.a // 9
 ```
 
-:::danger 刪除 getter
+:::danger 刪除 setter
 必須在定義 `setter` 時加入 `configurable: true` 可方便後續的刪除。
+詳細可看 [物件屬性定義 Object.defineProperty]
 
 ```js
 const obj = { a: 1 }
@@ -445,7 +447,7 @@ delete Person.prototype.firstName
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bl98dm7vJt0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 [class 類]: /Javascript/class
-[object.defineproperty()]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
+[物件屬性定義 object.defineproperty]: /Javascript/object-defineProperty
 
 - [MDN getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
 - [MDN setter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
