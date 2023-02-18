@@ -18,6 +18,10 @@
 |get| 讀取時觸發 | 函式 | `undefined`|
 |set| 設置時觸發| 函式 | `undefined`|
 
+:::danger 注意
+`setter` 與 `getter` 無法與 `value`、`writable` 共用，會報錯。
+:::
+
 :::tip 一般物件
 
 ```js
@@ -153,3 +157,4 @@ for (const index in obj) {
 ## Reference
 
 - [Object.defineProperty()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+- [vueJS 深入响应式原理](https://v2.cn.vuejs.org/v2/guide/reactivity.html)
