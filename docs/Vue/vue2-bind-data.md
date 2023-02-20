@@ -1,21 +1,70 @@
-# Vue2 資料響應原理
+# Vue2 資料響應核心
 
 ## 說明
 
 `Vue` 是 [mvvm 軟體架構] 「畫面」與「資料」可以雙向綁定，就是基於 [物件屬性定義 Object.defineProperty] ，這也是 `Vue2` 雙向資料綁定的核心 API。
 
+## 原理
+
+對 `Vue` 實例中的 `data` 資料做「遍歷」，再將每個遍歷出來的數據項目，各用 [物件屬性定義 Object.defineProperty] 定義 `getter` 與 `setter`。
+
 ![](/Vue/img/vue2-bind-data.png)
-
-### 原理
-
-對 `Vue` 實例中的 `data` 資料做「遍歷」，再將每個遍歷出來的數據項目，各別做 [物件屬性定義 Object.defineProperty] 定義 `getter` 與 `setter`。
+[圖片出處](https://v2.cn.vuejs.org/v2/guide/reactivity.html)
 
 - `getter` 當資料被「讀取」時，會存入到 `Watcher` 進行收集。
 - `setter` 當資料被「修改」時，就會通知 `Watcher` 進行畫面更新渲染。
 
+```js
+class Vue {
+  constructor(options) {
+    this._data = options.data
+    observer(this._data)
+  }
+}
+
+function observer(data) {
+  if (!data || typeof data !== 'object') return false
+
+  Object.keys(data).forEach((key) => {
+    defineReactive(data, key, data[key])
+  })
+}
+
+function defineReactive(obj, key, value) {
+  Object.defineProperty(obj, key, {
+    enumerable: true, // 可被枚舉
+    configurable: true, // 可被修改與刪除
+    get reactiveGetter() {
+      return value
+    },
+    set reactiveSetter(newValue) {
+      if (newValue === value) return false
+
+      // cd 更新畫面核心功能
+      cd(newValue)
+    },
+  })
+}
+```
+
 :::tip 提醒
 這只是簡化後的說明，實際的響應原理是更複雜的。
 :::
+
+## DEMO
+
+用 `defineProperty` 寫一個雙向綁定:
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="Vue2 bind data (Object.fineProperty)" src="https://codepen.io/naiky/embed/zYJrYgg?default-tab=js%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/zYJrYgg">
+  Vue2 bind data (Object.fineProperty)</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+## 缺點
+
+- 若物件有新增屬性，必須要整個遍歷設置後，才能監聽。
+- 物件屬性如果很複雜，必須要深度遍歷才能監聽
 
 ## Reference
 

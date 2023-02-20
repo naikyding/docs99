@@ -92,7 +92,7 @@ export const getVueNav = () => ({
   text: 'Vue',
   items: [
     {
-      text: 'Vue2 資料響應原理',
+      text: 'Vue2 資料響應核心',
       link: '/Vue/vue2-bind-data'
     },
     {

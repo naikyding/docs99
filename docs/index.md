@@ -75,7 +75,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 
 ## Vue
 
-- [Vue2 資料響應原理](/Vue/vue2-bind-data)
+- [Vue2 資料響應核心](/Vue/vue2-bind-data)
 
 **Component**
 
