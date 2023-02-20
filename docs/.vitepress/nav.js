@@ -92,6 +92,10 @@ export const getVueNav = () => ({
   text: 'Vue',
   items: [
     {
+      text: 'Vue2 資料響應原理',
+      link: '/Vue/vue2-bind-data'
+    },
+    {
       text: 'Component',
       items: [
         {

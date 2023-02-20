@@ -342,6 +342,10 @@ export const getVueSidebar = () => ({
   collapsed: true,
   items: [
     {
+      text: 'Vue2 資料響應原理',
+      link: '/Vue/vue2-bind-data'
+    },
+    {
       text: '父子組件資料傳遞 props、$emit',
       link: '/Vue/props-emit'
     },

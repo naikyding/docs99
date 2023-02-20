@@ -75,6 +75,8 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 
 ## Vue
 
+- [Vue2 資料響應原理](/Vue/vue2-bind-data)
+
 **Component**
 
 - [父子組件資料傳遞 props、$emit](/Vue/props-emit)

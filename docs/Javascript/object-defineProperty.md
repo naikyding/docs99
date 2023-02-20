@@ -12,7 +12,7 @@
 | 項目 | 說明 | 設定值 | 預設值|
 |-|-|-|-|
 | writable | 可修改 | `boolean` | `false` |
-|configurable | 可重新配置 (刪除) | `boolean` | `false` |
+|configurable | 可修改/刪除 | `boolean` | `false` |
 |enumerable| 顯示於迴圈 | `boolean` | `false` |
 |value | 屬性資料 | str / num | `undefined` |
 |get| 讀取時觸發 | 函式 | `undefined`|
