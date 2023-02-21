@@ -6,13 +6,15 @@
 
 ## 原理
 
-對 `Vue` 實例中的 `data` 資料做「遍歷」，再將每個遍歷出來的數據項目，各用 [物件屬性定義 Object.defineProperty] 定義 `getter` 與 `setter`。
+對 `Vue` 實例中的 `data` 資料做「遍歷」，再將每個遍歷出來的數據項目，再用 [物件屬性定義 Object.defineProperty] 定義 `getter` 與 `setter`。
 
 ![](/Vue/img/vue2-bind-data.png)
 [圖片出處](https://v2.cn.vuejs.org/v2/guide/reactivity.html)
 
 - `getter` 當資料被「讀取」時，會存入到 `Watcher` 進行收集。
 - `setter` 當資料被「修改」時，就會通知 `Watcher` 進行畫面更新渲染。
+
+**簡化例子**
 
 ```js
 class Vue {
@@ -25,6 +27,7 @@ class Vue {
 function observer(data) {
   if (!data || typeof data !== 'object') return false
 
+  // 定義所有 data getter setter
   Object.keys(data).forEach((key) => {
     defineReactive(data, key, data[key])
   })
@@ -55,6 +58,9 @@ function defineReactive(obj, key, value) {
 
 用 `defineProperty` 寫一個雙向綁定:
 
+- input 改變，更新資料
+- 資料改變，更新畫面
+
 <iframe height="300" style="width: 100%;" scrolling="no" title="Vue2 bind data (Object.fineProperty)" src="https://codepen.io/naiky/embed/zYJrYgg?default-tab=js%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/naiky/pen/zYJrYgg">
   Vue2 bind data (Object.fineProperty)</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
@@ -72,3 +78,4 @@ function defineReactive(obj, key, value) {
 [物件屬性定義 object.defineproperty]: /Javascript/object-defineProperty
 
 - [vue2 原理探索--响应式系统](https://github.com/LuckyWinty/blog/blob/master/markdown/vue/vue2%E5%8E%9F%E7%90%86%E6%8E%A2%E7%B4%A2--%E5%93%8D%E5%BA%94%E5%BC%8F%E7%B3%BB%E7%BB%9F.md)
+- [物件屬性定義 object.defineproperty](/Javascript/object-defineProperty)
