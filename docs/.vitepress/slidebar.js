@@ -246,6 +246,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/object-defineProperty'
     },
     {
+      text: 'Proxy 物件代理',
+      link: '/Javascript/proxy'
+    },
+    {
       text: 'GSAP 特效動畫',
       link: '/Javascript/gsap'
     },
