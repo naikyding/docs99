@@ -14,13 +14,13 @@
 class Person {
   // 定義實例屬性
   constructor(name, age) {
-    this.name = name;
-    this.age = age;
+    this.name = name
+    this.age = age
   }
 
   //  定義 prototype 原型方法
   sayHello() {
-    console.log(`Hello my name is ${this.name}`);
+    console.log(`Hello my name is ${this.name}`)
   }
 }
 ```
@@ -39,7 +39,7 @@ class Person {
 跟 [Constructor 建構函式] 一樣都是使用 `new` 關鍵字。
 
 ```js
-const niki = new Person("niki", 6);
+const niki = new Person('niki', 6)
 ```
 
 :::danger 注意
@@ -62,13 +62,13 @@ class Person{ ... }
 class Person {
   // 定義實例屬性
   constructor(name, age) {
-    this.name = name;
-    this.age = age;
+    this.name = name
+    this.age = age
   }
 
   //  定義 prototype 原型方法
   sayHello() {
-    console.log(`Hello my name is ${this.name}`);
+    console.log(`Hello my name is ${this.name}`)
   }
 }
 ```
@@ -82,20 +82,20 @@ class Person {
 ```js {10}
 class Parent {
   constructor(name) {
-    this._parentName = name;
+    this._parentName = name
   }
   sayParentName() {
-    console.log(this._parentName);
+    console.log(this._parentName)
   }
 }
 
 class Child extends Parent {
   sayChildName() {
-    console.log("Child");
+    console.log('Child')
   }
 }
 
-const niki = new Child("NIKI");
+const niki = new Child('NIKI')
 ```
 
 **說明**
@@ -119,11 +119,11 @@ Uncaught ReferenceError: Must call super constructor in derived class before acc
 class Parent {
   // 父層 屬性資料
   constructor(name) {
-    this._parentName = name;
+    this._parentName = name
   }
   // 父層 原型方法
   sayParentName() {
-    console.log(this._parentName);
+    console.log(this._parentName)
   }
 }
 
@@ -131,23 +131,23 @@ class Parent {
 class Child extends Parent {
   // 子層屬性資料
   constructor(parentName, childName) {
-    super(parentName); // 父層 屬性資料 賦值 (帶入父層參數)
-    this._childName = childName;
+    super(parentName) // 父層 屬性資料 賦值 (帶入父層參數)
+    this._childName = childName
   }
   // 子層 原型方法
   sayChildName() {
-    console.log(this._childName);
+    console.log(this._childName)
   }
   sayParentName() {
-    console.log(`child sayParentName fun`);
-    super.sayParentName(); // 操作父層 原型方法
+    console.log(`child sayParentName fun`)
+    super.sayParentName() // 操作父層 原型方法
   }
 }
 ```
 
 ```js
-const niki = new Child("Naiky", "NIKI");
-niki.sayParentName();
+const niki = new Child('Naiky', 'NIKI')
+niki.sayParentName()
 
 // child sayParentName fun
 // Naiky
@@ -166,10 +166,32 @@ niki.sayParentName();
 :::
 
 :::warning 注意
+
 - **子類** 的 `super()`，在放在 `this` 使用之前。
 - 當 **子層 `constructor`** 的屬性名稱與 **父層 `constructor`** 屬性名稱 **相同** 時，會以 **子層** 為主 (覆蓋)。
 - 當 **子層 `prototype`** 與 **父層 `prototype`** **同名** 時，會先執行本身 **子層 `prototype`**。([若無，向上層尋找](/Javascript/prototype.html#prototype-原型觀念))
   :::
+
+## 私有屬性
+
+當屬性名稱以 `#` 為前綴時，就會被認為是「私有」的屬性，只可以在聲名這個變數的 class 中被訪問，外部無法訪問。
+
+```js
+class Person {
+  #firstName
+  constructor(firstName) {
+    this.#firstName = firstName
+  }
+  get firstName() {
+    return this.#firstName
+  }
+}
+
+const niki = new Person('NIKI')
+
+niki.firstName // 'NIKI'
+niki.#firstName // Uncaught SyntaxError: Private field '#firstName' must be declared in an enclosing class
+```
 
 ## Reference
 
@@ -179,3 +201,4 @@ niki.sayParentName();
 - [Day 10: ES6 篇 - Class(類別)](https://ithelp.ithome.com.tw/articles/10185583)
 - [video - JavaScript Classes Tutorial](https://www.youtube.com/watch?v=2ZphE5HcQPQ&ab_channel=freeCodeCamp.org)
 - [神 q 超人 | JavaScript | ES6 中最容易誤會的語法糖 Class - 基本用法](https://medium.com/enjoy-life-enjoy-coding/javascript-es6-%E4%B8%AD%E6%9C%80%E5%AE%B9%E6%98%93%E8%AA%A4%E6%9C%83%E7%9A%84%E8%AA%9E%E6%B3%95%E7%B3%96-class-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-23e4a4a5e8ed)
+- [# 类私有域](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes/Private_class_fields)
