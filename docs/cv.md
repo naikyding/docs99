@@ -15,7 +15,7 @@
 :::info Naiky Ding
 
 <div class="avatar" style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin-top: 1rem;">
-  <img src="https://images.cakeresume.com/XD2zB/naikyding/c27d4258-7673-488d-8da2-c24f49317d04.png">
+  <img src="https://media.cakeresume.com/image/upload/s--zNmYusul--/c_fill,g_face,h_300,w_300/v1677070775/ogatot3rropbctmuskls.jpg">
 </div>
 
 > Taipei City University of Science & Technology (TPCU), Digital Multimedia Design
