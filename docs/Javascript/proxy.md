@@ -220,7 +220,7 @@ personProxy.age // 100
 
 ### DOM 操作
 
-當物件屬性被改變時，利用設置攔截功能，操作 DOM 是進階的操作方式。(下圖，點擊 「item1」 or 「item2」)。
+當 `target` 物件屬性被改變時，利用 `set()` 攔截功能操作 DOM，是資料與畫面綁定的方式。(下圖，點擊 「item1」 or 「item2」)。
 
 <iframe height="300" style="width: 100%;" scrolling="no" title="Javascript Proxy Dom" src="https://codepen.io/naiky/embed/GRXqgVO?default-tab=result&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/naiky/pen/GRXqgVO">
@@ -230,7 +230,7 @@ personProxy.age // 100
 
 **說明**
 
-點擊時 `元素` 會被做為內容傳入 `target.selected` 中。當 `target.selected` 被設置，該元素就會被添加 `.active-style`，而舊元素 `.active-style` 就會被移除。進而達到 dom 的操作。
+點擊時 `元素` 會被做為內容傳入 `target.selected` 中。當 `target.selected` 被設置，該元素就會被添加 `.active-style`，而舊元素 `.active-style` 就會被移除。進而達到 DOM 的操作。
 
 :::details css
 
@@ -293,6 +293,99 @@ item1.addEventListener('click', () => {
 item2.addEventListener('click', () => {
   view.selected = item2
 })
+```
+
+### 資料修正與額外屬性
+
+在物件上新增額外的屬性 `lastBrowser` 在 `set` `get` 都適用；當屬性 `browsers` 資料不符合格式 `Array`時，動態調整格式。
+
+```js
+const target = {
+  browsers: ['IE', 'Firefox'],
+}
+
+const handler = {
+  get(target, prop) {
+    if (prop === 'lastBrowser') {
+      return target['browsers'][target['browsers'].length - 1]
+    }
+
+    return target[prop]
+  },
+
+  set(target, prop, value) {
+    if (prop === 'lastBrowser') {
+      target['browsers'].push(value)
+      return true
+    }
+
+    if (prop === 'browsers' && typeof value === 'string') {
+      value = [value]
+    }
+
+    target[prop] = value
+    return true
+  },
+}
+
+const prod = new Proxy(target, handler)
+```
+
+物件訪問與修改都多了 `lastBrowser` 屬性，設置時也同步更新 `browsers`；當 `browsers` 修改時，若為字串則調整為陣列輸入。
+
+```js
+prod.browsers // ['IE', 'Firefox']
+prod.lastBrowser // 'Firefox'
+
+prod.lastBrowser = 'Safari'
+prod.lastBrowser // 'Safari'
+prod.browsers // ['IE', 'Firefox', 'Safari']
+
+prod.browsers = 'Chrome'
+prod.browsers // ['Chrome']
+
+prod.browsers = ['Edge']
+prod.browsers // ['Edge']
+```
+
+### 查詢功能
+
+```js
+const obj = [
+  { name: 'Firefox', type: 'browser' },
+  { name: 'SeaMonkey', type: 'browser' },
+  { name: 'Thunderbird', type: 'mailer' },
+]
+
+const handler = {
+  get(target, prop) {
+    if (prop in target) return target[prop]
+    if (prop === 'number') return target.length
+
+    let matchItem
+    let types = {}
+
+    for (const item of target) {
+      if (item.name === prop) {
+        matchItem = item
+      }
+
+      if (types[item.type]) {
+        types[item.type].push(item)
+      } else {
+        types[item.type] = [item]
+      }
+    }
+
+    if (matchItem) return matchItem
+    if (prop === 'types') return Object.keys(types)
+    if (types[prop]) return types[prop]
+
+    return undefined
+  },
+}
+
+const prod = new Proxy(obj, handler)
 ```
 
 ## Reference
