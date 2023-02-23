@@ -183,11 +183,11 @@ personProxy.text // 不存在屬性的默認值
 
 當屬性進行「修改/設置」時，就會觸發這個 `set()` 函式，常見來對輸入的數據進行 `驗證`、`操作 dom` `數據加工`
 
-#### set(`target`, `prop`, `newValue`)
+#### set(`target`, `prop`, `value`)
 
 - `target` 原始目標物件
 - `prop` 訪問屬性
-- `newValue` 設置的值
+- `value` 設置的值
 
 ### 驗證攔截
 
@@ -195,16 +195,16 @@ personProxy.text // 不存在屬性的默認值
 const person = { age: 1 }
 
 const validate = {
-  set(target, prop, newValue) {
+  set(target, prop, value) {
     if (prop === 'age') {
-      if (newValue > 100) {
+      if (value > 100) {
         throw '年紀無效'
       }
-      if (!Number.isInteger(newValue)) {
+      if (!Number.isInteger(value)) {
         throw '輸入格式不正確'
       }
     }
-    target[prop] = newValue
+    target[prop] = value
     return true
   },
 }
@@ -216,6 +216,83 @@ personProxy.age = 999 // Uncaught 年紀無效
 
 personProxy.age = 100 // 100
 personProxy.age // 100
+```
+
+### DOM 操作
+
+當物件屬性被改變時，利用設置攔截功能，操作 DOM 是進階的操作方式。(下圖，點擊 「item1」 or 「item2」)。
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="Javascript Proxy Dom" src="https://codepen.io/naiky/embed/GRXqgVO?default-tab=result&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/GRXqgVO">
+  Javascript Proxy Dom</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+**說明**
+
+點擊時 `元素` 會被做為內容傳入 `target.selected` 中。當 `target.selected` 被設置，該元素就會被添加 `.active-style`，而舊元素 `.active-style` 就會被移除。進而達到 dom 的操作。
+
+:::details css
+
+```css
+.active-style {
+  padding: 1rem;
+  background: #2e2e2e;
+  color: #fff;
+}
+h2 {
+  padding: 1rem;
+  cursor: pointer;
+}
+```
+
+:::
+
+:::details html
+
+```html
+<h2 id="item1">Item1</h2>
+<h2 id="item2">Item2</h2>
+```
+
+:::
+
+```js
+const item1 = document.querySelector('#item1')
+const item2 = document.querySelector('#item2')
+
+const target = {
+  selected: null,
+}
+
+const handler = {
+  set(target, prop, value) {
+    const oldEl = target[prop] // 舊元素
+    const newEl = value // 新元素
+
+    if (prop === 'selected') {
+      if (oldEl) {
+        oldEl.classList.remove('active-style')
+      }
+      if (newEl) {
+        newEl.classList.add('active-style')
+      }
+    }
+
+    target[prop] = value
+    return true
+  },
+}
+
+const view = new Proxy(target, handler)
+
+item1.addEventListener('click', () => {
+  view.selected = item1
+})
+
+item2.addEventListener('click', () => {
+  view.selected = item2
+})
 ```
 
 ## Reference
