@@ -2,7 +2,9 @@
 
 :::tip 簡單說
 Proxy 可以為指定物件做「代理」，所有對物件的操作都可以被攔截，具有修改原有物件操作的功能。且「代理」與物件之間保持連結關係。
-:::
+
+- `vue3` 資料綁定的核心技術
+  :::
 
 ## 原理
 
@@ -179,6 +181,62 @@ personProxy.text // 不存在屬性的默認值
 回傳資料需要使用 `target` 不是 `receiver` !
 :::
 
+### 查詢功能
+
+完全不需要使用 [物件屬性定義 Object.defineProperty] ，使用 `get()` 攔截，就可以靈活的定義查詢的方法。
+
+```js
+const data = [
+  { name: 'Firefox', type: 'browser' },
+  { name: 'SeaMonkey', type: 'browser' },
+  { name: 'Thunderbird', type: 'mailer' },
+]
+
+const handler = {
+  get(target, prop) {
+    if (prop in target) return target[prop]
+    if (prop === 'number') return target.length
+
+    let matchItem = null
+    let types = {}
+
+    for (const item of target) {
+      if (item.name === prop) {
+        matchItem = item
+      }
+      if (types[item.type]) {
+        types[item.type].push(item)
+      } else {
+        types[item.type] = [item]
+      }
+    }
+
+    if (matchItem) return matchItem
+    if (prop === 'types') return Object.keys(types)
+    if (types[prop]) return types[prop]
+
+    return undefined
+  },
+}
+
+const prod = new Proxy(data, handler)
+```
+
+```js
+// 屬性查詢
+prod[0] // { name: "Firefox", type: "browser" }
+
+// 資料數量查詢
+prod.number // 3
+
+// 資料 {name} 查詢
+prod['Firefox'] // { name: "Firefox", type: "browser" }
+prod['text'] // undefined
+
+// 資料所有 {type} 查詢
+prod.types // ['browser', 'mailer']
+```
+
 ## 設置攔截 `set()`
 
 當屬性進行「修改/設置」時，就會觸發這個 `set()` 函式，常見來對輸入的數據進行 `驗證`、`操作 dom` `數據加工`
@@ -348,47 +406,25 @@ prod.browsers = ['Edge']
 prod.browsers // ['Edge']
 ```
 
-### 查詢功能
+## handler 其它操作功能
 
-```js
-const obj = [
-  { name: 'Firefox', type: 'browser' },
-  { name: 'SeaMonkey', type: 'browser' },
-  { name: 'Thunderbird', type: 'mailer' },
-]
+此篇僅寫了常用的 `get()`、`set()`，其實 `handler` 方法中還有更多操作方法可以 [參考 MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy#object_internal_methods)
 
-const handler = {
-  get(target, prop) {
-    if (prop in target) return target[prop]
-    if (prop === 'number') return target.length
+## 優缺點
 
-    let matchItem
-    let types = {}
+### 優點
 
-    for (const item of target) {
-      if (item.name === prop) {
-        matchItem = item
-      }
+- 可以監聽物件所有變動
+- 代理與物件是連結的，當物件再更新也能追蹤所有屬性
+- 可以比 [物件屬性定義 object.defineproperty] 更靈活設置攔截條件。
 
-      if (types[item.type]) {
-        types[item.type].push(item)
-      } else {
-        types[item.type] = [item]
-      }
-    }
+### 缺點
 
-    if (matchItem) return matchItem
-    if (prop === 'types') return Object.keys(types)
-    if (types[prop]) return types[prop]
-
-    return undefined
-  },
-}
-
-const prod = new Proxy(obj, handler)
-```
+[IE 不支援度](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy#browser_compatibility)
 
 ## Reference
+
+[物件屬性定義 object.defineproperty]: /Javascript/object-defineProperty
 
 - [MDN Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 - [JavaScript Proxy](https://www.javascripttutorial.net/es6/javascript-proxy/)
