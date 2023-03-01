@@ -250,6 +250,9 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/proxy'
     },
     {
+      'Web Component 自定義組件': '/Javascript/web-component'
+    },
+    {
       text: 'GSAP 特效動畫',
       link: '/Javascript/gsap'
     },
