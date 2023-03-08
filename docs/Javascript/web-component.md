@@ -41,17 +41,69 @@
 
 - **Custom element 自定義元素**
 
-  使用原生語法 `customElements.define` 向定義 `html` 元素名稱。
+  使用 [customelementregistry.define()] API 來達成，創建客制化元素，像是這樣:
+
+  ```html
+  <custom-element></custom-element>
+  ```
 
 - **Shadow DOM**
 
   在 DOM 的節點上，附加一個隔離層的 DOM tree ([隱藏式](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)) 封裝自身的 `html`、`css`不受外部影響。
 
+  ![](/Javascript/img/shadowdom.svg)
+
 - **HTML template**
 
-  HTML 中的樣版標籤，透過 `<template>` 來定義布局結構，在頁面中不會直接渲染，使用腳本指令將其渲染到頁面上。
+  HTML 中的樣版標籤，透過 `<template>` 來定義布局結構，在頁面中不會直接渲染，再使用腳本指令將其渲染到頁面上。
 
-## 操作
+  ```html
+  <template>
+    <slot />
+  </template>
+  ```
+
+## 基本自定義組件
+
+寫一個會產生新元素的 `class` 其中的 `extends HTMLElement` 指的是繼承來自 `html` 元素的原型功能。再操作創建自定義元素 API [customElements.define()] ，以會產生元素的建構函式來定義一個「新」的元素，之後在 `html` 寫上自定義元素就完成。
+
+- customElements.define(`name`, `constructor`)
+  - `name` 元素名稱
+  - `constructor` 產生新自定義元素的建構函式
+
+```html
+<custom-element title="TITLE">CONTENT</custom-element>
+```
+
+```js
+// extends HTMLElement 繼承父原型屬性
+class customElement extends HTMLElement {
+  constructor() {
+    // 呼叫父層屬性
+    super()
+
+    // 取得自定義元素屬性 `title` 的資料
+    const title = this.getAttribute('title')
+    // 取得自定義元素內容
+    const content = this.innerHTML
+
+    // 自定義元素的顯示內容
+    this.innerHTML = `
+      <h1>${title}</h1>
+      <p>${content}</p>
+    `
+  }
+}
+
+// 定義 自定義元素
+customElements.define('custom-element', customElement)
+```
+
+:::warning ⛔ 注意 ⛔ 受全域影響
+上述的方式，是會受到「全域」css 的影響，如果外部有 `h1 { color: red; }`，是會直接影響到 `自定義元素` 內的 `h1`，若要隔離元素，需要使用 `shadowDOM`。
+:::
+
+## demo
 
 **Html**
 
@@ -107,7 +159,10 @@ customElements.define('custom-element', customElement)
 
 ## Reference
 
+[customelements.define()]: https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define
+
 - [Web Components MDN](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
+- [customElements.define()]
 - [[VIDEO] Learn Web Components In 25 Minutes](https://www.youtube.com/watch?v=2I7uX8m0Ta0)
 - [Web Component 學習筆記](https://johnnywang1994.github.io/book/articles/js/web-component.html)
 - [如何使用 Web Component 技術來製作元件](https://blog.errorbaker.tw/posts/xiang/build-webcomponent-element/)
