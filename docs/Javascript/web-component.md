@@ -52,6 +52,7 @@
   在 DOM 的節點上，附加一個隔離層的 DOM tree ([隱藏式](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)) 封裝自身的 `html`、`css`不受外部影響。
 
   ![](/Javascript/img/shadowdom.svg)
+  圖片出處 [使用 shadow dom]
 
 - **HTML template**
 
@@ -102,6 +103,36 @@ customElements.define('custom-element', customElement)
 :::warning ⛔ 注意 ⛔ 受全域影響
 上述的方式，是會受到「全域」css 的影響，如果外部有 `h1 { color: red; }`，是會直接影響到 `自定義元素` 內的 `h1`，若要隔離元素，需要使用 `shadowDOM`。
 :::
+
+## 使用 shadowDOM 自定義元素
+
+```html
+<custom-element title="TITLE">CONTENT</custom-element>
+```
+
+```js
+// extends HTMLElement 繼承父原型屬性
+class customElement extends HTMLElement {
+  constructor() {
+    // 呼叫父層屬性
+    super()
+
+    // 取得自定義元素屬性 `title` 的資料
+    const title = this.getAttribute('title')
+    // 取得自定義元素內容
+    const content = this.innerHTML
+
+    // 自定義元素的顯示內容
+    this.innerHTML = `
+      <h1>${title}</h1>
+      <p>${content}</p>
+    `
+  }
+}
+
+// 定義 自定義元素
+customElements.define('custom-element', customElement)
+```
 
 ## demo
 
@@ -160,6 +191,7 @@ customElements.define('custom-element', customElement)
 ## Reference
 
 [customelements.define()]: https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define
+[使用 shadow dom]: https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM
 
 - [Web Components MDN](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
 - [customElements.define()]
@@ -169,4 +201,4 @@ customElements.define('custom-element', customElement)
 - [了解 Web Components 對我們的重要性](https://the-allstars.com/blog/website-information/what-is-web-components-why-is-it-so-important.html)
 - [[VIDEO - ALEX]#5 Web Component by Vite & Vue3](https://www.youtube.com/watch?v=pN7fC2vb1Ig)
 - [Web Components 教學 (HTML Templates、Custom Elements、Shadow DOM)](https://www.youtube.com/watch?v=spB9e__IPMw)
-- [使用 shadow DOM](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)
+- [使用 shadow DOM]
