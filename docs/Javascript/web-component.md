@@ -49,7 +49,7 @@
 
 - **Shadow DOM**
 
-  在 DOM 的節點上，附加一個隔離層的 DOM tree ([隱藏式](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)) 封裝自身的 `html`、`css`不受外部影響。
+  在 DOM 的節點上，附加一個「隔離層」的 DOM tree ([隱藏式](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)) 封裝自身的樣式與行為，不受外部影響。
 
   ![](/Javascript/img/shadowdom.svg)
   圖片出處 [使用 shadow dom]
@@ -106,6 +106,8 @@ customElements.define('custom-element', customElement)
 
 ## 使用 shadowDOM 自定義元素
 
+將自定義的元素，附加上 `shadowDOM` 功能，將模版內容寫入到 `shadowDOM`的裡面，模板內容就會被隔離在 `shadowDOM` 之內，不會被外部樣式行為影響，這也是最推薦的寫法。
+
 ```html
 <custom-element title="TITLE">CONTENT</custom-element>
 ```
@@ -117,22 +119,34 @@ class customElement extends HTMLElement {
     // 呼叫父層屬性
     super()
 
+    // 在自定義元素上附加 shadowDOM
+    const shadowRoot = this.attachShadow({ mode: 'open' })
+
     // 取得自定義元素屬性 `title` 的資料
     const title = this.getAttribute('title')
     // 取得自定義元素內容
     const content = this.innerHTML
 
-    // 自定義元素的顯示內容
-    this.innerHTML = `
+    // 創建模板
+    const template = document.createElement('template')
+    template.innerHTML = `
       <h1>${title}</h1>
       <p>${content}</p>
     `
+    const templateContentNode = template.content.cloneNode(true)
+
+    // 模板內容節點掛載在 shadowRoot 之下
+    shadowRoot.append(templateContentNode)
   }
 }
 
 // 定義 自定義元素
 customElements.define('custom-element', customElement)
 ```
+
+:::tip 推薦
+這個方法可以有效的將「自定義元素」隔離在 `shadowDOM` 之內，不會受到全域樣式、行為的影響。
+:::
 
 ## demo
 
