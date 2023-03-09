@@ -211,6 +211,54 @@ customElements.define('custom-element', customElement)
 
 ## 生命周期
 
+自定義組件的建構式中，提供了生命周期，以便 DOM 發生變化時調用。
+
+| 方法                       | 名稱         | 說明                                                                                                                                       |
+| -------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `connectedCallback`        | 添加調用     | 當元素被附加到文件時調用，可能在元素被解析之前。                                                                                           |
+| `disconnectedCallback`     | 移除調用     | 當元素不在文件中調用。                                                                                                                     |
+| `adoptedCallback`          | 移動調用     | 當元素移動到新的文件時調用用。                                                                                                             |
+| `attributeChangedCallback` | 屬性改變調用 | 元素中的 屬性 `attribute` 有變動都會調用 (新增、移除、修改)，在靜態方法 `static get observedAttributes` 指定監聽屬性**才會調用這個方法**。 |
+
+```js
+const template = document.createElement('template')
+template.innerHTML = `
+            <label>
+                <input type="checkbox" />
+                <slot />
+
+                <span>
+                    <slot name="desc" />
+                </span>
+            </label>
+        `
+
+class customElement extends HTMLElement {
+  constructor() {
+    super()
+
+    const shadowRoot = this.attachShadow({ mode: 'open' })
+    const templateContent = template.content
+    shadowRoot.append(templateContent.cloneNode(true))
+  }
+
+  connectedCallback() {
+    console.log('自定義元素被 ((添加)) 到 document')
+  }
+  disconnectedCallback() {
+    console.log('自定義元素被 ((移除)) 到 document')
+  }
+  adoptedCallback() {
+    console.log('自定義元素被移動')
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    console.log(`屬性 (${name}) 被改變! 從 ${oldValue} 改為 ${newValue}`)
+  }
+}
+
+customElements.define('custom-element', customElement)
+```
+
 ## Reference
 
 [customelements.define()]: https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define
