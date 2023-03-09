@@ -57,9 +57,9 @@
   writing-mode: vertical-lr;
 }
 ```
+
 - `vertical-lr` 垂直靠左
 - `vertical-rl` 垂直靠右
-
 
 ## 鏡像圖片
 
@@ -79,6 +79,7 @@
 </div>
 
 [transform MDN](https://developer.mozilla.org/zh-TW/docs/Web/CSS/transform)
+
 ```css {2}
 img {
   transform: scaleX(-1);
@@ -151,39 +152,48 @@ img {
 ### 1️⃣ 容器內滾動吸附方式 [scroll-snap-type](https://developer.mozilla.org/zh-CN/docs/Web/CSS/scroll-snap-type)
 
 設置在父層
+
 ```css
 .container {
   scroll-snap-type: x mandatory; /* 水平「強制吸附」 */
   scroll-snap-type: x proximity; /* 水平「靠近吸附」 */
-  overflow: auto;                /* 必須 */
+  overflow: auto; /* 必須 */
 
   scroll-behavior: smooth; /* 滾動平滑 */
 }
 ```
+
 ### 2️⃣ 子層 對齊容器方式 [scroll-snap-align](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-align)
+
 **滾動項目**
+
 ```css
 .section {
   scroll-snap-align: start; /* 對齊在起始點 */
-  scroll-snap-align: end;   /* 對齊在終點 */
-  scroll-snap-align: center;/* 元素中間對齊 */
+  scroll-snap-align: end; /* 對齊在終點 */
+  scroll-snap-align: center; /* 元素中間對齊 */
 }
 ```
 
 ### 滾動模式 scroll-behavior
+
 設置在容器上，在當滾動時執行。
+
 ```css
 .container {
-	scroll-behavior: smooth; // 滾動平滑
+  scroll-behavior: smooth; // 滾動平滑
 }
 ```
+
 :::details Reference
+
 - [fullPage scroll snapping. Create full screen pages fast and simple](https://alvarotrigo.com/fullPage/)
 - [Snap Scroll with CSS | Full Page Scrolling Effects](https://codepen.io/joealva1957/pen/vPrKEP)
 - [[JS] 整頁式滾動](https://medium.com/az-%E4%B8%8B%E7%AD%86%E8%A8%98/full-page-scroll-%E6%95%B4%E9%A0%81%E5%BC%8F%E6%BB%BE%E5%8B%95-d7a94eea7316)
-- [大侠，请留步，要不过来了解下CSS Scroll Snap？ " 张鑫旭-鑫空间-鑫生活](https://www.zhangxinxu.com/wordpress/2018/11/know-css-scroll-snap/)
-- [【乾貨】使用 CSS Scroll Snap 優化滾動，提升使用者體驗！_前端小智 - MdEditor](https://www.gushiciku.cn/pl/grR1/zh-tw)
-:::
+- [大侠，请留步，要不过来了解下 CSS Scroll Snap？ " 张鑫旭-鑫空间-鑫生活](https://www.zhangxinxu.com/wordpress/2018/11/know-css-scroll-snap/)
+- [【乾貨】使用 CSS Scroll Snap 優化滾動，提升使用者體驗！\_前端小智 - MdEditor](https://www.gushiciku.cn/pl/grR1/zh-tw)
+- [使用 sroll-snap-type 优化滚动](https://github.com/chokcoco/iCSS/issues/74)
+  :::
 
 ## 文本溢出省略
 
@@ -216,20 +226,25 @@ img {
 </div>
 
 **文字區塊**
+
 ```css
 .content {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; 
+  -webkit-line-clamp: 2;
   overflow: hidden;
 }
 ```
+
 - `-webkit-line-clamp` 顯示幾行
 - `overflow: hidden;` 超出隱藏
 
 :::details Reference
+
 - [超出顯示 text-overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow)
-- [【教學文章】CSS多行文本溢出省略顯示](https://www.injerry.com/blog_view/149)
-:::
+- [【教學文章】CSS 多行文本溢出省略顯示](https://www.injerry.com/blog_view/149)
+  :::
+
 ## Reference
+
 - [Top 10 CSS One Liners That Will Blow Your Mind (VIDEO)](https://www.youtube.com/watch?v=Xc6G3oV24yE)
