@@ -148,59 +148,68 @@ customElements.define('custom-element', customElement)
 這個方法可以有效的將「自定義元素」隔離在 `shadowDOM` 之內，不會受到全域樣式、行為的影響。
 :::
 
-## demo
+:::tip 提示
 
-**Html**
+- elementNode`.cloneNode(true)` 複製節點
+- parentNode`.append(`childNode`)` 在指定節點子層最後插入
+- `template` 為何使用 `.content.cloneNode(true)`
+
+  `template` 只是一個容器，在創建時內部也會創建一個 `#document-fragment`， 這是一個虛擬的節點，後續只要使用 `template.content` 就可以直接操作 `template` 內部的所有節點 (即模板本身)，以減少對 `template` 內容的 DOM 操作次數。
+  若使用 `template.cloneNode(true)` 是直接操作 `template` 元素本身，不是模板內容。
+  :::
+
+## 運用 template slot 自定義組件
+
+使用 `template` `slot` 可以更靈活的使用自定義組件，使用自定義組件只要沒有特別載名 `slot=""`，寫入的 內容都是會在 `<slot />` 中。
 
 ```html
-<div>
-  <custom-element background="lightblue" color="yellow"
-    >默認 slot 文字
-  </custom-element>
-</div>
+<custom-element>
+  默認 slot 內容
+  <span slot="desc">slot name="desc" 的內容</span>
+</custom-element>
 ```
 
-**Javascript**
-
 ```js
+// 定義模板
+const template = document.createElement('template')
+template.innerHTML = `
+  <style>
+  h1 {
+    color: red;
+  }
+  p {
+    color: green;
+  }
+  </style>
+
+  <h1>
+    <slot />
+  </h1>
+
+  <p>
+    <slot name="desc" />
+  </p>
+`
+
+// 向定義元素建構函式
 class customElement extends HTMLElement {
   constructor() {
     super()
 
-    // 創建 shadow DOM
+    // 為自定義元素附加 shadowDOM
     const shadowRoot = this.attachShadow({ mode: 'open' })
+    const templateContent = template.content
 
-    // 取得元素相關資料
-    const title = this.getAttribute('title')
-    const content = this.innerHTML
-    const attributeBackgorund = this.getAttribute('background')
-    const attributeColor = this.getAttribute('color')
-
-    // 創建 template 模板
-    const template = document.createElement('template')
-    template.innerHTML = `
-      <style>
-      h1 {
-        background: ${attributeBackgorund};
-        color: ${attributeColor};
-      }
-      </style>
-    
-      <h1>
-        <slot />
-      </h1>
-    `
-
-    // 複製模版內容節點
-    const cloneTmeplateNode = template.content.cloneNode(true)
-    // 掛截模板節點到 shadow DOM 上
-    shadowRoot.append(cloneTmeplateNode)
+    // 模板內容複制插入到 shadowDOM 內
+    shadowRoot.append(templateContent.cloneNode(true))
   }
 }
 
-// (定義) 客製化元素名稱，供使用
+// 定義 向定義元素名稱與內容
 customElements.define('custom-element', customElement)
 ```
+
+## 生命周期
 
 ## Reference
 
