@@ -242,16 +242,24 @@ class customElement extends HTMLElement {
     shadowRoot.append(templateContent.cloneNode(true))
   }
 
+  static get observedAttributes() {
+    return ['checked']
+  }
+
   connectedCallback() {
     console.log('自定義元素被 ((添加)) 到 document')
+    console.log(this)
   }
   disconnectedCallback() {
-    console.log('自定義元素被 ((移除)) 到 document')
+    console.log('自定義元素從 document 中被 ((移除)) ')
+    console.log(this)
   }
   adoptedCallback() {
     console.log('自定義元素被移動')
+    console.log(this)
   }
   attributeChangedCallback(name, oldValue, newValue) {
+    console.error(`attributeChangedCallback`)
     console.log(`屬性 (${name}) 被改變! 從 ${oldValue} 改為 ${newValue}`)
   }
 }
