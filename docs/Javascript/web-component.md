@@ -221,50 +221,64 @@ customElements.define('custom-element', customElement)
 | `attributeChangedCallback` | 屬性改變調用 | 元素中的 屬性 `attribute` 有變動都會調用 (新增、移除、修改)，在靜態方法 `static get observedAttributes` 指定監聽屬性**才會調用這個方法**。 |
 
 ```js
+// 建立模版
 const template = document.createElement('template')
 template.innerHTML = `
-            <label>
-                <input type="checkbox" />
-                <slot />
+    <label>
+        <input type="checkbox" />
+        <slot />
+    </label>
+`
 
-                <span>
-                    <slot name="desc" />
-                </span>
-            </label>
-        `
-
-class customElement extends HTMLElement {
+// 創建自定義元素建構式
+class nCheckbox extends HTMLElement {
   constructor() {
+    // 呼叫父層屬性
     super()
 
-    const shadowRoot = this.attachShadow({ mode: 'open' })
-    const templateContent = template.content
-    shadowRoot.append(templateContent.cloneNode(true))
+    // 自定義元素 建立 shadowDOM
+    const shadow = this.attachShadow({ mode: 'open' })
+    // 將模版寫入 shadowDOM
+    shadow.append(template.content.cloneNode(true))
+    // 將 shadowDOM 內 checkbox 寫入屬性 (方便之後操作)
+    this.shadowCheckboxEl = shadow.querySelector('input[type="checkbox"]')
   }
 
+  // 監聽 自定義元素 指定屬性
   static get observedAttributes() {
     return ['checked']
   }
 
-  connectedCallback() {
-    console.log('自定義元素被 ((添加)) 到 document')
-    console.log(this)
-  }
-  disconnectedCallback() {
-    console.log('自定義元素從 document 中被 ((移除)) ')
-    console.log(this)
-  }
-  adoptedCallback() {
-    console.log('自定義元素被移動')
-    console.log(this)
-  }
+  // 當 自定義元素 屬性改變執行函式
   attributeChangedCallback(name, oldValue, newValue) {
-    console.error(`attributeChangedCallback`)
-    console.log(`屬性 (${name}) 被改變! 從 ${oldValue} 改為 ${newValue}`)
+    if (name !== 'checked') return false
+
+    // 屬性內容為字串，轉變為 boolean
+    const newStatus = newValue !== null && newValue !== 'false'
+    this.setShadowCheckbox(newStatus)
+  }
+
+  // 當 自定義元素 插入 document hook
+  connectedCallback() {
+    console.log(`connectedCallback`)
+
+    this.shadowCheckboxEl.addEventListener('change', () => {
+      this.setCustomCheckbox(this.shadowCheckboxEl.checked)
+    })
+  }
+
+  // 設置 自定義元素 `checked` 屬性
+  setCustomCheckbox(newValue) {
+    this.setAttribute('checked', newValue)
+  }
+
+  // 設置 shadowDOM 內 checkbox 元素 checked 狀態
+  setShadowCheckbox(newValue) {
+    this.shadowCheckboxEl.checked = newValue
   }
 }
 
-customElements.define('custom-element', customElement)
+customElements.define('n-checkbox', nCheckbox)
 ```
 
 ## Reference
