@@ -221,6 +221,55 @@ customElements.define('custom-element', customElement)
 | `attributeChangedCallback` | 屬性改變調用 | 元素中的 屬性 `attribute` 有變動都會調用 (新增、移除、修改)，在靜態方法 `static get observedAttributes` 指定監聽屬性**才會調用這個方法**。 |
 
 ```js
+const template = document.createElement('template')
+template.innerHTML = `
+            <label>
+                <input type="checkbox" />
+                <slot />
+
+                <span>
+                    <slot name="desc" />
+                </span>
+            </label>
+        `
+
+class customElement extends HTMLElement {
+  constructor() {
+    super()
+
+    const shadowRoot = this.attachShadow({ mode: 'open' })
+    const templateContent = template.content
+    shadowRoot.append(templateContent.cloneNode(true))
+  }
+
+  // 監聽屬性變化
+  static get observedAttributes() {
+    // 回傳要監聽的屬性
+    return ['checked']
+  }
+
+  connectedCallback() {
+    console.log('自定義元素被 ((添加)) 到 document')
+  }
+  disconnectedCallback() {
+    console.log('自定義元素從 document 被 ((移除))')
+  }
+  adoptedCallback() {
+    console.log('自定義元素被移動到其它 document')
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    console.log(`屬性 (${name}) 被改變! 從 ${oldValue} 改為 ${newValue}`)
+  }
+}
+
+customElements.define('custom-element', customElement)
+```
+
+## 寫一個 web component
+
+建立一個內部有 `<input type="checkbox" />` 的自定義元素，當自定義元素的屬性 `checked` 被寫上，載入時 `<input type="checkbox" />` 就會自動 `checked`、當 `<input type="checkbox" />` 改變狀態，也會連動自定義元素的 `checked` 屬性。
+
+```js
 // 建立模版
 const template = document.createElement('template')
 template.innerHTML = `
@@ -246,6 +295,7 @@ class nCheckbox extends HTMLElement {
 
   // 監聽 自定義元素 指定屬性
   static get observedAttributes() {
+    // 監聽元素的 checked 屬性
     return ['checked']
   }
 
@@ -280,6 +330,35 @@ class nCheckbox extends HTMLElement {
 
 customElements.define('n-checkbox', nCheckbox)
 ```
+
+在建立元素的當下，從 `constructor` 中把 `shadowDOM` 的 `checkbox` 寫入屬性 `shadowCheckboxEl`，以便內部操作；在自定義元素添加到 document 後，才對 `shadowCheckboxEl` 進行監聽。
+
+:::warning 注意 1
+
+在監聽事件時，是使用 `() => {}` 而不是 `function() {}`， 使用 `function() {}` 的 `this` 指向 `<input type="checkbox" />` 觸發元素的本身；`() => {}` 沒有自已的 `this` 所以是外部的 `this`。
+
+```js
+this.shadowCheckboxEl.addEventListener('change', () => {
+  this.setCustomCheckbox(this.shadowCheckboxEl.checked)
+})
+```
+
+:::
+
+:::warning 注意 2
+取得屬性的值，都會是 `字串`，可以使用 `&&` 來方便處理 `boolean`。
+
+```js {5}
+attributeChangedCallback(name, oldValue, newValue) {
+  if (name !== 'checked') return false
+
+  // 屬性內容為字串，轉變為 boolean
+  const newStatus = newValue !== null && newValue !== 'false'
+  this.setShadowCheckbox(newStatus)
+}
+```
+
+:::
 
 ## Reference
 
