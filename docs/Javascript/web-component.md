@@ -269,6 +269,12 @@ customElements.define('custom-element', customElement)
 
 建立一個內部有 `<input type="checkbox" />` 的自定義元素，當自定義元素的屬性 `checked` 被寫上，載入時 `<input type="checkbox" />` 就會自動 `checked`、當 `<input type="checkbox" />` 改變狀態，也會連動自定義元素的 `checked` 屬性。
 
+<iframe height="300" style="width: 100%;" scrolling="no" title="Web Component" src="https://codepen.io/naiky/embed/poOrZMO?default-tab=html%2Cresult&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/naiky/pen/poOrZMO">
+  Web Component</a> by Naiky (<a href="https://codepen.io/naiky">@naiky</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
 ```js
 // 建立模版
 const template = document.createElement('template')
