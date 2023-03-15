@@ -41,7 +41,7 @@
 
 - **Custom element 自定義元素**
 
-  使用 [customelementregistry.define()] API 來達成，創建客制化元素，像是這樣:
+  使用 [customelements.define()] API 來達成，創建客制化元素，像是這樣:
 
   ```html
   <custom-element></custom-element>
@@ -120,7 +120,7 @@ class customElement extends HTMLElement {
     super()
 
     // 在自定義元素上附加 shadowDOM
-    const shadowRoot = this.attachShadow({ mode: 'open' })
+    const shadow = this.attachShadow({ mode: 'open' })
 
     // 取得自定義元素屬性 `title` 的資料
     const title = this.getAttribute('title')
@@ -135,8 +135,8 @@ class customElement extends HTMLElement {
     `
     const templateContentNode = template.content.cloneNode(true)
 
-    // 模板內容節點掛載在 shadowRoot 之下
-    shadowRoot.append(templateContentNode)
+    // 模板內容節點掛載在 shadowDOM 之下
+    shadow.append(templateContentNode)
   }
 }
 
@@ -150,6 +150,7 @@ customElements.define('custom-element', customElement)
 
 :::tip 提示
 
+- `this` 為元素本身
 - elementNode`.cloneNode(true)` 複製節點
 - parentNode`.append(`childNode`)` 在指定節點子層最後插入
 - `template` 為何使用 `.content.cloneNode(true)`
@@ -197,11 +198,11 @@ class customElement extends HTMLElement {
     super()
 
     // 為自定義元素附加 shadowDOM
-    const shadowRoot = this.attachShadow({ mode: 'open' })
+    const shadow = this.attachShadow({ mode: 'open' })
     const templateContent = template.content
 
     // 模板內容複制插入到 shadowDOM 內
-    shadowRoot.append(templateContent.cloneNode(true))
+    shadow.append(templateContent.cloneNode(true))
   }
 }
 
@@ -237,9 +238,9 @@ class customElement extends HTMLElement {
   constructor() {
     super()
 
-    const shadowRoot = this.attachShadow({ mode: 'open' })
+    const shadow = this.attachShadow({ mode: 'open' })
     const templateContent = template.content
-    shadowRoot.append(templateContent.cloneNode(true))
+    shadow.append(templateContent.cloneNode(true))
   }
 
   // 監聽屬性變化
@@ -339,32 +340,42 @@ customElements.define('n-checkbox', nCheckbox)
 
 在建立元素的當下，從 `constructor` 中把 `shadowDOM` 的 `checkbox` 寫入屬性 `shadowCheckboxEl`，以便內部操作；在自定義元素添加到 document 後，才對 `shadowCheckboxEl` 進行監聽。
 
-:::warning 注意 1
+:::warning 注意
 
-在監聽事件時，是使用 `() => {}` 而不是 `function() {}`， 使用 `function() {}` 的 `this` 指向 `<input type="checkbox" />` 觸發元素的本身；`() => {}` 沒有自已的 `this` 所以是外部的 `this`。
+- **使用 `箭頭函式`**
 
-```js
-this.shadowCheckboxEl.addEventListener('change', () => {
-  this.setCustomCheckbox(this.shadowCheckboxEl.checked)
-})
-```
+  在監聽事件時，是使用 `() => {}` 而不是 `function() {}`， 使用 `function() {}` 的 `this` 指向 `<input type="checkbox" />` 觸發元素的本身；`() => {}` 沒有自已的 `this` 所以是外部的 `this`。
 
-:::
+  ```js
+  this.shadowCheckboxEl.addEventListener('change', () => {
+    this.setCustomCheckbox(this.shadowCheckboxEl.checked)
+  })
+  ```
 
-:::warning 注意 2
-取得屬性的值，都會是 `字串`，可以使用 `&&` 來方便處理 `boolean`。
+- **取得屬性「值」處理**
 
-```js {5}
-attributeChangedCallback(name, oldValue, newValue) {
-  if (name !== 'checked') return false
+  取得屬性的值，都會是 `字串`，可以使用 `&&` 來方便處理 `boolean`。
 
-  // 屬性內容為字串，轉變為 boolean
-  const newStatus = newValue !== null && newValue !== 'false'
-  this.setShadowCheckbox(newStatus)
-}
-```
+  ```js {5}
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name !== 'checked') return false
 
-:::
+    // 屬性內容為字串，轉變為 boolean
+    const newStatus = newValue !== null && newValue !== 'false'
+    this.setShadowCheckbox(newStatus)
+  }
+  ```
+
+- **取得 shadowDOM 內節點**
+
+  自定義元素使用 `.shadowRoot` 取得 `shadowDOM` 內部節點。
+
+  ```js
+  const shadow = document.querySelector('custom-element').shadowRoot
+  shadow.querySelector('input[type="checkbox"]').checked = true
+  ```
+
+  :::
 
 ## Reference
 
