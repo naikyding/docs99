@@ -218,12 +218,13 @@ customElements.define('custom-element', customElement)
 
 自定義組件的建構式中，提供了生命周期，以便 DOM 發生變化時調用。
 
-| 方法                       | 名稱         | 說明                                                                                                                                       |
-| -------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `connectedCallback`        | 添加調用     | 當元素被附加到文件時調用，可能在元素被解析之前。                                                                                           |
-| `disconnectedCallback`     | 移除調用     | 當元素不在文件中調用。                                                                                                                     |
-| `adoptedCallback`          | 移動調用     | 當元素移動到新的文件時調用用。                                                                                                             |
-| `attributeChangedCallback` | 屬性改變調用 | 元素中的 屬性 `attribute` 有變動都會調用 (新增、移除、修改)，在靜態方法 `static get observedAttributes` 指定監聽屬性**才會調用這個方法**。 |
+| 方法                            | 名稱         | 說明                                                                                                                                       |
+| ------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `static get observedAttributes` | 監聽屬性     | 在函式中以 `陣列` 回傳要監聽的屬性。 `return ['attribute']`                                                                                |
+| `connectedCallback`             | 添加調用     | 當元素被附加到文件時調用，可能在元素被解析之前。                                                                                           |
+| `disconnectedCallback`          | 移除調用     | 當元素不在文件中調用。                                                                                                                     |
+| `adoptedCallback`               | 移動調用     | 當元素移動到新的文件時調用用。                                                                                                             |
+| `attributeChangedCallback`      | 屬性改變調用 | 元素中的 屬性 `attribute` 有變動都會調用 (新增、移除、修改)，在靜態方法 `static get observedAttributes` 指定監聽屬性**才會調用這個方法**。 |
 
 ```js
 const template = document.createElement('template')
