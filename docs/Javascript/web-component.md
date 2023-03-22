@@ -382,6 +382,228 @@ customElements.define('n-checkbox', nCheckbox)
 
   :::
 
+## Demo
+
+![](/Javascript/img/web-component-demo.gif)
+
+:::details html
+
+```html {10}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Component</title>
+  </head>
+  <body>
+    <date-picker></date-picker>
+
+    <script src="./web-component.js"></script>
+  </body>
+</html>
+```
+
+:::
+
+:::details JS
+**`web-component.js`**
+
+```js
+// css 字串
+const style = `
+<style>
+
+</style>
+`
+
+// 定義模版
+const template = document.createElement('template')
+template.innerHTML = `
+  <!-- 引入 tailwind css -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+  ${style}
+  
+  <!-- 日期選擇器 -->
+  <div>
+    <div id="date"></div>
+  </div>
+`
+
+// 自定義組件建構式
+class datePicker extends HTMLElement {
+  constructor() {
+    super()
+
+    // 建立 shadowDOM
+    const shadow = this.attachShadow({ mode: 'open' })
+    // 模版寫入 shadowDOM
+    shadow.append(template.content.cloneNode(true))
+    // 模版內日期選擇器元素放入屬性
+    this.dateSpaceEl = shadow.querySelector('#date')
+  }
+
+  // 自定義元素插入 document hook
+  connectedCallback() {
+    console.log('connected')
+    this.getDate()
+  }
+
+  // 取得日期內容函式
+  getDate(...props) {
+    console.log(`getDate data`)
+
+    const currentDate = new Date(props.length !== 0 ? props : new Date())
+
+    console.log(props)
+    console.log(currentDate)
+
+    const dateInfo = {
+      date: currentDate,
+      firstDay: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        1
+      ).getDay(),
+      getMonthText: this.monthText(currentDate.getMonth() + 1),
+      lastDays: new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth() + 1,
+        0
+      ).getDate(),
+    }
+
+    // 更新畫面
+    this.paintingMonth(
+      dateInfo,
+      dateInfo.firstDay,
+      dateInfo.getMonthText,
+      dateInfo.lastDays
+    )
+    this.nowDate = dateInfo
+    return dateInfo
+  }
+
+  // 月份顯示定義
+  monthText(month) {
+    if (!month) return 'n/a'
+    const monthNameAry = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ]
+
+    return monthNameAry[month - 1] || 'Error'
+  }
+
+  // 依日期產生畫面
+  paintingMonth({ date }, firstDay, monthText, days) {
+    const dateTemplate = document.createElement('template')
+    const daysDiv = (days) => {
+      let html = ''
+      let blankDay = (num) => {
+        let html = ``
+
+        for (let i = 0; i < firstDay; i++) {
+          html += `<div class="text-center py-1 border-1"></div>`
+        }
+        return html
+      }
+      for (let day = 1; day <= days; day++) {
+        const today = new Date()
+        const todayBoolean =
+          today.getFullYear() === date.getFullYear() &&
+          today.getMonth() + 1 === date.getMonth() + 1 &&
+          today.getDate() === day
+
+        html += `
+          <div class="text-center py-1 border-1 ${
+            todayBoolean ? 'text-red-200' : ''
+          }">${todayBoolean ? '今天' : day}</div>
+        `
+      }
+
+      return (html = `${blankDay(firstDay) + html}`)
+    }
+
+    dateTemplate.innerHTML = `
+      <div class="rounded">
+        <!-- 年月 -->
+        <div class="flex items-center">
+          <button type="button" class="border-1 text-gray-400 px-2 pre"> < </button>
+          <div class="flex-1 text-center">
+            <span>${monthText}</span>
+            <span>${date.getFullYear()}</span>
+          </div>
+          <button type="button" class="border-1 text-gray-400 px-2 py-1 next"> > </button>
+        </div>
+
+        <!-- 日期 -->
+        <div class="grid grid-cols-7">
+          <!-- 星期 -->
+          <div class="text-center py-1 border-1">日</div>
+          <div class="text-center py-1 border-1">一</div>
+          <div class="text-center py-1 border-1">二</div>
+          <div class="text-center py-1 border-1">三</div>
+          <div class="text-center py-1 border-1">四</div>
+          <div class="text-center py-1 border-1">五</div>
+          <div class="text-center py-1 border-1">六</div>
+          ${daysDiv(days)}
+        </div>
+      </div>
+    `
+
+    this.dateSpaceEl.innerHTML = ``
+    this.dateSpaceEl.append(dateTemplate.content.cloneNode(true))
+    this.shadowRoot
+      .querySelector('button.pre')
+      .addEventListener('click', () => this.preDate())
+    this.shadowRoot
+      .querySelector('button.next')
+      .addEventListener('click', () => this.nextDate())
+  }
+
+  // 上一個月份 功能
+  preDate() {
+    let year = this.nowDate.date.getFullYear()
+    let month = this.nowDate.date.getMonth()
+    console.log(year, month)
+    if (month === 0) {
+      year--
+      month = 12
+    }
+    this.getDate(year, month)
+  }
+
+  // 下一個月份 功能
+  nextDate() {
+    let year = this.nowDate.date.getFullYear()
+    let month = this.nowDate.date.getMonth() + 2
+    if (month === 13) {
+      year++
+      month = 1
+    }
+    this.getDate(year, month)
+  }
+}
+
+// 設置 自定義元素
+customElements.define('date-picker', datePicker)
+```
+
+:::
+
 ## Reference
 
 [customelements.define()]: https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define
