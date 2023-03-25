@@ -133,8 +133,147 @@ somefunction(reactiveData.count)
 
 ## ref 定義響應變數
 
+由於 `reactive()` 只能接受 `物件` 型別，所以 `vue3` 提供了 `ref()` 來讓所有型別都可以被接受。`ref()` 是以 [物件屬性定義 object.defineproperty] 作為底層原理。放入的資料都會寫入 `value` 屬性，操作時再以 `.value` 來存取資料。
+
+:::tip 提醒
+當 `物件` 類別被放入 `ref` 中，會自動被轉換為 `reactive()` 的[proxy 物件代理] 方法。
+:::
+
+**特色**
+
+- 使用對象：基本型別 `string` `number` `boolean` …所有型別
+- 在 vue3 顯示： `RefImpl` 類
+- 須透過 `.value` 取值
+
+**基本操作**
+
+```vue {4,7,14}
+<script setup>
+import { reactive, ref } from 'vue'
+
+const num = ref(0)
+
+function plus() {
+  num.value++ // 變更 num 的值
+}
+</script>
+
+<template>
+  <button @click="plus">+</button>
+  <div>
+    {{ num }}
+  </div>
+</template>
+```
+
+### 物件自動轉為代理
+
+當 `ref()` 內容或 `.value` 賦值為 `物件` 類別時，會自動使用 `reactive()` 轉換為 Proxy 代理。
+
+```js
+import { ref } from 'vue'
+
+let state = ref(0)
+console.log(state.value) // 0
+
+state.value = { id: 1 }
+console.log(state.value) // Proxy { id: 1 }
+
+// ref 放入物件，會自動轉為 reactive() 處理
+const data = ref({ id: 1 })
+console.log(data.value) // Proxy { id: 1 }
+```
+
+### 模版自動解 `.value`
+
+當 `ref()` 是在變數「頂層」時，模版中使用會自動解開 `.value`，不需要再另加 `.value`。
+
+```vue
+<script setup>
+import { reactive, ref } from 'vue'
+
+const state = ref(0)
+state.value++
+</script>
+
+<template>
+  <div>
+    {{ state + 1 }}
+    <!-- 不需要 .value 值為 2 -->
+  </div>
+</template>
+```
+
+**若 `ref` 不是變數「頂層」** 模版無法自動解 `value`
+
+如果不進行「操作」模版是可以直接顯示「結果」。但在模版無法操作，若要「解決」操作的問題:
+
+- 將它「解構」變為變數的「頂層」再輸出模版
+- 在模版操作中加上 `.value`
+
+```vue {4-6,14-15,17-18,20-21,23-24}
+<script setup>
+import { reactive, ref } from 'vue'
+
+const state = {
+  data: ref(0),
+}
+
+// 解決方式一
+const { data } = state
+</script>
+
+<template>
+  <div>
+    <!-- ❌ 顯示: [object Object]1 (無法解 value) ❌ -->
+    {{ state.data + 1 }}
+
+    <!-- 解決方式一 顯示: 1 -->
+    {{ data + 1 }}
+
+    <!-- 解決方式二 顯示: 1 -->
+    {{ state.data.value + 1 }}
+
+    <!-- 自動運算結果: 0 -->
+    {{ state.data }}
+  </div>
+</template>
+```
+
+### reactive 「物件」嵌入 ref 自動解 `.value`
+
+若 `ref` 被崁在 `reactive` 「物件」內，它將會「自動解 `.value` 」，在操作中不需要加 `.value` ，當成一般屬性操作就可以了。
+
+```js
+const state = reactive({
+  count: ref(0),
+})
+
+state.count += 1
+
+console.log(state.count) // 2
+```
+
+:::danger reactive 「陣列」嵌入 ref 還是要解 `.value`
+若 `ref` 被崁入到 `reactive` 的「陣列」內，是不會自動被解 `.value` ，操作還是需要加上 `.value`
+
+```js
+const state = reactive([ ref(0) ])
+❌ state[0] += 1
+👍 state[0].value += 1
+```
+
+:::
+
+### 總結
+
+- 只要 `ref` 在「頂層」操作就是要再加 `.value`
+- `ref` 在 `reactive` 「物件」內，操作 `ref` 不用加 `.value`
+- `ref` 在 `reactive` 「陣列」內，操作 `ref` 「要」加 `.value`
+
 ## Reference
 
 [proxy 物件代理]: /Javascript/proxy
+[物件屬性定義 object.defineproperty]: /Javascript/object-defineProperty
 
 - [Vue3 Docs](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
