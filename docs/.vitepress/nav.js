@@ -26,6 +26,16 @@ export const getDevOpsNav = () => ({
   ]
 })
 
+export const getVue3Nav = () => ({
+  text: 'Vue3',
+  items: [
+    {
+      text: '資料響應 reactive && ref',
+      link: '/Vue/reactive-ref'
+    }
+  ]
+})
+
 export const getNuxt3Nav = () => ({
   text: 'Nuxt3',
   items: [

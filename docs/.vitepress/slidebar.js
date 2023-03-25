@@ -400,6 +400,10 @@ export const getVueSidebar = () => ({
     {
       text: 'directive 自定義指令 v-\*',
       link: '/Vue/directive'
+    },
+    {
+      text: '資料響應 reactive && ref',
+      link: '/Vue/reactive-ref'
     }
   ]
 })

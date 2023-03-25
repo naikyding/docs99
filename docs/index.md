@@ -107,6 +107,10 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 
 - [打包壓縮檔](/Vue/vue-build-compression)
 
+### Vue3
+
+- [資料響應 reactive && ref](/Vue/reactive-ref)
+
 ## CSS
 
 - [CSS 設計模式](/css/css-type)
