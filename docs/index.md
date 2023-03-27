@@ -110,6 +110,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 ### Vue3
 
 - [資料響應 reactive && ref](/Vue/reactive-ref)
+- [計算屬性 computed](/Vue/computed)
 
 ## CSS
 

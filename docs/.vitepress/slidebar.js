@@ -404,6 +404,10 @@ export const getVueSidebar = () => ({
     {
       text: '資料響應 reactive && ref',
       link: '/Vue/reactive-ref'
+    },
+    {
+      text: '計算屬性 computed',
+      link: '/Vue/computed'
     }
   ]
 })
