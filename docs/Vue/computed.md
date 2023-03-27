@@ -54,7 +54,7 @@ const user0Age = computed(() => {
 會發現使用 `computed` 或 `function` 方法，都可以達到一樣的計算結果，但 `computed` 有「緩存」效果，當「值」沒改變時，都會返回相同的「值」不會再重新計算。而 `function` 方法，每次渲染都會執行一次。
 
 :::tip 效能好
-**使用 `computed` 「效能」是好過 `function` 的。**
+**若有「緩存」的需求，使用 `computed` 「效能」會好過 `function` 。**
 :::
 
 ```vue {6,8-10,15,21-23}
