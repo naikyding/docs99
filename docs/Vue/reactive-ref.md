@@ -277,3 +277,10 @@ const state = reactive([ ref(0) ])
 [物件屬性定義 object.defineproperty]: /Javascript/object-defineProperty
 
 - [Vue3 Docs](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
+- [真的好想離開 Vue 3 新手村 - Day 10: 從原生 JS 理解 Vue 3 響應式基礎 - reactive & ref (上) - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天](https://ithelp.ithome.com.tw/articles/10298023)
+
+- [响应式基础 | Vue.js](https://cn.vuejs.org/guide/essentials/reactivity-fundamentals.html#declaring-reactive-state)
+
+- [[Vue 源码系列-4]vue3 的 Ref 实现原理](https://zhuanlan.zhihu.com/p/355162566)
+
+- [【譯】Vue 3 Composition API: Ref vs Reactive](https://www.readfog.com/a/1633537209551392768)
