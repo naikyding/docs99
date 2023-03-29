@@ -408,6 +408,10 @@ export const getVueSidebar = () => ({
     {
       text: '計算屬性 computed',
       link: '/Vue/computed'
+    },
+    {
+      text: '監聽器 watch',
+      link: '/Vue/watch'
     }
   ]
 })
