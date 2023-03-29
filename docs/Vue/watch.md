@@ -144,3 +144,4 @@ setTimeout(() => {
 ## Reference
 
 - [watch() API 核心](https://cn.vuejs.org/api/reactivity-core.html#watch)
+- [Vue3 中 watch 与 watchEffect 有什么区别？](https://www.zhihu.com/question/462378193)
