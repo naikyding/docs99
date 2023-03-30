@@ -167,7 +167,10 @@ setTimeout(() => {
 
 ## watchEffect
 
+`watchEffect`
+
 ## Reference
 
 - [watch() API 核心](https://cn.vuejs.org/api/reactivity-core.html#watch)
 - [Vue3 中 watch 与 watchEffect 有什么区别？](https://www.zhihu.com/question/462378193)
+- [(ERIC 影片)Vue3 watch VS watchEffect](https://www.youtube.com/watch?time_continue=351&v=QkadKspKoJo&source_ve_path=MTI3Mjk5LDI4NjYzLDI4NjYzLDEyNzMwMSwxMjcyOTksMjM4NTE&feature=emb_title)
