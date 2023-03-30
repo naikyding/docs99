@@ -106,7 +106,7 @@ setTimeout(() => {
 監聽「整個」物件，會「遍歷」整個物件內容，對所有屬性進行監聽，使得性能開銷大，非必要不要這樣使用。
 :::
 
-### reactive 深層監聽
+### reactive 深層監聽 `{ deep: true }`
 
 承上，當 `reactive` 屬性為「物件」時，若不是整個「物件」被替換，是不會觸發監聽的。在 `watch()` 第三參數加上 `{ deep: true }` 就會「深度監聽」整個屬性物件內部的變化。
 
@@ -123,7 +123,7 @@ const data = reactive({
 watch(
   () => data.user,
   (newValue, oldValue) => {
-    // 觸發
+    // 回調函式
   },
   //  深度監聽
   { deep: true }
@@ -138,6 +138,32 @@ setTimeout(() => {
 :::danger 效能不好
 深度監聽 `{ deep: true }` 會「遍歷」整個物件內容，對所有屬性進行監聽，使得性能開銷大，非必要不要這樣使用。
 :::
+
+### 即時執行回調 `{ immediate: true }`
+
+`watch()` 是懶執行的 (`lazy`)，只有在監聽目標狀態變化時才會觸發回調函式。`watch()` 的第三參數加入 `{ immediate: true }` 就可以在監聽設置時「先執行回調」。舉例，使用這個方法先取得「初始資料」，當相關狀態改變時，再重新請求資料。
+
+```js {14}
+import { reactive, watch } from 'vue'
+
+const state = reactive({
+  a: 0,
+  b: 1,
+})
+
+watch(
+  () => state.a,
+  (newValue, oldValue) => {
+    // 立即執行，當目標狀態變化「再執行」
+    console.log('a', newValue, oldValue)
+  },
+  { immediate: true }
+)
+
+setTimeout(() => {
+  state.a = 9
+}, 3000)
+```
 
 ## watchEffect
 
