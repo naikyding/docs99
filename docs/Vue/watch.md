@@ -252,6 +252,80 @@ watchPostEffect(() => {
 })
 ```
 
+## 停止監聽
+
+在組件的 `setup()` 或 `<script setup>` 內創建監聽器，當組件「卸載」時，監聽器就會「自動停止」監聽。
+
+一般而言，監聽器是「同步」創建的，這樣適用「自動停止」的原則；若監聽器是「非同步」創建的，當組件「卸載」時，是不會自動停止監聽的，**必須要手動停止**。
+
+```js
+import { watchEffect } from 'vue'
+
+// 當組件「卸載」時，會自動停止
+watchEffect(() => {...})
+
+// 當組件「卸載」時，「不會」自動停止
+setTimeout(() =>{
+  watchEffect(() => {...})
+}, 1000)
+```
+
+### 手動停止監聽
+
+監聽器創建時，會回傳停止監聽函式，`watch` 與 `watchEffect` 都相同方法。
+
+```js {5-7}
+import { ref, watch } from 'vue'
+
+const data = ref(0)
+
+const stopWatch = watch(data, () => {
+  console.log(data.value())
+})
+
+stopWatch() // 停止監聽
+```
+
+:::tip 同步創建監聽
+盡可能使用「同步」方式來創建監聽器，若非得在某些「非同步」的條件下創建監聽器，或許可以嘗試在同步監聽器內部寫上條件，當條件滿足才執行。
+
+```js {6-8}
+import { watchEffect } from 'vue'
+
+const data = ref(null)
+
+watchEffect(() => {
+  if (data.value) {
+    // data 有資料，才執行 (非同步取得 data 資料)
+  }
+})
+```
+
+:::
+
+## watch VS watchEffect
+
+`watch` 需要明確指定目標，才能進行監聽，且是「懶」執行，當狀態改變才會執行，可以由回調函式取得當前值與舊值；
+
+`watchEffect` 回調函式內的響應資料都會進行監聽，當其狀態改變就會執行回調，不用特別指定監聽目標，且在監聽的當下就會覺執行回調，但無法取得「舊值」。不過自動追蹤的特性，可以讓「程式碼更簡潔」。由於無差別監聽目標，若某一狀態改變與執行回調的結果沒有影響的話，就可能造成效能的浪費。
+
+### 特色
+
+|              | watch | watchEffect |
+| ------------ | :---: | :---------: |
+| 監聽目標     | 手動  |    自動     |
+| 新值、舊值   |  ✅   |             |
+| 初始執行回調 |       |     ✅      |
+
+### 該如何選擇
+
+- 需要新、舊值 => `watching`
+- 自動監聽目標 => `watchEffect`
+- 明確的監聽目標 => `watch`
+- 程式碼簡潔 => `watchEffect`
+- 效能浪費(可能) => `watchEffect`
+- 初始執行回調 => `watchEffect` (`watch` 可透過 `{ immediate: true }` 達成)
+
 ## Reference
 
 [資料響應 reactive && ref]: /Vue/reactive-ref
