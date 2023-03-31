@@ -167,18 +167,17 @@ setTimeout(() => {
 
 ## watchEffect
 
-`watchEffect()` 會監聽「回調函式」內的所有 [資料響應 reactive && ref] 狀態，在設置 `watchEffect()` 當下就會「先執行」回調函式、當 [資料響應 reactive && ref] 狀態發生「變化」，就會「再次執行」回調函式。
+`watchEffect()` 會監聽「回調函式」內的所有 [資料響應 reactive && ref] 狀態，
+在設置 `watchEffect()` 當下就會「先執行」回調函式、當函式內部 [資料響應 reactive && ref] 狀態發生「變化」，就會「再次執行」回調函式。
 常使用在有 `初始值` 的情況下，後續又會依狀態變化而監聽改變的情境。
 
 **watchEffect( `callback 回調函式` )**
 
 不論是 `tab.value` 或 `data.value` 都會執行回調，因為它們在回調函式內部都會被監聽。
 
-```vue {9-12}
+```vue {6-10}
 <script setup>
 import { ref, watchEffect } from 'vue'
-
-const apiData = [{ data: 0 }, { data: 1 }, { data: 2 }]
 
 const tab = ref(0)
 const data = ref(0)
@@ -197,7 +196,8 @@ watchEffect(() => {
 
 ### 基本使用
 
-假設，當 `tab.value` 變化，就重新設置 `data.value` 的值。當 `watchEffect()` 設置時，就會先執行一次 `callback`，當 `tab.value` 變化時，就會再次執行回調。
+假設，當 `tab.value` 變化，就重新設置 `data.value` 的值。當 `watchEffect()` 設置時，
+就會先執行一次 `callback`，當 `tab.value` 變化時，就會再次執行回調。
 
 ```js {8-11}
 import { ref, watchEffect } from 'vue'
@@ -210,6 +210,45 @@ const data = ref(null)
 watchEffect(() => {
   // 初始執行一次、tab.value 變化，再次執行
   data.value = apiData[tab.value]
+})
+```
+
+:::tip
+用 `watch()` 追蹤多個屬性，改使用 `watchEffect()` 會更有效率，因為不用手動設置上多個目標屬性。且 `watchEffect` 不是「深層監聽」目標物件內所有屬性，而是有用到的屬性才會追蹤。
+:::
+
+## 回調訪問更新後的 DOM `{ flush: true }`
+
+通常監聽目標狀態改變，就會執行回調函式，或者 `{ immediate: true }` 與 `watchEffect()` 在創建監聽器的當下，就會預先執行回調。
+
+默認都是在 「DOM 還沒更新」 的情況下執行回調，這可能會造成回調內訪問的 DOM 是「之前」的狀態，在選項參數上加上 `{ flush: true }` ，可以讓回調內部訪問到「更新後」的 DOM。
+
+```js {6,13}
+watch(
+  state,
+  () => {
+    // 訪問更新後的 DOM
+  },
+  { flush: true }
+)
+
+watchEffect(
+  () => {
+    // 訪問更新後的 DOM
+  },
+  { flush: true }
+)
+```
+
+### watchPostEffect 簡寫
+
+`watchEffect` 加入 `{ flush: true }` 選項參數，也可以直接寫作 `watchPostEffect()` 更簡潔。
+
+```js
+import { watchPostEffect } from 'vue'
+
+watchPostEffect(() => {
+  // 訪問更新後的 DOM
 })
 ```
 
