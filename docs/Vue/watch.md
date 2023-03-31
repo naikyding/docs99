@@ -167,9 +167,55 @@ setTimeout(() => {
 
 ## watchEffect
 
-`watchEffect`
+`watchEffect()` 會監聽「回調函式」內的所有 [資料響應 reactive && ref] 狀態，在設置 `watchEffect()` 當下就會「先執行」回調函式、當 [資料響應 reactive && ref] 狀態發生「變化」，就會「再次執行」回調函式。
+常使用在有 `初始值` 的情況下，後續又會依狀態變化而監聽改變的情境。
+
+**watchEffect( `callback 回調函式` )**
+
+不論是 `tab.value` 或 `data.value` 都會執行回調，因為它們在回調函式內部都會被監聽。
+
+```vue {9-12}
+<script setup>
+import { ref, watchEffect } from 'vue'
+
+const apiData = [{ data: 0 }, { data: 1 }, { data: 2 }]
+
+const tab = ref(0)
+const data = ref(0)
+
+watchEffect(() => {
+  // 初始執行一次，`tab.value` 或 `data.value` 狀態改變再次執行
+  console.log(tab.value, data.value)
+})
+</script>
+
+<template>
+  <div @click="tab++">tab</div>
+  <div @click="data++">data</div>
+</template>
+```
+
+### 基本使用
+
+假設，當 `tab.value` 變化，就重新設置 `data.value` 的值。當 `watchEffect()` 設置時，就會先執行一次 `callback`，當 `tab.value` 變化時，就會再次執行回調。
+
+```js {8-11}
+import { ref, watchEffect } from 'vue'
+
+const apiData = [{ data: 0 }, { data: 1 }, { data: 2 }]
+
+const tab = ref(0)
+const data = ref(null)
+
+watchEffect(() => {
+  // 初始執行一次、tab.value 變化，再次執行
+  data.value = apiData[tab.value]
+})
+```
 
 ## Reference
+
+[資料響應 reactive && ref]: /Vue/reactive-ref
 
 - [watch() API 核心](https://cn.vuejs.org/api/reactivity-core.html#watch)
 - [Vue3 中 watch 与 watchEffect 有什么区别？](https://www.zhihu.com/question/462378193)
