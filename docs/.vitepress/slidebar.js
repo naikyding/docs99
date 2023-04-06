@@ -412,6 +412,10 @@ export const getVueSidebar = () => ({
     {
       text: '監聽器 watch',
       link: '/Vue/watch'
+    },
+    {
+      text: 'Vue3 生命周期',
+      link: '/Vue/vue3-lifecycle'
     }
   ]
 })

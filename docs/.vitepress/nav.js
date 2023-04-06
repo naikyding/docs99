@@ -29,6 +29,10 @@ export const getDevOpsNav = () => ({
 export const getVue3Nav = () => ({
   text: 'Vue3',
   items: [
+      {
+      text: 'Vue3 生命周期',
+      link: '/Vue/vue3-lifecycle'
+    },
     {
       text: '資料響應 reactive && ref',
       link: '/Vue/reactive-ref'
@@ -40,7 +44,7 @@ export const getVue3Nav = () => ({
     {
       text: '監聽器 watch',
       link: '/Vue/watch'
-    }
+    },
   ]
 })
 

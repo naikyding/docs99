@@ -109,6 +109,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 
 ### Vue3
 
+- [Vue3 生命周期](/Vue/vue3-lifecycle)
 - [資料響應 reactive && ref](/Vue/reactive-ref)
 - [計算屬性 computed](/Vue/computed)
 - [監聽器 watch](/Vue/watch)
