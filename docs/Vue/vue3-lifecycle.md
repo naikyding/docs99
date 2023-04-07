@@ -74,6 +74,40 @@ onMounted(() => {
 
 通常使用 **組件銷毀完成** 的 hook，來取消組件會產生副作用的功能。(ex: 消除定時器)
 
+## onActivated
+
+動態組件狀態是否被「啟用」 ，父層需要在動態組件外層加上 `<keep-alive>` 才會作用。
+
+**父層組件**
+
+```vue
+<script setup>
+ ...
+</script>
+
+<template>
+  <keep-alive>
+    <component :is="activeComp">
+  </keep-alive>
+</template>
+```
+
+**子層動態組件**
+
+```vue
+<script setup>
+import { onActivated } from 'vue'
+
+onActivated(() => {
+  console.log('這個組件被啟用了!')
+})
+</script>
+
+<template>
+  <h1>這是動態組件</h1>
+</template>
+```
+
 ## 所有 Hook API
 
 [Composition API: Lifecycle Hooks]
