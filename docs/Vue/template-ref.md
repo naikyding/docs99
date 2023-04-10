@@ -60,6 +60,26 @@ onMounted(() => {
 </template>
 ```
 
+## 函式模板引用
+
+模板元素使用 `:ref` 屬性也可以設置 「函式」，元素本身會被當參數帶入「函式」。元素「掛載」與「卸載」時都會執行此函式，若「卸載」執行，則函式參數 為 `null`。
+
+```vue {6-8,12}
+<script setup>
+import { ref } from 'vue'
+
+const status = ref(true)
+
+function refEvent(el) {
+  console.log(el) // 元素 (若卸載執行，則為 `null`)
+}
+</script>
+
+<template>
+  <div v-if="status" @click="status = false" :ref="refEvent">ref element</div>
+</template>
+```
+
 :::warning ref 不保證順序
 元素掛載後的 `ref` 陣列引用，是無法確保符合模版上元素排序。
 :::
