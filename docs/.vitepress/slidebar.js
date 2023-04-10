@@ -420,6 +420,10 @@ export const getVueSidebar = () => ({
     {
       text: 'ref 模板元素引用',
       link: '/Vue/template-ref'
+    },
+    {
+      text: '組件基礎',
+      link: '/Vue/vue3-component'
     }
   ]
 })
