@@ -45,6 +45,10 @@ export const getVue3Nav = () => ({
       text: '監聽器 watch',
       link: '/Vue/watch'
     },
+    {
+      text: 'ref 模板元素引用',
+      link: '/Vue/template-ref'
+    }
   ]
 })
 

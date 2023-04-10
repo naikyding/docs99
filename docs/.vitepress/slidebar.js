@@ -416,6 +416,10 @@ export const getVueSidebar = () => ({
     {
       text: 'Vue3 生命周期',
       link: '/Vue/vue3-lifecycle'
+    },
+    {
+      text: 'ref 模板元素引用',
+      link: '/Vue/template-ref'
     }
   ]
 })
