@@ -125,12 +125,16 @@ function changeTitleByParent(newTitle) {
     {{ title }}
   </h1>
 
-  <!-- 寫法二: 發射 `change-content` 事件 -->
+  <!-- 寫法二: 發射 `change-content` 事件，也可以直接寫作 `emit('change-content', 'child change content')` -->
   <div @click="$emit('change-content', 'child change content')">
     {{ content }}
   </div>
 </template>
 ```
+
+:::warning 注意 $emit
+就算在模板上直接使用 `$emit`還是要進行`defineEmits` 聲明，不然會警報。
+:::
 
 ## Reference
 
