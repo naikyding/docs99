@@ -52,6 +52,10 @@ export const getVue3Nav = () => ({
     {
       text: '組件基礎',
       link: '/Vue/vue3-component'
+    },
+    {
+      text: '依賴注入 provide && inject',
+      link: '/Vue/provide-inject'
     }
   ]
 })

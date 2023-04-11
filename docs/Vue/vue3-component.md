@@ -141,6 +141,8 @@ function changeTitleByParent(newTitle) {
 [子組件事件]: https://cn.vuejs.org/guide/components/events.html
 [單文件組件 sfc]: https://cn.vuejs.org/guide/scaling-up/sfc.html
 
-- [[子組件事件]
+- [子組件事件]
 - [單文件組件 SFC]
 - [组件基础](https://cn.vuejs.org/guide/essentials/component-basics.html#using-a-component)
+- [深入了解 props](https://cn.vuejs.org/guide/components/props.html#prop-validation)
+- [深入 emit 事件](https://cn.vuejs.org/guide/components/events.html#event-arguments)
