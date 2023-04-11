@@ -56,6 +56,63 @@ console.log(parentData.value, state)
 </template>
 ```
 
+## 響應資料注入與資料修改
+
+為維持「單向資料流」，資料都應由源頭修改，這樣會較容易維護。「提供」不只是提供 `資料` 也可以提供 `函式` 供子組件操作狀態。
+
+### 父層
+
+「父層」聲明了一個源頭，為 `物件` 型別，資料以 [資料響應 reactive && ref] 提供，在 `物件` 中同時提供了修改源頭資料的方法。
+
+```vue {15-20}
+<script setup>
+import Comp from './Comp.vue'
+import { ref, provide } from 'vue'
+
+const num = ref(0)
+function resetNum() {
+  num.value = 0
+}
+function plusNum() {
+  num.value++
+}
+function customNum(newNum) {
+  num.value = newNum
+}
+provide('num', {
+  value: num,
+  customNum,
+  plusNum,
+  resetNum,
+})
+</script>
+
+<template>
+  <Comp />
+</template>
+```
+
+### 子組件
+
+由 `inject()` 取得了「源頭」資料，內部包含了操作源頭資料的方法，「子組件」應透過方法操作資料，來落實單向資料流!
+
+```vue {3,8-12}
+<script setup>
+import { inject } from 'vue'
+const num = inject('num')
+</script>
+
+<template>
+  <div>
+    <button @click="num.customNum(999)">num = 999</button>
+    <button @click="num.plusNum">+</button>
+    <button @click="num.resetNum">reset</button>
+
+    {{ num.value }}
+  </div>
+</template>
+```
+
 ## Reference
 
 [資料響應 reactive && ref]: /Vue/reactive-ref
