@@ -38,13 +38,15 @@ import Child from './Child.vue'
 
 ### **子組件 (接收)**
 
-子組件使用 `defineProps()` 接收「父層」傳送的資料。
+子組件使用 `defineProps()` 可以接收「父層」傳送的資料，直接提供給模版使用。
 
 #### defineProps([ `屬性名稱 a`, `屬性名稱 b` ])
 
 ```vue {2,8}
 <script setup>
 defineProps(['title']) // 接收由「父層」設置屬性名稱，傳送的資料
+
+❌ console.log(title) // Reference: title is not defined
 </script>
 
 <template>
@@ -54,6 +56,27 @@ defineProps(['title']) // 接收由「父層」設置屬性名稱，傳送的資
   </h1>
 </template>
 ```
+
+:::warning 注意
+若在 `setup` 中直接操作 `defineProps(['title'])` 的 `title` 會發生錯誤 => `title` 未定義，必須要使用 `defineProps()` 的回傳值來操作。
+
+```vue {2,5}
+<script setup>
+const props = defineProps(['title']) // 使用回傳，方便後續操作
+
+❌ console.log(title) // Reference: title is not defined
+✅ console.log(props.title)
+</script>
+
+<template>
+  <h1>
+    <!-- 仍可使用 -->
+    {{ title }}
+  </h1>
+</template>
+```
+
+:::
 
 ## 組件事件監聽 emit
 

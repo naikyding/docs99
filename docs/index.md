@@ -116,6 +116,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [ref 模板元素引用](/Vue/template-ref)
 - [組件基礎](/Vue/vue3-component)
 - [依賴注入 provide && inject](/Vue/provide-inject)
+- [組件 v-model](/Vue/component-v-model)
 
 ## CSS
 
