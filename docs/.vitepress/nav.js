@@ -58,7 +58,7 @@ export const getVue3Nav = () => ({
       link: '/Vue/provide-inject'
     },
     {
-      text: '組件 v-model',
+      text: '組件 v-model 雙向綁定',
       link: '/Vue/component-v-model'
     }
   ]
