@@ -198,6 +198,61 @@ const emit = defineEmits(['update:firstName', 'update:lastName'])
 
 ## 客製 v-model 修飾符
 
+一般而言 `v-model` 有許多內建的「修飾符」，比如 `.trim` `.number` …。在組件中，你也可以創建「客製化」的修飾符，執行客製化的事件處理。
+
+### 一般 `v-model`
+
+比如下面的程式，在 `v-model` 加入「移除底線功能」的修飾符 `.removeUnderLine`。
+
+```html
+<custom-component v-model.removeUnderLine="value" />
+```
+
+**子組件**
+
+加入客製修飾符時，必須在 `defineProps({ … })` 中，定義 `modelModifiers` 屬性，且給它一個默認的空物件。
+若父層有加 `.removeUnderLine` 修飾符，`props.modelModifiers.removeUnderLine` 會為 `true`，就可以用來判斷是否調整更新值的「加工」。
+
+```vue {4,7,12-24}
+<script setup>
+const props = defineProps({
+  modelValue: String,
+  modelModifiers: { default: () => ({}) },
+})
+
+console.log(props.modelModifiers) // { removeUnderLine: true }
+
+const emit = defineEmits(['update:modelValue'])
+
+// 更新資料時執行
+function modifiValue(event) {
+  const inputValue = event.target.value
+  // 判斷是否含有需加工的修飾符
+  if (props.modelModifiers.removeUnderLine) {
+    let modifiValue = ''
+    inputValue.split('').forEach((item) => {
+      if (item !== '_') {
+        modifiValue += item
+      }
+    })
+    emit('update:modelValue', modifiValue)
+  }
+}
+</script>
+
+<template>
+  <div>ChildComp</div>
+  <p>
+    {{ props }}
+  </p>
+  <p>
+    <input :value="modelValue" @input="modifiValue" />
+  </p>
+</template>
+```
+
+### `v-model` 帶參數
+
 ## Reference
 
 [vue3 組件基礎]: /Vue/vue3-component
