@@ -54,7 +54,7 @@ const emits = defineEmits(['input-value-change'])
 
 ## v-model 雙向綁定
 
-在組件設置 `v-model` 屬性，它會同時包裝父層資料更新的「監聽事件」，父層省去了更新資料事件的設置。
+在組件上，使用 `v-model` 它會將一般的傳參 `props` 與事件 `emit` 包裝在一起，不需要再另外監聽事件。是組件「雙向綁定」更簡潔的方法。
 
 **父層**
 
@@ -75,9 +75,12 @@ const inputValue = ref('default value')
 </template>
 ```
 
-**子層**
+**子層** (方法一)
 
 父層設置 `v-model` 時，子組件接收的資料預設為 `modelValue` ，更新資料函式預設為 `update:modelValue`。
+
+- `props` 接收資料
+- `emit`事件: 更新資料
 
 ```vue {2-3,7-10}
 <script setup>
@@ -92,6 +95,108 @@ const emits = defineEmits(['update:modelValue'])
   />
 </template>
 ```
+
+**子層** (方法二)
+
+子組件透過 `v-model` 與 `computed` 再雙向綁定。
+
+```vue {6-13,17}
+<script setup>
+import { ref, computed } from 'vue'
+const props = defineProps(['modelValue'])
+const emits = defineEmits(['update:modelValue'])
+
+const value = computed({
+  get() {
+    return props.modelValue
+  },
+  set(newValue) {
+    emits('update:modelValue', newValue)
+  },
+})
+</script>
+
+<template>
+  <input v-model="value" />
+</template>
+```
+
+## `v-model` 指定參數
+
+在組件使用 `v-model` 會是預設的參數名稱 `modelValue` 與預設的更新事件名 `update:modelValue`。
+
+也可以使用 `v-model:參數名稱` 來指定傳遞的參數名稱，而子組件更新資料事件就會是 `update:參數名稱`。
+
+**父層**
+
+```html
+<custom-element v-model:title="refTitle" />
+```
+
+**子組件**
+
+```vue {2-3,9-10}
+<script setup>
+const props = defineProps(['title'])
+const emit = defineEmits(['update:title'])
+</script>
+
+<template>
+  <input
+    type="text"
+    :value="props.title"
+    @input="$emit('update:title', $event.target.value)"
+  />
+</template>
+```
+
+## 多 `v-model` 綁定
+
+可以使用多個 [v-model 指定參數](/Vue/component-v-model#v-model-指定參數) 來為組件設置多個「雙向綁定」資料，且更新事件會自動處理，不需要額外監聽。
+
+**父層**
+
+```vue {12}
+<script setup>
+import ChildComp from './ChildComp.vue'
+import { ref } from 'vue'
+
+const firstName = ref('firstName')
+const lastName = ref('lastName')
+</script>
+
+<template>
+  <div>Parent: {{ firstName + lastName }}</div>
+
+  <ChildComp v-model:first-name="firstName" v-model:last-name="lastName" />
+</template>
+```
+
+**子組件**
+
+更新資料事件，只要使用 `update:` 前綴加上參數名稱就可以了。
+
+```vue {2-3,9-10,14-15}
+<script setup>
+const props = defineProps(['firstName', 'lastName'])
+const emit = defineEmits(['update:firstName', 'update:lastName'])
+</script>
+
+<template>
+  <input
+    type="text"
+    :value="props.firstName"
+    @input="$emit('update:firstName', $event.target.value)"
+  />
+  <input
+    type="text"
+    :value="props.lastName"
+    @input="$emit('update:lastName', $event.target.value)"
+  />
+</template>
+```
+
+## 客製 v-model 修飾符
 
 ## Reference
 
