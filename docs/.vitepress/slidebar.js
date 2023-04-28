@@ -130,6 +130,10 @@ export const getJavascriptSidebar = () => ({
       link: '/Javascript/intersectionObserver'
     },
     {
+      text: '懶加載圖片 DEMO Lazy image',
+      link: '/Javascript/lazy-image-demo'
+    },
+    {
       text: '陣列處理',
       link: '/Javascript/array-methods'
     },
