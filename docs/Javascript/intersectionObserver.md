@@ -1,12 +1,12 @@
 # IntersectionObserver 元素進入畫面判斷
 
 :::tip 簡單說
-透過 `IntersectionObserver` 建立含 `callback` 的實例，當指定的 `dom` (target) 進入到可視的畫面時，就會執行 `callback` 事件。
+透過 `IntersectionObserver` 建立含 `callback` 的實例，當指定的元素 (target) 進入畫面且可以「看到」時，就會執行 `callback` 事件。
 :::
 
 :::danger 注意
 
-- 初始化會執行一次 `callback`，必須判斷是否進入畫面中 `isIntersecting`。
+- 初始化會執行一次 `callback`，判斷是否進入畫面中，可使用 `isIntersecting`。
 - IE 不支持
 
 :::
@@ -19,9 +19,12 @@
 ### 常用情境：
 
 - 頁面無限滾動
-- 實作 Lazy loading (懶加載)
+- Lazy loading (懶加載資料)
+- Lazy image (圖片懶加載)
 
-## 語法
+## API
+
+`IntersectionObserver` 為一個建構式，可以創建出監聽的實體，再由實體來進行監聽、移除監聽的操作。
 
 ```jsx
 const IntersectionObserver = new IntersectionObserver(callback[, option])
@@ -29,14 +32,52 @@ const IntersectionObserver = new IntersectionObserver(callback[, option])
 
 - `IntersectionObserver` 監聽實例
 
-#### callback(`entries`, `observer`)
+- **callback(`entries`, `observer`)**
+  - `entries` 觸發的監聽對象們 (陣列)
+    - `time` 觸發的時間 (時間戳記)
+    - `target` 監聽的元素
+    - `isIntersecting` 目標是否可見 (判斷 進入 or 離開)
+    - `intersectionRatio` 完全不可見時 === 0
+- **`observer` 監聽實體**
 
-- `entries` 監聽對象們 (陣列)
-  - `time` 觸發的時間 (時間戳記)
-  - `target` 監聽的 dom
-  - `isIntersecting` 目標是否可見 (判斷 進入 or 離開)
-  - `intersectionRatio` 完全不可見時 === 0
-- `observer` 監聽實例
+### 方法
+
+- `.observe(target)` 監聽元素
+
+  ```js {8}
+  const lazyEl = document.querySelectorAll('.lazy')
+  const ob = new IntersectionObserver(triggerEvent)
+  function triggerEvent(entries, ob) {
+    console.log('target')
+  }
+
+  // 監聽元素
+  ob.observe(lazyEl)
+  ```
+
+- `.unobserve(target)` 移除監聽
+
+  就不會再重複觸發 callback
+
+  ```js {11}
+  const lazyEl = document.querySelectorAll('.lazy')
+  const ob = new IntersectionObserver(triggerEvent)
+
+  function triggerEvent(entries, observer) {
+    entries.forEach((item) => {
+      // 若可見
+      if (item.isIntersecting) {
+        // do something
+
+        // 移除監聽
+        observer.unobserve(item)
+      }
+    })
+  }
+
+  // 監聽元素
+  ob.observe(lazyEl)
+  ```
 
 ## 使用
 
@@ -60,10 +101,10 @@ io.observe(el)
 
 ### 觸發事件 (當目標進入畫面時)
 
-會有兩次觸發事件：1 進入畫面、2 離開畫面
+會有觸發事件：1 初始 / 2 進入畫面 / 3 離開畫面
 ![由此可見，我們可以依 `isIntersecting` 來判斷是進入還是離開元素。](./img/intersectionObserver.png)
 :::tip
-我們可以依 `isIntersecting` 來判斷是進入還是離開元素。
+可以依 `isIntersecting` 來判斷是進入還是離開元素。
 :::
 
 ### 例子
@@ -81,7 +122,7 @@ io.observe(el)
 
 ```js
 const io = new IntersectionObserver((enter) => {
-  console.log(enter)
+  console.log(enter[0])
 })
 
 io.observe(document.querySelector('#test'))
