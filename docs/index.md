@@ -65,6 +65,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [物件屬性定義 Object.defineProperty](/Javascript/object-defineProperty)
 - [Proxy 物件代理](/Javascript/proxy)
 - [Web Component 自定義組件](/Javascript/web-component)
+- [懶加載圖片 DEMO Lazy image](/Javascript/lazy-image-demo)
 
 ### GSAP
 
