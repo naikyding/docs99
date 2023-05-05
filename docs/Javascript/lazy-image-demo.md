@@ -197,3 +197,5 @@ lazyImgAry.forEach((imgItem) => {
 - [Intersection Observer API]
 - [IntersectionObserver 元素進入畫面判斷]
 - [Image Lazy Loading Using Browser’s Intersection Observer API ](https://medium.com/fasal-engineering/image-lazy-loading-using-browsers-intersection-observer-api-a-step-by-step-guide-with-examples-b1a867614e8)
+- [認識 Intersection Observer API：實作 Lazy Loading 和 Infinite Scroll](https://medium.com/%E9%BA%A5%E5%85%8B%E7%9A%84%E5%8D%8A%E8%B7%AF%E5%87%BA%E5%AE%B6%E7%AD%86%E8%A8%98/%E8%AA%8D%E8%AD%98-intersection-observer-api-%E5%AF%A6%E4%BD%9C-lazy-loading-%E5%92%8C-infinite-scroll-c8d434ad218c)
+- [IntersectionObserver：上篇 – 基本介紹及使用](https://www.letswrite.tw/intersection-oserver-basic/)
