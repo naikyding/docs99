@@ -193,12 +193,14 @@
 </style>
 
 ## 說明
+
 可以彈性的適應不同裝置尺吋，去填補空間或在「一度空間」中，客製化調整排版。
 
 ![](/css/img/flexbox.png)
 [圖片出處]
 
 ## 容器屬性
+
 可以在「容器」屬性設置，來調整「項目」們的排版。
 
 **結構**
@@ -211,7 +213,9 @@
   <div class="flex-item bg-base pa-1 rounded text-center">4</div>
 </div>
 ```
+
 ## ├ 🔴 使用「彈性盒子」模式 (必填)
+
 在容器 (父層) 定義 `display: flex;` 使用 `flexbox` 排版，啟動後 「項目」的 `block` 就會變的不佔據區塊，而可以被自由調整排版。
 
 ### 一般狀態
@@ -238,10 +242,12 @@
 }
 ```
 
-## ├ ➡️⬅️⬇️⬆️  flex-direction 資料流
+## ├ ➡️⬅️⬇️⬆️ flex-direction 資料流
+
 可以定義「容器」 內 「項目」排序流向的 `主軸` 與 `方向`。
 
 **value**:
+
 - `row` 水平主軸，由左開始 **(預設值)**
 - `row-reverse` 水平主軸，反轉 (由右開始)
 - `column` 垂直主軸，由「頂部」開始
@@ -280,6 +286,7 @@
   flex-direction: row-reverse;
 }
 ```
+
 ### 垂直主軸，由「頂部」開始 `column`
 
 <div class="flex-container border-dashed flex flex-col">
@@ -315,11 +322,13 @@
 ```
 
 ## ├ 主軸對齊方式 justify-content
+
 當定義了 [資料流 flex-direction](/css/flex#➡%EF%B8%8F⬅%EF%B8%8F⬇%EF%B8%8F⬆%EF%B8%8F-flex-direction-資料流) 同時決定了「主軸」，而可以藉由 `justify-content` 來對這個「主軸」做對齊方式的設置。
 
 下列以 [水平主軸，由左開始 `flex-direction: row;`](/css/flex#水平主軸，由左開始-row) 為例子顯示:
 
 **value:**
+
 - `flex-start` 靠左 **(預設值)**
 - `flex-end` 靠右
 - `center` 置中
@@ -327,7 +336,7 @@
 - `space-around` 分散 (左、右 1/2，其它均分空間)
 - `space-evenly` 均分所有空間
 
-### 靠左 `flex-start` 
+### 靠左 `flex-start`
 
 <div class="flex-container border-dashed flex">
   <div class="flex-item green pa-1 rounded text-center">1</div>
@@ -375,7 +384,7 @@
 }
 ```
 
-###  分散 `space-between`
+### 分散 `space-between`
 
 <div class="flex-container border-dashed flex justify-between">
   <div class="flex-item green pa-1 rounded text-center">1</div>
@@ -391,7 +400,7 @@
 }
 ```
 
-###  分散 (左、右 1/2，其它均分空間) `space-around`
+### 分散 (左、右 1/2，其它均分空間) `space-around`
 
 <div class="flex-container border-dashed flex justify-around">
   <div class="flex-item green pa-1 rounded text-center">1</div>
@@ -407,7 +416,7 @@
 }
 ```
 
-###  均分所有空間 `space-evenly`
+### 均分所有空間 `space-evenly`
 
 <div class="flex-container border-dashed flex justify-evenly">
   <div class="flex-item green pa-1 rounded text-center">1</div>
@@ -435,6 +444,7 @@
 下列以 [水平主軸，由左開始 `flex-direction: row;`](/css/flex#水平主軸，由左開始-row) 為例子顯示:
 
 **value:**
+
 - `stretch` 拉撐 **(預設)**
 - `flex-start` 靠上
 - `flex-end` 靠下
@@ -489,7 +499,7 @@
 }
 ```
 
-### 置中 `center` 
+### 置中 `center`
 
 <div class="flex-container border-dashed flex h-150 align-center">
   <div class="flex-item green pa-1 rounded text-center">1</div>
@@ -506,6 +516,7 @@
 ```
 
 ### 靠上，內容對齊 `baseline`
+
 「項目」靠上，再以「最高項目」為基準，所有「項目」的文字內容向它對齊。
 
 <div class="flex-container border-dashed flex align-baseline h-250">
@@ -530,12 +541,13 @@
 }
 ```
 
-
 ## └ 換行設置 flex-wrap
+
 當使用 `flex` 模式，所有「項目」就會被撐滿在「容器」之中，無視「項目」的寬度，只會被塞在一行裡。但可以透過這個屬性，恢復「項目」原有的寬度、超過 `自動` 換行。
 
 **value:**
-- `nowrap` 不換行 **(預設值)
+
+- `nowrap` 不換行 \*\*(預設值)
 - `wrap` 換行
 - `wrap-reverse` 主軸起、終點反轉換行
 
@@ -618,6 +630,7 @@
 ```
 
 ## 項目屬性
+
 可以在「項目」設置相關屬性，來調整排版。
 
 ```html {2-5}
@@ -630,9 +643,11 @@
 ```
 
 ## ├ 次軸對齊方式 align-self
+
 藉由 `align-self` 直接對「項目」調整 `次軸` 對齊方式，優先權會大於在「容器」調整的 [次軸對齊方式 align-items](/css/flex#次軸對齊方式-align-items)。
 
 **value:**
+
 - `stretch` 拉撐 (預設值，若`align-items` 無特別設置)
 - `flex-start` 靠上
 - `flex-end` 靠下
@@ -748,7 +763,8 @@
 }
 ```
 
-## ├ x軸空白伸展 flex-grow 
+## ├ 主軸空白伸展 flex-grow
+
 當「項目」總寬度小於「容器」寬度時，會產生 `空白` 的空間，而 `flex-grow` 可以決定哪個「項目」分配多少這個 `空白` 空間的比例。
 
 :::tip 使用說明
@@ -764,11 +780,13 @@
 </div>
 
 **value `number`** (不可為負數):
+
 - `0` (預設值)
 - `1` ~ ...
 
 ### 單「項目」設置
-只有一個「項目」設置 `flex-grow: 1;`, 空白空間共分為 `1` 等分，而 `.orange` 分配 `1` 等份 (就是全部)。 
+
+只有一個「項目」設置 `flex-grow: 1;`, 空白空間共分為 `1` 等分，而 `.orange` 分配 `1` 等份 (就是全部)。
 
 <div class="flex-container border-dashed flex h-100">
   <div class="flex-item green content-center rounded w-100px">1</div>
@@ -784,6 +802,7 @@
 ```
 
 ### 多「項目」設置
+
 所有「項目」 `flex-grow` 加總為 `3` (1 + 2)，空白空間分 `3` 等份，`.orange` 分配當中的 `1` 等分、`.pink` 分配到 `2` 分。
 
 <div class="flex-container border-dashed flex h-100">
@@ -803,8 +822,13 @@
 }
 ```
 
-## ├ x軸空間收縮 flex-shrink 
-當「容器」x軸空間不足時，可以在「項目」設置 `flex-shrink` 來指定可以被收縮的佔比。
+:::tip 提示
+當容器高度是被 `flex-grow: 1` 撐滿時，使用 `overflow: auto` 是無效的，因為父層沒有高度可以被視別。可以在 `flex-grow: 1` 容器中加入 `height: 0;` 就使用 `overflow` 效果。
+:::
+
+## ├ 主軸空間收縮 flex-shrink
+
+當「容器」x 軸空間不足時，可以在「項目」設置 `flex-shrink` 來指定可以被收縮的佔比。
 
 <div class="flex-container border-dashed flex h-100">
   <div class="flex-item green content-center rounded w-300">1</div>
@@ -814,10 +838,12 @@
 </div>
 
 **value `number`** (不可為負數):
+
 - `1` (預設值) 收縮佔比
 - `0` 不被收縮
 
 ### 不被收縮
+
 在 `.green` 設置 `flex-shrink: 0;` 可以保證其不被「收縮」，保有原本設置的寬度，當「容器」寬度變窄，會先收縮其它「項目」的寬度。
 
 <div class="flex-container border-dashed flex h-100">
@@ -835,6 +861,7 @@
 ```
 
 ### 指定收縮
+
 當 `.orange` 設置 `flex-shrink: 3;`，其它「項目」為`預設值`，當「容器」變窄時， `.orange` 被收縮的量為 `3/6` 等份。
 
 <div class="flex-container border-dashed flex h-100 w-300">
@@ -851,9 +878,11 @@
 ```
 
 ## └ 主軸初始尺吋 flex-basis
+
 依不同的「主軸」設定，決定不同的方向的尺吋，`flex-basis` 優先權大於 `width` (`height`)。
 
 **value:**
+
 - `auto` 根據「項目」決定大小。
 - `%` 指定比例
 - `px`.. 指定尺吋
@@ -894,7 +923,6 @@
   <div class="flex-item orange content-center rounded basis-25">25%</div>
 </div>
 
-
 ```css
 .flex-container {
   display: flex;
@@ -914,13 +942,13 @@
 }
 ```
 
-
-
 ## Reference
+
 [圖片出處]: https://codeburst.io/flexbox-building-a-navigation-part-2-2-6cc58b9d4173
+
 - [CSS_Flexible_Box_Layout MDN](https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_Flexible_Box_Layout)
 - [深入解析 CSS Flexbox](https://www.oxxostudio.tw/articles/201501/css-flexbox.html)
 - [Get started with Flexbox.](https://dev.to/virensuthar/get-started-with-flexbox-3in5)
 - [CSS | 所以我說那個版能不能好切一點？ - Flex 基本用法](https://medium.com/enjoy-life-enjoy-coding/css-%E6%89%80%E4%BB%A5%E6%88%91%E8%AA%AA%E9%82%A3%E5%80%8B%E7%89%88%E8%83%BD%E4%B8%8D%E8%83%BD%E5%A5%BD%E5%88%87%E4%B8%80%E9%BB%9E-flex-%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-e68cc2906995)
 - [六角學院-flex 基礎教學](https://w3c.hexschool.com/category/flexbasic)
-- [深入理解css3中的flex-grow、flex-shrink、flex-basis](http://zhoon.github.io/css3/2014/08/23/flex.html)
+- [深入理解 css3 中的 flex-grow、flex-shrink、flex-basis](http://zhoon.github.io/css3/2014/08/23/flex.html)
