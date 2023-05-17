@@ -275,6 +275,29 @@ const state = reactive([ ref(0) ])
 - `ref` 在 `reactive` 「物件」內，操作 `ref` 不用加 `.value`
 - `ref` 在 `reactive` 「陣列」內，操作 `ref` 「要」加 `.value`
 
+:::danger 注意 log 打印響應式狀態
+一般情境下，會認為 ① 的 log 會是更新之前的狀態，但實際上 ① log 打印的 `target` 也會是更新後的狀態! 這是基於 ref 是 proxy 代理，指的不是資料的本身，但針對更新前的操作還是成立的!
+
+```js {8-9,12}
+import { ref } from 'vue'
+
+const data = ref([1, 2, 3])
+
+resetData(data)
+
+function resetData(stateData) {
+  console.log(stateData.value) // ① 打印更新前的原始值 ?
+  console.log(stateData.value.length) // ③ 3
+
+  stateData.value.splice(0)
+  console.log(stateData.value) // ② 打印更新后的值
+}
+```
+
+![](/Vue/img/log-ref.png)
+實際會因為響應式，在 `target` 上有所變化
+:::
+
 ## Reference
 
 [proxy 物件代理]: /Javascript/proxy
