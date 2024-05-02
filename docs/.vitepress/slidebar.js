@@ -281,6 +281,10 @@ export const getJavascriptSidebar = () => ({
       text: 'GSAP 滾動觸發器',
       link: '/Javascript/gsap-scroll-trigger'
     },
+    {
+      text: 'SpeechSynthesis 語音合成器',
+      link: '/Javascript/speech-synthesis'
+    },
   ]
 })
 

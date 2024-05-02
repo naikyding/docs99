@@ -66,6 +66,7 @@ style="background: var(--vp-c-brand-dark); color: white; padding: .3rem 1rem; bo
 - [Proxy 物件代理](/Javascript/proxy)
 - [Web Component 自定義組件](/Javascript/web-component)
 - [懶加載圖片 DEMO Lazy image](/Javascript/lazy-image-demo)
+- [SpeechSynthesis 語音合成器](/Javascript/speech-synthesis)
 
 ### GSAP
 
