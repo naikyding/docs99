@@ -285,6 +285,10 @@ export const getJavascriptSidebar = () => ({
       text: 'SpeechSynthesis 語音合成器',
       link: '/Javascript/speech-synthesis'
     },
+    {
+      text: '懸浮視窗 (子母視窗) PIP',
+      link: '/Javascript/pip'
+    }
   ]
 })
 
